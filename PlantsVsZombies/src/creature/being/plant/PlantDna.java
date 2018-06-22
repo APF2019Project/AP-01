@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
+import game.GameEngine;
 import line.LineState;
 
 import java.util.ArrayList;
@@ -31,6 +32,11 @@ public class PlantDna extends BeingDna {
     return ammunitionDna;
   }
 
+  @Override
+  public int getFirstHealth() {
+    return super.getFirstHealth() * GameEngine.getFRAME();
+  }
+
   public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
                   int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
                   LineState contain, boolean explosive) {
@@ -55,7 +61,7 @@ public class PlantDna extends BeingDna {
   }
 
   public int getCooldown() {
-    return cooldown;
+    return cooldown * GameEngine.getFRAME();
   }
 
   public LineState getContain() {

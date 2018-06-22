@@ -1,6 +1,7 @@
 package creature.ammunition;
 
 import creature.Dna;
+import game.GameEngine;
 
 public class AmmunitionDna extends Dna {
   private final int type;
@@ -14,8 +15,21 @@ public class AmmunitionDna extends Dna {
   private final int productionNumberOfAmmunitionPerUse;
   private final int firstTimeHealth;
 
-  public int getCooldown() {
-    return cooldown;
+  public AmmunitionDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int type,
+                       int cooldown, int sunIncome, int firstHealth, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio,
+                       int minimumDistanceForShoot, int productionNumberOfAmmunitionPerUse,
+                       int firstTimeHealth) {
+    super(name, speed, powerOfDestruction);
+    this.type = type;
+    this.cooldown = cooldown;
+    this.sunIncome = sunIncome;
+    this.firstHealth = firstHealth;
+    this.stunTurnNumber = stunTurnNumber;
+    this.effectiveRange = effectiveRange;
+    this.reduceSpeedRatio = reduceSpeedRatio;
+    this.minimumDistanceForShoot = minimumDistanceForShoot;
+    this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
+    this.firstTimeHealth = firstTimeHealth;
   }
 
   public int getStunTurnNumber() {
@@ -30,8 +44,8 @@ public class AmmunitionDna extends Dna {
     return reduceSpeedRatio;
   }
 
-  public int getMinimumDistanceForShoot() {
-    return minimumDistanceForShoot;
+  public int getCooldown() {
+    return cooldown * GameEngine.getFRAME();
   }
 
   public int getType() {
@@ -54,21 +68,8 @@ public class AmmunitionDna extends Dna {
     return firstTimeHealth;
   }
 
-  public AmmunitionDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int type,
-      int cooldown, int sunIncome, int firstHealth, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio,
-      int minimumDistanceForShoot, int productionNumberOfAmmunitionPerUse,
-      int firstTimeHealth) {
-    super(name, speed, powerOfDestruction);
-    this.type = type;
-    this.cooldown = cooldown;
-    this.sunIncome = sunIncome;
-    this.firstHealth = firstHealth;
-    this.stunTurnNumber = stunTurnNumber;
-    this.effectiveRange = effectiveRange;
-    this.reduceSpeedRatio = reduceSpeedRatio;
-    this.minimumDistanceForShoot = minimumDistanceForShoot;
-    this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
-    this.firstTimeHealth = firstTimeHealth;
+  public int getMinimumDistanceForShoot() {
+    return minimumDistanceForShoot * GameEngine.getFRAME();
   }
   
 }
