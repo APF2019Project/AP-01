@@ -11,6 +11,10 @@ public class Creature implements Comparable <Creature> {
     public CreatureNode creatureNode;
     private static int counter;
 
+    public int getHealth() {
+        return health;
+    }
+
     public Location getLocation() {
         return location;
     }
