@@ -2,6 +2,9 @@ package graphic.game;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import creature.being.plant.Plant;
+import exception.InvalidGameMoveException;
+import game.GameEngine;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -14,13 +17,26 @@ class Delta {
 }
 
 public class Bil extends ImageView {
+
+  public void removePlant(int x, int y) {
+    try {
+      GameEngine gameEngine = GameEngine.getCurrentGameEngine();
+      Plant plant = gameEngine.getPlant(x*GameEngine.getFRAME(), y);
+      if (plant == null)
+          throw new InvalidGameMoveException("there is no plant in that location!");
+      gameEngine.killPlant(plant);
+    } catch (InvalidGameMoveException e) {
+    } catch (NumberFormatException e) {
+    }
+  }
+
   public Bil(double x, double y, double size) {
     this.setTranslateX(x);
     this.setTranslateY(y);
     this.setFitWidth(size);
     this.setFitHeight(size);
     this.setImage(new Image(
-      Program.getRes("lanat.png")
+      Program.getRes("images/lanat.png")
     ));
     final Delta dragDelta = new Delta();
     Node label = this;
@@ -39,7 +55,7 @@ public class Bil extends ImageView {
         double y = label.getTranslateY()+label.getLayoutY();
         x /= Program.screenX / 10;
         y /= Program.screenY/5;
-        //owner.plant(dna, (int)y, (int)x);
+        removePlant((int)x, (int)y);
         label.setLayoutX(0);
         label.setLayoutY(0);
       }

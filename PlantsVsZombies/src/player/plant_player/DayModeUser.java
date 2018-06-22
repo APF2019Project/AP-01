@@ -71,7 +71,12 @@ public class DayModeUser implements PlantPlayer {
             i++;
             gameCards.add(x);
         }
-        Bil bil = new Bil((7 + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06);
+        Bil bil = new Bil(
+            (7 + 0.9) * Program.screenX * 0.11,
+            10,
+            Program.screenX * 0.06
+        );
+        group.getChildren().add(bil);
     }
 
     private void randomSunAdder() {
