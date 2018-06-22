@@ -59,10 +59,10 @@ public class Menu<U> implements Page<U> {
       myPane.getChildren().add(closeButton);
       for (final Button<U> button: buttons) {
         SimpleButton r = new SimpleButton(
-          Program.screenX/3,
-          (2*cnt+1)*Program.screenY/(2*n+1),
-          Program.screenX/3, 
-          Program.screenY/(2*n+1),
+          Program.screenX*0.6,
+          (1.5*cnt+1.5)*Program.screenY/(2*n+1),
+          Program.screenX*0.22, 
+          0.6*Program.screenY/(2*n+1),
           button.getLabel(),
           button.action().consume(h::success).catchThen(e -> Effect.syncWork(()->{
             Program.stage.getScene().setRoot(myPane);
