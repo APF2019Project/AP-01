@@ -65,14 +65,20 @@ public class DayModeUser implements PlantPlayer {
         group.getChildren().add(sunText);
         for (PlantDna dna : plantDans) {
             coolDownTimeLeft.add(0);
-            GameCard x = new GameCard(this, dna, (i + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06);
+            GameCard x = new GameCard(
+                this,
+                dna,
+                (i + 1.5) * Program.screenX * 0.07,
+                10,
+                Program.screenX * 0.06
+            );
             group.getChildren()
                     .add(x);
             i++;
             gameCards.add(x);
         }
         Bil bil = new Bil(
-            (7 + 0.9) * Program.screenX * 0.11,
+            (7 + 1.5) * Program.screenX * 0.07,   
             10,
             Program.screenX * 0.06
         );
