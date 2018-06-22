@@ -6,6 +6,7 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
+import graphic.game.Bil;
 import graphic.game.CreatureNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -70,6 +71,7 @@ public class DayModeUser implements PlantPlayer {
             i++;
             gameCards.add(x);
         }
+        Bil bil = new Bil((7 + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06);
     }
 
     private void randomSunAdder() {
