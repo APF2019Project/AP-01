@@ -21,7 +21,7 @@ public class Bil extends ImageView {
   public void removePlant(int x, int y) {
     try {
       GameEngine gameEngine = GameEngine.getCurrentGameEngine();
-      Plant plant = gameEngine.getPlant(x*GameEngine.getFRAME(), y);
+      Plant plant = gameEngine.getPlant2(x, y);
       if (plant == null)
           throw new InvalidGameMoveException("there is no plant in that location!");
       gameEngine.killPlant(plant);

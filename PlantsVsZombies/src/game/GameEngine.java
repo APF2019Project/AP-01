@@ -537,4 +537,8 @@ public class GameEngine {
 	public Group getPlayerGroup() {
 		return playerGroup;
 	}
+
+	public Plant getPlant2(int x, int y) {
+		return getPlant(y, x * getFRAME() * 2 + getFRAME());
+	}
 }
