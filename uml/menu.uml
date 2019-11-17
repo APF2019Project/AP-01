@@ -1,0 +1,47 @@
+@startuml
+class Page {
+  -String name
+  +Page action()
+}
+
+class Menu {
+  -Button[] buttons
+}
+Page <|-- Menu
+
+class Form {
+  -String[] labels
+}
+Page <|-- Form
+
+class LeaderBoard {
+}
+Page <|-- LeaderBoard
+
+class GamePage {
+  -Function<GameInitData, GameResult> gameBuilder
+  -Page nextPage
+}
+Page <|-- GamePage
+
+class SimpleGamePage {
+  -Option[] options
+}
+GamePage <|-- SimpleGamePage
+
+class Button {
+  -String label
+  -Producer<Page> action
+  +String getLabel()
+  +Page run()
+}
+Menu o-- Button
+
+class Option {
+  -Image image
+  -String name
+  -UniversalCard card
+}
+SimpleGamePage o-- Option
+
+@enduml
