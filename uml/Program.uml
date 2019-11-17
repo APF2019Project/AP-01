@@ -1,0 +1,33 @@
+@startuml
+class Account {
+  -String username
+  -String password
+  -String passwordSalt
+  -Store store
+  -int score
+  +String getUsername()
+  +setUsername(String)
+  +setPassword(String)
+  +boolean checkPassword(String)
+
+}
+
+class Store {
+  -Account owner
+  -int money
+  +int getMoney()
+  +setMoney(int)
+  +buyCard(UniversalCard)
+  +UniversalCard[] getList(boolean buyed, boolean unbuyed)
+}
+
+Account --- Store
+
+class Program {
+  -Stack<Page> pages
+  +Account currentUser
+  +main(String[] args)
+}
+
+Program o-- Account
+@enduml
