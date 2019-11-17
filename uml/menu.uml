@@ -18,6 +18,10 @@ class LeaderBoard {
 }
 Page <|-- LeaderBoard
 
+class ShopPage {
+}
+Page <|-- ShopPage
+
 class GamePage {
   -Function<GameInitData, GameResult> gameBuilder
   -Page nextPage
