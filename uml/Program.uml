@@ -9,7 +9,8 @@ class Account {
   +setUsername(String)
   +setPassword(String)
   +boolean checkPassword(String)
-
+  +getUserByUsername(String)
+  +createUser(String, String)
 }
 
 class Store {
