@@ -1,7 +1,11 @@
 @startuml
-class Page {
-  -String name
-  +Page action()
+Class PageResult {
+  +boolean isAborted
+  +U result
+}
+
+Interface Page {
+  +PageResult action()
 }
 
 class Menu {
@@ -10,42 +14,39 @@ class Menu {
 Page <|-- Menu
 
 class Form {
-  -String[] labels
+  -String[] asks
 }
 Page <|-- Form
 
-class LeaderBoard {
-}
-Page <|-- LeaderBoard
-
-class ShopPage {
-}
-Page <|-- ShopPage
-
-class GamePage {
-  -Function<GameInitData, GameResult> gameBuilder
-  -Page nextPage
-}
-Page <|-- GamePage
-
-class SimpleGamePage {
+class ChooseDeckPage {
   -Option[] options
+  -Function<Option[],boolean> validator
 }
-GamePage <|-- SimpleGamePage
+Page <|-- ChooseDeckPage
 
-class Button {
-  -String label
-  -Producer<Page> action
+interface Button {
   +String getLabel()
   +Page run()
 }
 Menu o-- Button
+
+class LinkButton {
+  -String label
+  -Page page
+}
+Button <|-- LinkButton
+
+class ActionButton {
+  -String name
+  -Consumer action
+}
+Button <|-- ActionButton
 
 class Option {
   -Image image
   -String name
   -UniversalCard card
 }
-SimpleGamePage o-- Option
+ChooseDeckPage o-- Option
 
 @enduml
