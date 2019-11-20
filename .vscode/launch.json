@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Program",
+      "request": "launch",
+      "mainClass": "pvz.Program",
+      "projectName": "AP-01_862df033"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Program",
+      "request": "launch",
+      "mainClass": "Program",
+      "projectName": "AP-01_862df033"
+    }
+  ]
+}
