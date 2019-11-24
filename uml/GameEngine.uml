@@ -1,15 +1,59 @@
 @startuml
 
-class BaseGameData {
+class GamePage {
 
 }
 
-class GameEngine {
+GamePage o-- GameEngine
+
+class Graphic {
+  -GameEngine engine
+  +render(int turnNumber, int frameNumber)
+}
+
+GamePage o-- Graphic
+Graphic o-- GameEngine
+GamePage ..> PauseMenu
+
+package GameMode <<Rectangle>> {
+
+  enum GameMod {
+    Day,
+    Water,
+    Rail,
+    Zombie,
+    Pvp
+  }
+
+  enum GameState {
+     Loading,
+     Running,
+     Paused,
+     Finished,
+     Aborted,
+     Wating 
+  }
+
+  class GameDNA {
+    - final mod : GameMod
+    - final plantPlayer : PlantPlayer
+    - final ZombiePlayer : ZombiePlayer
+  }
+
+  class GameEngine {
+    - gameState : GameState
+    - final pauseMenu : PauseMenu
+    - gameState : PlayGroundData
+    - final baseData : GameDNA
+  }
 
 }
 
 class PlayGroundData {
-
+  - zombies : List<Zombie>
+  - plants : List<Plants>
+  - ammunition : List<Ammunition>
+  - line : List<Line>
 }
 
 class PauseMenu {
@@ -18,66 +62,74 @@ class PauseMenu {
 
 package line <<Rectangle>> {
 
-  abstract class Line {
-
+  enum LineState {
+    water
+    dry
   }
 
-  class WaterLine {
-
-  }
-
-  class DryLine {
-
+  class Line {
+      - final lineState : LineState
+      - final LawnMower
+      ..Getter..
+      ..Setter..
   }
 
 }
 
 package player <<Rectangle>> {
-  
+
   abstract class Player {
-  
+    {abstract} void nextTurn(PlayGroundData)
   }
-  
+
   package zombie_player <<Rectangle>> {
-  
+
     class ZombiePlayer {
-    
+
     }
-  
+
     class ZombieAI {
-    
+
     }
-  
+
     class ZombieUser {
-    
+
     }
-  
+
     class ZombiePlayerProfile {
-    
+        - coins : Integer
+        ..Getter..
+        ..
+        + void addCoin(Integer)
+        + useZombie(Integer)
     }
-  
+
   }
-  
-  
+
+
   package plant_player <<Rectangle>> {
     class PlantPlayer {
-    
+
     }
-  
+
     class PlantAI {
-    
+
     }
-  
+
     class PlantUser {
-    
+
     }
-  
+
     class PlantPlayerProfile {
-    
+        - sun : Integer
+        ..Getter..
+        ..
+        + void addSun(Integer)
+        + void usePlant(Integer)
     }
-  
+
   }
-  
+
 }
 
 ZombiePlayer o-- ZombiePlayerProfile
@@ -85,7 +137,7 @@ ZombiePlayer --|> Player
 ZombieAI --|> ZombiePlayer
 ZombieUser --|> ZombiePlayer
 
-GameEngine ..> BaseGameData
+GameEngine ..> GameDNA
 GameEngine o-- PlayGroundData
 GameEngine ..> PauseMenu
 GameEngine o-- ZombiePlayer
@@ -96,10 +148,11 @@ PlantPlayer --|> Player
 PlantAI --|> PlantPlayer
 PlantUser --|> PlantPlayer
 
-Line <|-- WaterLine
-Line <|-- DryLine
-
 PlayGroundData o-- Line
+PlayGroundData o-- Zombie
+PlayGroundData o-- Plant
+PlayGroundData o-- Ammunition
+
 
 Player ..> PlayGroundData
 
