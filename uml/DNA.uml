@@ -1,0 +1,50 @@
+@startuml
+
+Class DNA {
+	-Image image
+	-int speed
+	-int powerOfDestruction
+	-Location location
+}
+
+DNA <|-- AmmunitionDNA
+Class AmmunitionDNA {
+	-int cooldown
+	-int reduceSpeed
+	-int minimumDistanceForShoot
+	-boolean crossingShield
+}
+
+DNA <|-- BeingDNA
+Class BeingDNA {
+	-int health
+	-int gameCost
+	-int shopCost
+}
+Being o-- BeingDNA
+
+BeingDNA <|-- PlantDNA
+Class PlantDNA {
+
+}
+
+BeingDNA <|-- ZombieDNA
+Class ZombieDNA {
+	
+}
+
+Class Being {
+	-BeingDNA dna
+}
+
+Plant <|-- Being
+Class Plant {
+
+}
+
+Zombie <|-- Being
+Class Zombie {
+
+}
+
+@enduml
