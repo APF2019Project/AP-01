@@ -1,5 +1,21 @@
 @startuml
 
+class GamePage {
+
+}
+
+GamePage o-- GameEngine
+
+class Graphic {
+  -GameEngine engine
+  +render(int turnNumber, int frameNumber)
+}
+
+GamePage o-- Graphic
+Graphic o-- GameEngine
+GamePage ..> PauseMenu
+
+
 class BaseGameData {
 
 }
@@ -87,7 +103,6 @@ ZombieUser --|> ZombiePlayer
 
 GameEngine ..> BaseGameData
 GameEngine o-- PlayGroundData
-GameEngine ..> PauseMenu
 GameEngine o-- ZombiePlayer
 GameEngine o-- PlantPlayer
 
