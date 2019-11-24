@@ -4,16 +4,18 @@ Class DNA {
 	-Image image
 	-int speed
 	-int powerOfDestruction
-	-Location location
+	-Location firstLocation
 }
 
 DNA <|-- AmmunitionDNA
 Class AmmunitionDNA {
 	-int cooldown
-	-int reduceSpeed
+	-int staticTurnNumber
+	-int reduceSpeedRatio
 	-int minimumDistanceForShoot
 	-boolean crossingShield
 }
+Ammunition o-- AmmunitionDNA
 
 DNA <|-- BeingDNA
 Class BeingDNA {
@@ -25,7 +27,7 @@ Being o-- BeingDNA
 
 BeingDNA <|-- PlantDNA
 Class PlantDNA {
-
+	-int sunIncome
 }
 
 BeingDNA <|-- ZombieDNA
@@ -33,18 +35,22 @@ Class ZombieDNA {
 	
 }
 
+Class Ammunition {
+	-AmmunitionDNA dna
+}
+
 Class Being {
 	-BeingDNA dna
 }
 
-Plant <|-- Being
+Being <|-- Plant
 Class Plant {
-
+	
 }
 
-Zombie <|-- Being
+Being <|-- Zombie
 Class Zombie {
-
+	
 }
 
 @enduml
