@@ -1,0 +1,107 @@
+@startuml
+
+class BaseGameData {
+
+}
+
+class GameEngine {
+
+}
+
+class PlayGroundData {
+
+}
+
+class PauseMenu {
+
+}
+
+package line <<Rectangle>> {
+
+  abstract class Line {
+
+  }
+
+  class WaterLine {
+
+  }
+
+  class DryLine {
+
+  }
+
+}
+
+package player <<Rectangle>> {
+  
+  abstract class Player {
+  
+  }
+  
+  package zombie_player <<Rectangle>> {
+  
+    class ZombiePlayer {
+    
+    }
+  
+    class ZombieAI {
+    
+    }
+  
+    class ZombieUser {
+    
+    }
+  
+    class ZombiePlayerProfile {
+    
+    }
+  
+  }
+  
+  
+  package plant_player <<Rectangle>> {
+    class PlantPlayer {
+    
+    }
+  
+    class PlantAI {
+    
+    }
+  
+    class PlantUser {
+    
+    }
+  
+    class PlantPlayerProfile {
+    
+    }
+  
+  }
+  
+}
+
+ZombiePlayer o-- ZombiePlayerProfile
+ZombiePlayer --|> Player
+ZombieAI --|> ZombiePlayer
+ZombieUser --|> ZombiePlayer
+
+GameEngine ..> BaseGameData
+GameEngine o-- PlayGroundData
+GameEngine ..> PauseMenu
+GameEngine o-- ZombiePlayer
+GameEngine o-- PlantPlayer
+
+PlantPlayer o-- PlantPlayerProfile
+PlantPlayer --|> Player
+PlantAI --|> PlantPlayer
+PlantUser --|> PlantPlayer
+
+Line <|-- WaterLine
+Line <|-- DryLine
+
+PlayGroundData o-- Line
+
+Player ..> PlayGroundData
+
+@enduml
+
