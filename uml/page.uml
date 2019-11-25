@@ -1,62 +1,70 @@
 @startuml
-Class PageResult {
-  +boolean isAborted
-  +U result
-}
 
-Interface Page {
-  +PageResult action()
-}
+package page <<Rectangle>> {
 
-class Menu {
-  -Button[] buttons
-}
-Page <|-- Menu
+  Class PageResult {
+    +boolean isAborted
+    +U result
+  }
 
-class Form {
-  -String[] asks
-}
-Page <|-- Form
+  Interface Page {
+    +PageResult action()
+  }
 
-class ChooseDeckPage {
-  -Option[] options
-  -Function<Option[],boolean> validator
-}
-Page <|-- ChooseDeckPage
+  class Form {
+    -String[] asks
+  }
+  Page <|-- Form
 
-interface Button {
-  +String getLabel()
-  +Page run()
-}
-Menu o-- Button
+  class ChooseDeckPage {
+    -Option[] options
+    -Function<Option[],boolean> validator
+  }
+  Page <|-- ChooseDeckPage
 
-class LinkButton {
-  -String label
-  -Page page
-}
-Button <|-- LinkButton
 
-class ActionButton {
-  -String name
-  -Consumer action
-}
-Button <|-- ActionButton
+  package Menu <<Rectangle>> {
 
-class Option {
-  -Image image
-  -String name
-  -UniversalCard card
-}
-ChooseDeckPage o-- Option
+    class Menu {
+      -Button[] buttons
+    }
+    Page <|-- Menu
 
-class AccountPage {
-  -Account account
-}
-Page <|-- AccountPage
+    interface Button {
+      +String getLabel()
+      +Page run()
+    }
+    Menu o-- Button
 
-class ShopPage {
-  -Store store
+    class LinkButton {
+      -String label
+      -Page page
+    }
+    Button <|-- LinkButton
+
+    class ActionButton {
+      -String name
+      -Consumer action
+    }
+    Button <|-- ActionButton
+  }
+
+  class Option {
+    -Image image
+    -String name
+    -UniversalCard card
+  }
+  ChooseDeckPage o-- Option
+
+  class AccountPage {
+    -Account account
+  }
+  Page <|-- AccountPage
+
+  class ShopPage {
+    -Store store
+  }
+  Page <|-- ShopPage
 }
-Page <|-- ShopPage
 
 @enduml
