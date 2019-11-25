@@ -43,11 +43,14 @@ package Game <<Rectangle>> {
 
 }
 
-class PlayGroundData {
-  - zombies : List<Zombie>
-  - plants : List<Plants>
-  - ammunition : List<Ammunition>
-  - line : List<Line>
+package gameData <<Rectangle>> {
+
+  class PlayGroundData {
+    - zombies : List<Zombie>
+    - plants : List<Plants>
+    - ammunition : List<Ammunition>
+    - line : List<Line>
+  }
 }
 
 class PauseMenu {
@@ -136,10 +139,10 @@ package player <<Rectangle>> {
 
 ZombiePlayer o-- ZombiePlayerProfile
 ZombiePlayer --|> Player
-DayZombieAI --|> ZombiePlayer
-WaterZombieAI --|> ZombiePlayer
-RailZombieAI --|> ZombiePlayer
-ZombieUser --|> ZombiePlayer
+DayZombieAI ..|> ZombiePlayer
+WaterZombieAI ..|> ZombiePlayer
+RailZombieAI ..|> ZombiePlayer
+ZombieUser ..|> ZombiePlayer
 
 GameEngine ..> GameDNA
 GameEngine o-- PlayGroundData
@@ -149,8 +152,8 @@ GameEngine o-- PlantPlayer
 
 PlantPlayer o-- PlantPlayerProfile
 PlantPlayer --|> Player
-ZombieModPlantAI --|> PlantPlayer
-PlantUser --|> PlantPlayer
+ZombieModPlantAI ..|> PlantPlayer
+PlantUser ..|> PlantPlayer
 
 PlayGroundData o-- Line
 PlayGroundData o-- Zombie
