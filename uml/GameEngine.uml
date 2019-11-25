@@ -1,15 +1,21 @@
 @startuml
 
-class GamePage {
-
-}
-
-class Graphic {
-  -GameEngine engine
-  +render(int turnNumber, int frameNumber)
-}
-
 package Game <<Rectangle>> {
+
+  class PauseMenu {
+  
+  }
+
+  class GamePage {
+  
+  }
+
+  package Graphic <<Rectangle>> {
+    class Graphic {
+      -GameEngine engine
+      +render(int turnNumber, int frameNumber)
+    }
+  }
 
   enum GameMod {
     Day,
@@ -70,10 +76,6 @@ package gameData <<Rectangle>> {
     ..New duck/latter..
     ..Reset..
   }
-
-}
-
-class PauseMenu {
 
 }
 
