@@ -1,56 +1,63 @@
 @startuml
 
-Class DNA {
-	-Image image
-	-int speed
-	-int powerOfDestruction
-	-Location firstLocation
-}
+package being <<Rectangle>> {
 
-DNA <|-- AmmunitionDNA
-Class AmmunitionDNA {
-	-int cooldown
-	-int staticTurnNumber
-	-int reduceSpeedRatio
-	-int minimumDistanceForShoot
-	-boolean crossingShield
-}
-Ammunition o-- AmmunitionDNA
+	Class DNA {
+		-Image image
+		-int speed
+		-int powerOfDestruction
+		-Location firstLocation
+	}
 
-DNA <|-- BeingDNA
-Class BeingDNA {
-	-int health
-	-int gameCost
-	-int shopCost
-}
-Being o-- BeingDNA
+	DNA <|-- BeingDNA
+	Class BeingDNA {
+		-int health
+		-int gameCost
+		-int shopCost
+	}
+	Being o-- BeingDNA
 
-BeingDNA <|-- PlantDNA
-Class PlantDNA {
-	-int sunIncome
-}
+	Class Being {
+		-BeingDNA dna
+	}
 
-BeingDNA <|-- ZombieDNA
-Class ZombieDNA {
-	
-}
+	package Plant <<Rectangle>> {
 
-Class Ammunition {
-	-AmmunitionDNA dna
-}
+	Being <|-- Plant
+		Class Plant {
 
-Class Being {
-	-BeingDNA dna
-}
+		}
+		BeingDNA <|-- PlantDNA
+		Class PlantDNA {
+			-int sunIncome
+		}
 
-Being <|-- Plant
-Class Plant {
-	
-}
+	}
 
-Being <|-- Zombie
-Class Zombie {
-	
-}
+	package Zombie <<Rectangle>> {
+		Being <|-- Zombie
+		Class Zombie {
 
+		}
+		BeingDNA <|-- ZombieDNA
+		Class ZombieDNA {
+
+		}
+	}
+
+	package Ammunition <<Rectangle>> {
+		DNA <|-- AmmunitionDNA
+		Class AmmunitionDNA {
+			-int cooldown
+			-int staticTurnNumber
+			-int reduceSpeedRatio
+			-int minimumDistanceForShoot
+			-boolean crossingShield
+		}
+		Ammunition o-- AmmunitionDNA
+		Class Ammunition {
+			-AmmunitionDNA dna
+		}
+	}
+}
 @enduml
