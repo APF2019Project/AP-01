@@ -1,4 +1,7 @@
 @startuml
+
+package Account <<Rectangle>> {
+
 class Account {
   -String username
   -String password
@@ -22,6 +25,8 @@ class Store {
 }
 
 Account --- Store
+
+}
 
 class Program {
   +Account currentUser
