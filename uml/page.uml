@@ -5,7 +5,7 @@ package page <<Rectangle>> {
   class ShopPage {
     -Store store
   }
-  Page <|-- ShopPage
+  Page <|.. ShopPage
 
   Class PageResult {
     +boolean isAborted
@@ -19,13 +19,13 @@ package page <<Rectangle>> {
   class Form {
     -String[] asks
   }
-  Page <|-- Form
+  Page <|.. Form
 
   class ChooseDeckPage {
     -DNA[] options
     -Function<DNA[],boolean> validator
   }
-  Page <|-- ChooseDeckPage
+  Page <|.. ChooseDeckPage
 
 
   package Menu <<Rectangle>> {
@@ -33,7 +33,7 @@ package page <<Rectangle>> {
     class Menu {
       -Button[] buttons
     }
-    Page <|-- Menu
+    Page <|.. Menu
 
     interface Button {
       +String getLabel()
@@ -45,13 +45,13 @@ package page <<Rectangle>> {
       -String label
       -Page page
     }
-    Button <|-- LinkButton
+    Button <|.. LinkButton
 
     class ActionButton {
       -String name
       -Consumer action
     }
-    Button <|-- ActionButton
+    Button <|.. ActionButton
   }
 }
 
