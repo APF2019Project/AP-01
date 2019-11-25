@@ -49,4 +49,14 @@ class Option {
 }
 ChooseDeckPage o-- Option
 
+class AccountPage {
+  -Account account
+}
+Page <|-- AccountPage
+
+class ShopPage {
+  -Store store
+}
+Page <|-- ShopPage
+
 @enduml
