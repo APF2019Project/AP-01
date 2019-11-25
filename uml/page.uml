@@ -60,11 +60,6 @@ package page <<Rectangle>> {
     -UniversalCard card
   }
   ChooseDeckPage o-- Option
-
-  class AccountPage {
-    -Account account
-  }
-  Page <|-- AccountPage
 }
 
 @enduml

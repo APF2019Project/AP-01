@@ -8,3 +8,5 @@ AccountPage o-- Account
 ShopPage o-- Store
 
 Menu <|-- PauseMenu
+
+Page <|-- AccountPage
