@@ -78,11 +78,19 @@ package player <<Rectangle>> {
 
   package zombie_player <<Rectangle>> {
 
-    class ZombiePlayer {
+    interface ZombiePlayer {
 
     }
 
-    class ZombieAI {
+    class DayZombieAI {
+
+    }
+
+    class WaterZombieAI {
+
+    }
+
+    class RailZombieAI {
 
     }
 
@@ -102,11 +110,11 @@ package player <<Rectangle>> {
 
 
   package plant_player <<Rectangle>> {
-    class PlantPlayer {
+    interface PlantPlayer {
 
     }
 
-    class PlantAI {
+    class ZombieModPlantAI {
 
     }
 
@@ -128,7 +136,9 @@ package player <<Rectangle>> {
 
 ZombiePlayer o-- ZombiePlayerProfile
 ZombiePlayer --|> Player
-ZombieAI --|> ZombiePlayer
+DayZombieAI --|> ZombiePlayer
+WaterZombieAI --|> ZombiePlayer
+RailZombieAI --|> ZombiePlayer
 ZombieUser --|> ZombiePlayer
 
 GameEngine ..> GameDNA
@@ -139,7 +149,7 @@ GameEngine o-- PlantPlayer
 
 PlantPlayer o-- PlantPlayerProfile
 PlantPlayer --|> Player
-PlantAI --|> PlantPlayer
+ZombieModPlantAI --|> PlantPlayer
 PlantUser --|> PlantPlayer
 
 PlayGroundData o-- Line
