@@ -6,3 +6,5 @@ PlayGroundData o-- Ammunition
 
 AccountPage o-- Account
 ShopPage o-- Store
+
+Menu <|-- PauseMenu

@@ -2,6 +2,11 @@
 
 package page <<Rectangle>> {
 
+  class ShopPage {
+    -Store store
+  }
+  Page <|-- ShopPage
+
   Class PageResult {
     +boolean isAborted
     +U result
@@ -60,11 +65,6 @@ package page <<Rectangle>> {
     -Account account
   }
   Page <|-- AccountPage
-
-  class ShopPage {
-    -Store store
-  }
-  Page <|-- ShopPage
 }
 
 @enduml
