@@ -178,9 +178,6 @@ ZombieModPlantAI ..|> PlantPlayer
 PlantUser ..|> PlantPlayer
 
 PlayGroundData o-- Line
-PlayGroundData o-- Zombie
-PlayGroundData o-- Plant
-PlayGroundData o-- Ammunition
 
 GamePage o-- Graphic
 Graphic o-- GameEngine
