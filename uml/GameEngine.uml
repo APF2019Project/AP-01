@@ -149,10 +149,6 @@ PlantAI --|> PlantPlayer
 PlantUser --|> PlantPlayer
 
 PlayGroundData o-- Line
-PlayGroundData o-- Zombie
-PlayGroundData o-- Plant
-PlayGroundData o-- Ammunition
-
 
 Player ..> PlayGroundData
 
