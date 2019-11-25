@@ -46,11 +46,31 @@ package Game <<Rectangle>> {
 package gameData <<Rectangle>> {
 
   class PlayGroundData {
+    - frameNo : Integer
+    - turnNo : Integer
+    - waveNo : Integer
+    ..
     - zombies : List<Zombie>
     - plants : List<Plants>
-    - ammunition : List<Ammunition>
-    - line : List<Line>
+    - ammunitions : List<Ammunition>
+    - line : List<Line> 
+    ..
+    - newZombies : List<Zombie>
+    - newPlants : List<Plants>
+    - newAmmunitions : List<Ammunition>
+    ..
+    - DeadZombies : List<Zombie>
+    - DeadPlants : List<Plants>
+    - DeadAmmunitions : List<Ammunition>
+    ..
+    ..Setter..
+    ..Getter..
+    ..Data Query..
+    ..New Zombie/Plant..
+    ..New duck/latter..
+    ..Reset..
   }
+
 }
 
 class PauseMenu {
