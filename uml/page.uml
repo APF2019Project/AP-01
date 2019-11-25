@@ -22,8 +22,8 @@ package page <<Rectangle>> {
   Page <|-- Form
 
   class ChooseDeckPage {
-    -Option[] options
-    -Function<Option[],boolean> validator
+    -DNA[] options
+    -Function<DNA[],boolean> validator
   }
   Page <|-- ChooseDeckPage
 
@@ -53,13 +53,6 @@ package page <<Rectangle>> {
     }
     Button <|-- ActionButton
   }
-
-  class Option {
-    -Image image
-    -String name
-    -UniversalCard card
-  }
-  ChooseDeckPage o-- Option
 }
 
 @enduml
