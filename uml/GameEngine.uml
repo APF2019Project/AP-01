@@ -4,18 +4,12 @@ class GamePage {
 
 }
 
-GamePage o-- GameEngine
-
 class Graphic {
   -GameEngine engine
   +render(int turnNumber, int frameNumber)
 }
 
-GamePage o-- Graphic
-Graphic o-- GameEngine
-GamePage ..> PauseMenu
-
-package GameMode <<Rectangle>> {
+package Game <<Rectangle>> {
 
   enum GameMod {
     Day,
@@ -153,6 +147,12 @@ PlayGroundData o-- Zombie
 PlayGroundData o-- Plant
 PlayGroundData o-- Ammunition
 
+GamePage o-- Graphic
+Graphic o-- GameEngine
+GamePage ..> PauseMenu
+
+
+GamePage o-- GameEngine
 
 Player ..> PlayGroundData
 
