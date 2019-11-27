@@ -1,4 +1,4 @@
-Page <|-- GamePage
+Page <|.. GamePage
 
 PlayGroundData o-- Zombie
 PlayGroundData o-- Plant
@@ -9,4 +9,4 @@ ShopPage o-- Store
 
 Menu <|-- PauseMenu
 
-Page <|-- AccountPage
+Page <|.. AccountPage
