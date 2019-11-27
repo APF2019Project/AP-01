@@ -1,6 +1,6 @@
 @startuml
 
-package being <<Rectangle>> {
+package creature <<Rectangle>> {
 
 	Class Location() {
 		-x : int
@@ -14,10 +14,9 @@ package being <<Rectangle>> {
 		-image : Image
 		-speed : int
 		-powerOfDestruction: int
-		+getImage : Image
-		+getSpeed : int
-		+getPowerOfDestruction: int
-		+getLocation : Location
+		+getImage() : Image
+		+getSpeed() : int
+		+getPowerOfDestruction() : int
 	}
 	DNA o-- Creature
 
@@ -29,18 +28,17 @@ package being <<Rectangle>> {
 		+nextTurn() : void
 	}
 
-
+	package being <<Rectangle>> {
 
 	DNA <|-- BeingDNA
 	Class BeingDNA {
-		-int firstHealth
-		-int gameCost
-		-int shopCost
-		+getHealth()
-		+getGameCost
-		+getShopCost
+		-firstHealth : int
+		-gameCost : int
+		-shopCost : int
+		+getHealth() : int
+		+getGameCost() : int
+		+getShopCost() : int
 	}
-	Being o-- BeingDNA
 
 	Being <|-- Creature
 	Class Being {
@@ -51,14 +49,6 @@ package being <<Rectangle>> {
 
 	package Plant <<Rectangle>> {
 
-		Being <|-- Plant
-		Class Plant {
-			-sunRemainingCooldown : int
-			-plantOnMe : Plant
-			+createAmmunition() : void
-			+createPlantOnMe() : void
-		}
-		BeingDNA <|-- PlantDNA
 		Class PlantDNA {
 			-ammunitionDna : AmmunitionDNA
 			-sunIncome : int
@@ -70,19 +60,32 @@ package being <<Rectangle>> {
 			#getAmmunitionDna : AmmunitionDNA
 		}
 
+		Being <|-- Plant
+		Class Plant {
+			-sunRemainingCooldown : int
+			-plantOnMe : Plant
+			-remainingAmmunitionCooldown : int
+			+createAmmunition() : void
+			+createPlantOnMe() : void
+			+die() : void
+		}
+		BeingDNA <|-- PlantDNA
 	}
 
 	package Zombie <<Rectangle>> {
+
+		Class ZombieDNA {
+			-whenIDie : ZombieDNA
+		}
+
 		Being <|-- Zombie
 		Class Zombie {
-			+move : void
+			+move() : void
+			+die() : void
 		}
 		BeingDNA <|-- ZombieDNA
-		Class ZombieDNA {
-			ZombieDNA whenIDie;	
-		}
 	}
-
+	}
 	package Ammunition <<Rectangle>> {
 		DNA <|-- AmmunitionDNA
 		Class AmmunitionDNA {
@@ -97,10 +100,9 @@ package being <<Rectangle>> {
 			+getMinimumDistanceForShoot : int
 			+getCrossingShield : boolean
 		}
-		Ammunition o-- AmmunitionDNA
 
 		Class Ammunition {
-			-remainingCooldown : int
+			+effect : void
 		}
 	}
 }
