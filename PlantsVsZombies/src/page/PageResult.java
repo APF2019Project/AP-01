@@ -1,4 +1,4 @@
-package pvz.page;
+package page;
 
 public class PageResult<U> {
   public final boolean isAborted;

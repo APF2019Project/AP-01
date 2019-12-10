@@ -1,4 +1,4 @@
-package pvz.page;
+package page;
 
 public class LinkButton<U> implements Button<U> {
   private String label;

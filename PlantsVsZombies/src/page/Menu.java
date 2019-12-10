@@ -1,10 +1,10 @@
-package pvz.page;
+package page;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import pvz.Program;
+import main.Program;
 
 public class Menu<U> implements Page<U> {
 

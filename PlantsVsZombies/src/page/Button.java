@@ -1,4 +1,4 @@
-package pvz.page;
+package page;
 
 public interface Button<U> {
   String getLabel();

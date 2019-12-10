@@ -1,6 +1,6 @@
-package pvz.page;
+package page;
 
-import pvz.util.Task;
+import util.Task;
 
 public class ActionButton implements Button<Void> {
   private String label;

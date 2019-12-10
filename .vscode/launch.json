@@ -4,7 +4,21 @@
       "type": "java",
       "name": "CodeLens (Launch) - Program",
       "request": "launch",
-      "mainClass": "pvz.Program",
+      "mainClass": "main.Program",
+      "projectName": "AP-01_862df033"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - PlantsVsZombies",
+      "request": "launch",
+      "mainClass": "PlantsVsZombies",
+      "projectName": "AP-01_862df033"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Program",
+      "request": "launch",
+      "mainClass": "src",
       "projectName": "AP-01_862df033"
     },
     {

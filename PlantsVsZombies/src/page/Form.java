@@ -1,8 +1,8 @@
-package pvz.page;
+package page;
 
 import java.util.stream.Stream;
 
-import pvz.Program;
+import main.Program;
 
 public class Form implements Page<String[]> {
 

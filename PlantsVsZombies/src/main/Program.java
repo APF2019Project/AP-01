@@ -1,16 +1,16 @@
-package pvz;
+package main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-import pvz.page.ActionButton;
-import pvz.page.Button;
-import pvz.page.Form;
-import pvz.page.LinkButton;
-import pvz.page.Menu;
-import pvz.page.Page;
-import pvz.page.PageResult;
+import page.ActionButton;
+import page.Button;
+import page.Form;
+import page.LinkButton;
+import page.Menu;
+import page.Page;
+import page.PageResult;
 
 public class Program {
 
