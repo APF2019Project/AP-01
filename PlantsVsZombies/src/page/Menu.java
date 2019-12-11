@@ -21,6 +21,7 @@ public class Menu<U> implements Page<U> {
   }
 
   public Result<U> action() {
+    Program.clearScreen();
     System.out.println("Choose an option, or e for exit and h for help");
     for (int i = 0; i < buttons.size(); i++) {
       System.out.println(i + ". " + buttons.get(i).getLabel());

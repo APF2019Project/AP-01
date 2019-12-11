@@ -5,6 +5,7 @@ import page.ActionButton;
 import page.Form;
 import page.LinkButton;
 import page.Menu;
+import page.Message;
 import page.Page;
 import util.Result;
 
@@ -36,8 +37,7 @@ public class Pages {
       (new Form("Enter new username:", "Enter password:"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
-      .map((x) -> "Account created successfully")
-      .print()
+      .consume((x) -> new Message("Account created successfully").action())
       .printError();
     }),
     new ActionButton("login", ()->{
