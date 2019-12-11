@@ -27,7 +27,7 @@ public class Pages {
     return new Page<U>(){
       @Override
       public Result<U> action() {
-        System.out.println("ishalla in future");
+        new Message("ishalla in future").action();
         return Result.error("end");
       }
     };
@@ -37,14 +37,15 @@ public class Pages {
       (new Form("Enter new username:", "Enter password:"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
-      .consume((x) -> new Message("Account created successfully").action())
-      .printError();
+      .map((x) -> "Account created successfully")
+      .show()
+      .showError();
     }),
     new ActionButton("login", ()->{
       (new Form("Enter new username:", "Enter password:"))
       .action()
       .flatMap(data -> Account.login(data[0], data[1]))
-      .printError()
+      .showError()
       .flatMap(x -> mainMenu.action());
     }),
     new LinkButton<Void>("leaderboard", notImplemented())

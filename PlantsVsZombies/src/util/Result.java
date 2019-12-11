@@ -4,6 +4,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import page.Message;
+
 public class Result<T> {
   private Optional<T> value;
   private Optional<String> error;
@@ -66,15 +68,12 @@ public class Result<T> {
     });
   }
 
-  public Result<Unit> print() {
-    return this.consume(x -> {
-      if (!x.equals(""))
-        System.out.println(x);
-    });
+  public Result<Unit> show() {
+    return this.consume(x -> new Message(x.toString()).action());
   }
 
-  public Result<T> printError() {
-    if (isError()) System.out.println("Error: " + getError());
+  public Result<T> showError() {
+    if (isError()) new Message("Error: " + getError()).action();
     return this;
   }
 }

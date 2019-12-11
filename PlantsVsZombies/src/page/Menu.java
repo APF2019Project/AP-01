@@ -41,10 +41,12 @@ public class Menu<U> implements Page<U> {
   }
 
   private void printHelp() {
+    String s = "";
     for (int i = 0; i < buttons.size(); i++) {
-      System.out.println(i + ". " + buttons.get(i).getLabel());
-      System.out.println("    " + buttons.get(i).getHelp());
+      s += i + ". " + buttons.get(i).getLabel() + "\n";
+      s += "    " + buttons.get(i).getHelp() + "\n";
     }
+    new Help(s).action();
   }
 
   @Override
