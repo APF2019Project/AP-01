@@ -15,6 +15,7 @@ public class Menu<U> implements Page<U> {
     this.buttons = buttons;
   }
 
+  @SafeVarargs
   public Menu(final Button<U>... buttons) {
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
