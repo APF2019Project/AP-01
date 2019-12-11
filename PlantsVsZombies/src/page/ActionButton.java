@@ -1,5 +1,6 @@
 package page;
 
+import util.Result;
 import util.Task;
 
 public class ActionButton implements Button<Void> {
@@ -9,9 +10,9 @@ public class ActionButton implements Button<Void> {
   public String getLabel(){
     return label;
   }
-  public PageResult<Void> action() {
+  public Result<Void> action() {
     task.run();
-    return PageResult.aborted();
+    return Result.error("end action");
   }
 
   public ActionButton(String label, Task task) {

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import main.Program;
+import util.Result;
 
 public class Menu<U> implements Page<U> {
 
@@ -18,16 +19,16 @@ public class Menu<U> implements Page<U> {
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
 
-  public PageResult<U> action() {
+  public Result<U> action() {
     for (int i = 0; i < buttons.size(); i++) {
       System.out.println(i + ". " + buttons.get(i).getLabel());
     }
     final String s = Program.scanner.nextLine();
     final int k = Integer.valueOf(s);
     if (k < 0 || k >= buttons.size())
-      return PageResult.aborted();
-    final PageResult<U> result = buttons.get(k).action();
-    if (result.isAborted) return action();
+      return Result.error("bad param");
+    final Result<U> result = buttons.get(k).action();
+    if (result.isError()) return action();
     else return result;
   }
 

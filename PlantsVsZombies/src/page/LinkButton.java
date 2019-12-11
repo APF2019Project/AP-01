@@ -1,5 +1,7 @@
 package page;
 
+import util.Result;
+
 public class LinkButton<U> implements Button<U> {
   private String label;
   private Page<U> page;
@@ -7,7 +9,7 @@ public class LinkButton<U> implements Button<U> {
   public String getLabel(){
     return label;
   }
-  public PageResult<U> action() {
+  public Result<U> action() {
     return page.action();
   }
 

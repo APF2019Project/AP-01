@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
+import account.Account;
 import page.ActionButton;
 import page.Button;
 import page.Form;
 import page.LinkButton;
 import page.Menu;
 import page.Page;
-import page.PageResult;
+import util.Result;
 
 public class Program {
 
@@ -18,9 +19,9 @@ public class Program {
   public static <U> Page<U> notImplemented(){
     return new Page<U>(){
       @Override
-      public PageResult<U> action() {
+      public Result<U> action() {
         System.out.println("ishalla in future");
-        return PageResult.aborted();
+        return Result.error("end");
       }
     };
   }
@@ -36,7 +37,11 @@ public class Program {
     );
     Menu<Void> loginMenu = new Menu<Void>(
       new ActionButton("create account", ()->{
-        createAccountForm.action();
+        createAccountForm.action()
+        .flatMap(data -> Account.create(data[0], data[1]))
+        .map((x) -> "Account created successfully")
+        .print()
+        .printError();
       }),
       new LinkButton<Void>("login", mainMenu),
       new LinkButton<Void>("leaderboard", notImplemented())

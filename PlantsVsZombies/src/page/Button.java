@@ -1,6 +1,8 @@
 package page;
 
+import util.Result;
+
 public interface Button<U> {
   String getLabel();
-  PageResult<U> action();
+  Result<U> action();
 }

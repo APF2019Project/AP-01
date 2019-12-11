@@ -1,5 +1,7 @@
 package page;
 
+import util.Result;
+
 public interface Page<U> {
-  PageResult<U> action();
+  Result<U> action();
 }
