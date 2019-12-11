@@ -17,7 +17,7 @@ public class Form implements Page<String[]> {
     return Result.ok(answers);
   }
 
-  public Form(String[] asks) {
+  public Form(String ...asks) {
     this.asks = asks;
   }
 }
