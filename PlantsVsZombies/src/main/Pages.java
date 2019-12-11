@@ -34,7 +34,7 @@ public class Pages {
   }
   public static final Menu<Void> loginMenu = new Menu<Void>(
     new ActionButton("create account", ()->{
-      (new Form("Enter new username:", "Enter password:"))
+      (new Form("Enter new username", "Enter password"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
       .map((x) -> "Account created successfully")
@@ -42,7 +42,7 @@ public class Pages {
       .showError();
     }),
     new ActionButton("login", ()->{
-      (new Form("Enter new username:", "Enter password:"))
+      (new Form("Enter username", "Enter password"))
       .action()
       .flatMap(data -> Account.login(data[0], data[1]))
       .showError()

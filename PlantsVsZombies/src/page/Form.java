@@ -12,7 +12,7 @@ public class Form implements Page<String[]> {
   public Result<String[]> action() {
     Program.clearScreen();
     String[] answers = Stream.of(asks).map(x->{
-      System.out.println(x);
+      System.out.println(x+":");
       return Program.scanner.nextLine();
     }).toArray(String[]::new);
     return Result.ok(answers);
