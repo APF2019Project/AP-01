@@ -73,7 +73,8 @@ public class Result<T> {
     });
   }
 
-  public void printError() {
+  public Result<T> printError() {
     if (isError()) System.out.println("Error: " + getError());
+    return this;
   }
 }

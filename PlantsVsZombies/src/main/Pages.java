@@ -32,7 +32,13 @@ public class Pages {
       .print()
       .printError();
     }),
-    new LinkButton<Void>("login", mainMenu),
+    new ActionButton("login", ()->{
+      (new Form("Enter new username:", "Enter password:"))
+      .action()
+      .flatMap(data -> Account.login(data[0], data[1]))
+      .printError()
+      .flatMap(x -> mainMenu.action());
+    }),
     new LinkButton<Void>("leaderboard", notImplemented())
   );
 }

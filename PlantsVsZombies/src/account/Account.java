@@ -11,6 +11,7 @@ public class Account {
   private String passwordHash;
   private String passwordSalt;
   private static Map<String, Account> ALL = new HashMap<>();
+  private static Account current;
 
   private Account(String username, String password) {
     this.username = username;
@@ -26,5 +27,18 @@ public class Account {
     if (getByUsername(username) != null) return Result.error("invalid username");
     new Account(username, password);
     return Result.ok();
+  }
+
+  public static Result<Unit> login(String username, String password) {
+    Result<Unit> error = Result.error("invalid username or password");
+    Account user = getByUsername(username);
+    if (user == null) return error;
+    if (!user.matchPassword(password)) return error;
+    current = user;
+    return Result.ok();
+  }
+
+  private boolean matchPassword(String password) {
+    return this.passwordHash.equals(password);
   }
 }
