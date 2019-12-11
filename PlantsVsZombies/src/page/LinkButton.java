@@ -22,4 +22,9 @@ public class LinkButton<U> implements Button<U> {
   public String toString() {
     return "LinkButton [label=" + label + ", page=" + page + "]";
   }
+
+  @Override
+  public String getHelp() {
+    return "This button will go to " + label;
+  }
 }

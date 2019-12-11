@@ -10,6 +10,7 @@ public class ActionButton implements Button<Void> {
   public String getLabel(){
     return label;
   }
+
   public Result<Void> action() {
     task.run();
     return Result.error("end action");
@@ -23,5 +24,10 @@ public class ActionButton implements Button<Void> {
   @Override
   public String toString() {
     return "LinkButton [label=" + label + "]";
+  }
+
+  @Override
+  public String getHelp() {
+    return "This button will " + label;
   }
 }
