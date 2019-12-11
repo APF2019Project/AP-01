@@ -9,8 +9,16 @@ import page.Page;
 import util.Result;
 
 public class Pages {
+  public static final Menu<Void> chooseGameType = new Menu<Void>(
+    new LinkButton<Void>("Day", notImplemented()),
+    new LinkButton<Void>("Water", notImplemented()),
+    new LinkButton<Void>("Rail", notImplemented()),
+    new LinkButton<Void>("Zombie", notImplemented()),
+    new LinkButton<Void>("PvP", notImplemented())
+  );
+
   public static final Menu<Void> mainMenu = new Menu<Void>(
-    new LinkButton<Void>("play", notImplemented()),
+    new LinkButton<Void>("play", chooseGameType),
     new LinkButton<Void>("profile", notImplemented()),
     new LinkButton<Void>("shop", notImplemented())
   );
