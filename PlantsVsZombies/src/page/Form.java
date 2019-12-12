@@ -5,6 +5,9 @@ import java.util.stream.Stream;
 import main.Program;
 import util.Result;
 
+/**
+ * ask some questions from user
+ */
 public class Form implements Page<String[]> {
 
   private String[] asks;

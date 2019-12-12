@@ -7,6 +7,11 @@ import java.util.stream.Stream;
 import main.Program;
 import util.Result;
 
+/**
+ * Menu is a page that show some {@link Button} to user
+ * and when user click on some button, run action of that button
+ * @param <U> type of result of Menu
+ */
 public class Menu<U> implements Page<U> {
 
   private final ArrayList<Button<U>> buttons;
