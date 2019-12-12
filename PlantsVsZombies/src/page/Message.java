@@ -4,6 +4,9 @@ import main.Program;
 import util.Result;
 import util.Unit;
 
+/**
+ * show a message string
+ */
 public class Message implements Page<Unit> {
 
   private final String message;
@@ -16,6 +19,9 @@ public class Message implements Page<Unit> {
     return Result.ok();
   }
 
+  /**
+   * @param message The message to be shown
+   */
   public Message(String message) {
     this.message = message;
   }
