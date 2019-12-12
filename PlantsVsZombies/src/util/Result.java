@@ -7,7 +7,7 @@ import java.util.function.Function;
 import page.Message;
 
 /**
- * Result<T> can contain a data of type T in case of success and
+ * Result can contain a data of type T in case of success and
  * a error message in case of failure
  * @param <T> type of inside data
  */
