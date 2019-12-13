@@ -20,7 +20,7 @@ public class Account implements Serializable {
   private static final long serialVersionUID = -5582985394951882515L;
   private String username;
   private String passwordHash;
-  private String passwordSalt;
+  //private String passwordSalt;
   private int score, money;
   private static Map<String, Account> ALL = new HashMap<>();
   private static Account current;

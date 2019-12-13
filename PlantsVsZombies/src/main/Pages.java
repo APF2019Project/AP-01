@@ -8,7 +8,6 @@ import page.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
-import util.Unit;
 
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
