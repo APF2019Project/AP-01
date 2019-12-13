@@ -21,7 +21,7 @@ public class Pages {
 
   public static final Menu<Void> mainMenu = new Menu<>(
     new LinkButton<>("play", chooseGameType),
-    new LinkButton<>("profile", notImplemented()),
+    new LinkButton<>("profile", Account.profilePage()),
     new LinkButton<>("shop", notImplemented())
   );
   public static <U> Page<U> notImplemented(){

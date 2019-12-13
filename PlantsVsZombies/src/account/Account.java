@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import main.Pages;
 import main.Program;
+import page.ActionButton;
 import page.ErrorMessage;
+import page.LinkButton;
+import page.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
@@ -53,6 +57,13 @@ public class Account implements Serializable {
       }
       
     };
+  }
+
+  public static Page<Void> profilePage() {
+    return new Menu<Void>(
+      new LinkButton<>("Delete Account", Pages.notImplemented()),
+      new ActionButton("Show", () -> new Message(current.username).action())
+    );
   }
 
   @SuppressWarnings("unchecked")
