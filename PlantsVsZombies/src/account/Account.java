@@ -35,17 +35,20 @@ public class Account implements Serializable {
   }
 
   public static Page<Void> leaderBoardPage() {
-    
+    String format = "    %-30s %5s %7s %5s %7s\n";
+    String header = String.format(
+        format , "Name", "|", "Score", "|", "Money"
+      )+
+      "----------------------------------------------------------------------\n";
     return new Page<Void>(){
-
       @Override
       public Result<Void> action() {
         String table = ALL.values().stream()
         .map(x -> String.format(
-          "%30s %25s %10s %25s %10s\n", "Item", "|", "Price($)", "|", "Qty"
+          format, x.username, "|", ""+x.score, "|", ""+x.money
         ))
         .collect(Collectors.joining());
-        new Message(table).action();
+        new Message(header+table).action();
         return Result.error("end page");
       }
       
