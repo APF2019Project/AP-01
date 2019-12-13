@@ -3,9 +3,12 @@ package account;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import main.Program;
 import page.ErrorMessage;
+import page.Message;
+import page.Page;
 import util.Result;
 import util.Unit;
 
@@ -14,6 +17,7 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   private String passwordSalt;
+  private int score, money;
   private static Map<String, Account> ALL = new HashMap<>();
   private static Account current;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
@@ -28,6 +32,24 @@ public class Account implements Serializable {
     } catch (IOException i) {
       ErrorMessage.from(i).action();
     }
+  }
+
+  public static Page<Void> leaderBoardPage() {
+    
+    return new Page<Void>(){
+
+      @Override
+      public Result<Void> action() {
+        String table = ALL.values().stream()
+        .map(x -> String.format(
+          "%30s %25s %10s %25s %10s\n", "Item", "|", "Price($)", "|", "Qty"
+        ))
+        .collect(Collectors.joining());
+        new Message(table).action();
+        return Result.error("end page");
+      }
+      
+    };
   }
 
   @SuppressWarnings("unchecked")

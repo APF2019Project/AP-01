@@ -8,20 +8,21 @@ import page.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
+import util.Unit;
 
 public class Pages {
-  public static final Menu<Void> chooseGameType = new Menu<Void>(
-    new LinkButton<Void>("Day", notImplemented()),
-    new LinkButton<Void>("Water", notImplemented()),
-    new LinkButton<Void>("Rail", notImplemented()),
-    new LinkButton<Void>("Zombie", notImplemented()),
-    new LinkButton<Void>("PvP", notImplemented())
+  public static final Menu<Void> chooseGameType = new Menu<>(
+    new LinkButton<>("Day", notImplemented()),
+    new LinkButton<>("Water", notImplemented()),
+    new LinkButton<>("Rail", notImplemented()),
+    new LinkButton<>("Zombie", notImplemented()),
+    new LinkButton<>("PvP", notImplemented())
   );
 
-  public static final Menu<Void> mainMenu = new Menu<Void>(
-    new LinkButton<Void>("play", chooseGameType),
-    new LinkButton<Void>("profile", notImplemented()),
-    new LinkButton<Void>("shop", notImplemented())
+  public static final Menu<Void> mainMenu = new Menu<>(
+    new LinkButton<>("play", chooseGameType),
+    new LinkButton<>("profile", notImplemented()),
+    new LinkButton<>("shop", notImplemented())
   );
   public static <U> Page<U> notImplemented(){
     return new Page<U>(){
@@ -48,6 +49,6 @@ public class Pages {
       .showError()
       .flatMap(x -> mainMenu.action());
     }),
-    new LinkButton<Void>("leaderboard", notImplemented())
+    new LinkButton<Void>("leaderboard", Account.leaderBoardPage())
   );
 }
