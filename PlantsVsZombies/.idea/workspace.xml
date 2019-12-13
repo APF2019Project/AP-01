@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="Declaration of gameEngine, gameData, graphics and player">
-      <change afterPath="$PROJECT_DIR$/../PlantsVsZombies.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0ad511583187a765d13de6405f8b752a819e227d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/2109f572e7667a9b1da42efe3f08be85e1f889a7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9a4ef964a2973a55615d6d7bd6e77622ec0adbc6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/GameDNA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/GameMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/plant_player/PlayerProfile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/plant_player/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/PlayerProfile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/WaterModeAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombiePlayer.java" afterDir="false" />
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/exception/InvalidGameMoveException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exception/NotImplementedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/line/LawnMower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/line/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/line/LineState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/2109f572e7667a9b1da42efe3f08be85e1f889a7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -113,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575802105762</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Declaration of gameEngine, gameData, graphics and player">
+      <created>1576138191994</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576138191994</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

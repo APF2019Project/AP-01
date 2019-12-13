@@ -1,0 +1,25 @@
+package line;
+
+import exception.InvalidGameMoveException;
+import exception.NotImplementedException;
+
+public class Line {
+
+    private final Integer lineNumber;
+    private final LineState lineState;
+    private LawnMower lawnMower;
+
+    public Line(Integer lineNumber, LineState lineState, LawnMower lawnMower) {
+        this.lineNumber = lineNumber;
+        this.lineState = lineState;
+        this.lawnMower = lawnMower;
+    }
+
+    public void activateLawnMower() throws InvalidGameMoveException, NotImplementedException {
+        if (lawnMower == null) {
+            throw new InvalidGameMoveException(String.format("Line number %d does not contain a lawnmower", lineNumber));
+        }
+        lawnMower.activate();
+        lawnMower = null;
+    }
+}
