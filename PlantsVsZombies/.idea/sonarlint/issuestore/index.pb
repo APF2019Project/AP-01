@@ -55,3 +55,15 @@ F
 src/player/Player.java,9/4/94cb1d1c569c23d329842365ca73ea0bdc13574f
 P
  src/gamedata/PlayGroundData.java,9/2/92c67b0fe9640ec688ae2e08db749cbcb5878680
+J
+src/page/ErrorMessage.java,4/5/453523299f9a1b90c3fb9a110b49080b6cecdafd
+B
+src/line/Line.java,e/b/ebce71e9949b31457c094f91f377c18dd40ea2c8
+G
+src/line/LawnMower.java,9/6/96c1f2adebcaa6f1ed885415e70c6ea77e593722
+G
+src/line/LineState.java,9/f/9fde3d71c924a4dd2ddd0e9dce42f487385bc9e9
+Z
+*src/exception/NotImplementedException.java,f/5/f54277d181d594b5b1abef2cf7d9236c19df87e6
+[
++src/exception/InvalidGameMoveException.java,7/0/70938b5aa1a5fe652b6edecaf1305bf1d0f3fb14
