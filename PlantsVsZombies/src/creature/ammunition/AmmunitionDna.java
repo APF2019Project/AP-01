@@ -1,5 +1,6 @@
 package creature.ammunition;
+import creature.Dna;
 
-class AmmunitionDna extends Dna {
+public class AmmunitionDna extends Dna {
     
 }

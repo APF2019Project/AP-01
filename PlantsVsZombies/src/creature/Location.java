@@ -1,5 +1,5 @@
 package creature;
 
-class Location {
+public class Location {
     
 }

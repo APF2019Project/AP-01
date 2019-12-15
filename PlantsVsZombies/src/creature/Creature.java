@@ -1,5 +1,5 @@
 package creature;
 
-class Creature {
+public class Creature {
     
 }
