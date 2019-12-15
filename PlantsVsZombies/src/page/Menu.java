@@ -15,6 +15,7 @@ import util.Result;
 public class Menu<U> implements Page<U> {
 
   private final ArrayList<Button<U>> buttons;
+  private String message = "Choose an option, or e for exit and h for help";
 
   public Menu(final ArrayList<Button<U>> buttons) {
     this.buttons = buttons;
@@ -25,9 +26,14 @@ public class Menu<U> implements Page<U> {
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
 
+  @SafeVarargs
+  public Menu(String description, final Button<U>... buttons) {
+    this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
+  }
+
   public Result<U> action() {
     Program.clearScreen();
-    System.out.println("Choose an option, or e for exit and h for help");
+    System.out.println(message);
     for (int i = 0; i < buttons.size(); i++) {
       System.out.println(i + ". " + buttons.get(i).getLabel());
     }
