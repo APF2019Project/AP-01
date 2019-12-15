@@ -6,10 +6,9 @@ import player.zombie_player.ZombiePlayer;
 
 public class GameDNA {
 
-    private final GameMode gameMode;
-    private final PlantPlayer plantPlayer;
-    private final ZombiePlayer zombiePlayer;
-
+    final GameMode gameMode;
+    final PlantPlayer plantPlayer;
+    final ZombiePlayer zombiePlayer;
 
     public GameDNA(GameMode gameMode, PlantPlayer plantPlayer, ZombiePlayer zombiePlayer) throws NotImplementedException {
 
