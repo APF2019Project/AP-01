@@ -2,16 +2,25 @@ package main;
 
 import account.Account;
 import page.ActionButton;
+import page.Collection;
 import page.Form;
 import page.LinkButton;
 import page.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
+import creature.being.plant.*;
+import game.GamePages;
 
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
-    new LinkButton<>("Day", notImplemented()),
+    new ActionButton<>("Day", () -> {
+      new Collection<PlantDna>(new PlantDna[]{}).action()
+      .flatMap(hand -> {
+        Message.show("your hand is: ");
+        return GamePages.dayPage.action();
+      });
+    }),
     new LinkButton<>("Water", notImplemented()),
     new LinkButton<>("Rail", notImplemented()),
     new LinkButton<>("Zombie", notImplemented()),

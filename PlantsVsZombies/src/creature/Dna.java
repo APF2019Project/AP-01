@@ -1,5 +1,5 @@
 package creature;
 
-class Dna {
+public class Dna {
    
 }

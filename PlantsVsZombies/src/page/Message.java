@@ -26,4 +26,7 @@ public class Message implements Page<Unit> {
     this.message = message;
   }
 
+  public static void show(String message) {
+    (new Message(message)).action();
+  }
 }

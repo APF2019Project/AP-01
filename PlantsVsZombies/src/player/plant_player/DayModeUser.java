@@ -2,11 +2,13 @@ package player.plant_player;
 
 import java.util.Random;
 
+import creature.being.plant.PlantDna;
+
 public class DayModeUser implements PlantPlayer {
 
     private Integer sun = 2;
     private Random rnd;
-    private PlantDNA[] plantDNAS;
+    private PlantDna[] plantDnas;
     private Integer[] lastTimeUsed = new Integer[7];
 
     private void randomSunAdder() {
