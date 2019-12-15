@@ -1,5 +1,7 @@
 package creature.being;
 
-public class BeingDna {
-    
+import creature.Dna;
+
+public class BeingDna extends Dna {
+
 }

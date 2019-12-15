@@ -3,7 +3,7 @@ package page;
 import util.Result;
 import util.Task;
 
-public class ActionButton implements Button<Void> {
+public class ActionButton<U> implements Button<U> {
   private String label;
   private Task task;
 
@@ -11,7 +11,7 @@ public class ActionButton implements Button<Void> {
     return label;
   }
 
-  public Result<Void> action() {
+  public Result<U> action() {
     task.run();
     return Result.error("end action");
   }
