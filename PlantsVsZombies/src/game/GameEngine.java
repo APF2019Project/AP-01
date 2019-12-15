@@ -8,6 +8,7 @@ import creature.being.zombie.ZombieDna;
 import exception.InvalidGameMoveException;
 import page.Message;
 
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class GameEngine {
@@ -32,7 +33,7 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
-    public static GameResult newDayGame(PlantDna[] hand) {
+    public static GameResult newDayGame(ArrayList<PlantDna> hand) {
         Message.show("The game will start soonly here.");
         return null;
     }

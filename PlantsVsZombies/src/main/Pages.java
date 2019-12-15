@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+
 import account.Account;
 import page.ActionButton;
 import page.Collection;
@@ -15,7 +17,12 @@ import game.GameEngine;
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
     new ActionButton<>("Day", () -> {
-      new Collection<PlantDna>(new PlantDna[]{}).action()
+      ArrayList<PlantDna> options = new ArrayList<>();
+      options.add(new PlantDna("tofangi"));
+      options.add(new PlantDna("bombi"));
+      options.add(new PlantDna("khari"));
+      options.add(new PlantDna("gol"));
+      new Collection<PlantDna>(options, 2).action()
       .consume(hand -> {
         GameEngine.newDayGame(hand);
       });
