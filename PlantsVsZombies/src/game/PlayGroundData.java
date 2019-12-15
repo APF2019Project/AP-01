@@ -4,6 +4,8 @@ import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import line.Line;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 
 public class PlayGroundData {
@@ -15,15 +17,15 @@ public class PlayGroundData {
     public TreeSet<Zombie> zombies = new TreeSet<>();
     public Line[] lines;
 
-    public TreeSet<Plant>[] plantsPerLine;
-    public TreeSet<Zombie>[] zombiesPerLine;
+    public List<TreeSet<Plant>> plantsPerLine;
+    public List<TreeSet<Zombie>> zombiesPerLine;
 
     public PlayGroundData(Integer length, Line[] lines) {
         this.width = lines.length;
         this.length = length;
         this.lines = lines;
-        plantsPerLine = new TreeSet<Plant>[width];
-        zombiesPerLine = new TreeSet<Zombie>[width];
+        plantsPerLine = new ArrayList<>(width);
+        zombiesPerLine = new ArrayList<>(width);
     }
 
 

@@ -1,7 +1,10 @@
 package game;
 
+import creature.Location;
 import creature.being.plant.Plant;
+import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
+import creature.being.zombie.ZombieDna;
 import exception.InvalidGameMoveException;
 
 import java.util.TreeSet;
@@ -28,41 +31,45 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
+    public static GameResult newGmae(GameDNA dna) {
+        return null;
+    }
+
     public boolean locationChecker(Integer lineNumber, Integer position) {
         return lineNumberChecker(lineNumber) && positionChecker(position);
     }
 
     public Plant getPlant(Integer lineNumber, Integer position) {
         if (locationChecker(lineNumber, position)) return null;
-        for (Plant plant : DATABASE.plantsPerLine[lineNumber])
-            if (plant.getLocation().equals(Location(lineNumber, position)))
+        for (Plant plant : DATABASE.plantsPerLine.get(lineNumber))
+            if (plant.getLocation().equals(new Location(lineNumber, position)))
                 return plant;
         return null;
     }
 
-    public void newPlant(PlantDNA dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
+    public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (!locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
-        Plant plant = new PlayGroundData(dns, lineNumber, position);
-        DATABASE.plantsPerLine[lineNumber].add(plant);
+        Plant plant = new Plant(dna, lineNumber, position);
+        DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
     }
 
-    public void newZombie(ZombieDNA dna, Integer lineNumber) throws InvalidGameMoveException {
+    public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
         Zombie zombie = new Zombie(dna, lineNumber);
-        DATABASE.zombiesPerLine[lineNumber].add(zombie);
+        DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
     }
 
     public void killPlant(Plant plant) {
         DATABASE.plants.remove(plant);
-        DATABASE.plantsPerLine.remove(plant.getLocation().lineNumber);
+        DATABASE.plantsPerLine.get(plant.getLocation().lineNumber).remove(plant);
     }
 
     public void killZombie(Zombie zombie) {
         DATABASE.zombies.remove(zombie);
-        DATABASE.zombiesPerLine.remove(zombie.getLocation().lineNumber);
+        DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).remove(zombie);
     }
 
     public TreeSet<Plant> getPlants() {
@@ -70,7 +77,7 @@ public class GameEngine {
     }
 
     public TreeSet<Plant> getPlants(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.plantsPerLine[lineNumber];
+        if (lineNumberChecker(lineNumber)) return DATABASE.plantsPerLine.get(lineNumber);
         return null;
     }
 
@@ -79,9 +86,7 @@ public class GameEngine {
     }
 
     public TreeSet<Zombie> getZombies(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.zombiesPerLine[lineNumber];
+        if (lineNumberChecker(lineNumber)) return DATABASE.zombiesPerLine.get(lineNumber);
         return null;
     }
-
-    public void
 }

@@ -1,8 +1,8 @@
 package player.plant_player;
 
-import java.util.Random;
-
 import creature.being.plant.PlantDna;
+
+import java.util.Random;
 
 public class DayModeUser implements PlantPlayer {
 
@@ -20,7 +20,7 @@ public class DayModeUser implements PlantPlayer {
     public void nextTurn() {
         randomSunAdder();
         for (int i = 0; i < 7; i++) lastTimeUsed[i] += 1;
-        // TODO: menu should be added
+
 
     }
 

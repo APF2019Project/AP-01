@@ -43,8 +43,6 @@ Y
 )src/player/zombie_player/WaterModeAI.java,b/4/b43de943908ef115d69c95ec3064ff11b61c6aaa
 Z
 *src/player/zombie_player/ZombiePlayer.java,b/7/b7d54307e64bd454c1b809cb6cedf3706b3bef67
-P
- src/gamedata/PlayGroundData.java,9/2/92c67b0fe9640ec688ae2e08db749cbcb5878680
 J
 src/page/ErrorMessage.java,4/5/453523299f9a1b90c3fb9a110b49080b6cecdafd
 B
@@ -63,3 +61,29 @@ B
 src/page/Page.java,f/b/fbaf5863f694732883961b6e3057c2aeab4104a5
 X
 (src/player/plant_player/DayModeUser.java,5/f/5f64d804256222b802cc997a2e3043e660622dc0
+J
+src/creature/Creature.java,e/8/e8e86cf355ab09d483dd7f73b96cfa44f24b0faf
+P
+ src/creature/being/BeingDna.java,b/c/bc5b7b5ce17ff2b1b8511e8a51012da571c9ba27
+W
+'src/creature/ammunition/Ammunition.java,7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1
+Z
+*src/creature/ammunition/AmmunitionDna.java,2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc
+E
+src/creature/Dna.java,9/b/9b2eaa53494cc37a2bf37dd26d784247a006e79d
+V
+&src/creature/being/plant/PlantDna.java,e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7
+U
+%src/creature/being/zombie/Zombie.java,4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a
+X
+(src/creature/being/zombie/ZombieDna.java,0/4/041881d005b3e829ba43b379332532273f3e6a14
+S
+#src/creature/being/plant/Plant.java,8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5
+J
+src/creature/Location.java,9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad
+H
+src/game/GameResult.java,2/9/2995751aad62b377e09cb46360948a431bb9f50c
+L
+src/game/PlayGroundData.java,1/f/1ff6256c554b963f647d6d06c8d1cc80c53d9b9a
+G
+src/game/GamePages.java,f/c/fcb21895bcaf579612dd4dc242db8a7109009309
