@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="Added some exceptions, basic Line and LawnMower">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/PlayGroundData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameDNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameDNA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/PlayerProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/PlayerProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +36,11 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.23793103" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="game" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -115,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576263455995</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="DayMOdeUser.java declares">
+      <created>1576355623075</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576355623075</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,7 +198,8 @@
     <MESSAGE value="IntelliJ install json" />
     <MESSAGE value="Declaration of gameEngine, gameData, graphics and player" />
     <MESSAGE value="Added some exceptions, basic Line and LawnMower" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some exceptions, basic Line and LawnMower" />
+    <MESSAGE value="DayMOdeUser.java declares" />
+    <option name="LAST_COMMIT_MESSAGE" value="DayMOdeUser.java declares" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
