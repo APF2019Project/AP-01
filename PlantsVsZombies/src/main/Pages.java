@@ -20,7 +20,7 @@ public class Pages {
     new ActionButton<>("Day", () -> {
       new Collection<PlantDna>(new PlantDna[]{}).action()
       .consume(hand -> {
-        GameEngine.newGame(GameMode.DAY);
+        GameEngine.newDayGame(hand);
       });
     }),
     new LinkButton<>("Water", notImplemented()),

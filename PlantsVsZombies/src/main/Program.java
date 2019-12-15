@@ -19,12 +19,12 @@ public class Program {
     String OS = (System.getProperty("os.name")).toUpperCase();
     if (OS.contains("WIN"))
     {
-        workingDirectory = System.getenv("AppData");
+      workingDirectory = System.getenv("AppData");
     }
     else
     {
-        workingDirectory = System.getProperty("user.home");
-        workingDirectory += "/Library/Application Support/PVZ/";
+      workingDirectory = System.getProperty("user.home");
+      workingDirectory += "/Library/Application Support/PVZ/";
     }
     return workingDirectory+file;
   }

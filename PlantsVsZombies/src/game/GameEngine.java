@@ -6,6 +6,7 @@ import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.InvalidGameMoveException;
+import page.Message;
 
 import java.util.TreeSet;
 
@@ -31,7 +32,8 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
-    public static GameResult newGame(GameMode dna) {
+    public static GameResult newDayGame(PlantDna[] hand) {
+        Message.show("The game will start soonly here.");
         return null;
     }
 
