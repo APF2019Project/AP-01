@@ -1,0 +1,5 @@
+package creature;
+
+class Creature {
+    
+}
