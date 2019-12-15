@@ -10,15 +10,17 @@ import page.Message;
 import page.Page;
 import util.Result;
 import creature.being.plant.*;
+import game.GameDna;
+import game.GameEngine;
+import game.GameMode;
 import game.GamePages;
 
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
     new ActionButton<>("Day", () -> {
       new Collection<PlantDna>(new PlantDna[]{}).action()
-      .flatMap(hand -> {
-        Message.show("your hand is: ");
-        return GamePages.dayPage(hand).action();
+      .consume(hand -> {
+        GameEngine.newGame(GameMode.DAY);
       });
     }),
     new LinkButton<>("Water", notImplemented()),

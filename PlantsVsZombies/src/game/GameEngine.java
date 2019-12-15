@@ -31,7 +31,7 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
-    public static GameResult newGame(GameDNA dna) {
+    public static GameResult newGame(GameMode dna) {
         return null;
     }
 
