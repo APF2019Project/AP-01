@@ -10,10 +10,7 @@ import page.Message;
 import page.Page;
 import util.Result;
 import creature.being.plant.*;
-import game.GameDna;
 import game.GameEngine;
-import game.GameMode;
-import game.GamePages;
 
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
@@ -44,7 +41,7 @@ public class Pages {
     };
   }
   public static final Menu<Void> loginMenu = new Menu<Void>(
-    new ActionButton("create account", ()->{
+    new ActionButton<Void>("create account", ()->{
       (new Form("Enter new username", "Enter password"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
@@ -52,7 +49,7 @@ public class Pages {
       .show()
       .showError();
     }),
-    new ActionButton("login", ()->{
+    new ActionButton<Void>("login", ()->{
       (new Form("Enter username", "Enter password"))
       .action()
       .flatMap(data -> Account.login(data[0], data[1]))
