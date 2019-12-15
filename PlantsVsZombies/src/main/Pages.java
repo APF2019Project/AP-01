@@ -18,7 +18,7 @@ public class Pages {
       new Collection<PlantDna>(new PlantDna[]{}).action()
       .flatMap(hand -> {
         Message.show("your hand is: ");
-        return GamePages.dayPage.action();
+        return GamePages.dayPage(hand).action();
       });
     }),
     new LinkButton<>("Water", notImplemented()),
