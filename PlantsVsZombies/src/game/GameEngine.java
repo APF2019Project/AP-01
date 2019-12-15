@@ -1,5 +1,7 @@
 package game;
 
+import creature.being.plant.Plant;
+import creature.being.zombie.Zombie;
 import exception.InvalidGameMoveException;
 
 import java.util.TreeSet;

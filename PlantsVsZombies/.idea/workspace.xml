@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/game/PlayGroundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creature/being/plant/Plant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creature/being/zombie/Zombie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creature/being/zombie/ZombieDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamedata/PlayGroundData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/PlayGroundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PlayGroundData.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576355623075</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="implementing basic gameEngine">
+      <created>1576409907758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1576409907758</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,7 +207,8 @@
     <MESSAGE value="Declaration of gameEngine, gameData, graphics and player" />
     <MESSAGE value="Added some exceptions, basic Line and LawnMower" />
     <MESSAGE value="DayMOdeUser.java declares" />
-    <option name="LAST_COMMIT_MESSAGE" value="DayMOdeUser.java declares" />
+    <MESSAGE value="implementing basic gameEngine" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing basic gameEngine" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
