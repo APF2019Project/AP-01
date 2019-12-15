@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class PlayGroundData {
 
-    public final Integer weidth;
+    public final Integer width;
     public final Integer length;
 
     public TreeSet<Plant> plants = new TreeSet<>();
@@ -19,10 +19,11 @@ public class PlayGroundData {
     public TreeSet<Zombie>[] zombiesPerLine;
 
     public PlayGroundData(Integer length, Line[] lines) {
-        this.weidth = lines.length;
+        this.width = lines.length;
         this.length = length;
-        plantsPerLine = new TreeSet<Plant>[weidth];
-        zombiesPerLine = new TreeSet<Zombie>[weidth];
+        this.lines = lines;
+        plantsPerLine = new TreeSet<Plant>[width];
+        zombiesPerLine = new TreeSet<Zombie>[width];
     }
 
 

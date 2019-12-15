@@ -21,7 +21,7 @@ public class GameEngine {
     }
 
     public boolean lineNumberChecker(Integer lineNumber) {
-        return lineNumber >= 0 && lineNumber < DATABASE.weidth;
+        return lineNumber >= 0 && lineNumber < DATABASE.width;
     }
 
     public boolean positionChecker(Integer position) {
@@ -35,9 +35,8 @@ public class GameEngine {
     public Plant getPlant(Integer lineNumber, Integer position) {
         if (locationChecker(lineNumber, position)) return null;
         for (Plant plant : DATABASE.plantsPerLine[lineNumber])
-            // TODO: check location of plant;
-            return plant;
-
+            if (plant.getLocation().equals(Location(lineNumber, position)))
+                return plant;
         return null;
     }
 
@@ -83,4 +82,6 @@ public class GameEngine {
         if (lineNumberChecker(lineNumber)) return DATABASE.zombiesPerLine[lineNumber];
         return null;
     }
+
+    public void
 }
