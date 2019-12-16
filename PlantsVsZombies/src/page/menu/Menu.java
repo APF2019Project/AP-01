@@ -1,10 +1,12 @@
-package page;
+package page.menu;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import main.Program;
+import page.Help;
+import page.Page;
 import util.Result;
 
 /**

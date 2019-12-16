@@ -3,11 +3,11 @@ package main;
 import java.util.ArrayList;
 
 import account.Account;
-import page.ActionButton;
+import page.menu.ActionButton;
 import page.Collection;
 import page.Form;
-import page.LinkButton;
-import page.Menu;
+import page.menu.LinkButton;
+import page.menu.Menu;
 import page.Message;
 import page.Page;
 import util.Result;

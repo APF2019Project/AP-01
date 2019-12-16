@@ -1,4 +1,4 @@
-package page;
+package page.menu;
 
 import util.Result;
 import util.Task;
