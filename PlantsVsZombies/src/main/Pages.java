@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+
 import account.Account;
 import page.ActionButton;
 import page.Collection;
@@ -10,15 +12,19 @@ import page.Message;
 import page.Page;
 import util.Result;
 import creature.being.plant.*;
-import game.GamePages;
+import game.GameEngine;
 
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
     new ActionButton<>("Day", () -> {
-      new Collection<PlantDna>(new PlantDna[]{}).action()
-      .flatMap(hand -> {
-        Message.show("your hand is: ");
-        return GamePages.dayPage(hand).action();
+      ArrayList<PlantDna> options = new ArrayList<>();
+      options.add(new PlantDna("tofangi"));
+      options.add(new PlantDna("bombi"));
+      options.add(new PlantDna("khari"));
+      options.add(new PlantDna("gol"));
+      new Collection<PlantDna>(options, 2).action()
+      .consume(hand -> {
+        GameEngine.newDayGame(hand);
       });
     }),
     new LinkButton<>("Water", notImplemented()),
@@ -42,7 +48,7 @@ public class Pages {
     };
   }
   public static final Menu<Void> loginMenu = new Menu<Void>(
-    new ActionButton("create account", ()->{
+    new ActionButton<Void>("create account", ()->{
       (new Form("Enter new username", "Enter password"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
@@ -50,7 +56,7 @@ public class Pages {
       .show()
       .showError();
     }),
-    new ActionButton("login", ()->{
+    new ActionButton<Void>("login", ()->{
       (new Form("Enter username", "Enter password"))
       .action()
       .flatMap(data -> Account.login(data[0], data[1]))
