@@ -1,7 +1,8 @@
 package player.zombie_player;
 
-public interface ZombiePlayer {
-    void nextTrun();
+import exception.EndGameException;
 
-    void showHand();
+public interface ZombiePlayer {
+    void nextTurn() throws EndGameException;
+
 }

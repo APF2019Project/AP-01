@@ -5,12 +5,14 @@ import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
+import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import page.Message;
 import player.plant_player.PlantPlayer;
 import player.zombie_player.ZombiePlayer;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -22,6 +24,24 @@ public class GameEngine {
     private GameState gameState = GameState.LOADING;
     private PlayGroundData DATABASE;
     private Integer turn = 0;
+    private Random random;
+
+    GameEngine(GameDna gameDna) {
+        random = new Random();
+        plantPlayer = gameDna.plantPlayer;
+        zombiePlayer = gameDna.zombiePlayer;
+        currentGameEngine = this;
+    }
+
+    public static GameResult newDayGame(ArrayList<PlantDna> hand) {
+        Message.show("The game will start soonly here.");
+        // TODO: run game
+        return null;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
 
     public Integer getTurn() {
         return turn;
@@ -37,15 +57,12 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
-    GameEngine(GameDna gameDna) {
-        plantPlayer = gameDna.plantPlayer;
-        zombiePlayer = gameDna.zombiePlayer;
-        currentGameEngine = this;
+    public Integer getWidth() {
+        return DATABASE.width;
     }
 
-    public static GameResult newDayGame(ArrayList<PlantDna> hand) {
-        Message.show("The game will start soonly here.");
-        return null;
+    public Integer getLength() {
+        return DATABASE.length;
     }
 
     public static GameEngine getCurrentGameEngine() {
@@ -154,8 +171,12 @@ public class GameEngine {
         DATABASE.deadZombiesLastTurn = DATABASE.deadZombies;
         DATABASE.deadPlants = new TreeSet<>();
         DATABASE.deadZombies = new TreeSet<>();
-        plantPlayer.nextTurn();
-        zombiePlayer.nextTrun();
+        try {
+            plantPlayer.nextTurn();
+            zombiePlayer.nextTurn();
+        } catch (EndGameException) {
+
+        }
 
         // TODO: interacton between plants as zombies =)
 
