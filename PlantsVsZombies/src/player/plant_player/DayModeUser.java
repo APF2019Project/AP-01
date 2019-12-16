@@ -2,6 +2,7 @@ package player.plant_player;
 
 import creature.being.plant.PlantDna;
 import page.menu.ActionButton;
+import page.menu.ExitButton;
 import page.menu.Menu;
 
 import java.util.Random;
@@ -24,13 +25,22 @@ public class DayModeUser implements PlantPlayer {
         for (int i = 0; i < 7; i++) lastTimeUsed[i] += 1;
         new Menu<>(
             new ActionButton<>("Show hand", () -> showHand()),
-            new ActionButton<>("Show lane", () -> showLane()),
-            new ActionButton<>("End Turn", () -> showHand())
+            new ActionButton<>("Show lawn", () -> showLawn()),
+            new ActionButton<>("Plant", () -> createPlant()),
+            new ActionButton<>("Remove", () -> removePlant()),
+            new ExitButton("End Turn")
         ).action();
     }
 
-    private Object showLane() {
+    private Object removePlant() {
         return null;
+    }
+
+    private Object createPlant() {
+        return null;
+    }
+
+    private void showLawn() {
     }
 
     @Override
