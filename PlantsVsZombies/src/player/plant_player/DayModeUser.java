@@ -24,5 +24,10 @@ public class DayModeUser implements PlantPlayer {
 
     }
 
+    @Override
+    public void showHand() {
+
+    }
+
     // TODO: implement this shit =)
 }

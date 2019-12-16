@@ -10,7 +10,8 @@ public class GamePages {
         return new Page<GameResult>() {
             @Override
             public Result<GameResult> action() {
-                GameEngine gameEngine = new GameEngine();
+                // gameEngine ro new nakonin jayee, hamun new game ina ro seda bezanin !!!!!!!!!!!!!!!!!
+                // GameEngine gameEngine = new GameEngine();
                 return (new Menu<>(
                     new ActionButton<GameResult>("Show hand", () -> Message.show("hand is:"+hand)),
                     new LinkButton<>("End turn", Pages.notImplemented())

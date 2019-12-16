@@ -37,9 +37,9 @@ public class GameEngine {
         return position >= 0 && position < DATABASE.length;
     }
 
-    GameEngine(GameDNA gameDNA) {
-        plantPlayer = gameDNA.plantPlayer;
-        zombiePlayer = gameDNA.zombiePlayer;
+    GameEngine(GameDna gameDna) {
+        plantPlayer = gameDna.plantPlayer;
+        zombiePlayer = gameDna.zombiePlayer;
         currentGameEngine = this;
     }
 
