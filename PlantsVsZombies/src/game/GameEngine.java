@@ -6,6 +6,7 @@ import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.InvalidGameMoveException;
+import page.Message;
 import player.plant_player.PlantPlayer;
 import player.zombie_player.ZombiePlayer;
 
@@ -17,7 +18,7 @@ public class GameEngine {
 
     private final PlantPlayer plantPlayer;
     private final ZombiePlayer zombiePlayer;
-    private static GameEngine currnetGameEngine;
+    private static GameEngine currentGameEngine;
     private GameState gameState = GameState.LOADING;
     private PlayGroundData DATABASE;
     private Integer turn = 0;
@@ -39,11 +40,16 @@ public class GameEngine {
     GameEngine(GameDNA gameDNA) {
         plantPlayer = gameDNA.plantPlayer;
         zombiePlayer = gameDNA.zombiePlayer;
-        currnetGameEngine = this;
+        currentGameEngine = this;
+    }
+
+    public static GameResult newDayGame(ArrayList<PlantDna> hand) {
+        Message.show("The game will start soonly here.");
+        return null;
     }
 
     public static GameEngine getCurrentGameEngine() {
-        return currnetGameEngine;
+        return currentGameEngine;
     }
 
     public boolean locationChecker(Integer lineNumber, Integer position) {
@@ -71,11 +77,6 @@ public class GameEngine {
         Zombie zombie = new Zombie(dna, lineNumber);
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
-    }
-
-    public static GameResult newGmae(GameDNA dna) {
-        new GameEngine(dna);
-        return null;
     }
 
     public void killPlant(Plant plant) {

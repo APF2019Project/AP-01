@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;PlantsVsZombies/src/game/GameEngine.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameDNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameDNA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/PlayGroundData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/PlayGroundData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombiePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombiePlayer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
