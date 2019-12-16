@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 
 import main.Pages;
 import main.Program;
-import page.ActionButton;
+import page.menu.ActionButton;
 import page.ErrorMessage;
-import page.LinkButton;
-import page.Menu;
+import page.menu.LinkButton;
+import page.menu.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
