@@ -166,17 +166,13 @@ public class GameEngine {
 
     }
 
-    public void nextTurn() {
+    public void nextTurn() throws EndGameException {
         DATABASE.deadPlantsLastTurn = DATABASE.deadPlants;
         DATABASE.deadZombiesLastTurn = DATABASE.deadZombies;
         DATABASE.deadPlants = new TreeSet<>();
         DATABASE.deadZombies = new TreeSet<>();
-        try {
-            plantPlayer.nextTurn();
-            zombiePlayer.nextTurn();
-        } catch (EndGameException) {
-
-        }
+        plantPlayer.nextTurn();
+        zombiePlayer.nextTurn();
 
         // TODO: interacton between plants as zombies =)
 

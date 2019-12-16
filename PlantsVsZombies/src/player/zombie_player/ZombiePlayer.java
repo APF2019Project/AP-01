@@ -5,4 +5,5 @@ import exception.EndGameException;
 public interface ZombiePlayer {
     void nextTurn() throws EndGameException;
 
+    void showHand();
 }

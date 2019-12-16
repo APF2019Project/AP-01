@@ -8,7 +8,7 @@ import game.GameEngine;
 import java.util.List;
 import java.util.Random;
 
-private enum AttackState {
+enum AttackState {
     ATTACKING,
     WAITING
 }
@@ -17,7 +17,7 @@ public class DayModeAI implements ZombiePlayer {
     private GameEngine gameEngine = GameEngine.getCurrentGameEngine();
     private Random random = GameEngine.getCurrentGameEngine().getRandom();
     private Integer waveNumber = 1;
-    private Integer Counter = 0;
+    private Integer counter = 0;
     private AttackState attackState = AttackState.WAITING;
 
     private void attack() {
@@ -35,29 +35,34 @@ public class DayModeAI implements ZombiePlayer {
     public void nextTurn() throws EndGameException {
         if (attackState == AttackState.ATTACKING) {
             attack();
-            Counter++;
-            if (Counter == 3) {
+            counter++;
+            if (counter == 3) {
                 attackState = AttackState.WAITING;
-                Counter = 0;
+                counter = 0;
             }
         } else {
-            Counter++;
+            counter++;
             if (!gameEngine.getZombies().isEmpty())
-                Counter = 0;
+                counter = 0;
             if (waveNumber == 1) {
-                if (Counter == 3) {
+                if (counter == 3) {
                     attackState = AttackState.ATTACKING;
                     waveNumber++;
-                    Counter = 0;
+                    counter = 0;
                 }
             } else if (waveNumber < 4) {
-                if (Counter == 7) {
+                if (counter == 7) {
                     attackState = AttackState.ATTACKING;
                     waveNumber++;
-                    Counter = 0;
+                    counter = 0;
                 }
-            } else if (waveNumber == 4 && Counter > 0)
+            } else if (waveNumber == 4 && counter > 0)
                 throw new EndGameException(Winner.Plants);
         }
+    }
+
+    @Override
+    public void showHand() {
+        throw new UnsupportedOperationException("zombie ai can't show hand =)!");
     }
 }
