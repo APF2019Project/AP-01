@@ -22,9 +22,9 @@ public class Account implements Serializable {
   private String passwordHash;
   //private String passwordSalt;
   private int score;
-  private Store store;
+  Store store;
   private static Map<String, Account> ALL = new HashMap<>();
-  private static Account current;
+  static Account current;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
   public static void backupAll() {
     try {

@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 
 import account.Account;
+import account.ShopPage;
 import page.menu.ActionButton;
 import page.Collection;
 import page.Form;
@@ -17,12 +18,8 @@ import game.GameEngine;
 public class Pages {
   public static final Menu<Void> chooseGameType = new Menu<>(
     new ActionButton<>("Day", () -> {
-      ArrayList<PlantDna> options = new ArrayList<>();
-      options.add(new PlantDna("tofangi"));
-      options.add(new PlantDna("bombi"));
-      options.add(new PlantDna("khari"));
-      options.add(new PlantDna("gol"));
-      new Collection<PlantDna>(options, 2).action()
+      
+      new Collection<PlantDna>((ArrayList<PlantDna>)PlantDna.getAllDnas(), 2).action()
       .consume(hand -> {
         GameEngine.newDayGame(hand);
       });
@@ -36,7 +33,7 @@ public class Pages {
   public static final Menu<Void> mainMenu = new Menu<>(
     new LinkButton<>("play", chooseGameType),
     new LinkButton<>("profile", Account.profilePage()),
-    new LinkButton<>("shop", notImplemented())
+    new LinkButton<>("shop", new ShopPage())
   );
   public static <U> Page<U> notImplemented(){
     return new Page<U>(){

@@ -24,7 +24,7 @@ public class Program {
     else
     {
       workingDirectory = System.getProperty("user.home");
-      workingDirectory += "/Library/Application Support/PVZ3/";
+      workingDirectory += "/Library/Application Support/PVZ4/";
     }
     return workingDirectory+file;
   }
