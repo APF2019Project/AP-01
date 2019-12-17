@@ -33,8 +33,12 @@ public class PlayGroundData {
         this.width = lines.size();
         this.length = length;
         this.lines = lines;
-        plantsPerLine = new ArrayList<>(width);
-        zombiesPerLine = new ArrayList<>(width);
+        plantsPerLine = new ArrayList<>();
+        zombiesPerLine = new ArrayList<>();
+        for (int i = 0; i < width; i++) {
+            plantsPerLine.add(new TreeSet<>());
+            zombiesPerLine.add(new TreeSet<>());
+        }
     }
 
 
