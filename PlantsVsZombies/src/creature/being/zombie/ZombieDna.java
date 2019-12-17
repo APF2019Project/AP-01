@@ -1,5 +1,7 @@
 package creature.being.zombie;
 
+import creature.being.BeingDna;
+
 import java.util.List;
 
 import creature.Dna;
@@ -9,6 +11,7 @@ public class ZombieDna extends Dna {
         super(name);
         // TODO Auto-generated constructor stub
     }
+
 
     private static List<ZombieDna> allDnas;
 

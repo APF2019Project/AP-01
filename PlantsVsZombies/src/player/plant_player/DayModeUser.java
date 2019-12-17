@@ -42,8 +42,11 @@ public class DayModeUser implements PlantPlayer {
     public void nextTurn() {
         selected = null;
         randomSunAdder();
-        for (int i = 0; i < coolDownTimeLeft.size(); i++)
+        for (int i = 0; i < coolDownTimeLeft.size(); i++) {
             coolDownTimeLeft.set(i, coolDownTimeLeft.get(i) - 1);
+            if (coolDownTimeLeft.get(i) < 0)
+                coolDownTimeLeft.set(i, 0);
+        }
         new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
@@ -55,7 +58,11 @@ public class DayModeUser implements PlantPlayer {
     }
 
     private void select() {
-        Result<String[]> result = new Form("Enter name: ").action();
+        Result<String[]> result = new Form("Enter name").action();
+        if (result == null || result.getValue().length == 0) {
+            Message.show("Enter the name :/!");
+            return;
+        }
         for (int i = 0; i < plantDans.size(); i++)
             if (plantDans.get(i).getName().equals(result.getValue()[0])) {
                 if (coolDownTimeLeft.get(i) > 0) {
@@ -69,7 +76,7 @@ public class DayModeUser implements PlantPlayer {
     }
 
     private void removePlant() {
-        Result<String[]> result = new Form("Enter X:", "Enter Y:").action();
+        Result<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
             Integer x = Integer.valueOf(result.getValue()[0]);
             Integer y = Integer.valueOf(result.getValue()[1]);
@@ -82,7 +89,7 @@ public class DayModeUser implements PlantPlayer {
     }
 
     private void createPlant() {
-        Result<String[]> result = new Form("Enter X:", "Enter Y:").action();
+        Result<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
             if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
             Integer x = Integer.valueOf(result.getValue()[0]);
