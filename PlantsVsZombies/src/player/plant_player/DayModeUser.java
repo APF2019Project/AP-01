@@ -69,6 +69,10 @@ public class DayModeUser implements PlantPlayer {
                     Message.show("Cant select this one, cool down time left !");
                     return;
                 }
+                if (plantDans.get(i).getSun() > sun) {
+                    Message.show("Cant select this one, not enough sun!");
+                    return;
+                }
                 selected = i;
                 return;
             }

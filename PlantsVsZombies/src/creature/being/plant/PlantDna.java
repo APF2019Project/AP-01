@@ -12,6 +12,12 @@ public class PlantDna extends BeingDna {
     return allDnas;
   }
 
+  private Integer sun = null;
+
+  public Integer getSun() {
+    return sun;
+  }
+
   public PlantDna(String name) {
     super(name);
     // TODO Auto-generated constructor stub
