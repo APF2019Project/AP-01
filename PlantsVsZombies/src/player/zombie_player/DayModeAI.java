@@ -14,11 +14,16 @@ enum AttackState {
 }
 
 public class DayModeAI implements ZombiePlayer {
-    private GameEngine gameEngine = GameEngine.getCurrentGameEngine();
-    private Random random = GameEngine.getCurrentGameEngine().getRandom();
+    private GameEngine gameEngine;
+    private Random random;
     private Integer waveNumber = 1;
     private Integer counter = 0;
     private AttackState attackState = AttackState.WAITING;
+
+    public DayModeAI() {
+        gameEngine = GameEngine.getCurrentGameEngine();
+        random = GameEngine.getCurrentGameEngine().getRandom();
+    }
 
     private void attack() {
         List<ZombieDna> allDnas = ZombieDna.getAllDnas();

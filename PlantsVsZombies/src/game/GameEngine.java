@@ -7,36 +7,47 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import line.Line;
+import line.LineState;
 import page.Message;
+import player.plant_player.DayModeUser;
 import player.plant_player.PlantPlayer;
+import player.zombie_player.DayModeAI;
 import player.zombie_player.ZombiePlayer;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class GameEngine {
 
-    private final PlantPlayer plantPlayer;
-    private final ZombiePlayer zombiePlayer;
+    private PlantPlayer plantPlayer;
+    private ZombiePlayer zombiePlayer;
     private static GameEngine currentGameEngine;
     private GameState gameState = GameState.LOADING;
     private PlayGroundData DATABASE;
     private Integer turn = 0;
     private Random random;
 
-    GameEngine(GameDna gameDna) {
-        random = new Random();
-        plantPlayer = gameDna.plantPlayer;
-        zombiePlayer = gameDna.zombiePlayer;
+    private ArrayList<ArrayList<ZombieDna>> zombieQueue;
+
+    public GameEngine() {
         currentGameEngine = this;
+        random = new Random();
     }
 
-    public static GameResult newDayGame(ArrayList<PlantDna> hand) {
+    public static GameResult newDayGame(List<PlantDna> hand) {
         Message.show("The game will start soonly here.");
-        // TODO: run game
-        return null;
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.DAY, new DayModeUser(hand), new DayModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
     }
 
     public Random getRandom() {
@@ -47,7 +58,12 @@ public class GameEngine {
         return turn;
     }
 
-    private ArrayList<ArrayList<ZombieDna>> zombieQueue = new ArrayList<>(DATABASE.width);
+    public void config(GameDna gameDna) {
+        plantPlayer = gameDna.plantPlayer;
+        zombiePlayer = gameDna.zombiePlayer;
+        DATABASE = new PlayGroundData(19, gameDna.lines);
+        zombieQueue = new ArrayList<>(DATABASE.width);
+    }
 
     public boolean lineNumberChecker(Integer lineNumber) {
         return lineNumber >= 0 && lineNumber < DATABASE.width;
@@ -130,6 +146,10 @@ public class GameEngine {
 
     public Integer zombiesKilled() {
         return DATABASE.zombiesKilled;
+    }
+
+    public Integer plantsKilled() {
+        return DATABASE.plantsKilled;
     }
 
     public SortedSet<Plant> getDeadPlnats() {

@@ -16,5 +16,8 @@ public class PlantDna extends BeingDna {
     super(name);
     // TODO Auto-generated constructor stub
   }
-    
+
+    public Integer getCoolDown() {
+        return null;
+    }
 }
