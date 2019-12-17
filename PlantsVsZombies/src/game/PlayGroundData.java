@@ -16,7 +16,7 @@ public class PlayGroundData {
 
     SortedSet<Plant> plants = new TreeSet<>();
     SortedSet<Zombie> zombies = new TreeSet<>();
-    Line[] lines;
+    List<Line> lines;
 
     List<TreeSet<Plant>> plantsPerLine;
     List<TreeSet<Zombie>> zombiesPerLine;
@@ -29,8 +29,8 @@ public class PlayGroundData {
     Integer zombiesKilled = 0;
     Integer plantsKilled = 0;
 
-    public PlayGroundData(Integer length, Line[] lines) {
-        this.width = lines.length;
+    PlayGroundData(Integer length, List<Line> lines) {
+        this.width = lines.size();
         this.length = length;
         this.lines = lines;
         plantsPerLine = new ArrayList<>(width);

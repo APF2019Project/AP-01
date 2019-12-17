@@ -6,4 +6,8 @@ public class Dna {
   public Dna(String name) {
     this.name = name;
   }
+
+    public String getName() {
+        return null;
+    }
 }
