@@ -20,7 +20,7 @@ public class DayModeAI implements ZombiePlayer {
     private Integer counter = 0;
     private AttackState attackState = AttackState.WAITING;
 
-    public void config() {
+    public DayModeAI() {
         gameEngine = GameEngine.getCurrentGameEngine();
         random = GameEngine.getCurrentGameEngine().getRandom();
     }

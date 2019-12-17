@@ -24,7 +24,7 @@ public class DayModeUser implements PlantPlayer {
     private List<Integer> coolDownTimeLeft;
     private Integer selected;
 
-    public void config(List<PlantDna> plantDans) {
+    public DayModeUser(List<PlantDna> plantDans) {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
         this.plantDans = plantDans;

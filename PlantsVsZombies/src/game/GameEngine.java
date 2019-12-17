@@ -19,8 +19,8 @@ import java.util.*;
 
 public class GameEngine {
 
-    private final PlantPlayer plantPlayer;
-    private final ZombiePlayer zombiePlayer;
+    private PlantPlayer plantPlayer;
+    private ZombiePlayer zombiePlayer;
     private static GameEngine currentGameEngine;
     private GameState gameState = GameState.LOADING;
     private PlayGroundData DATABASE;
@@ -29,13 +29,25 @@ public class GameEngine {
 
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
-    GameEngine(GameDna gameDna) {
-        random = new Random();
-        plantPlayer = gameDna.plantPlayer;
-        zombiePlayer = gameDna.zombiePlayer;
+    public GameEngine() {
         currentGameEngine = this;
-        DATABASE = new PlayGroundData(19, gameDna.lines);
-        zombieQueue = new ArrayList<>(DATABASE.width);
+        random = new Random();
+    }
+
+    public static GameResult newDayGame(List<PlantDna> hand) {
+        Message.show("The game will start soonly here.");
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.DAY, new DayModeUser(hand), new DayModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
     }
 
     public Random getRandom() {
@@ -46,19 +58,11 @@ public class GameEngine {
         return turn;
     }
 
-    public static GameResult newDayGame(List<PlantDna> hand) {
-        Message.show("The game will start soonly here.");
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
-        new GameEngine(new GameDna(GameMode.DAY, new DayModeUser(), new DayModeAI(), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
-        }
+    public void config(GameDna gameDna) {
+        plantPlayer = gameDna.plantPlayer;
+        zombiePlayer = gameDna.zombiePlayer;
+        DATABASE = new PlayGroundData(19, gameDna.lines);
+        zombieQueue = new ArrayList<>(DATABASE.width);
     }
 
     public boolean lineNumberChecker(Integer lineNumber) {
