@@ -21,7 +21,8 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   //private String passwordSalt;
-  private int score, money;
+  private int score;
+  private Store store;
   private static Map<String, Account> ALL = new HashMap<>();
   private static Account current;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
@@ -49,7 +50,7 @@ public class Account implements Serializable {
       public Result<Void> action() {
         String table = ALL.values().stream()
         .map(x -> String.format(
-          format, x.username, "|", ""+x.score, "|", ""+x.money
+          format, x.username, "|", ""+x.score, "|", ""+x.store.money
         ))
         .collect(Collectors.joining());
         new Message(header+table).action();
@@ -82,6 +83,7 @@ public class Account implements Serializable {
   private Account(String username, String password) {
     this.username = username;
     this.passwordHash = password;
+    this.store = new Store(this);
     ALL.put(username, this);
   }
   

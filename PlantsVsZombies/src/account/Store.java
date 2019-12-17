@@ -1,13 +1,15 @@
 package account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import creature.Dna;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 
-public class Store {
-  //private Account owner;
+public class Store implements Serializable {
+  private static final long serialVersionUID = 5608599943348289833L;
+  // private Account owner;
   private ArrayList<PlantDna> myPlants;
   private ArrayList<ZombieDna> myZombies;
   public int money;
