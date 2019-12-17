@@ -8,6 +8,6 @@ public class Dna {
   }
 
     public String getName() {
-        return null;
+      return name;
     }
 }
