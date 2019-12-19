@@ -1,9 +1,12 @@
 package main;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 import account.Account;
+import creature.being.plant.PlantDna;
 
 public class Program {
 
@@ -29,15 +32,26 @@ public class Program {
     return workingDirectory+file;
   }
   public static void main(String args[]) {
-    scanner = new Scanner(System.in);
-    File mainPath = new File(getBackupPath(""));
-    if (mainPath.exists()){
-      Account.recoverAll();
+    try{
+      scanner = new Scanner(System.in);
+      File mainPath = new File(getBackupPath(""));
+      if (mainPath.exists()){
+        Account.recoverAll();
+      }
+      else {
+        mainPath.mkdirs();
+      }
+      PlantDna.loadFromData(
+        Files.readString(Path.of(
+          Program.class.getResource("resource/plantDna.json").getFile()
+        ))
+      );
+      
+      Pages.loginMenu.action();
+      Account.backupAll();
     }
-    else {
-      mainPath.mkdirs();
+    catch (Exception e) {
+      e.printStackTrace();
     }
-    Pages.loginMenu.action();
-    Account.backupAll();
   }
 }

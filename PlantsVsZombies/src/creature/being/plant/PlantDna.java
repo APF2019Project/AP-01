@@ -1,6 +1,7 @@
 package creature.being.plant;
 
 import creature.being.BeingDna;
+import main.Program;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,36 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import javax.lang.model.element.TypeElement;
+
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 
 public class PlantDna extends BeingDna {
 
   private static List<PlantDna> allDnas;
 
   public static List<PlantDna> getAllDnas() {
-    ArrayList<PlantDna> options = new ArrayList<>();
-      options.add(PlantDna.fromJson("{\"name\":\"tofangi\"}"));
-      options.add(new PlantDna("bombi"));
-      options.add(new PlantDna("khari"));
-      options.add(new PlantDna("gol"));
-    return options;
+    return allDnas;
   }
 
-  public static PlantDna fromJson(String json) {
+  public static void loadFromData(String json) {
     Gson gson = new Gson();
-    return gson.fromJson(json, PlantDna.class);
-  }
-
-  public static void loadFromData() {
-    try (Stream<Path> paths = Files.walk(Paths.get("/home/you/Desktop"))) {
-      paths
-        .filter(Files::isRegularFile)
-        .forEach(System.out::println);
-    }
-    catch(IOException e) {
-      e.printStackTrace();
-      System.exit(0);
-    }
+    allDnas = gson.fromJson(json, new TypeToken<List<PlantDna>>(){}.getType());
   }
 
   private Integer sun = null;
