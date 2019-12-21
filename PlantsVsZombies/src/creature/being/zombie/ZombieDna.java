@@ -7,11 +7,9 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import creature.Dna;
-
-public class ZombieDna extends Dna {
-    public ZombieDna(String name) {
-        super(name);
+public class ZombieDna extends BeingDna {
+    public ZombieDna(String name, int price) {
+        super(name, price);
         // TODO Auto-generated constructor stub
     }
 

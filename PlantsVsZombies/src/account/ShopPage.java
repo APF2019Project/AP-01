@@ -1,11 +1,14 @@
 package account;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import creature.being.BeingDna;
 import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 import main.ConsoleColors;
 import main.Program;
+import page.Message;
 import page.Page;
 import util.Result;
 
@@ -20,7 +23,10 @@ public class ShopPage implements Page<Void> {
       System.out.println("Your money is: "+me.money+"$");
       int i=0;
       ArrayList<BeingDna> buyOptions = new ArrayList<>();
-      for (PlantDna x: PlantDna.getAllDnas()) {
+      List<BeingDna> allDna = new ArrayList<>();
+      allDna.addAll(PlantDna.getAllDnas());
+      allDna.addAll(ZombieDna.getAllDnas());
+      for (BeingDna x: allDna) {
         if (me.haveCard(x))
           System.out.println("X. " + x.getName() + "     sold out");
         else if (me.money < x.getPrice()) {
@@ -34,7 +40,12 @@ public class ShopPage implements Page<Void> {
       }
       String s = Program.scanner.nextLine();
       if (s.equals("e")) return Result.error("end");
-      me.buyCard(buyOptions.get(Integer.parseInt(s)));
+      try{
+        me.buyCard(buyOptions.get(Integer.parseInt(s)));
+      }
+      catch(Exception e) {
+        Message.show("Please enter a valid number");
+      }
     }
   }
 }

@@ -1,14 +1,18 @@
 [
   {
-    "name": "Peashooter"
+    "name": "Peashooter",
+    "price": 0
   },
   {
-    "name": "Snow Pea"
+    "name": "Snow Pea",
+    "price": 20
   },
   {
-    "name": "Cabbage pult"
+    "name": "Cabbage pult",
+    "price": 100
   },
   {
-    "name": "Repeater"
+    "name": "Repeater",
+    "price": 10000
   }
 ]

@@ -35,8 +35,8 @@ public class PlantDna extends BeingDna {
     return sun;
   }
 
-  public PlantDna(String name) {
-    super(name);
+  public PlantDna(String name, int price) {
+    super(name, price);
     // TODO Auto-generated constructor stub
   }
 
