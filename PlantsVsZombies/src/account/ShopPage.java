@@ -11,11 +11,12 @@ import main.Program;
 import page.Message;
 import page.Page;
 import util.Result;
+import util.Unit;
 
-public class ShopPage implements Page<Void> {
+public class ShopPage implements Page<Unit> {
 
   @Override
-  public Result<Void> action() {
+  public Result<Unit> action() {
     Store me = Account.current.store;
     while (true) {
       Program.clearScreen();

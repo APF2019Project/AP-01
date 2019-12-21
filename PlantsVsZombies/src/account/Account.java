@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 import main.Pages;
 import main.Program;
 import page.menu.ActionButton;
+import page.menu.Button;
 import page.ErrorMessage;
+import page.Form;
 import page.menu.LinkButton;
 import page.menu.Menu;
 import page.Message;
@@ -60,11 +62,57 @@ public class Account implements Serializable {
     };
   }
 
-  public static Page<Void> profilePage() {
-    return new Menu<Void>(
-      new LinkButton<>("Delete Account", Pages.notImplemented()),
-      new ActionButton("Show", () -> new Message(current.username).action())
+  public static Page<Unit> profilePage() {
+    return new Menu<Unit>(
+      new Button<Unit>() {
+        @Override
+        public String getLabel() {
+          return "Delete account";
+        }
+
+        @Override
+        public String getHelp() {
+          return "This button will delete your account";
+        }
+
+        @Override
+        public Result<Unit> action() {
+          Account.current.delete();
+          Message.show("your account deleted successfully");
+          return Result.ok();
+        }
+      
+      },
+      new ActionButton<>("change", () -> {
+        (new Form("Enter username", "Enter password"))
+        .action()
+        .flatMap(data -> Account.login(data[0], data[1]))
+        .showError()
+        .map(x -> "Account changed successfully")
+        .show();
+      }),
+      new ActionButton<>("rename", () -> {
+        (new Form("Enter new username"))
+        .action()
+        .flatMap(data -> Account.current.rename(data[0]))
+        .showError()
+        .map(x -> "Your username changed successfully")
+        .show();
+      }),
+      new ActionButton<>("Show", () -> new Message(current.username).action())
     );
+  }
+
+  private Result<Unit> rename(String string) {
+    if (getByUsername(string) != null) return Result.error("invalid username");
+    ALL.remove(username);
+    username = string;
+    ALL.put(username, this);
+    return Result.ok();
+  }
+
+  protected void delete() {
+    ALL.remove(username);
   }
 
   @SuppressWarnings("unchecked")

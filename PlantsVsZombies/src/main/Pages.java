@@ -12,11 +12,12 @@ import page.menu.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
+import util.Unit;
 import creature.being.plant.*;
 import game.GameEngine;
 
 public class Pages {
-  public static final Menu<Void> chooseGameType = new Menu<>(
+  public static final Menu<Unit> chooseGameType = new Menu<Unit>(
     new ActionButton<>("Day", () -> {
       
       new Collection<PlantDna>((ArrayList<PlantDna>)PlantDna.getAllDnas(), 2).action()
@@ -30,10 +31,10 @@ public class Pages {
     new LinkButton<>("PvP", notImplemented())
   );
 
-  public static final Menu<Void> mainMenu = new Menu<>(
-    new LinkButton<>("play", chooseGameType),
-    new LinkButton<>("profile", Account.profilePage()),
-    new LinkButton<>("shop", new ShopPage())
+  public static final Menu<Unit> mainMenu = new Menu<Unit>(
+    new LinkButton<Unit>("play", chooseGameType),
+    new LinkButton<Unit>("profile", Account.profilePage()),
+    new LinkButton<Unit>("shop", new ShopPage())
   );
   public static <U> Page<U> notImplemented(){
     return new Page<U>(){
