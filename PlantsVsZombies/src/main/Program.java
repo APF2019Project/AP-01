@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import account.Account;
 import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 
 public class Program {
 
@@ -46,7 +47,11 @@ public class Program {
           Program.class.getResource("resource/plantDna.json").getFile()
         ))
       );
-      
+      ZombieDna.loadFromData(
+        Files.readString(Path.of(
+          Program.class.getResource("resource/zombieDna.json").getFile()
+        ))
+      );
       Pages.loginMenu.action();
       Account.backupAll();
     }
