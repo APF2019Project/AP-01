@@ -39,6 +39,7 @@ public class Menu<U> implements Page<U> {
       printHelp();
       return action();
     }
+    if (s.equals("")) return action();
     final int k = Integer.valueOf(s);
     if (k < 0 || k >= buttons.size())
       return Result.error("bad param");
