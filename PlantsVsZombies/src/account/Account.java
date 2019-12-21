@@ -99,6 +99,14 @@ public class Account implements Serializable {
         .map(x -> "Your username changed successfully")
         .show();
       }),
+      new ActionButton<>("create", () -> {
+        (new Form("Enter new username", "Enter password"))
+        .action()
+        .flatMap(data -> Account.create(data[0], data[1]))
+        .map((x) -> "Account created successfully")
+        .show()
+        .showError();
+      }),
       new ActionButton<>("Show", () -> new Message(current.username).action())
     );
   }
