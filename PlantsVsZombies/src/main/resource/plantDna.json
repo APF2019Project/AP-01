@@ -1,7 +1,11 @@
 [
   {
     "name": "Peashooter",
-    "price": 0
+    "speed": 5,
+    "powerOfDestruction": 10,
+    "shopPrice": 10,
+    "gamePrice": 10,
+    "firstHealth": 10
   },
   {
     "name": "Snow Pea",

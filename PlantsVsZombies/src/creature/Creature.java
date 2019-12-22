@@ -29,4 +29,9 @@ public class Creature implements Comparable <Creature> {
         return location.compareTo(creature.location);
     }
 
+    @Override
+    public String toString() {
+        return "location = " + location.lineNumber + "   " + location.position + "\n";
+    }
+
 }

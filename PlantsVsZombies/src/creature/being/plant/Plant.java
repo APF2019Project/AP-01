@@ -41,5 +41,11 @@ public class Plant extends Creature {
         this.plantDna = plantDna;
         this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
     }
+
+    @Override
+    public String toString() {
+        return "Plant\ntype = " + plantDna.getName() + "\n" + super.toString() + "remainingAmmunitionCooldown=" + remainingAmmunitionCooldown + "\n remainingCooldown="
+                + remainingCooldown + "\n\n";
+    }
     
 }

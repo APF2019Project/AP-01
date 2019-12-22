@@ -19,4 +19,8 @@ public class Zombie extends Creature {
         this.zombieDna = zombieDna;
     }
     
+    @Override
+    public String toString() {
+        return "Zombie\ntype = " + zombieDna.getName() + "\n" + super.toString() + "\n\n";
+    }
 }
