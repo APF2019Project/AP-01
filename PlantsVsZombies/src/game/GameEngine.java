@@ -105,9 +105,10 @@ public class GameEngine {
         DATABASE.plants.add(plant);
     }
 
+    //TODO handling first position of zombie considering 0-base
     public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
-        Zombie zombie = new Zombie(dna, lineNumber);
+        Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
     }

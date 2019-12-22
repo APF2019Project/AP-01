@@ -1,5 +1,7 @@
 package creature;
 
+//TODO handling final
+
 public class Dna {
   private String name;
   private String image;
