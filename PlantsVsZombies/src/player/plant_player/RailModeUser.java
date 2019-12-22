@@ -1,5 +1,6 @@
 package player.plant_player;
 
+import account.Account;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import exception.InvalidGameMoveException;
@@ -30,7 +31,7 @@ public class RailModeUser implements PlantPlayer {
 
     private void randomPlantDnaAdder() {
         if (rnd.nextInt(3) == 0 && plantDans.size() < 10) {
-            List<PlantDna> allDnas = PlantDna.getAllDnas();
+            List<PlantDna> allDnas = Account.getCurrentUserPlants();
             plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
         }
     }

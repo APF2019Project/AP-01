@@ -2,58 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/041881d005b3e829ba43b379332532273f3e6a14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/8/087cb3cc64b2e6e4ed5b820e55439ce7352b8aa7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/097f5557c295711b500bc7c8251d9c311173cc34" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c8c237c8c8e07d12b26c0141f870cd2275c6a7f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/189ce57d6ffe2697d7f2cd9100993ce0eb5d3ec3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1ff6256c554b963f647d6d06c8d1cc80c53d9b9a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20a7b1124bdcd994485b980e4502c4ecc7487a07" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/2995751aad62b377e09cb46360948a431bb9f50c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32f346f54e7a111ada9cf25fd303df5f0aca347f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/453523299f9a1b90c3fb9a110b49080b6cecdafd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47292cf4e13fd5918b36684c35a2c9d710595eaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f64d804256222b802cc997a2e3043e660622dc0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/60a2ae026e354c4bbd0522ddf0047855487eed88" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/70938b5aa1a5fe652b6edecaf1305bf1d0f3fb14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74901aa492bf1f75a227817465553bc4c75741ee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75d0b7571a57f3a49afcfff4bd159d7cc41a8356" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90ea61836fdab8a485f0278d46ef4f43944fa3fc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96c1f2adebcaa6f1ed885415e70c6ea77e593722" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b2eaa53494cc37a2bf37dd26d784247a006e79d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fde3d71c924a4dd2ddd0e9dce42f487385bc9e9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8de755da33f80b51bf0cf3615d47019fec2ed48" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ade9919684ecb8232fce00de8bf0dff9d58a6625" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/1/b1c805d585d9fdb8b4f0ddde2fa0f091115ad4ee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b43de943908ef115d69c95ec3064ff11b61c6aaa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7d54307e64bd454c1b809cb6cedf3706b3bef67" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc5b7b5ce17ff2b1b8511e8a51012da571c9ba27" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6bb7065c8e23d367add1e795b65fc707fc16077" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8e86cf355ab09d483dd7f73b96cfa44f24b0faf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebce71e9949b31457c094f91f377c18dd40ea2c8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f54277d181d594b5b1abef2cf7d9236c19df87e6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f89d99b76676e7c4f9b1345dff8f7c0dd4e20500" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/b/fbaf5863f694732883961b6e3057c2aeab4104a5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc6773c9b30a1c1f0d25c67924ca28fc9fd02636" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlantsVsZombies.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantsVsZombies.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Pages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Pages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/PlantPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -275,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576590929683</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="RailModeUser added">
+      <created>1577013074099</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1577013074099</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -366,7 +324,8 @@
     <MESSAGE value="error solved again =)" />
     <MESSAGE value="gameEngine v0.1 ready =)" />
     <MESSAGE value="gameEngine v0.1.1 ready =)" />
-    <option name="LAST_COMMIT_MESSAGE" value="gameEngine v0.1.1 ready =)" />
+    <MESSAGE value="RailModeUser added" />
+    <option name="LAST_COMMIT_MESSAGE" value="RailModeUser added" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
