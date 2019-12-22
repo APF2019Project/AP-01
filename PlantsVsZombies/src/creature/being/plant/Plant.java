@@ -1,19 +1,42 @@
 package creature.being.plant;
 
 import creature.Location;
+import game.GameEngine;
+import creature.being.zombie.Zombie;
+import exception.EndGameException;
 import creature.Creature;
+import java.util.*;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
     private int remainingCooldown = 0;
     private int remainingAmmunitionCooldown;
+    //unuse but good :)
 
+    public void reduceHealth(int damageAmount) {
+        health -= damageAmount;
+        if (health <= 0) gameEngine.killPlant(this);
+    }
     public void createAmmunition() {
 
+        if (plantDna.isExplosive()) gameEngine.killPlant(this);
     }
 
-    public void nextTurn() {
+    public void damage(Zombie zombie) {
+        if (plantDna.isExplosive()) {
+            createAmmunition();
+            return;
+        }
+        zombie.reduceHealth(plantDna.getPowerOfDestruction());
+    }
+
+    @Override
+    public void nextTurn() throws EndGameException {
         super.nextTurn();
+        if (remainingAmmunitionCooldown == 0) {
+            remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
+            createAmmunition();
+        }
     }
 
     public PlantDna getPlantDna() {

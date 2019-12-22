@@ -1,8 +1,12 @@
 package creature;
+import exception.EndGameException;
+import game.GameEngine;
 
 public class Creature implements Comparable <Creature> {
-    private Location location;
+    protected Location location;
+    protected GameEngine gameEngine;
     protected final int id;
+    protected int health;
 
     private static int counter;
 
@@ -14,13 +18,14 @@ public class Creature implements Comparable <Creature> {
         this.location = location;
     }
     
-    public void nextTurn() {
+    public void nextTurn() throws EndGameException {
 
     }
 
     public Creature(Location location) {
         this.location = location;
         this.id = counter++;
+        gameEngine = GameEngine.getCurrentGameEngine();
     }
 
     @Override

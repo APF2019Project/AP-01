@@ -19,10 +19,11 @@ public class PlantDna extends BeingDna {
     allDnas = gson.fromJson(json, new TypeToken<List<PlantDna>>(){}.getType());
   }
 
-  private AmmunitionDna ammunitionDna;
-  private int sunIncome;
-  private int cooldown;
-  private int canContain;
+  private final AmmunitionDna ammunitionDna;
+  private final int sunIncome;
+  private final int cooldown;
+  private final int canContain;
+  private final boolean Explosive;
 
   public static void setAllDnas(List<PlantDna> allDnas) {
     PlantDna.allDnas = allDnas;
@@ -30,10 +31,6 @@ public class PlantDna extends BeingDna {
 
   public AmmunitionDna getAmmunitionDna() {
     return ammunitionDna;
-  }
-
-  public void setAmmunitionDna(AmmunitionDna ammunitionDna) {
-    this.ammunitionDna = ammunitionDna;
   }
 
   public int getSunIncome() {
@@ -48,13 +45,19 @@ public class PlantDna extends BeingDna {
     return canContain;
   }
 
+  public boolean isExplosive() {
+    return Explosive;
+  }
+
   public PlantDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
-      int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown, int canContain) {
+      int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown, int canContain, boolean explosive) {
     super(name, image, speed, powerOfDestruction, shopPrice, gamePrice, firstHealth);
     this.ammunitionDna = ammunitionDna;
     this.sunIncome = sunIncome;
     this.cooldown = cooldown;
     this.canContain = canContain;
+    Explosive = explosive;
   }
+
 
 }
