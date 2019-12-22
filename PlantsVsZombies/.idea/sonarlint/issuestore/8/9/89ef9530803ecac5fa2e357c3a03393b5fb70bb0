@@ -1,0 +1,11 @@
+
+Lsquid:S1068"0Remove this unused "passwordSalt" private field.(‚”±äüÿÿÿÿ
+esquid:S3008"NRename this field "ALL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¤é
+qsquid:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(šÍîÑşÿÿÿÿ8Ã‡Æ†ğ-
+ssquid:S2095 "PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(ˆÔ§ğşÿÿÿÿ8Ã‡Æ†ğ-
+psquid:S2095H"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(·‰¹Èüÿÿÿÿ8Ã‡Æ†ğ-
+rsquid:S2095I"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(¾Å¨Îûÿÿÿÿ8Ã‡Æ†ğ-
+Fsquid:S1604/"(Make this anonymous inner class a lambda(«´ˆÀ8Ã‡Æ†ğ-
+Asquid:S1659"#Declare "money" on a separate line.(õÜ†8Ã‡Æ†ğ-
+csquid:S2118!"@Make the "java.util.Map" class "Serializable" or don't write it.(€½¹ªûÿÿÿÿ8Ã‡Æ†ğ-
+|squid:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(äĞöáıÿÿÿÿ8Ã‡Æ†ğ-

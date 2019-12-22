@@ -12,7 +12,9 @@ import line.LineState;
 import page.Message;
 import player.plant_player.DayModeUser;
 import player.plant_player.PlantPlayer;
+import player.plant_player.RailModeUser;
 import player.zombie_player.DayModeAI;
+import player.zombie_player.RailModeAI;
 import player.zombie_player.ZombiePlayer;
 
 import java.util.*;
@@ -41,6 +43,23 @@ public class GameEngine {
             lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.DAY, new DayModeUser(hand), new DayModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
+
+
+    public static GameResult newRailGame() {
+        Message.show("The game will start soonly here.");
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.RAIL, new RailModeUser(), new RailModeAI(), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();

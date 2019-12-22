@@ -1,0 +1,10 @@
+
+Csquid:S16029",Remove useless curly braces around statement(÷ËŸ
+vsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÆÍÃ{8¿¡³éò-
+]squid:S1118":Add a private constructor to hide the implicit public one.(Î†‰šÿÿÿÿÿ8èÖóğ-
+Jsquid:S16021",Remove useless curly braces around statement(äÚ·ß8èÖóğ-
+|squid:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ŒÊ“³şÿÿÿÿ8¿¡³éò-
+Msquid:S16115"/Remove the parentheses around the "x" parameter(ŒµäŸ8èÖóğ-
+Fsquid:S1604'"(Make this anonymous inner class a lambda(Ãƒ“†8èÖóğ-
+wsquid:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(åú’Ó8èÖóğ-
+Jsquid:S1602",Remove useless curly braces around statement(ºš£8¿¡³éò-
