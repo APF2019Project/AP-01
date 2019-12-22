@@ -45,6 +45,7 @@ public class RailModeUser implements PlantPlayer {
         Result<Unit> x = new Menu<>(
                 new ActionButton<>("List", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
+                new ActionButton<>("Record", this::showRecord),
                 new ActionButton<>("Plant", this::createPlant),
                 new ActionButton<>("Remove", this::removePlant),
                 new ActionButton<>("Select", this::select),
@@ -65,6 +66,10 @@ public class RailModeUser implements PlantPlayer {
                 return;
             }
         Message.show("invalid name !");
+    }
+
+    private void showRecord() {
+        Message.show("You killed "+gameEngine.getDeadZombies().size()+" zombies.");
     }
 
     private void removePlant() {
