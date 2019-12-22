@@ -2,6 +2,7 @@ package player.plant_player;
 
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
+import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import page.Form;
@@ -10,6 +11,7 @@ import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Result;
+import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,7 @@ public class DayModeUser implements PlantPlayer {
     }
 
     @Override
-    public void nextTurn() {
+    public void nextTurn() throws EndGameException {
         selected = null;
         randomSunAdder();
         for (int i = 0; i < coolDownTimeLeft.size(); i++) {
@@ -47,7 +49,7 @@ public class DayModeUser implements PlantPlayer {
             if (coolDownTimeLeft.get(i) < 0)
                 coolDownTimeLeft.set(i, 0);
         }
-        new Menu<>(
+        Result<Unit> x = new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("Plant", this::createPlant),
@@ -55,6 +57,7 @@ public class DayModeUser implements PlantPlayer {
                 new ActionButton<>("Select", this::select),
                 new ExitButton("End Turn")
         ).action();
+        if (x.isError()) throw new EndGameException();
     }
 
     private void select() {

@@ -3,6 +3,7 @@ package util;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import page.Message;
 
@@ -122,5 +123,15 @@ public class Result<T> {
   public Result<T> showError() {
     if (isError()) new Message("Error: " + getError()).action();
     return this;
+  }
+
+  /**
+   * lift a supplier with Result monad
+   * @param <U>
+   * @param supplier
+   * @return lifted supplier
+   */
+  public static <U> Supplier<Result<U>> liftSupplier(Supplier<U> supplier) {
+    return () -> Result.ok(supplier.get());
   }
 }

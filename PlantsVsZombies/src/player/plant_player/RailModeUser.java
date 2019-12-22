@@ -3,14 +3,17 @@ package player.plant_player;
 import account.Account;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
+import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
+import game.GameResult;
 import page.Form;
 import page.Message;
 import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Result;
+import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +40,10 @@ public class RailModeUser implements PlantPlayer {
     }
 
     @Override
-    public void nextTurn() {
+    public void nextTurn() throws EndGameException {
         selected = null;
         randomPlantDnaAdder();
-        new Menu<>(
+        Result<Unit> x = new Menu<>(
                 new ActionButton<>("List", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("Plant", this::createPlant),
@@ -48,6 +51,7 @@ public class RailModeUser implements PlantPlayer {
                 new ActionButton<>("Select", this::select),
                 new ExitButton("End Turn")
         ).action();
+        if (x.isError()) throw new EndGameException();
     }
 
     private void select() {

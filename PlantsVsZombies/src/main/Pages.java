@@ -4,33 +4,67 @@ import account.Account;
 import account.ShopPage;
 import creature.being.plant.PlantDna;
 import game.GameEngine;
+import game.GameResult;
 import page.Collection;
 import page.Form;
 import page.Message;
 import page.Page;
 import page.menu.ActionButton;
+import page.menu.Button;
 import page.menu.LinkButton;
 import page.menu.Menu;
 import util.Result;
 import util.Unit;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
+
+class DataButton<U> implements Button<U> {
+
+    private final String modeName;
+    private final Supplier<Result<U>> gameSupplier;
+
+    @Override
+    public String getLabel() {
+        return modeName;
+    }
+
+    @Override
+    public String getHelp() {
+        return "This button will create a game of type "+modeName;
+    }
+
+    @Override
+    public Result<U> action() {
+        return gameSupplier.get();
+    }
+
+    public DataButton(String modeName, Supplier<Result<U>> gameSupplier) {
+        this.modeName = modeName;
+        this.gameSupplier = gameSupplier;
+    }
+    
+}
 
 public class Pages {
-    public static final Menu<Unit> chooseGameType = new Menu<Unit>(
-            new ActionButton<>("Day", () -> {
-
-                new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
-                        .consume(GameEngine::newDayGame);
+    public static final Menu<GameResult> chooseGameType = new Menu<GameResult>(
+            new DataButton<>("Day", () -> {
+                return new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
+                        .map(GameEngine::newDayGame);
             }),
             new LinkButton<>("Water", notImplemented()),
-            new ActionButton<>("Rail", GameEngine::newRailGame),
+            new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
             new LinkButton<>("Zombie", notImplemented()),
             new LinkButton<>("PvP", notImplemented())
     );
 
     public static final Menu<Unit> mainMenu = new Menu<Unit>(
-            new LinkButton<Unit>("play", chooseGameType),
+            new ActionButton<Unit>("play", () -> {
+                Result<GameResult> x = chooseGameType.action();
+                if (!x.isError()) {
+                    Message.show("Your game finished with:\n"+x.getValue());
+                }
+            }),
             new LinkButton<Unit>("profile", Account.profilePage()),
             new LinkButton<Unit>("shop", new ShopPage())
     );
