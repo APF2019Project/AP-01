@@ -1,0 +1,108 @@
+package player.plant_player;
+
+import creature.being.plant.Plant;
+import creature.being.plant.PlantDna;
+import exception.InvalidGameMoveException;
+import game.GameEngine;
+import page.Form;
+import page.Message;
+import page.menu.ActionButton;
+import page.menu.ExitButton;
+import page.menu.Menu;
+import util.Result;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class RailModeUser implements PlantPlayer {
+
+    private GameEngine gameEngine;
+    private Random rnd;
+    private List<PlantDna> plantDans;
+    private Integer selected;
+
+    public RailModeUser() {
+        gameEngine = GameEngine.getCurrentGameEngine();
+        rnd = gameEngine.getRandom();
+        this.plantDans = new ArrayList<>();
+    }
+
+    private void randomPlantDnaAdder() {
+        if (rnd.nextInt(3) == 0 && plantDans.size() < 10) {
+            List<PlantDna> allDnas = PlantDna.getAllDnas();
+            plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
+        }
+    }
+
+    @Override
+    public void nextTurn() {
+        selected = null;
+        randomPlantDnaAdder();
+        new Menu<>(
+                new ActionButton<>("List", this::showHand),
+                new ActionButton<>("Show lawn", this::showLawn),
+                new ActionButton<>("Plant", this::createPlant),
+                new ActionButton<>("Remove", this::removePlant),
+                new ActionButton<>("Select", this::select),
+                new ExitButton("End Turn")
+        ).action();
+    }
+
+    private void select() {
+        Result<String[]> result = new Form("Enter name").action();
+        if (result == null || result.getValue().length == 0) {
+            Message.show("Enter the name :/!");
+            return;
+        }
+        for (int i = 0; i < plantDans.size(); i++)
+            if (plantDans.get(i).getName().equals(result.getValue()[0])) {
+                selected = i;
+                return;
+            }
+        Message.show("invalid name !");
+    }
+
+    private void removePlant() {
+        Result<String[]> result = new Form("Enter X", "Enter Y").action();
+        try {
+            Integer x = Integer.valueOf(result.getValue()[0]);
+            Integer y = Integer.valueOf(result.getValue()[1]);
+            Plant plant = gameEngine.getPlant(x, y);
+            if (plant == null) throw new InvalidGameMoveException("there is no plant in that location!");
+            gameEngine.killPlant(plant);
+        } catch (InvalidGameMoveException e) {
+            Message.show(e.getMessage());
+        }
+    }
+
+    private void createPlant() {
+        Result<String[]> result = new Form("Enter X", "Enter Y").action();
+        try {
+            if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
+            Integer x = Integer.valueOf(result.getValue()[0]);
+            Integer y = Integer.valueOf(result.getValue()[1]);
+            gameEngine.newPlant(plantDans.get(selected), x, y);
+            plantDans.remove((int) selected);
+        } catch (InvalidGameMoveException e) {
+            Message.show(e.getMessage());
+        }
+        selected = null;
+    }
+
+    private void showLawn() {
+        StringBuilder stringBuilder = new StringBuilder();
+        gameEngine.getZombies().forEach(zombie -> stringBuilder.append(zombie.toString()).append('\n'));
+        gameEngine.getPlants().forEach(plant -> stringBuilder.append(plant.toString()).append('\n'));
+        Message.show(stringBuilder.toString());
+    }
+
+    @Override
+    public void showHand() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (PlantDna plantDan : plantDans) {
+            stringBuilder.append(plantDan.toString()).append('\n');
+        }
+        Message.show(stringBuilder.toString());
+    }
+}
