@@ -1,18 +1,45 @@
 package creature.being.plant;
 
 import creature.Location;
+import creature.Creature;
 
-public class Plant implements Comparable {
-    public Plant(PlantDna dna, Integer lineNumber, Integer position) {
+public class Plant extends Creature {
+    private final PlantDna plantDna;
+    private int remainingCooldown = 0;
+    private int remainingAmmunitionCooldown;
+
+    public void createAmmunition() {
 
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+    public void nextTurn() {
+        super.nextTurn();
     }
 
-    public Location getLocation() {
-        return null;
+    public PlantDna getPlantDna() {
+        return plantDna;
     }
+
+    public int getRemainingCooldown() {
+        return remainingCooldown;
+    }
+
+    public void setRemainingCooldown(int remainingCooldown) {
+        this.remainingCooldown = remainingCooldown;
+    }
+
+    public int getRemainingAmmunitionCooldown() {
+        return remainingAmmunitionCooldown;
+    }
+
+    public void setRemainingAmmunitionCooldown(int remainingAmmunitionCooldown) {
+        this.remainingAmmunitionCooldown = remainingAmmunitionCooldown;
+    }
+
+    public Plant(PlantDna plantDna, int lineNumber, int position) {
+        super(new Location(lineNumber, position));
+        this.plantDna = plantDna;
+        this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
+    }
+    
 }
