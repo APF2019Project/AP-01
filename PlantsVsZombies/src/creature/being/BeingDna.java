@@ -4,16 +4,26 @@ import creature.Dna;
 
 public class BeingDna extends Dna {
 
-  protected int price;
+  private int shopPrice;
+  private int gamePrice;
+  private int firstHealth;
 
-  public int getPrice() {
-    return price;
+  public int getShopPrice() {
+    return shopPrice;
+  }
+  public int getGamePrice() {
+    return gamePrice;
+  }
+  public int getFirstHealth() {
+    return firstHealth;
   }
 
-  public BeingDna(String name, int price) {
-    super(name);
-    this.price = price;
-    // TODO Auto-generated constructor stub
+  public BeingDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
+      int firstHealth) {
+    super(name, image, speed, powerOfDestruction);
+    this.shopPrice = shopPrice;
+    this.gamePrice = gamePrice;
+    this.firstHealth = firstHealth;
   }
 
 }

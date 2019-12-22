@@ -1,17 +1,8 @@
 package creature.being.plant;
 
+import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
-import main.Program;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
-import javax.lang.model.element.TypeElement;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -19,28 +10,51 @@ import com.google.gson.reflect.TypeToken;
 public class PlantDna extends BeingDna {
 
   private static List<PlantDna> allDnas;
-
-  public static List<PlantDna> getAllDnas() {
+  
+  public static List <PlantDna> getAllDnas() {
     return allDnas;
   }
-
   public static void loadFromData(String json) {
     Gson gson = new Gson();
     allDnas = gson.fromJson(json, new TypeToken<List<PlantDna>>(){}.getType());
   }
 
-  private Integer sun = null;
+  private AmmunitionDna ammunitionDna;
+  private int sunIncome;
+  private int cooldown;
+  private int canContain;
 
-  public Integer getSun() {
-    return sun;
+  public static void setAllDnas(List<PlantDna> allDnas) {
+    PlantDna.allDnas = allDnas;
   }
 
-  public PlantDna(String name, int price) {
-    super(name, price);
-    // TODO Auto-generated constructor stub
+  public AmmunitionDna getAmmunitionDna() {
+    return ammunitionDna;
   }
 
-    public Integer getCoolDown() {
-        return null;
-    }
+  public void setAmmunitionDna(AmmunitionDna ammunitionDna) {
+    this.ammunitionDna = ammunitionDna;
+  }
+
+  public int getSunIncome() {
+    return sunIncome;
+  }
+
+  public int getCooldown() {
+    return cooldown;
+  }
+
+  public int getCanContain() {
+    return canContain;
+  }
+
+  public PlantDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
+      int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown, int canContain) {
+    super(name, image, speed, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+    this.ammunitionDna = ammunitionDna;
+    this.sunIncome = sunIncome;
+    this.cooldown = cooldown;
+    this.canContain = canContain;
+  }
+
 }

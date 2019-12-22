@@ -30,11 +30,11 @@ public class ShopPage implements Page<Unit> {
       for (BeingDna x: allDna) {
         if (me.haveCard(x))
           System.out.println("X. " + x.getName() + "     sold out");
-        else if (me.money < x.getPrice()) {
-          System.out.println("X. " + x.getName() + "     " + ConsoleColors.red(x.getPrice()+"$"));
+        else if (me.money < x.getShopPrice()) {
+          System.out.println("X. " + x.getName() + "     " + ConsoleColors.red(x.getShopPrice()+"$"));
         } 
         else {
-          System.out.println(i + ". " + x.getName() + "     " + x.getPrice()+"$");
+          System.out.println(i + ". " + x.getName() + "     " + x.getShopPrice()+"$");
           buyOptions.add(x);
           i++;  
         }

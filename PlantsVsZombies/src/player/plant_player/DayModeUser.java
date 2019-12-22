@@ -69,7 +69,7 @@ public class DayModeUser implements PlantPlayer {
                     Message.show("Cant select this one, cool down time left !");
                     return;
                 }
-                if (plantDans.get(i).getSun() > sun) {
+                if (plantDans.get(i).getGamePrice() > sun) {
                     Message.show("Cant select this one, not enough sun!");
                     return;
                 }
@@ -99,7 +99,7 @@ public class DayModeUser implements PlantPlayer {
             Integer x = Integer.valueOf(result.getValue()[0]);
             Integer y = Integer.valueOf(result.getValue()[1]);
             gameEngine.newPlant(plantDans.get(selected), x, y);
-            coolDownTimeLeft.set(selected, plantDans.get(selected).getCoolDown());
+            coolDownTimeLeft.set(selected, plantDans.get(selected).getCooldown());
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
         }

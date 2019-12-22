@@ -25,7 +25,7 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
       int choosenCount = IntStream.range(0, n).map(x -> selected[x] ? 1 : 0).sum();
       System.out.println("You choosed "+ConsoleColors.red(choosenCount+"/"+count));
       for (int i=0; i<n; i++) {
-        System.out.println(i+". "+(selected[i] ? "X" : "O")+" "+options.get(i).name);
+        System.out.println(i+". "+(selected[i] ? "X" : "O")+" "+options.get(i).getName());
       }
       String input = Program.scanner.nextLine();
       if (input.equals("c")) {

@@ -18,7 +18,7 @@ public class Store implements Serializable {
   public int money = 1000;
   public void buyCard(BeingDna card) {
     myCard.add(card.getName());
-    money -= card.getPrice();
+    money -= card.getShopPrice();
   }
 
   public boolean haveCard(Dna card) {
@@ -30,7 +30,7 @@ public class Store implements Serializable {
     allDna.addAll(PlantDna.getAllDnas());
     allDna.addAll(ZombieDna.getAllDnas());
     for (BeingDna x: allDna) {
-      if (x.getPrice() == 0) myCard.add(x.name);
+      if (x.getShopPrice() == 0) myCard.add(x.getName());
     }
   }
 }
