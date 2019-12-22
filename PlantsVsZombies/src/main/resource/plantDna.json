@@ -5,18 +5,30 @@
     "powerOfDestruction": 10,
     "shopPrice": 10,
     "gamePrice": 10,
-    "firstHealth": 10
+    "firstHealth": 10,
+    "ammunitionDna": {
+      "powerOfDestruction": 0
+    }
   },
   {
     "name": "Snow Pea",
-    "price": 20
+    "price": 20,
+    "ammunitionDna": {
+      "powerOfDestruction": 0
+    }
   },
   {
     "name": "Cabbage pult",
-    "price": 100
+    "price": 100,
+    "ammunitionDna": {
+      "powerOfDestruction": 0
+    }
   },
   {
     "name": "Repeater",
-    "shopPrice": 10000
+    "shopPrice": 10000,
+    "ammunitionDna": {
+      "powerOfDestruction": 0
+    }
   }
 ]
