@@ -6,26 +6,39 @@ import line.Line;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class PlayGroundData {
 
-    public final Integer width;
-    public final Integer length;
+    final Integer width;
+    final Integer length;
 
-    public TreeSet<Plant> plants = new TreeSet<>();
-    public TreeSet<Zombie> zombies = new TreeSet<>();
-    public Line[] lines;
+    SortedSet<Plant> plants = new TreeSet<>();
+    SortedSet<Zombie> zombies = new TreeSet<>();
+    List<Line> lines;
 
-    public List<TreeSet<Plant>> plantsPerLine;
-    public List<TreeSet<Zombie>> zombiesPerLine;
+    List<TreeSet<Plant>> plantsPerLine;
+    List<TreeSet<Zombie>> zombiesPerLine;
 
-    public PlayGroundData(Integer length, Line[] lines) {
-        this.width = lines.length;
+    SortedSet<Plant> deadPlants = new TreeSet<>();
+    SortedSet<Zombie> deadZombies = new TreeSet<>();
+    SortedSet<Plant> deadPlantsLastTurn = new TreeSet<>();
+    SortedSet<Zombie> deadZombiesLastTurn = new TreeSet<>();
+
+    Integer zombiesKilled = 0;
+    Integer plantsKilled = 0;
+
+    PlayGroundData(Integer length, List<Line> lines) {
+        this.width = lines.size();
         this.length = length;
         this.lines = lines;
-        plantsPerLine = new ArrayList<>(width);
-        zombiesPerLine = new ArrayList<>(width);
+        plantsPerLine = new ArrayList<>();
+        zombiesPerLine = new ArrayList<>();
+        for (int i = 0; i < width; i++) {
+            plantsPerLine.add(new TreeSet<>());
+            zombiesPerLine.add(new TreeSet<>());
+        }
     }
 
 

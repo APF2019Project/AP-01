@@ -5,6 +5,13 @@
       "name": "CodeLens (Launch) - Program",
       "request": "launch",
       "mainClass": "main.Program",
+      "projectName": "pvz"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Program",
+      "request": "launch",
+      "mainClass": "main.Program",
       "projectName": "AP-01_862df033"
     },
     {

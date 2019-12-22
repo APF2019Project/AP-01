@@ -7,20 +7,14 @@ B
 src/util/Unit.java,7/5/75d0b7571a57f3a49afcfff4bd159d7cc41a8356
 B
 src/util/Task.java,6/0/60a2ae026e354c4bbd0522ddf0047855487eed88
-J
-src/page/ActionButton.java,7/5/75228f2ed59afdaf219481555604f5b6c6e3501b
 E
 src/main/Program.java,9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3
 H
 src/account/Account.java,8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0
-B
-src/page/Menu.java,a/e/ae866161c8edcda05c8c3d4c0d8ff6df48a7d2a8
 D
 src/util/Result.java,1/8/189ce57d6ffe2697d7f2cd9100993ce0eb5d3ec3
 C
 src/main/Pages.java,3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae
-D
-src/page/Button.java,9/0/90142c2c910c5fb5e754867d4c82444cefab8263
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 E
@@ -85,5 +79,15 @@ H
 src/game/GameResult.java,2/9/2995751aad62b377e09cb46360948a431bb9f50c
 L
 src/game/PlayGroundData.java,1/f/1ff6256c554b963f647d6d06c8d1cc80c53d9b9a
-G
-src/game/GamePages.java,f/c/fcb21895bcaf579612dd4dc242db8a7109009309
+K
+src/main/ConsoleColors.java,0/8/087cb3cc64b2e6e4ed5b820e55439ce7352b8aa7
+S
+#src/exception/EndGameException.java,a/d/ade9919684ecb8232fce00de8bf0dff9d58a6625
+I
+src/exception/Winner.java,f/c/fc6773c9b30a1c1f0d25c67924ca28fc9fd02636
+O
+src/page/menu/ActionButton.java,d/6/d6bb7065c8e23d367add1e795b65fc707fc16077
+E
+src/game/GameDna.java,0/9/097f5557c295711b500bc7c8251d9c311173cc34
+F
+src/account/Store.java,0/c/0c8c237c8c8e07d12b26c0141f870cd2275c6a7f

@@ -1,5 +1,6 @@
-package page;
+package page.menu;
 
+import page.Page;
 import util.Result;
 
 public class LinkButton<U> implements Button<U> {

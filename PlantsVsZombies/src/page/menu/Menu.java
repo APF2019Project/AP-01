@@ -1,10 +1,12 @@
-package page;
+package page.menu;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import main.Program;
+import page.Help;
+import page.Page;
 import util.Result;
 
 /**
@@ -43,6 +45,7 @@ public class Menu<U> implements Page<U> {
       printHelp();
       return action();
     }
+    if (s.equals("")) return action();
     final int k = Integer.valueOf(s);
     if (k < 0 || k >= buttons.size())
       return Result.error("bad param");

@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 
 import main.Pages;
 import main.Program;
-import page.ActionButton;
+import page.menu.ActionButton;
+import page.menu.Button;
 import page.ErrorMessage;
-import page.LinkButton;
-import page.Menu;
+import page.Form;
+import page.menu.LinkButton;
+import page.menu.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
@@ -21,9 +23,10 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   //private String passwordSalt;
-  private int score, money;
+  private int score;
+  Store store;
   private static Map<String, Account> ALL = new HashMap<>();
-  private static Account current;
+  static Account current;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
   public static void backupAll() {
     try {
@@ -49,7 +52,7 @@ public class Account implements Serializable {
       public Result<Void> action() {
         String table = ALL.values().stream()
         .map(x -> String.format(
-          format, x.username, "|", ""+x.score, "|", ""+x.money
+          format, x.username, "|", ""+x.score, "|", ""+x.store.money
         ))
         .collect(Collectors.joining());
         new Message(header+table).action();
@@ -59,11 +62,65 @@ public class Account implements Serializable {
     };
   }
 
-  public static Page<Void> profilePage() {
-    return new Menu<Void>(
-      new LinkButton<>("Delete Account", Pages.notImplemented()),
-      new ActionButton("Show", () -> new Message(current.username).action())
+  public static Page<Unit> profilePage() {
+    return new Menu<Unit>(
+      new Button<Unit>() {
+        @Override
+        public String getLabel() {
+          return "Delete account";
+        }
+
+        @Override
+        public String getHelp() {
+          return "This button will delete your account";
+        }
+
+        @Override
+        public Result<Unit> action() {
+          Account.current.delete();
+          Message.show("your account deleted successfully");
+          return Result.ok();
+        }
+      
+      },
+      new ActionButton<>("change", () -> {
+        (new Form("Enter username", "Enter password"))
+        .action()
+        .flatMap(data -> Account.login(data[0], data[1]))
+        .showError()
+        .map(x -> "Account changed successfully")
+        .show();
+      }),
+      new ActionButton<>("rename", () -> {
+        (new Form("Enter new username"))
+        .action()
+        .flatMap(data -> Account.current.rename(data[0]))
+        .showError()
+        .map(x -> "Your username changed successfully")
+        .show();
+      }),
+      new ActionButton<>("create", () -> {
+        (new Form("Enter new username", "Enter password"))
+        .action()
+        .flatMap(data -> Account.create(data[0], data[1]))
+        .map((x) -> "Account created successfully")
+        .show()
+        .showError();
+      }),
+      new ActionButton<>("Show", () -> new Message(current.username).action())
     );
+  }
+
+  private Result<Unit> rename(String string) {
+    if (getByUsername(string) != null) return Result.error("invalid username");
+    ALL.remove(username);
+    username = string;
+    ALL.put(username, this);
+    return Result.ok();
+  }
+
+  protected void delete() {
+    ALL.remove(username);
   }
 
   @SuppressWarnings("unchecked")
@@ -82,6 +139,7 @@ public class Account implements Serializable {
   private Account(String username, String password) {
     this.username = username;
     this.passwordHash = password;
+    this.store = new Store(this);
     ALL.put(username, this);
   }
   

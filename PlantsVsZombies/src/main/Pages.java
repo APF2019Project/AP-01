@@ -1,24 +1,28 @@
 package main;
 
+import java.util.ArrayList;
+
 import account.Account;
-import page.ActionButton;
+import account.ShopPage;
+import page.menu.ActionButton;
 import page.Collection;
 import page.Form;
-import page.LinkButton;
-import page.Menu;
+import page.menu.LinkButton;
+import page.menu.Menu;
 import page.Message;
 import page.Page;
 import util.Result;
+import util.Unit;
 import creature.being.plant.*;
-import game.GamePages;
+import game.GameEngine;
 
 public class Pages {
-  public static final Menu<Void> chooseGameType = new Menu<>(
+  public static final Menu<Unit> chooseGameType = new Menu<Unit>(
     new ActionButton<>("Day", () -> {
-      new Collection<PlantDna>(new PlantDna[]{}).action()
-      .flatMap(hand -> {
-        Message.show("your hand is: ");
-        return GamePages.dayPage(hand).action();
+      
+      new Collection<PlantDna>((ArrayList<PlantDna>)PlantDna.getAllDnas(), 2).action()
+      .consume(hand -> {
+        GameEngine.newDayGame(hand);
       });
     }),
     new LinkButton<>("Water", notImplemented()),
@@ -27,10 +31,10 @@ public class Pages {
     new LinkButton<>("PvP", notImplemented())
   );
 
-  public static final Menu<Void> mainMenu = new Menu<>(
-    new LinkButton<>("play", chooseGameType),
-    new LinkButton<>("profile", Account.profilePage()),
-    new LinkButton<>("shop", notImplemented())
+  public static final Menu<Unit> mainMenu = new Menu<Unit>(
+    new LinkButton<Unit>("play", chooseGameType),
+    new LinkButton<Unit>("profile", Account.profilePage()),
+    new LinkButton<Unit>("shop", new ShopPage())
   );
   public static <U> Page<U> notImplemented(){
     return new Page<U>(){
@@ -42,7 +46,7 @@ public class Pages {
     };
   }
   public static final Menu<Void> loginMenu = new Menu<Void>(
-    new ActionButton("create account", ()->{
+    new ActionButton<Void>("create account", ()->{
       (new Form("Enter new username", "Enter password"))
       .action()
       .flatMap(data -> Account.create(data[0], data[1]))
@@ -50,7 +54,7 @@ public class Pages {
       .show()
       .showError();
     }),
-    new ActionButton("login", ()->{
+    new ActionButton<Void>("login", ()->{
       (new Form("Enter username", "Enter password"))
       .action()
       .flatMap(data -> Account.login(data[0], data[1]))
