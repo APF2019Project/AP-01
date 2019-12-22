@@ -198,6 +198,7 @@ public class GameEngine {
     }
 
     public void startZombieQueue() {
+        // TODO: poshte ham naran !
         for (int i = 0; i < DATABASE.width; i++)
             for (ZombieDna dna : zombieQueue.get(i))
                 try {
