@@ -5,7 +5,6 @@ import creature.Creature;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
-import java.util.*;
 
 public class Zombie extends Creature {
     private final ZombieDna zombieDna;
