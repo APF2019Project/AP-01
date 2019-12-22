@@ -13,7 +13,7 @@ import util.Result;
 import java.util.List;
 import java.util.Random;
 
-public class ZombieModeUser implements zombiePlayer {
+public class ZombieModeUser implements ZombiePlayer {
 
     private GameEngine gameEngine;
     private Integer coin = 50;
@@ -23,7 +23,7 @@ public class ZombieModeUser implements zombiePlayer {
     public ZombieModeUser(List<ZombieDna> zombieDnas) {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
-        this.zombieDans = zombieDnas;
+        this.zombieDnas = zombieDnas;
     }
 
     @Override
@@ -52,6 +52,7 @@ public class ZombieModeUser implements zombiePlayer {
                 }
                 try {
                     gameEngine.putZombie(zombieDna, Integer.valueOf(result.getValue()[1]));
+                    coin -= zombieDna.getFirstHealth() * 10;
                 } catch (InvalidGameMoveException e) {
                     Message.show(e.getMessage());
                 }
