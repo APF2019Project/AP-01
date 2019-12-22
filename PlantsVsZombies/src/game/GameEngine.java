@@ -115,6 +115,9 @@ public class GameEngine {
                 return plant;
         return null;
     }
+    public Plant getPlant(Location location) {
+        return getPlant(location.lineNumber, location.position);
+    }
 
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (!locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
