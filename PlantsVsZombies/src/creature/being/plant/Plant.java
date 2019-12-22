@@ -1,11 +1,9 @@
 package creature.being.plant;
 
 import creature.Location;
-import game.GameEngine;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
 import creature.Creature;
-import java.util.*;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
