@@ -37,4 +37,11 @@ public class Dna {
     return powerOfDestruction;
   }
 
+    @Override
+    public String toString() {
+        return "Dna{" +
+                "name='" + name + '\'' +
+                ", speed=" + speed +
+                '}';
+    }
 }

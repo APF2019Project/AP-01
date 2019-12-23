@@ -1,7 +1,10 @@
 package player.zombie_player;
 
+import creature.being.plant.Plant;
 import creature.being.zombie.ZombieDna;
+import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import exception.Winner;
 import game.GameEngine;
 import page.Form;
 import page.Message;
@@ -9,6 +12,7 @@ import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Result;
+import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +32,15 @@ public class ZombieModeUser implements ZombiePlayer {
     }
 
     @Override
-    public void nextTurn() {
-        new Menu<>(
+    public void nextTurn() throws EndGameException {
+        for (Plant plant : gameEngine.getDeadPlantsLastTurn())
+            coin += plant.getPlantDna().getFirstHealth();
+        boolean flag = false;
+        for (ZombieDna zombieDna : zombieDnas)
+            if (zombieDna.getFirstHealth() * 10 <= coin)
+                flag = true;
+        if (!flag) throw new EndGameException(Winner.Plants);
+        Result<Unit> x = new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("Start", this::start),
@@ -37,6 +48,7 @@ public class ZombieModeUser implements ZombiePlayer {
                 new ActionButton<>("Show lanes", this::showLanes),
                 new ExitButton("End Turn")
         ).action();
+        if (x.isError()) throw new EndGameException();
     }
 
     private void put() {
@@ -56,6 +68,8 @@ public class ZombieModeUser implements ZombiePlayer {
                     coin -= zombieDna.getFirstHealth() * 10;
                 } catch (InvalidGameMoveException e) {
                     Message.show(e.getMessage());
+                } catch (NumberFormatException e) {
+                    Message.show("invalid input format :D!");
                 }
                 return;
             }
@@ -87,6 +101,7 @@ public class ZombieModeUser implements ZombiePlayer {
 
     public void showHand() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Coin: ").append(coin).append("\n");
         for (ZombieDna zombieDna : zombieDnas) {
             stringBuilder.append(zombieDna.toString()).append('\n');
         }

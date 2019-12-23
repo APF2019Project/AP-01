@@ -92,6 +92,8 @@ public class DayModeUser implements PlantPlayer {
             gameEngine.killPlant(plant);
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
+        } catch (NumberFormatException e) {
+            Message.show("invalid input format :D!");
         }
     }
 
@@ -103,10 +105,12 @@ public class DayModeUser implements PlantPlayer {
             Integer y = Integer.valueOf(result.getValue()[1]);
             gameEngine.newPlant(plantDans.get(selected), x, y);
             coolDownTimeLeft.set(selected, plantDans.get(selected).getCooldown());
+            selected = null;
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
+        } catch (NumberFormatException e) {
+            Message.show("invalid input format :D!");
         }
-        selected = null;
     }
 
     private void showLawn() {
@@ -119,6 +123,7 @@ public class DayModeUser implements PlantPlayer {
     @Override
     public void showHand() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Sun: ").append(sun).append("\n");
         for (int i = 0; i < plantDans.size(); i++) {
             stringBuilder.append(plantDans.get(i).toString()).append('\n');
             stringBuilder.append("cool down time left: ").append(coolDownTimeLeft.get(i)).append('\n');

@@ -102,6 +102,21 @@ public class GameEngine {
         }
     }
 
+    public static GameResult newZombieGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.PVP, new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
+
     public Random getRandom() {
         return random;
     }
@@ -114,7 +129,9 @@ public class GameEngine {
         plantPlayer = gameDna.plantPlayer;
         zombiePlayer = gameDna.zombiePlayer;
         DATABASE = new PlayGroundData(19, gameDna.lines);
-        zombieQueue = new ArrayList<>(DATABASE.width);
+        zombieQueue = new ArrayList<>();
+        for (int i = 0; i < DATABASE.width; i++)
+            zombieQueue.add(new ArrayList<>());
     }
 
     public boolean lineNumberChecker(Integer lineNumber) {
@@ -138,7 +155,7 @@ public class GameEngine {
     }
 
     public boolean locationChecker(Integer lineNumber, Integer position) {
-        return lineNumberChecker(lineNumber) && positionChecker(position);
+        return !lineNumberChecker(lineNumber) || !positionChecker(position);
     }
 
     public Plant getPlant(Integer lineNumber, Integer position) {
@@ -153,7 +170,7 @@ public class GameEngine {
     }
 
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
-        if (!locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
+        if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
@@ -216,6 +233,16 @@ public class GameEngine {
         return DATABASE.deadZombies;
     }
 
+    public SortedSet<Plant> getDeadPlantsLastTurn() {
+        return DATABASE.deadPlants;
+    }
+
+    public SortedSet<Zombie> getDeadZombiesLastTurn() {
+        return DATABASE.deadZombies;
+    }
+
+
+
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
             throw new InvalidGameMoveException("can't insert zombie here");
@@ -235,8 +262,9 @@ public class GameEngine {
                 } catch (Exception ignored) {
                 }
 
-        zombieQueue = new ArrayList<>(DATABASE.width);
-
+        zombieQueue = new ArrayList<>();
+        for (int i = 0; i < DATABASE.width; i++)
+            zombieQueue.add(new ArrayList<>());
     }
 
     public void nextTurn() throws EndGameException {
@@ -247,7 +275,12 @@ public class GameEngine {
         plantPlayer.nextTurn();
         zombiePlayer.nextTurn();
 
-        // TODO: interacton between plants as zombies =)
+        for (Zombie zombie : DATABASE.zombies)
+            zombie.nextTurn();
+        for (Plant plant : DATABASE.plants)
+            plant.nextTurn();
+
+        // TODO: AMUNATION left
 
         turn += 1;
     }

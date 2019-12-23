@@ -3,6 +3,7 @@ package main;
 import account.Account;
 import account.ShopPage;
 import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 import game.GameEngine;
 import game.GameResult;
 import page.Collection;
@@ -61,7 +62,10 @@ public class Pages {
                 .map(GameEngine::newWaterGame);
             }),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
-            new LinkButton<>("Zombie", notImplemented()),
+            new DataButton<>("Zombie", () -> {
+                return new Collection<ZombieDna>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 2).action()
+                        .map(GameEngine::newZombieGame);
+            }),
             new LinkButton<>("PvP", notImplemented())
     );
 
