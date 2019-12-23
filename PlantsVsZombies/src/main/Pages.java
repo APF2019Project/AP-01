@@ -49,12 +49,16 @@ class DataButton<U> implements Button<U> {
 public class Pages {
     public static final Menu<GameResult> chooseGameType = new Menu<GameResult>(
             new DataButton<>("Day", () -> {
-                return new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
-                        .map(GameEngine::newDayGame);
+                return new Collection<PlantDna>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2
+                ).action()
+                .map(GameEngine::newDayGame);
             }),
             new DataButton<>("Water", () -> {
-                return new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
-                        .map(GameEngine::newWaterGame);
+                return new Collection<PlantDna>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2
+                ).action()
+                .map(GameEngine::newWaterGame);
             }),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
             new LinkButton<>("Zombie", notImplemented()),
