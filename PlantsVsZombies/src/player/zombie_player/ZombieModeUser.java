@@ -12,6 +12,7 @@ import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Result;
+import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class ZombieModeUser implements ZombiePlayer {
             if (zombieDna.getFirstHealth() * 10 <= coin)
                 flag = true;
         if (!flag) throw new EndGameException(Winner.Plants);
-        new Menu<>(
+        Result<Unit> x = new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("Start", this::start),
@@ -47,6 +48,7 @@ public class ZombieModeUser implements ZombiePlayer {
                 new ActionButton<>("Show lanes", this::showLanes),
                 new ExitButton("End Turn")
         ).action();
+        if (x.isError()) throw new EndGameException();
     }
 
     private void put() {
