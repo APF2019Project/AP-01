@@ -7,7 +7,7 @@ import creature.Creature;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
-    private int remainingCooldown = 0;
+    private int remainingFirstCooldown;
     private int remainingAmmunitionCooldown;
     //remainingCooldown unuse but good :)
 
@@ -32,7 +32,7 @@ public class Plant extends Creature {
     public void nextTurn() throws EndGameException {
         super.nextTurn();
         if (remainingAmmunitionCooldown == 0) {
-            remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
+            remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
             createAmmunition();
         }
     }
@@ -41,12 +41,8 @@ public class Plant extends Creature {
         return plantDna;
     }
 
-    public int getRemainingCooldown() {
-        return remainingCooldown;
-    }
-
-    public void setRemainingCooldown(int remainingCooldown) {
-        this.remainingCooldown = remainingCooldown;
+    public int getRemainingFirstCooldown() {
+        return remainingFirstCooldown;
     }
 
     public int getRemainingAmmunitionCooldown() {
@@ -60,14 +56,14 @@ public class Plant extends Creature {
     public Plant(PlantDna plantDna, int lineNumber, int position) {
         super(new Location(lineNumber, position));
         this.plantDna = plantDna;
-        this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
+        this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
         this.health = plantDna.getFirstHealth();
+        this.remainingAmmunitionCooldown = plantDna.getFirstCooldown();
     }
 
     @Override
     public String toString() {
-        return "Plant\ntype = " + plantDna.getName() + "\n" + super.toString() + "remainingAmmunitionCooldown=" + remainingAmmunitionCooldown + "\n remainingCooldown="
-                + remainingCooldown + "\n\n";
+        return "Plant\ntype = " + plantDna.getName() + "\n" + super.toString() + "remainingAmmunitionCooldown=" + remainingAmmunitionCooldown + "\n\n";
     }
     
 }

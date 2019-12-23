@@ -1,5 +1,7 @@
 package creature;
 
+import game.GameEngine;
+
 public class Location implements Comparable <Location> {
 
     public final int lineNumber;
@@ -13,6 +15,14 @@ public class Location implements Comparable <Location> {
     public Location left() throws Exception {
         if (this.position == 0) throw new Exception("out of bound");
         return new Location(this.lineNumber, this.position - 1);
+    }
+    public Location right() throws Exception {
+        if (this.position + 1 == GameEngine.getCurrentGameEngine().getLength()) throw new Exception("out of bound");
+        return new Location(this.lineNumber, this.position + 1);
+    }
+    public Location nextLocation(int direction) throws Exception {
+        if (direction == 1) return this.right();
+        return this.left();
     }
     public boolean equals(Location location){
         return lineNumber == location.lineNumber && position == location.position;

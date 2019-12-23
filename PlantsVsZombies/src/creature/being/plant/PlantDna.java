@@ -2,7 +2,7 @@ package creature.being.plant;
 
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
-import java.util.List;
+import java.util.*;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -19,9 +19,10 @@ public class PlantDna extends BeingDna {
     allDnas = gson.fromJson(json, new TypeToken<List<PlantDna>>(){}.getType());
   }
 
-  private final AmmunitionDna ammunitionDna;
+  private final ArrayList <AmmunitionDna> ammunitionDna;
   private final int sunIncome;
   private final int cooldown;
+  private final int firstCooldown;
   private final int productionNumberOfAmmunitionPerUse;
   private final boolean canContain;
   private final boolean Explosive;
@@ -30,7 +31,7 @@ public class PlantDna extends BeingDna {
     PlantDna.allDnas = allDnas;
   }
 
-  public AmmunitionDna getAmmunitionDna() {
+  public ArrayList <AmmunitionDna> getAmmunitionDna() {
     return ammunitionDna;
   }
 
@@ -54,13 +55,18 @@ public class PlantDna extends BeingDna {
     return productionNumberOfAmmunitionPerUse;
   }
 
+  public int getFirstCooldown() {
+    return firstCooldown;
+  }
+
   public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-      int gamePrice, int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown,
-      int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive) {
+      int gamePrice, int firstHealth, ArrayList<AmmunitionDna> ammunitionDna, int sunIncome, int cooldown,
+      int firstCooldown, int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive) {
     super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
     this.ammunitionDna = ammunitionDna;
     this.sunIncome = sunIncome;
     this.cooldown = cooldown;
+    this.firstCooldown = firstCooldown;
     this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
     this.canContain = canContain;
     Explosive = explosive;
