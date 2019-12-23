@@ -27,6 +27,9 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
       }
       String input = Program.scanner.nextLine();
       if (input.equals("c")) {
+        if (choosenCount != count) {
+          Message.show("Please choose exactly "+count+" cards");
+        }
         return Result.ok(IntStream.range(0, options.size())
           .filter(i -> selected[i])  
           .mapToObj(i -> options.get(i))
@@ -38,7 +41,8 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
       }
       try {
         selected[Integer.parseInt(input)] ^= true;
-      } catch(NumberFormatException e) {
+      } 
+      catch(NumberFormatException e) {
         Message.show("choose a valid option");
       }
       catch (ArrayIndexOutOfBoundsException e) {
