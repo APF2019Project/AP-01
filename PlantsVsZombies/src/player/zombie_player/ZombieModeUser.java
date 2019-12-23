@@ -1,7 +1,10 @@
 package player.zombie_player;
 
+import creature.being.plant.Plant;
 import creature.being.zombie.ZombieDna;
+import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import exception.Winner;
 import game.GameEngine;
 import page.Form;
 import page.Message;
@@ -28,7 +31,14 @@ public class ZombieModeUser implements ZombiePlayer {
     }
 
     @Override
-    public void nextTurn() {
+    public void nextTurn() throws EndGameException {
+        for (Plant plant : gameEngine.getDeadPlantsLastTurn())
+            coin += plant.getPlantDna().getFirstHealth();
+        boolean flag = false;
+        for (ZombieDna zombieDna : zombieDnas)
+            if (zombieDna.getFirstHealth() * 10 <= coin)
+                flag = true;
+        if (!flag) throw new EndGameException(Winner.Plants);
         new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),

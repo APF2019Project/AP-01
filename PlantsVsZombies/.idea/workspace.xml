@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Dna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Dna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/being/BeingDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/BeingDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exception/Winner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/Winner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Pages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Pages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -274,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577089495851</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="bug fixes and minor changes">
+      <created>1577098120450</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1577098120450</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -371,7 +371,8 @@
     <MESSAGE value="zombie mode ai added" />
     <MESSAGE value="miner bug fixes =)" />
     <MESSAGE value="zombie mode first release ! =D" />
-    <option name="LAST_COMMIT_MESSAGE" value="zombie mode first release ! =D" />
+    <MESSAGE value="bug fixes and minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes and minor changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

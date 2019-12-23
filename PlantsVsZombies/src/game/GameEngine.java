@@ -218,6 +218,16 @@ public class GameEngine {
         return DATABASE.deadZombies;
     }
 
+    public SortedSet<Plant> getDeadPlantsLastTurn() {
+        return DATABASE.deadPlants;
+    }
+
+    public SortedSet<Zombie> getDeadZombiesLastTurn() {
+        return DATABASE.deadZombies;
+    }
+
+
+
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
             throw new InvalidGameMoveException("can't insert zombie here");
