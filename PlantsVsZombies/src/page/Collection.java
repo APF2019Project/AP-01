@@ -29,6 +29,7 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
       if (input.equals("c")) {
         if (choosenCount != count) {
           Message.show("Please choose exactly "+count+" cards");
+          continue;
         }
         return Result.ok(IntStream.range(0, options.size())
           .filter(i -> selected[i])  
