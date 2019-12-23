@@ -63,7 +63,7 @@ public class Pages {
             }),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
             new DataButton<>("Zombie", () -> {
-                return new Collection<ZombieDna>((ArrayList<ZombieDna>) ZombieDna.getAllDnas(), 2).action()
+                return new Collection<ZombieDna>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 2).action()
                         .map(GameEngine::newZombieGame);
             }),
             new LinkButton<>("PvP", notImplemented())
