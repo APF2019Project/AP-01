@@ -19,12 +19,12 @@ public class ZombieDna extends BeingDna {
         allDnas = gson.fromJson(json, new TypeToken<List<ZombieDna>>(){}.getType());
     }
 
-    private final ZombieDna whenIDie = null;
-    private final ArrayList <Integer> crossing = new ArrayList<>();
+    private final ZombieDna whenIDie;
+    private final ArrayList <Integer> crossing;
     private final int maxNumberOfJumps = 0;
-    private final boolean haveGlove = false;
-    private final boolean magnetic = false;
-    private final boolean haveHat = false;
+    private final boolean haveGlove;
+    private final boolean magnetic;
+    private final boolean haveHat;
 
     public ZombieDna getWhenIDie() {
         return whenIDie;
@@ -51,11 +51,14 @@ public class ZombieDna extends BeingDna {
     }
 
     public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-            int gamePrice, int firstHealth, ZombieDna whenIDie, ArrayList<Integer> crossing, int maxNumberOfJumps,
-            boolean haveGlove, boolean magnetic, boolean haveHat) {
+            int gamePrice, int firstHealth, ZombieDna whenIDie, ArrayList<Integer> crossing, boolean haveGlove,
+            boolean magnetic, boolean haveHat) {
         super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+        this.whenIDie = whenIDie;
+        this.crossing = crossing;
+        this.haveGlove = haveGlove;
+        this.magnetic = magnetic;
+        this.haveHat = haveHat;
     }
-
     
-
 }

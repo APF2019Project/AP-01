@@ -3,27 +3,17 @@
     "name": "Peashooter",
     "speed": 0,
     "leftToRight": true,
-    "powerOfDestruction": 0,
-    "shopPrice": 0,
     "gamePrice": 2,
     "firstHealth": 2,
-    "sunIncome": 0,
     "cooldown": 2,
-    "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
-    "canContain": false,
-    "Explosive": false,
     "ammunitionDna": [{
       "name": "Pea",
       "speed": 3,
       "powerOfDestruction": 1,
       "cooldown": 2,
-      "stunTurnNumber": 0,
-      "effectiveRange": 0,
       "reduceSpeedRatio": 1,
-      "minimumDistanceForShoot": 0,
-      "type": 1,
-      "justKillShield": false
+      "productionNumberOfAmmunitionPerUse": 1,
+      "type": 1
     }]
   },
   {
@@ -34,10 +24,8 @@
     "shopPrice": 0,
     "gamePrice": 3,
     "firstHealth": 3,
-    "sunIncome": 0,
     "cooldown": 3,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -49,6 +37,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 2,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 1,
       "justKillShield": false
     }]
@@ -61,10 +50,8 @@
     "shopPrice": 100000,
     "gamePrice": 2,
     "firstHealth": 2,
-    "sunIncome": 0,
     "cooldown": 3,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -76,6 +63,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 2,
       "justKillShield": false
     }]
@@ -88,10 +76,8 @@
     "shopPrice": 100000,
     "gamePrice": 3,
     "firstHealth": 4,
-    "sunIncome": 0,
     "cooldown": 4,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 2,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -103,6 +89,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 2,
       "type": 1,
       "justKillShield": false
     }]
@@ -115,10 +102,8 @@
     "shopPrice": 100000,
     "gamePrice": 4,
     "firstHealth": 5,
-    "sunIncome": 0,
     "cooldown": 4,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 3,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -130,6 +115,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 3,
       "type": 1,
       "justKillShield": false
     }]
@@ -142,10 +128,8 @@
     "shopPrice": 100000,
     "gamePrice": 5,
     "firstHealth": 5,
-    "sunIncome": 0,
     "cooldown": 4,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -157,6 +141,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 1,
       "justKillShield": false
     }]
@@ -169,10 +154,8 @@
     "shopPrice": 100000,
     "gamePrice": 5,
     "firstHealth": 3,
-    "sunIncome": 0,
     "cooldown": 4,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 4,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -184,6 +167,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 4,
       "type": 1,
       "justKillShield": false
     }]
@@ -196,10 +180,8 @@
     "shopPrice": 0,
     "gamePrice": 1,
     "firstHealth": 1,
-    "sunIncome": 0,
     "cooldown": 2,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -211,6 +193,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 3,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 1,
       "justKillShield": false
     }]
@@ -223,10 +206,8 @@
     "shopPrice": 0,
     "gamePrice": 3,
     "firstHealth": 2,
-    "sunIncome": 0,
     "cooldown": 3,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -238,6 +219,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 10,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 2,
       "justKillShield": false
     }]
@@ -250,10 +232,8 @@
     "shopPrice": 0,
     "gamePrice": 4,
     "firstHealth": 3,
-    "sunIncome": 0,
     "cooldown": 5,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": []
@@ -266,10 +246,8 @@
     "shopPrice": 100000,
     "gamePrice": 3,
     "firstHealth": 3,
-    "sunIncome": 0,
     "cooldown": 3,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -281,6 +259,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 2,
       "justKillShield": false
     }]
@@ -293,10 +272,8 @@
     "shopPrice": 100000,
     "gamePrice": 4,
     "firstHealth": 3,
-    "sunIncome": 0,
     "cooldown": 5,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": [{
@@ -308,6 +285,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 2,
       "minimumDistanceForShoot": 0,
+      "productionNumberOfAmmunitionPerUse": 1,
       "type": 2,
       "justKillShield": false
     }]
@@ -320,10 +298,8 @@
     "shopPrice": 0,
     "gamePrice": 2,
     "firstHealth": 4,
-    "sunIncome": 0,
     "cooldown": 4,
     "firstCooldown": 0,
-    "productionNumberOfAmmunitionPerUse": 1,
     "canContain": false,
     "Explosive": false,
     "ammunitionDna": []

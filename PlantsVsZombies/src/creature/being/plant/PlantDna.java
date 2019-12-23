@@ -20,7 +20,6 @@ public class PlantDna extends BeingDna {
   }
 
   private final ArrayList <AmmunitionDna> ammunitionDna;
-  private final int sunIncome;
   private final int cooldown;
   private final int firstCooldown;
   private final int productionNumberOfAmmunitionPerUse;
@@ -33,10 +32,6 @@ public class PlantDna extends BeingDna {
 
   public ArrayList <AmmunitionDna> getAmmunitionDna() {
     return ammunitionDna;
-  }
-
-  public int getSunIncome() {
-    return sunIncome;
   }
 
   public int getCooldown() {
@@ -60,11 +55,10 @@ public class PlantDna extends BeingDna {
   }
 
   public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-      int gamePrice, int firstHealth, ArrayList<AmmunitionDna> ammunitionDna, int sunIncome, int cooldown,
+      int gamePrice, int firstHealth, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
       int firstCooldown, int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive) {
     super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
     this.ammunitionDna = ammunitionDna;
-    this.sunIncome = sunIncome;
     this.cooldown = cooldown;
     this.firstCooldown = firstCooldown;
     this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
