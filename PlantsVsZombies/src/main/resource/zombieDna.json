@@ -1,22 +1,135 @@
 [
   {
-    "name": "Peashooter",
-    "speed": 0,
-    "leftToRight": true,
-    "powerOfDestruction": 0,
-    "shopPrice": 0,
-    "gamePrice": 2,
+    "name": "Zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
     "firstHealth": 2,
     "whenIDie": null,
+    "crossing": [],
+    "haveGlove": false,
+    "magnetic": false,
+    "haveHat": false
+  },
+  {
+    "name": "Football Zombie",
+    "haveGlove": true,
+    "powerOfDestruction": 1,
+    "speed": 3,
+    "firstHealth": 4,
     "crossing": []
   },
   {
-    "name": "Football Zombie"
+    "name": "Buckethead Zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 2,
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    },
+    "crossing": [],
+    "haveGlove": false,
+    "magnetic": true,
+    "haveHat": true
   },
   {
-    "name": "Bucket head Zombie"
+    "name": "Conehead Zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 3,
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    },
+    "crossing": []
   },
   {
-    "name": "Cone Zombie"
+    "name": "Zomboni",
+    "speed": 2,
+    "powerOfDestruction": 100000,
+    "firstHealth": 3,
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    },
+    "crossing": []
+  },
+  {
+    "name": "Catapult zombie",
+    "speed": 2,
+    "powerOfDestruction": 100000,
+    "firstHealth": 3,
+    "crossing": []
+  },
+  {
+    "name": "Balloon zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 3,
+    "crossing": [1]
+  },
+  {
+    "name": "Newspaper zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 2,
+    "crossing": [2],
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    }
+  },
+  {
+    "name": "Target zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 3,
+    "crossing": [2],
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    }
+  },
+  {
+    "name": "Screen Door zombie",
+    "speed": 2,
+    "powerOfDestruction": 1,
+    "firstHealth": 4,
+    "crossing": [2],
+    "whenIDie": {
+      "name": "Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": []
+    },
+    "magnetic": true
+  },
+  {
+    "name": "Giga gargantuar",
+    "speed": 2,
+    "powerOfDestruction": 100000,
+    "firstHealth": 6
+  },
+  {
+    "name": "Pogo Zombie",
+    "speed": 2,
+    "maxNumberOfJumps": 100000,
+    "firstHealth": 2
   }
 ]
