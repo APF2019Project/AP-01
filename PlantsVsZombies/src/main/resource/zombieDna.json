@@ -8,8 +8,7 @@
     "gamePrice": 2,
     "firstHealth": 2,
     "whenIDie": null,
-    "crossing": [],
-    "maxNumberOfJumps": 
+    "crossing": []
   },
   {
     "name": "Football Zombie"
