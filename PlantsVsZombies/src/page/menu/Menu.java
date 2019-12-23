@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import main.Program;
 import page.Help;
+import page.Message;
 import page.Page;
 import util.Result;
 
@@ -46,12 +47,18 @@ public class Menu<U> implements Page<U> {
       return action();
     }
     if (s.equals("")) return action();
-    final int k = Integer.valueOf(s);
-    if (k < 0 || k >= buttons.size())
-      return Result.error("bad param");
-    final Result<U> result = buttons.get(k).action();
-    if (result.isError()) return action();
-    else return result;
+    try {
+      final int k = Integer.valueOf(s);
+      if (k < 0 || k >= buttons.size())
+        return Result.error("bad param");
+      final Result<U> result = buttons.get(k).action();
+      if (result.isError()) return action();
+      else return result;  
+    }
+    catch (NumberFormatException e) {
+      Message.show("please enter a number");
+      return action();
+    }
   }
 
   private void printHelp() {
