@@ -102,6 +102,21 @@ public class GameEngine {
         }
     }
 
+    public static GameResult newZombieGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.PVP, new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
+
     public Random getRandom() {
         return random;
     }
