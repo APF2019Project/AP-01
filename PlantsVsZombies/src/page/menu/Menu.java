@@ -49,8 +49,10 @@ public class Menu<U> implements Page<U> {
     if (s.equals("")) return action();
     try {
       final int k = Integer.valueOf(s);
-      if (k < 0 || k >= buttons.size())
-        return Result.error("bad param");
+      if (k < 0 || k >= buttons.size()) {
+        Message.show("Please enter a number between 0 and "+k);
+        return action();
+      }
       final Result<U> result = buttons.get(k).action();
       if (result.isError()) return action();
       else return result;  
