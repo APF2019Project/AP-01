@@ -103,8 +103,10 @@ public class DayModeUser implements PlantPlayer {
             if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
             Integer x = Integer.valueOf(result.getValue()[0]);
             Integer y = Integer.valueOf(result.getValue()[1]);
-            gameEngine.newPlant(plantDans.get(selected), x, y);
-            coolDownTimeLeft.set(selected, plantDans.get(selected).getCooldown());
+            PlantDna p = plantDans.get(selected);
+            gameEngine.newPlant(p, x, y);
+            sun -= p.getGamePrice();
+            coolDownTimeLeft.set(selected, p.getCooldown());
             selected = null;
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
