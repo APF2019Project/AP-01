@@ -32,10 +32,18 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
           .mapToObj(i -> options.get(i))
           .collect(Collectors.toCollection(ArrayList::new)));
       }
+      if (input.equals("")) continue;
       if (input.equals("e")) {
         return Result.error("intrupted");
       }
-      selected[Integer.parseInt(input)] ^= true;
+      try {
+        selected[Integer.parseInt(input)] ^= true;
+      } catch(NumberFormatException e) {
+        Message.show("choose a valid option");
+      }
+      catch (ArrayIndexOutOfBoundsException e) {
+        Message.show("choose a number between 0 and "+(n-1));
+      }
     }
   }   
 
