@@ -52,7 +52,10 @@ public class Pages {
                 return new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
                         .map(GameEngine::newDayGame);
             }),
-            new LinkButton<>("Water", notImplemented()),
+            new DataButton<>("Water", () -> {
+                return new Collection<PlantDna>((ArrayList<PlantDna>) PlantDna.getAllDnas(), 2).action()
+                        .map(GameEngine::newWaterGame);
+            }),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
             new LinkButton<>("Zombie", notImplemented()),
             new LinkButton<>("PvP", notImplemented())
