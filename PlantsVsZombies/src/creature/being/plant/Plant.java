@@ -9,7 +9,7 @@ public class Plant extends Creature {
     private final PlantDna plantDna;
     private int remainingCooldown = 0;
     private int remainingAmmunitionCooldown;
-    //unuse but good :)
+    //remainingCooldown unuse but good :)
 
     public void reduceHealth(int damageAmount) {
         health -= damageAmount;
@@ -61,6 +61,7 @@ public class Plant extends Creature {
         super(new Location(lineNumber, position));
         this.plantDna = plantDna;
         this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().getCooldown();
+        this.health = plantDna.getFirstHealth();
     }
 
     @Override

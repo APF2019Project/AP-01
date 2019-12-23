@@ -22,7 +22,8 @@ public class PlantDna extends BeingDna {
   private final AmmunitionDna ammunitionDna;
   private final int sunIncome;
   private final int cooldown;
-  private final int canContain;
+  private final int productionNumberOfAmmunitionPerUse;
+  private final boolean canContain;
   private final boolean Explosive;
 
   public static void setAllDnas(List<PlantDna> allDnas) {
@@ -41,23 +42,28 @@ public class PlantDna extends BeingDna {
     return cooldown;
   }
 
-  public int getCanContain() {
-    return canContain;
-  }
-
   public boolean isExplosive() {
     return Explosive;
   }
 
-  public PlantDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
-      int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown, int canContain, boolean explosive) {
-    super(name, image, speed, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+  public boolean isCanContain() {
+    return canContain;
+  }
+
+  public int getProductionNumberOfAmmunitionPerUse() {
+    return productionNumberOfAmmunitionPerUse;
+  }
+
+  public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+      int gamePrice, int firstHealth, AmmunitionDna ammunitionDna, int sunIncome, int cooldown,
+      int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive) {
+    super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
     this.ammunitionDna = ammunitionDna;
     this.sunIncome = sunIncome;
     this.cooldown = cooldown;
+    this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
     this.canContain = canContain;
     Explosive = explosive;
   }
-
 
 }

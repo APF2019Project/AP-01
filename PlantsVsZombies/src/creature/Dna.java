@@ -3,16 +3,21 @@ package creature;
 //TODO handling final
 
 public class Dna {
-  private String name;
-  private String image;
-  private int speed;
-  private int powerOfDestruction;
+  private final String name;
+  private final String image;
+  private final int speed;
+  private final boolean leftToRight;
+  private final int powerOfDestruction;
 
-  public String getName() {
-    return name;
+  public Dna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction) {
+    this.name = name;
+    this.image = image;
+    this.speed = speed;
+    this.leftToRight = leftToRight;
+    this.powerOfDestruction = powerOfDestruction;
   }
 
-  public String toString() {
+  public String getName() {
     return name;
   }
 
@@ -24,14 +29,12 @@ public class Dna {
     return speed;
   }
 
+  public boolean isLeftToRight() {
+    return leftToRight;
+  }
+
   public int getPowerOfDestruction() {
     return powerOfDestruction;
   }
 
-  public Dna(String name, String image, int speed, int powerOfDestruction) {
-    this.name = name;
-    this.image = image;
-    this.speed = speed;
-    this.powerOfDestruction = powerOfDestruction;
-  }
 }

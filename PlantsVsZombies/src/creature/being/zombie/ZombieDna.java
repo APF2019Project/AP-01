@@ -25,10 +25,10 @@ public class ZombieDna extends BeingDna {
         return whenIDie;
     }
 
-    public ZombieDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
-            int firstHealth, ZombieDna whenIDie) {
-        super(name, image, speed, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+    public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+            int gamePrice, int firstHealth, ZombieDna whenIDie) {
+        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
         this.whenIDie = whenIDie;
     }
-    
+
 }

@@ -1,13 +1,77 @@
 [
   {
     "name": "Peashooter",
-    "speed": 5,
-    "powerOfDestruction": 10,
-    "shopPrice": 10,
-    "gamePrice": 10,
-    "firstHealth": 10,
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 0,
+    "shopPrice": 0,
+    "gamePrice": 2,
+    "firstHealth": 2,
+    "sunIncome": 0,
+    "cooldown": 2,
+    "productionNumberOfAmmunitionPerUse": 1,
+    "canContain": false,
+    "Explosive": false,
     "ammunitionDna": {
-      "powerOfDestruction": 0
+      "name": "Pea",
+      "speed": 3,
+      "powerOfDestruction": 1,
+      "cooldown": 2,
+      "stunTurnNumber": 0,
+      "effectiveRange": 0,
+      "reduceSpeedRatio": 1,
+      "minimumDistanceForShoot": 0,
+      "crossingShield": true
+    }
+  },
+  {
+    "name": "Snow Pea",
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 0,
+    "shopPrice": 0,
+    "gamePrice": 3,
+    "firstHealth": 3,
+    "sunIncome": 0,
+    "cooldown": 3,
+    "productionNumberOfAmmunitionPerUse": 1,
+    "canContain": false,
+    "Explosive": false,
+    "ammunitionDna": {
+      "name": "Snow Pea",
+      "speed": 3,
+      "powerOfDestruction": 1,
+      "cooldown": 3,
+      "stunTurnNumber": 1,
+      "effectiveRange": 0,
+      "reduceSpeedRatio": 2,
+      "minimumDistanceForShoot": 0,
+      "crossingShield": true
+    }
+  },
+  {
+    "name": "Cabbage pult",
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 0,
+    "shopPrice": 100000,
+    "gamePrice": 2,
+    "firstHealth": 2,
+    "sunIncome": 0,
+    "cooldown": 3,
+    "productionNumberOfAmmunitionPerUse": 1,
+    "canContain": false,
+    "Explosive": false,
+    "ammunitionDna": {
+      "name": "Cabbage",
+      "speed": 3,
+      "powerOfDestruction": 2,
+      "cooldown": 2,
+      "stunTurnNumber": 0,
+      "effectiveRange": 0,
+      "reduceSpeedRatio": 1,
+      "minimumDistanceForShoot": 0,
+      "crossingShield": false
     }
   },
   {

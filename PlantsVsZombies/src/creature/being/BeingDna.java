@@ -18,9 +18,9 @@ public class BeingDna extends Dna {
     return firstHealth;
   }
 
-  public BeingDna(String name, String image, int speed, int powerOfDestruction, int shopPrice, int gamePrice,
-      int firstHealth) {
-    super(name, image, speed, powerOfDestruction);
+  public BeingDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+      int gamePrice, int firstHealth) {
+    super(name, image, speed, leftToRight, powerOfDestruction);
     this.shopPrice = shopPrice;
     this.gamePrice = gamePrice;
     this.firstHealth = firstHealth;

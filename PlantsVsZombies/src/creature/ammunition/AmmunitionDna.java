@@ -2,59 +2,47 @@ package creature.ammunition;
 import creature.Dna;
 
 public class AmmunitionDna extends Dna {
-  private int cooldown;
-  private int stunTurnNumber;
-  private int reduceSpeedRatio;
-  private int minimumDistanceForShoot;
-  private boolean crossingShield;
+  private final int cooldown;
+  private final int stunTurnNumber;
+  private final int effectiveRange;
+  private final int reduceSpeedRatio;
+  private final int minimumDistanceForShoot;
+  private final boolean crossingShield;
 
   public int getCooldown() {
     return cooldown;
-  }
-
-  public void setCooldown(int cooldown) {
-    this.cooldown = cooldown;
   }
 
   public int getStunTurnNumber() {
     return stunTurnNumber;
   }
 
-  public void setStunTurnNumber(int stunTurnNumber) {
-    this.stunTurnNumber = stunTurnNumber;
+  public int getEffectiveRange() {
+    return effectiveRange;
   }
 
   public int getReduceSpeedRatio() {
     return reduceSpeedRatio;
   }
 
-  public void setReduceSpeedRatio(int reduceSpeedRatio) {
-    this.reduceSpeedRatio = reduceSpeedRatio;
-  }
-
   public int getMinimumDistanceForShoot() {
     return minimumDistanceForShoot;
-  }
-
-  public void setMinimumDistanceForShoot(int minimumDistanceForShoot) {
-    this.minimumDistanceForShoot = minimumDistanceForShoot;
   }
 
   public boolean isCrossingShield() {
     return crossingShield;
   }
 
-  public void setCrossingShield(boolean crossingShield) {
-    this.crossingShield = crossingShield;
-  }
-
-  public AmmunitionDna(String name, String image, int speed, int powerOfDestruction, int cooldown, int stunTurnNumber,
-      int reduceSpeedRatio, int minimumDistanceForShoot, boolean crossingShield) {
-    super(name, image, speed, powerOfDestruction);
+  public AmmunitionDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int cooldown,
+      int stunTurnNumber, int effectiveRange, int reduceSpeedRatio, int minimumDistanceForShoot,
+      boolean crossingShield) {
+    super(name, image, speed, leftToRight, powerOfDestruction);
     this.cooldown = cooldown;
     this.stunTurnNumber = stunTurnNumber;
+    this.effectiveRange = effectiveRange;
     this.reduceSpeedRatio = reduceSpeedRatio;
     this.minimumDistanceForShoot = minimumDistanceForShoot;
     this.crossingShield = crossingShield;
   }
+
 }
