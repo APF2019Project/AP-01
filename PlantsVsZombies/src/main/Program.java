@@ -5,9 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+
 import account.Account;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
+import page.Message;
 
 public class Program {
 
@@ -52,6 +55,8 @@ public class Program {
           Program.class.getResource("resource/zombieDna.json").getFile()
         ))
       );
+      Gson x = new Gson();
+      Message.show(x.toJson(PlantDna.getAllDnas()));
       Pages.loginMenu.action();
       Account.backupAll();
     }

@@ -2,7 +2,7 @@ package creature.being.zombie;
 
 import creature.being.BeingDna;
 
-import java.util.List;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -19,16 +19,43 @@ public class ZombieDna extends BeingDna {
         allDnas = gson.fromJson(json, new TypeToken<List<ZombieDna>>(){}.getType());
     }
 
-    private ZombieDna whenIDie;
+    private final ZombieDna whenIDie = null;
+    private final ArrayList <Integer> crossing = new ArrayList<>();
+    private final int maxNumberOfJumps = 0;
+    private final boolean haveGlove = false;
+    private final boolean magnetic = false;
+    private final boolean haveHat = false;
 
     public ZombieDna getWhenIDie() {
         return whenIDie;
     }
 
-    public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-            int gamePrice, int firstHealth, ZombieDna whenIDie) {
-        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
-        this.whenIDie = whenIDie;
+    public ArrayList<Integer> getCrossing() {
+        return crossing;
     }
+
+    public int getMaxNumberOfJumps() {
+        return maxNumberOfJumps;
+    }
+
+    public boolean isHaveGlove() {
+        return haveGlove;
+    }
+
+    public boolean isMagnetic() {
+        return magnetic;
+    }
+
+    public boolean isHaveHat() {
+        return haveHat;
+    }
+
+    public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+            int gamePrice, int firstHealth, ZombieDna whenIDie, ArrayList<Integer> crossing, int maxNumberOfJumps,
+            boolean haveGlove, boolean magnetic, boolean haveHat) {
+        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+    }
+
+    
 
 }

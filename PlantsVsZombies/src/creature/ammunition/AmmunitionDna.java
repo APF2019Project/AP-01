@@ -2,12 +2,12 @@ package creature.ammunition;
 import creature.Dna;
 
 public class AmmunitionDna extends Dna {
+  private final int type;
   private final int cooldown;
   private final int stunTurnNumber;
   private final int effectiveRange;
   private final int reduceSpeedRatio;
   private final int minimumDistanceForShoot;
-  private final boolean crossingShield;
   private final boolean justKillShield;
 
   public int getCooldown() {
@@ -29,25 +29,25 @@ public class AmmunitionDna extends Dna {
   public int getMinimumDistanceForShoot() {
     return minimumDistanceForShoot;
   }
-
-  public boolean isCrossingShield() {
-    return crossingShield;
-  }
-
+  
   public boolean isJustKillShield() {
     return justKillShield;
   }
 
-  public AmmunitionDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int cooldown,
-      int stunTurnNumber, int effectiveRange, int reduceSpeedRatio, int minimumDistanceForShoot, boolean crossingShield,
+  public int getType() {
+    return type;
+  }
+
+  public AmmunitionDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int type,
+      int cooldown, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio, int minimumDistanceForShoot,
       boolean justKillShield) {
     super(name, image, speed, leftToRight, powerOfDestruction);
+    this.type = type;
     this.cooldown = cooldown;
     this.stunTurnNumber = stunTurnNumber;
     this.effectiveRange = effectiveRange;
     this.reduceSpeedRatio = reduceSpeedRatio;
     this.minimumDistanceForShoot = minimumDistanceForShoot;
-    this.crossingShield = crossingShield;
     this.justKillShield = justKillShield;
   }
 

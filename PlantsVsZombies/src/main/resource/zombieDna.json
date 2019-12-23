@@ -1,6 +1,15 @@
 [
   {
-    "name": "Zombie"
+    "name": "Peashooter",
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 0,
+    "shopPrice": 0,
+    "gamePrice": 2,
+    "firstHealth": 2,
+    "whenIDie": null,
+    "crossing": [],
+    "maxNumberOfJumps": 
   },
   {
     "name": "Football Zombie"

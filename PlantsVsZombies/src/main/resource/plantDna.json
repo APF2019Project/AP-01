@@ -22,7 +22,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -49,7 +49,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 2,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -76,7 +76,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": false,
+      "type": 2,
       "justKillShield": false
     }]
   },
@@ -103,7 +103,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -130,7 +130,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -157,7 +157,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -184,7 +184,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -211,7 +211,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 3,
-      "crossingShield": true,
+      "type": 1,
       "justKillShield": false
     }]
   },
@@ -238,7 +238,7 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 10,
       "minimumDistanceForShoot": 0,
-      "crossingShield": false,
+      "type": 2,
       "justKillShield": false
     }]
   },
@@ -281,8 +281,51 @@
       "effectiveRange": 0,
       "reduceSpeedRatio": 1,
       "minimumDistanceForShoot": 0,
-      "crossingShield": false,
+      "type": 2,
       "justKillShield": false
     }]
+  },
+  {
+    "name": "Winter Melon",
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 0,
+    "shopPrice": 100000,
+    "gamePrice": 4,
+    "firstHealth": 3,
+    "sunIncome": 0,
+    "cooldown": 5,
+    "firstCooldown": 0,
+    "productionNumberOfAmmunitionPerUse": 1,
+    "canContain": false,
+    "Explosive": false,
+    "ammunitionDna": [{
+      "name": "Winter Melon",
+      "speed": 3,
+      "powerOfDestruction": 3,
+      "cooldown": 4,
+      "stunTurnNumber": 1,
+      "effectiveRange": 0,
+      "reduceSpeedRatio": 2,
+      "minimumDistanceForShoot": 0,
+      "type": 2,
+      "justKillShield": false
+    }]
+  },
+  {
+    "name": "Wall-nut",
+    "speed": 0,
+    "leftToRight": true,
+    "powerOfDestruction": 1,
+    "shopPrice": 0,
+    "gamePrice": 2,
+    "firstHealth": 4,
+    "sunIncome": 0,
+    "cooldown": 4,
+    "firstCooldown": 0,
+    "productionNumberOfAmmunitionPerUse": 1,
+    "canContain": false,
+    "Explosive": false,
+    "ammunitionDna": []
   }
 ]
