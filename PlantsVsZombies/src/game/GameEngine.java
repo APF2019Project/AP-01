@@ -9,12 +9,13 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import line.Line;
 import line.LineState;
-import page.Message;
 import player.plant_player.DayModeUser;
 import player.plant_player.PlantPlayer;
 import player.plant_player.RailModeUser;
+import player.plant_player.ZombieModeAI;
 import player.zombie_player.DayModeAI;
 import player.zombie_player.RailModeAI;
+import player.zombie_player.ZombieModeUser;
 import player.zombie_player.ZombiePlayer;
 
 import java.util.*;
@@ -76,6 +77,22 @@ public class GameEngine {
             lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.RAIL, new RailModeUser(), new RailModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
+
+
+    public static GameResult newZombieGame(List<ZombieDna> hand) {
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.ZOMBIE, new ZombieModeAI(), new ZombieModeUser(hand), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
@@ -199,18 +216,14 @@ public class GameEngine {
         return DATABASE.deadZombies;
     }
 
-    public void zombiePlayerShowHnad() {
-        zombiePlayer.showHand();
-    }
-
-    public void PlantPlayerShowHand() {
-        plantPlayer.showHand();
-    }
-
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
             throw new InvalidGameMoveException("can't insert zombie here");
         zombieQueue.get(lineNumber).add(dna);
+    }
+
+    public List<ArrayList<ZombieDna>> getZombieQueue() {
+        return zombieQueue;
     }
 
     public void startZombieQueue() {

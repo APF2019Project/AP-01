@@ -96,5 +96,9 @@ F
 .classpath,3/5/354079a72b91a4280407c16a36f47d1986fd85a5
 Y
 )src/player/plant_player/RailModeUser.java,3/d/3dc4325f34561bbd4bad8a8fb73a034e01b8d091
-C
-src/main/Dummy.java,4/c/4c39dba766ffca630fb7a29089aadaafc52e3c61
+N
+.idea/libraries/gson_2_8_6.xml,3/a/3a7640f8667406a30982f8e8f3626467320235a2
+O
+src/main/resource/plantDna.json,5/c/5ca51d3f34702c9536931ef315bfabb5beec7f17
+\
+,src/player/zombie_player/ZombieModeUser.java,b/a/baae76ac76027f0aed9071419d0e3e67833330ef

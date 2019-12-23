@@ -10,6 +10,7 @@ import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -66,7 +67,15 @@ public class ZombieModeUser implements ZombiePlayer {
     }
 
     private void showLanes() {
-        throw new UnsupportedOperationException("show lanes not supported yet ! :D");
+        StringBuilder stringBuilder = new StringBuilder();
+        List<ArrayList<ZombieDna>> zombieQueue = gameEngine.getZombieQueue();
+        for (int i = 0; i < gameEngine.getWidth(); i++) {
+            stringBuilder.append("line number ").append(i).append(":\n");
+            for (ZombieDna dna : zombieQueue.get(i))
+                stringBuilder.append(dna.toString()).append("\n");
+            stringBuilder.append("------------------------------------------------------------------------------");
+        }
+        Message.show(stringBuilder.toString());
     }
 
     private void showLawn() {
