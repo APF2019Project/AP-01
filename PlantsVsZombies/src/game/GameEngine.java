@@ -102,7 +102,7 @@ public class GameEngine {
         }
     }
 
-    public static GameResult newZombieGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
+    public static GameResult newPVPGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));

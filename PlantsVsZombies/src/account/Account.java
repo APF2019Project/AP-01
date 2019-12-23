@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Account implements Serializable {
@@ -134,8 +135,10 @@ public class Account implements Serializable {
     }
   }
 
-  public static Account getByUsername(String username) {
-    return ALL.get(username);
+  public static Result<Account> getByUsername(String username) {
+    Account user = ALL.get(username);
+    if (user == null) return Result.error("Account not found");
+    return Result.ok(user);
   }
 
   public static Result<Unit> create(String username, String password) {
@@ -146,27 +149,35 @@ public class Account implements Serializable {
 
   public static Result<Unit> login(String username, String password) {
     Result<Unit> error = Result.error("invalid username or password");
-    Account user = getByUsername(username);
-    if (user == null) return error;
-    if (!user.matchPassword(password)) return error;
-    current = user;
-    return Result.ok();
+    return getByUsername(username).flatMap(user -> {
+      if (!user.matchPassword(password)) return error;
+      current = user;
+      return Result.ok();
+    });
   }
 
-  public static List<PlantDna> getCurrentUserPlants() {
+  public ArrayList<PlantDna> getPlants() {
     ArrayList<PlantDna> res = new ArrayList<>();
     for (PlantDna dna : PlantDna.getAllDnas())
-      if (Account.current.store.haveCard(dna))
+      if (store.haveCard(dna))
         res.add(dna);
     return res;
   }
 
-  public static List<ZombieDna> getCurrentUserZombies() {
+  public ArrayList<ZombieDna> getZombies() {
     ArrayList<ZombieDna> res = new ArrayList<>();
     for (ZombieDna dna : ZombieDna.getAllDnas())
-      if (Account.current.store.haveCard(dna))
+      if (store.haveCard(dna))
         res.add(dna);
     return res;
+  }
+
+  public static ArrayList<PlantDna> getCurrentUserPlants() {
+    return Account.current.getPlants();
+  }
+
+  public static ArrayList<ZombieDna> getCurrentUserZombies() {
+    return Account.current.getZombies();
   }
 
   private Result<Unit> rename(String string) {
