@@ -37,7 +37,6 @@ public class GameEngine {
     }
 
     public static GameResult newDayGame(List<PlantDna> hand) {
-        Message.show("The game will start soonly here.");
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));
@@ -52,9 +51,26 @@ public class GameEngine {
         }
     }
 
+    public static GameResult newWaterGame(List<PlantDna> hand) {
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            if (i < 2 || i > 3)
+                lines.add(new Line(i, LineState.DRY, null));
+            else
+                lines.add(new Line(i, LineState.WATER, null));
+            
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.WATER, new DayModeUser(hand), new DayModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
 
     public static GameResult newRailGame() {
-        Message.show("The game will start soonly here.");
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));
