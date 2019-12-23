@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c8c237c8c8e07d12b26c0141f870cd2275c6a7f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c8c237c8c8e07d12b26c0141f870cd2275c6a7f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20a7b1124bdcd994485b980e4502c4ecc7487a07" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20a7b1124bdcd994485b980e4502c4ecc7487a07" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90ea61836fdab8a485f0278d46ef4f43944fa3fc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90ea61836fdab8a485f0278d46ef4f43944fa3fc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Dna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Dna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/BeingDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/BeingDna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/Winner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/Winner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Pages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Pages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577021175170</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="zombie mode first release ! =D">
+      <created>1577089495851</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1577089495851</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,7 +370,8 @@
     <MESSAGE value="small changes in account" />
     <MESSAGE value="zombie mode ai added" />
     <MESSAGE value="miner bug fixes =)" />
-    <option name="LAST_COMMIT_MESSAGE" value="miner bug fixes =)" />
+    <MESSAGE value="zombie mode first release ! =D" />
+    <option name="LAST_COMMIT_MESSAGE" value="zombie mode first release ! =D" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -26,4 +26,5 @@ public class BeingDna extends Dna {
     this.firstHealth = firstHealth;
   }
 
+
 }

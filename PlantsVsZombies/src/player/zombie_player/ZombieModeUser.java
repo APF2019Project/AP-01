@@ -56,6 +56,8 @@ public class ZombieModeUser implements ZombiePlayer {
                     coin -= zombieDna.getFirstHealth() * 10;
                 } catch (InvalidGameMoveException e) {
                     Message.show(e.getMessage());
+                } catch (NumberFormatException e) {
+                    Message.show("invalid input format :D!");
                 }
                 return;
             }
@@ -87,6 +89,7 @@ public class ZombieModeUser implements ZombiePlayer {
 
     public void showHand() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Coin: ").append(coin).append("\n");
         for (ZombieDna zombieDna : zombieDnas) {
             stringBuilder.append(zombieDna.toString()).append('\n');
         }

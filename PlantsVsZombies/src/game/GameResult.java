@@ -12,4 +12,13 @@ public class GameResult {
         this.plantsKilled = plantsKilled;
         this.zombiesKilled = zombiesKilled;
     }
+
+    @Override
+    public String toString() {
+        return "GameResult{" +
+                "winner=" + winner +
+                ", plantsKilled=" + plantsKilled +
+                ", zombiesKilled=" + zombiesKilled +
+                '}';
+    }
 }

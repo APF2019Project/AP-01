@@ -69,7 +69,7 @@ public class RailModeUser implements PlantPlayer {
     }
 
     private void showRecord() {
-        Message.show("You killed "+gameEngine.getDeadZombies().size()+" zombies.");
+        Message.show("You killed " + gameEngine.getDeadZombies().size() + " zombies.");
     }
 
     private void removePlant() {
@@ -82,6 +82,8 @@ public class RailModeUser implements PlantPlayer {
             gameEngine.killPlant(plant);
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
+        } catch (NumberFormatException e) {
+            Message.show("invalid input format :D!");
         }
     }
 
@@ -95,6 +97,8 @@ public class RailModeUser implements PlantPlayer {
             plantDans.remove((int) selected);
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
+        } catch (NumberFormatException e) {
+            Message.show("invalid input format :D!");
         }
         selected = null;
     }
