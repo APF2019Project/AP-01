@@ -304,7 +304,7 @@ public class GameEngine {
 
 	public void killAmmunition(Ammunition ammunition) {
         DATABASE.ammunitions.remove(ammunition);
-        DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(am);
+        DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
 	}
 
 }
