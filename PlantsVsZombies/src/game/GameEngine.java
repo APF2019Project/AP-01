@@ -292,12 +292,12 @@ public class GameEngine {
         plantPlayer.nextTurn();
         zombiePlayer.nextTurn();
 
+        for (Ammunition ammunition : DATABASE.ammunitions)
+            ammunition.nextTurn();
         for (Zombie zombie : DATABASE.zombies)
             zombie.nextTurn();
         for (Plant plant : DATABASE.plants)
             plant.nextTurn();
-        for (Ammunition ammunition : DATABASE.ammunitions)
-            ammunition.nextTurn();
 
         turn += 1;
     }
