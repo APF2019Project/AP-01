@@ -50,12 +50,13 @@ public class DayModeUser implements PlantPlayer {
                 coolDownTimeLeft.set(i, 0);
         }
         Result<Unit> x = new Menu<>(
-                new ActionButton<>("Show hand", this::showHand),
-                new ActionButton<>("Show lawn", this::showLawn),
-                new ActionButton<>("Plant", this::createPlant),
-                new ActionButton<>("Remove", this::removePlant),
-                new ActionButton<>("Select", this::select),
-                new ExitButton("End Turn")
+            new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
+            new ActionButton<>("Show hand", this::showHand),
+            new ActionButton<>("Show lawn", this::showLawn),
+            new ActionButton<>("Plant", this::createPlant),
+            new ActionButton<>("Remove", this::removePlant),
+            new ActionButton<>("Select", this::select),
+            new ExitButton("End Turn")
         ).action();
         if (x.isError()) throw new EndGameException();
     }

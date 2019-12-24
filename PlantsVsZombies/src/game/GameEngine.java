@@ -11,6 +11,8 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import line.Line;
 import line.LineState;
+import main.ConsoleColors;
+import page.Message;
 import player.plant_player.DayModeUser;
 import player.plant_player.PlantPlayer;
 import player.plant_player.RailModeUser;
@@ -305,6 +307,30 @@ public class GameEngine {
 	public void killAmmunition(Ammunition ammunition) {
         DATABASE.ammunitions.remove(ammunition);
         DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
-	}
+    }
+    
+    public void prettyPrint() {
+        String res = "";
+        for (int i=0; i<getWidth(); i++) {
+            for (int j=0; j<getLength(); j++) {
+                Plant plant = getPlant(i, j);
+                if (plant == null) res+=".";
+                else {
+                    res += ConsoleColors.green(
+                        ""+plant.getPlantDna().getName().charAt(0)
+                    );
+                }
+                int cnt=0;
+                for (Zombie zombie: getZombies(i)) {
+                    if (zombie.getLocation().position == j) cnt++;
+                }
+                if (cnt == 0) res+=".";
+                else res += ConsoleColors.red(""+cnt);
+                res+=" ";
+            }
+            res+="\n";
+        }
+        Message.show(res);
+    }
 
 }
