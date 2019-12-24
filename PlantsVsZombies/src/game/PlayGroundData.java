@@ -1,5 +1,6 @@
 package game;
 
+import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import line.Line;
@@ -16,10 +17,12 @@ public class PlayGroundData {
 
     SortedSet<Plant> plants = new TreeSet<>();
     SortedSet<Zombie> zombies = new TreeSet<>();
+    SortedSet<Ammunition> ammunitions = new TreeSet<>();
     List<Line> lines;
 
     List<TreeSet<Plant>> plantsPerLine;
     List<TreeSet<Zombie>> zombiesPerLine;
+    List<TreeSet<Ammunition>> ammunitionPerLine;
 
     SortedSet<Plant> deadPlants = new TreeSet<>();
     SortedSet<Zombie> deadZombies = new TreeSet<>();
@@ -35,7 +38,9 @@ public class PlayGroundData {
         this.lines = lines;
         plantsPerLine = new ArrayList<>();
         zombiesPerLine = new ArrayList<>();
+        ammunitionPerLine = new ArrayList<>();
         for (int i = 0; i < width; i++) {
+            ammunitionPerLine.add(new TreeSet<>());
             plantsPerLine.add(new TreeSet<>());
             zombiesPerLine.add(new TreeSet<>());
         }

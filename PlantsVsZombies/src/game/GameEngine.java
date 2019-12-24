@@ -19,6 +19,7 @@ import player.zombie_player.DayModeAI;
 import player.zombie_player.RailModeAI;
 import player.zombie_player.ZombieModeUser;
 import player.zombie_player.ZombiePlayer;
+
 import java.util.*;
 
 public class GameEngine {
@@ -187,7 +188,8 @@ public class GameEngine {
     }
 	public void newAmmunition(Location location, AmmunitionDna ammunitionDna, Plant plant) {
         Ammunition ammunition = new Ammunition(location, ammunitionDna, plant);
-        
+        DATABASE.ammunitionPerLine.get(location.lineNumber).add(ammunition);
+        DATABASE.ammunitions.add(ammunition);
 	}
 
 
@@ -294,13 +296,15 @@ public class GameEngine {
             zombie.nextTurn();
         for (Plant plant : DATABASE.plants)
             plant.nextTurn();
-
-        // TODO: AMUNATION left
+        for (Ammunition ammunition : DATABASE.ammunitions)
+            ammunition.nextTurn();
 
         turn += 1;
     }
 
 	public void killAmmunition(Ammunition ammunition) {
+        DATABASE.ammunitions.remove(ammunition);
+        DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(am);
 	}
 
 }
