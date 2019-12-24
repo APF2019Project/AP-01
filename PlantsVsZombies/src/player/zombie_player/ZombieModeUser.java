@@ -23,7 +23,7 @@ public class ZombieModeUser implements ZombiePlayer {
     private GameEngine gameEngine;
     private Integer coin = 50;
     private Random rnd;
-    private List<ZombieDna> zombieDnas;
+    private List <ZombieDna> zombieDnas;
 
     public ZombieModeUser(List<ZombieDna> zombieDnas) {
         gameEngine = GameEngine.getCurrentGameEngine();

@@ -5,20 +5,57 @@ import creature.Creature;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
-import page.Message;
 
 public class Zombie extends Creature {
     private final ZombieDna zombieDna;
+    private final Zombie whenIDie;
+    private int numberOfJump;
+    private int remainingStunTurnNumber;
+    private int speed;
 
-    public void reduceHealth(int damageAmount) {
+    public void reduceSpeed(int reduceSpeedRatio, int stunTurnNumber) {
+        if (stunTurnNumber == 0) return;
+        remainingStunTurnNumber = stunTurnNumber;
+        speed = Math.min(speed, zombieDna.getSpeed() / reduceSpeedRatio);
+    }
+
+    public boolean reduceHealth(int damageAmount) {
         health -= damageAmount;
-        if (health <= 0) gameEngine.killZombie(this);
+        if (health <= 0) return true;
+        return false;
+    }
+
+    public boolean reduceHealth(int damageAmount, int ammunitionType) {
+        if (zombieDna.getCrossing().indexOf(ammunitionType) != -1) {
+            if (whenIDie == null) return false;
+            return reduceHealth(damageAmount, ammunitionType);
+        }
+        if (reduceHealth(damageAmount)) {
+            if (whenIDie == null) return true;
+            whenIDie.location = location;
+            gameEngine.addZombie(whenIDie);
+            gameEngine.killZombie(this);
+            return false;
+        }
+        return false;
+    }
+
+    public void damage(Plant plant) {
+        plant.reduceHealth(zombieDna.getPowerOfDestruction());
+        plant.damage(this);
     }
     
     public Plant move() throws EndGameException {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
             Plant plant = gameEngine.getPlant(location);
-            if (plant != null) return plant;
+            if (plant != null) {
+                if (numberOfJump < zombieDna.getMaxNumberOfJumps()) {
+                    numberOfJump++;
+                }
+                else {
+                    return plant;
+                }
+            }
             try {
                 location = location.left();
             }
@@ -33,22 +70,38 @@ public class Zombie extends Creature {
     public void nextTurn() throws EndGameException {
         super.nextTurn();
         Plant plant = move();
-        if (plant == null) return;
-        plant.reduceHealth(zombieDna.getPowerOfDestruction());
-        plant.damage(this);
+        if (plant != null) damage(plant);
+        if (speed != zombieDna.getSpeed()) {
+            remainingStunTurnNumber--;
+            if (remainingStunTurnNumber == 0) speed = zombieDna.getSpeed();
+        }
     }
 
     public Location getLocation() {
         return null;
     }
 
-    public Zombie(ZombieDna zombieDna, int lineNumber, int position) {
-        super(new Location(lineNumber, position));
-        this.zombieDna = zombieDna;
-    }
     
     @Override
     public String toString() {
         return "Zombie\ntype = " + zombieDna.getName() + "\n" + super.toString() + "\n\n";
+    }
+
+    public ZombieDna getZombieDna() {
+        return zombieDna;
+    }
+
+    public int getNumberOfJumpingPlant() {
+        return numberOfJump;
+    }
+
+    public Zombie(ZombieDna zombieDna, int lineNumber, int position) {
+        super(new Location(lineNumber, position));
+        this.zombieDna = zombieDna;
+        if (zombieDna.getWhenIDie() != null)
+            this.whenIDie = new Zombie (zombieDna.getWhenIDie(), lineNumber, position);
+        else
+            this.whenIDie = null;
+        this.speed = zombieDna.getSpeed();
     }
 }

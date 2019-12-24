@@ -1,6 +1,7 @@
 package game;
 
 import creature.Location;
+import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
@@ -17,7 +18,6 @@ import player.zombie_player.DayModeAI;
 import player.zombie_player.RailModeAI;
 import player.zombie_player.ZombieModeUser;
 import player.zombie_player.ZombiePlayer;
-
 import java.util.*;
 
 public class GameEngine {
@@ -185,6 +185,11 @@ public class GameEngine {
         DATABASE.zombies.add(zombie);
     }
 
+    public void addZombie(Zombie zombie) {
+        DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).add(zombie);
+        DATABASE.zombies.add(zombie);
+    }
+
     public void killPlant(Plant plant) {
         DATABASE.plants.remove(plant);
         DATABASE.plantsPerLine.get(plant.getLocation().lineNumber).remove(plant);
@@ -241,6 +246,10 @@ public class GameEngine {
         return DATABASE.deadZombies;
     }
 
+    public void addSun(int sunAmount) {
+        plantPlayer.addSun(sunAmount);
+    }
+
 
 
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
@@ -284,5 +293,8 @@ public class GameEngine {
 
         turn += 1;
     }
+
+	public void killAmmunition(Ammunition ammunition) {
+	}
 
 }

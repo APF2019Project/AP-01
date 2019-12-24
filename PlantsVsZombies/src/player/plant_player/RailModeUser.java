@@ -118,4 +118,9 @@ public class RailModeUser implements PlantPlayer {
         }
         Message.show(stringBuilder.toString());
     }
+
+    @Override
+    public void addSun(int sunAmount) {
+
+    }
 }

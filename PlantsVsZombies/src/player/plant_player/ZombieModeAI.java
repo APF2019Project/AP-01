@@ -36,4 +36,9 @@ public class ZombieModeAI implements PlantPlayer {
     public void showHand() {
         throw new UnsupportedOperationException("there is no hand =)!");
     }
+
+    @Override
+    public void addSun(int sunAmount) {
+
+    }
 }

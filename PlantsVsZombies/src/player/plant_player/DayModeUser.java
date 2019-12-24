@@ -132,4 +132,10 @@ public class DayModeUser implements PlantPlayer {
         }
         Message.show(stringBuilder.toString());
     }
+
+    @Override
+    public void addSun(int sunAmount) {
+        sun += sunAmount;
+
+    }
 }
