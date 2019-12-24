@@ -78,7 +78,7 @@ public class Zombie extends Creature {
     }
 
     public Location getLocation() {
-        return null;
+        return location;
     }
 
     
