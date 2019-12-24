@@ -36,7 +36,8 @@ public class Creature implements Comparable <Creature> {
 
     @Override
     public String toString() {
-        return "location = " + location.lineNumber + "   " + location.position + "\n";
+        return "location = " + location.lineNumber + "   " + location.position + "\n" +
+        "health = " + health + "\n";
     }
 
 }
