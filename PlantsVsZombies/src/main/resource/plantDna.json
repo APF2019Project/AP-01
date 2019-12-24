@@ -12,6 +12,7 @@
       "cooldown": 2,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
+      "firstHealth": 1,
       "type": 1
     }]
   },

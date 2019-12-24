@@ -2,6 +2,7 @@ package game;
 
 import creature.Location;
 import creature.ammunition.Ammunition;
+import creature.ammunition.AmmunitionDna;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
@@ -184,6 +185,11 @@ public class GameEngine {
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
     }
+	public void newAmmunition(Location location, AmmunitionDna ammunitionDna, Plant plant) {
+        Ammunition ammunition = new Ammunition(location, ammunitionDna, plant);
+        
+	}
+
 
     public void addZombie(Zombie zombie) {
         DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).add(zombie);

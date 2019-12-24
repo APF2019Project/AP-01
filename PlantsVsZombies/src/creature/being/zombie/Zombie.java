@@ -103,5 +103,6 @@ public class Zombie extends Creature {
         else
             this.whenIDie = null;
         this.speed = zombieDna.getSpeed();
+        this.health = zombieDna.getFirstHealth();
     }
 }

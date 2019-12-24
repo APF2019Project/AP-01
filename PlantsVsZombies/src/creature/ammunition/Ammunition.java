@@ -3,6 +3,7 @@ package creature.ammunition;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
+import page.Message;
 import creature.Creature;
 import creature.Location;
 
@@ -17,7 +18,9 @@ public class Ammunition extends Creature {
             zombie.getZombieDna().getWhenIDie() == null) 
                 return;
         
-        zombie.reduceHealth(ammunitionDna.getPowerOfDestruction(), ammunitionDna.getType());
+        if (zombie.reduceHealth(ammunitionDna.getPowerOfDestruction(), ammunitionDna.getType())) {
+            gameEngine.killZombie(zombie);
+        }
         zombie.reduceSpeed(ammunitionDna.getReduceSpeedRatio(), ammunitionDna.getStunTurnNumber());
 
         health--;
@@ -55,6 +58,7 @@ public class Ammunition extends Creature {
         super(location);
         this.ammunitionDna = ammunitionDna;
         this.owner = owner;
+        this.health = ammunitionDna.getFirstHealth();
     }
     
 }

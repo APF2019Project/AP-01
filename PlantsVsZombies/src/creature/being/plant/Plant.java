@@ -1,6 +1,7 @@
 package creature.being.plant;
 
 import creature.Location;
+import creature.ammunition.Ammunition;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
 import creature.Creature;
@@ -16,8 +17,12 @@ public class Plant extends Creature {
         if (health <= 0) gameEngine.killPlant(this);
     }
     public void createAmmunition() {
-
         if (plantDna.isExplosive()) gameEngine.killPlant(this);
+        else {
+            plantDna.getAmmunitionDna().forEach(ammunitionDna -> {
+                gameEngine.newAmmunition(this.location, ammunitionDna, this);
+            });
+        }
     }
 
     public void damage(Zombie zombie) {
@@ -25,7 +30,9 @@ public class Plant extends Creature {
             createAmmunition();
             return;
         }
-        zombie.reduceHealth(plantDna.getPowerOfDestruction());
+        if (zombie.reduceHealth(plantDna.getPowerOfDestruction())) {
+            gameEngine.killZombie(zombie);
+        }
     }
 
     @Override

@@ -55,8 +55,6 @@ public class Program {
           Program.class.getResource("resource/zombieDna.json").getFile()
         ))
       );
-      Gson x = new Gson();
-      Message.show(x.toJson(PlantDna.getAllDnas()));
       Pages.loginMenu.action();
       Account.backupAll();
     }
