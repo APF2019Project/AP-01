@@ -173,6 +173,17 @@ public class GameEngine {
         return getPlant(location.lineNumber, location.position);
     }
 
+    public Zombie getZombie(Integer lineNumber, Integer position) {
+        if (locationChecker(lineNumber, position)) return null;
+        SortedSet <Zombie> zombies = getZombies(lineNumber);
+        for (Zombie zombie : zombies)
+            if (zombie.getLocation().equals(new Location(lineNumber, position)))
+                return zombie;
+        return null;
+    }
+    public Zombie getZombie(Location location) {
+        return getZombie(location.lineNumber, location.position);
+    }
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
