@@ -45,7 +45,7 @@ public class Zombie extends Creature {
         plant.damage(this);
     }
     
-    public Plant move() throws EndGameException {
+    private Plant move() throws EndGameException {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
             Plant plant = gameEngine.getPlant(location);
             if (plant != null) {

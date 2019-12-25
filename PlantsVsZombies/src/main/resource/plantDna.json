@@ -214,12 +214,19 @@
     }]
   },
   {
-    "name": "Wall nut",
+    "name": "Wall-nut",
     "leftToRight": true,
-    "powerOfDestruction": 1,
     "gamePrice": 2,
     "firstHealth": 4,
     "cooldown": 4,
+    "ammunitionDna": []
+  },
+  {
+    "name": "Tall-nut",
+    "leftToRight": true,
+    "gamePrice": 4,
+    "firstHealth": 6,
+    "cooldown": 6,
     "ammunitionDna": []
   }
 ]

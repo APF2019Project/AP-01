@@ -3,7 +3,6 @@ package creature.ammunition;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
-import page.Message;
 import creature.Creature;
 import creature.Location;
 
@@ -13,7 +12,7 @@ public class Ammunition extends Creature {
     private final AmmunitionDna ammunitionDna;
     private final Plant owner;
 
-    public void effect(Zombie zombie) throws Exception {
+    private void effect(Zombie zombie) throws Exception {
         if (ammunitionDna.isJustKillShield() && 
             zombie.getZombieDna().getWhenIDie() == null) 
                 return;
@@ -27,12 +26,31 @@ public class Ammunition extends Creature {
         if (health == 0) throw new Exception("I Killed");
     }
 
+    private void move() {
+        int direction = 1;
+        if (ammunitionDna.getSpeed() < 0) direction = -1;
+        for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
+            Zombie zombie = gameEngine.getZombie(location);
+            if (zombie != null && 
+                zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1)
+                    return;
+            try {
+                location = location.nextLocation(direction);
+            }
+            catch(Exception exp) {
+                gameEngine.killAmmunition(this);
+                return;
+            }
+        }
+    }
+
     public void nextTurn() throws EndGameException {
         if (ammunitionDna.getType() == 0) {
             gameEngine.addSun(ammunitionDna.getSunIncome());
             gameEngine.killAmmunition(this);
             return;
         }
+        move();
         SortedSet <Zombie> zombies = gameEngine.getZombies(location.lineNumber);
         zombies.forEach(zombie -> {
             int dis = Math.max(

@@ -1,7 +1,6 @@
 package creature.being.plant;
 
 import creature.Location;
-import creature.ammunition.Ammunition;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
 import creature.Creature;
@@ -38,7 +37,7 @@ public class Plant extends Creature {
     @Override
     public void nextTurn() throws EndGameException {
         super.nextTurn();
-        if (remainingAmmunitionCooldown == 0) {
+        if (remainingAmmunitionCooldown == 0 && !plantDna.getAmmunitionDna().isEmpty()) {
             remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
             createAmmunition();
         }
