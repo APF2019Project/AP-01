@@ -35,10 +35,13 @@ public class Plant extends Creature {
     @Override
     public void nextTurn() throws EndGameException {
         super.nextTurn();
-        if (remainingAmmunitionCooldown == 0 && !plantDna.getAmmunitionDna().isEmpty()) {
-            remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
-            createAmmunition();
+        if (remainingAmmunitionCooldown == 0) {
+            if (!plantDna.getAmmunitionDna().isEmpty()) {
+               remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+                createAmmunition();
+            }
         }
+        else remainingAmmunitionCooldown--;
     }
 
     public PlantDna getPlantDna() {
