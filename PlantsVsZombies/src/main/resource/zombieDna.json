@@ -124,12 +124,14 @@
     "name": "Giga gargantuar",
     "speed": 2,
     "powerOfDestruction": 100000,
+    "crossing": [],
     "firstHealth": 6
   },
   {
     "name": "Pogo Zombie",
     "speed": 2,
     "maxNumberOfJumps": 100000,
+    "crossing": [],
     "firstHealth": 2
   }
 ]
