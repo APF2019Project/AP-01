@@ -1,5 +1,6 @@
 package game;
 
+import account.Account;
 import exception.Winner;
 import page.Message;
 import page.Page;
@@ -43,7 +44,9 @@ public class GameResult implements Page<Unit> {
         }
         String res = (isWin ? "You won :)" : "You lose :(") + "\n";
         res += "Score gained: " + scoreDelta + "\n";
-        res += "Money gained: " + moneyDelta + "\n";
+        res += "Money gained: " + moneyDelta + "$\n";
+        Account.getCurrentAccount().getStore().money += moneyDelta;
+        Account.getCurrentAccount().score += scoreDelta;
         Message.show(res);
         return Result.ok();
     }

@@ -76,7 +76,7 @@ public class Pages {
             new ActionButton<Unit>("play", () -> {
                 Result<GameResult> x = chooseGameType.action();
                 if (!x.isError()) {
-                    Message.show("Your game finished with:\n"+x.getValue());
+                    x.getValue().action();
                 }
             }),
             new LinkButton<Unit>("profile", Account.profilePage()),
