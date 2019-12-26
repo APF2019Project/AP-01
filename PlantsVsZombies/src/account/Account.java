@@ -66,11 +66,15 @@ public class Account implements Serializable {
     ) +
             "----------------------------------------------------------------------\n";
     return () -> {
-      String table = ALL.values().stream()
-              .map(x -> String.format(
-                      format, x.username, "|", "" + x.score, "|", "" + x.store.money
-              ))
-              .collect(Collectors.joining());
+      String table = ALL.values().stream().sorted((y,x) -> {
+        if (x.score != y.score) return x.score - y.score;
+        if (x.store.money != y.store.money) return x.store.money - y.store.money;
+        return 0;
+      })
+        .map(x -> String.format(
+          format, x.username, "|", "" + x.score, "|", "" + x.store.money
+        ))
+        .collect(Collectors.joining());
       new Message(header + table).action();
       return Result.error("end page");
     };
