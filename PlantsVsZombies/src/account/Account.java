@@ -140,7 +140,8 @@ public class Account implements Serializable {
   }
 
   public static Result<Unit> create(String username, String password) {
-    if (getByUsername(username) != null) return Result.error("invalid username");
+    if (getByUsername(username).isError()) 
+      return Result.error("invalid username");
     new Account(username, password);
     return Result.ok();
   }
