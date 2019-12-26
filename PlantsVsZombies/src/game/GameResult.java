@@ -1,10 +1,12 @@
 package game;
 
-
 import exception.Winner;
 import page.Message;
+import page.Page;
+import util.Result;
+import util.Unit;
 
-public class GameResult {
+public class GameResult implements Page<Unit> {
     public final Winner winner;
     public final Integer plantsKilled;
     public final Integer zombiesKilled;
@@ -17,8 +19,33 @@ public class GameResult {
         this.gameMode = gameMode;
     }
 
-    public void action() {
-        Message.show(toString());
+    public Result<Unit> action() {
+        if (winner == null) {
+            Message.show("You abort the game!");
+            return Result.ok();
+        }
+        if (gameMode == GameMode.PVP) {
+            Message.show("Game has been finished");
+            return Result.ok();
+        }
+        int moneyDelta = 0;
+        int scoreDelta = 0;
+        boolean isWin = false;
+        if (gameMode != GameMode.ZOMBIE) {
+            isWin = winner == Winner.PLANTS;
+            scoreDelta = zombiesKilled;
+            moneyDelta = zombiesKilled * 10;
+        }
+        else {
+            isWin = winner == Winner.ZOMBIES;
+            scoreDelta = plantsKilled;
+            moneyDelta = plantsKilled * 10;
+        }
+        String res = (isWin ? "You won :)" : "You lose :(") + "\n";
+        res += "Score gained: " + scoreDelta + "\n";
+        res += "Money gained: " + moneyDelta + "\n";
+        Message.show(res);
+        return Result.ok();
     }
 
     @Override
