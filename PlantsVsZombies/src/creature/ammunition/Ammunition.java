@@ -26,22 +26,27 @@ public class Ammunition extends Creature {
         if (health == 0) throw new Exception("I Killed");
     }
 
-    private void move() {
+    private boolean move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
+        private boolean findZombie = false;
         for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
-            Zombie zombie = gameEngine.getZombie(location);
-            if (zombie != null && 
-                zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1)
-                    return;
+            ArrayList <Zombie> zombies = gameEngine.getZombies(location);
+            zombies.forEach(zombie -> {
+                if (zombie != null && 
+                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1)
+                        findZombie = true;
+            });
+            if (findZombie) break;
             try {
                 location = location.nextLocation(direction);
             }
             catch(Exception exp) {
                 gameEngine.killAmmunition(this);
-                return;
+                return false;
             }
         }
+        return findZombie;
     }
 
     public void nextTurn() throws EndGameException {
@@ -50,7 +55,7 @@ public class Ammunition extends Creature {
             gameEngine.killAmmunition(this);
             return;
         }
-        move();
+        if (!move()) return;
         SortedSet <Zombie> zombies = gameEngine.getZombies(location.lineNumber);
         zombies.forEach(zombie -> {
             int dis = Math.max(

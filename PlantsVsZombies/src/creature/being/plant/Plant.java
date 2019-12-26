@@ -16,12 +16,10 @@ public class Plant extends Creature {
         if (health <= 0) gameEngine.killPlant(this);
     }
     public void createAmmunition() {
+        plantDna.getAmmunitionDna().forEach(ammunitionDna -> {
+            gameEngine.newAmmunition(this.location, ammunitionDna, this);
+        });
         if (plantDna.isExplosive()) gameEngine.killPlant(this);
-        else {
-            plantDna.getAmmunitionDna().forEach(ammunitionDna -> {
-                gameEngine.newAmmunition(this.location, ammunitionDna, this);
-            });
-        }
     }
 
     public void damage(Zombie zombie) {
