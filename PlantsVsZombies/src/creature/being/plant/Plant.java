@@ -61,7 +61,10 @@ public class Plant extends Creature {
     public Plant(PlantDna plantDna, int lineNumber, int position) {
         super(new Location(lineNumber, position));
         this.plantDna = plantDna;
-        this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+        if (plantDna.getAmmunitionDna().isEmpty())
+            this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+        else
+            this.remainingAmmunitionCooldown = 0;
         this.health = plantDna.getFirstHealth();
         this.remainingAmmunitionCooldown = plantDna.getFirstCooldown();
     }
