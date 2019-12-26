@@ -1,11 +1,12 @@
 package creature.being.plant;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
-import java.util.*;
 
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlantDna extends BeingDna {
 
@@ -30,7 +31,7 @@ public class PlantDna extends BeingDna {
     PlantDna.allDnas = allDnas;
   }
 
-  public ArrayList <AmmunitionDna> getAmmunitionDna() {
+  public List<AmmunitionDna> getAmmunitionDna() {
     return ammunitionDna;
   }
 

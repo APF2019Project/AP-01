@@ -24,8 +24,12 @@ public class Location implements Comparable <Location> {
         if (direction == 1) return this.right();
         return this.left();
     }
-    public boolean equals(Location location){
-        return lineNumber == location.lineNumber && position == location.position;
+
+    public boolean equals(Object location) {
+        if (location instanceof Location) {
+            return lineNumber == ((Location) location).lineNumber && position == ((Location) location).position;
+        }
+        return false;
     }
 
     @Override

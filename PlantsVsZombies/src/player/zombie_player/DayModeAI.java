@@ -62,7 +62,7 @@ public class DayModeAI implements ZombiePlayer {
                     counter = 0;
                 }
             } else if (waveNumber == 4 && counter > 0)
-                throw new EndGameException(Winner.Plants);
+                throw new EndGameException(Winner.PLANTS);
         }
     }
 

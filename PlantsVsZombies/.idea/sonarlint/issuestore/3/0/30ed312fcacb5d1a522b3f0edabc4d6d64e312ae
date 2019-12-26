@@ -1,10 +1,12 @@
 
-Jsquid:S1602",Remove useless curly braces around statement(ºš£8¿¡³éò-
-|squid:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ŒÊ“³şÿÿÿÿ8¿¡³éò-
-Jsquid:S1602&",Remove useless curly braces around statement(äÚ·ß8èÖóğ-
-Csquid:S1602.",Remove useless curly braces around statement(÷ËŸ
-Msquid:S1611*"/Remove the parentheses around the "x" parameter(ŒµäŸ8èÖóğ-
-wsquid:S2293%"YReplace the type specification in this constructor call with the diamond operator ("<>").(åú’Ó8èÖóğ-
-Fsquid:S16049"(Make this anonymous inner class a lambda(Ãƒ“†8èÖóğ-
-vsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÆÍÃ{8¿¡³éò-
-]squid:S1118":Add a private constructor to hide the implicit public one.(Î†‰šÿÿÿÿÿ8èÖóğ-
+tsquid:S1602"SRemove useless curly braces around statement and then remove useless return keyword(ñ™Â×øÿÿÿÿ8äòÛó-
+qsquid:S16024"SRemove useless curly braces around statement and then remove useless return keyword(‚¡Âˆ8ÇùÌó-
+Csquid:S1602f",Remove useless curly braces around statement(÷ËŸ
+]squid:S11182":Add a private constructor to hide the implicit public one.(Î†‰šÿÿÿÿÿ8èÖóğ-
+wsquid:S2293]"YReplace the type specification in this constructor call with the diamond operator ("<>").(åú’Ó8èÖóğ-
+Msquid:S1611b"/Remove the parentheses around the "x" parameter(ŒµäŸ8èÖóğ-
+Fsquid:S1604q"(Make this anonymous inner class a lambda(Ãƒ“†8èÖóğ-
+|squid:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹“½¾ùÿÿÿÿ8ÇùÌó-
+|squid:S2293S"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŒÊ“³şÿÿÿÿ8¿¡³éò-
+Jsquid:S1602^",Remove useless curly braces around statement(äÚ·ß8èÖóğ-
+osquid:S1602"SRemove useless curly braces around statement and then remove useless return keyword(Î×ƒŒ8€ş’ó-
