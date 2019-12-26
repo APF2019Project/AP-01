@@ -339,10 +339,15 @@ public class GameEngine {
                 if (cnt == 0) res+=".";
                 else res += ConsoleColors.yellow(""+cnt);
                 cnt = 0;
+                char nm = 'A';
                 for (Zombie zombie: getZombies(i)) {
-                    if (zombie.getLocation().position == j) cnt++;
+                    if (zombie.getLocation().position == j) {
+                        cnt++;
+                        nm = zombie.getZombieDna().getName().charAt(0);
+                    }
                 }
                 if (cnt == 0) res+=".";
+                else if (cnt == 1) res += ConsoleColors.red(""+nm);
                 else res += ConsoleColors.red(""+cnt);
                 res+=" ";
             }
