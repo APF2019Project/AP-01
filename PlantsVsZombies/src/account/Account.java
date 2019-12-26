@@ -29,7 +29,7 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   //private String passwordSalt;
-  private int score;
+  public int score;
 
   public static Account getCurrentAccount() {
     return current;
