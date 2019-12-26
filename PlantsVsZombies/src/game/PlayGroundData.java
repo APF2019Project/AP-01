@@ -17,7 +17,7 @@ public class PlayGroundData {
 
     SortedSet<Plant> plants = new TreeSet<>();
     SortedSet<Zombie> zombies = new TreeSet<>();
-    SortedSet<Ammunition> ammunitions = new TreeSet<>();
+    SortedSet<Ammunition> ammunition = new TreeSet<>();
     List<Line> lines;
 
     List<TreeSet<Plant>> plantsPerLine;

@@ -1,7 +1,7 @@
 package creature.being.zombie;
 
-import creature.Location;
 import creature.Creature;
+import creature.Location;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
@@ -21,8 +21,7 @@ public class Zombie extends Creature {
 
     public boolean reduceHealth(int damageAmount) {
         health -= damageAmount;
-        if (health <= 0) return true;
-        return false;
+        return health <= 0;
     }
 
     public boolean reduceHealth(int damageAmount, int ammunitionType) {
@@ -60,7 +59,7 @@ public class Zombie extends Creature {
                 location = location.left();
             }
             catch(Exception exp) {
-                throw new EndGameException(Winner.Zombies);
+                throw new EndGameException(Winner.ZOMBIES);
             }
         }
         return gameEngine.getPlant(location);

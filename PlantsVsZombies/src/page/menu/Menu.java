@@ -1,18 +1,19 @@
 package page.menu;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import main.Program;
 import page.Help;
 import page.Message;
 import page.Page;
 import util.Result;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * Menu is a page that show some {@link Button} to user
  * and when user click on some button, run action of that button
+ *
  * @param <U> type of result of Menu
  */
 public class Menu<U> implements Page<U> {
@@ -48,28 +49,27 @@ public class Menu<U> implements Page<U> {
     }
     if (s.equals("")) return action();
     try {
-      final int k = Integer.valueOf(s);
+      final int k = Integer.parseInt(s);
       if (k < 0 || k >= buttons.size()) {
-        Message.show("Please enter a number between 0 and "+k);
+        Message.show("Please enter a number between 0 and " + k);
         return action();
       }
       final Result<U> result = buttons.get(k).action();
       if (result.isError()) return action();
-      else return result;  
-    }
-    catch (NumberFormatException e) {
+      else return result;
+    } catch (NumberFormatException e) {
       Message.show("please enter a number");
       return action();
     }
   }
 
   private void printHelp() {
-    String s = "";
+    StringBuilder s = new StringBuilder();
     for (int i = 0; i < buttons.size(); i++) {
-      s += i + ". " + buttons.get(i).getLabel() + "\n";
-      s += "    " + buttons.get(i).getHelp() + "\n";
+      s.append(i).append(". ").append(buttons.get(i).getLabel()).append("\n");
+      s.append("    ").append(buttons.get(i).getHelp()).append("\n");
     }
-    new Help(s).action();
+    new Help(s.toString()).action();
   }
 
   @Override

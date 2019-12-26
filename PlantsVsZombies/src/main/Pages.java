@@ -48,74 +48,63 @@ class DataButton<U> implements Button<U> {
 }
 
 public class Pages {
-    public static final Menu<GameResult> chooseGameType = new Menu<GameResult>(
-            new DataButton<>("Day", () -> {
-                return new Collection<PlantDna>(
-                    Account.getCurrentUserPlants(), 2
-                ).action()
-                .map(GameEngine::newDayGame);
-            }),
-            new DataButton<>("Water", () -> {
-                return new Collection<PlantDna>(
-                    Account.getCurrentUserPlants(), 2
-                ).action()
-                .map(GameEngine::newWaterGame);
-            }),
+    public static final Menu<GameResult> chooseGameType = new Menu<>(
+            new DataButton<>("Day", () -> new Collection<>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2
+            ).action()
+                    .map(GameEngine::newDayGame)),
+            new DataButton<>("Water", () -> new Collection<>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2
+            ).action()
+                    .map(GameEngine::newWaterGame)),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
-            new DataButton<>("Zombie", () -> {
-                return new Collection<ZombieDna>(Account.getCurrentUserZombies(), 2).action()
-                        .map(GameEngine::newZombieGame);
-            }),
-            new DataButton<GameResult>("PVP", () -> {
-                return new Form("Enter opponent username").action()
+            new DataButton<>("Zombie", () -> new Collection<>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 2).action()
+                    .map(GameEngine::newZombieGame)),
+            new DataButton<>("PVP", () -> new Form("Enter opponent username").action()
                     .flatMap(opUsername -> Account.getByUsername(opUsername[0]))
-                    .flatMap(opUser -> 
-                        new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2)
-                        .action()
-                        .flatMap(plantHand -> 
-                            new Collection<ZombieDna>(opUser.getZombies(), 2)
-                            .action().map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))
-                        )
-                    );
-            })
+                    .flatMap(opUser ->
+                            new Collection<>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 2)
+                                    .action()
+                                    .flatMap(plantHand ->
+                                            new Collection<>((ArrayList<ZombieDna>) opUser.getZombies(), 2)
+                                                    .action().map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))
+                                    )
+                    ))
     );
 
-    public static final Menu<Unit> mainMenu = new Menu<Unit>(
-            new ActionButton<Unit>("play", () -> {
+    public static final Menu<Unit> mainMenu = new Menu<>(
+            new ActionButton<>("play", () -> {
                 Result<GameResult> x = chooseGameType.action();
                 if (!x.isError()) {
                     Message.show("Your game finished with:\n"+x.getValue());
                 }
             }),
-            new LinkButton<Unit>("profile", Account.profilePage()),
-            new LinkButton<Unit>("shop", new ShopPage())
+            new LinkButton<>("profile", Account.profilePage()),
+            new LinkButton<>("shop", new ShopPage())
     );
-    public static final Menu<Void> loginMenu = new Menu<Void>(
-            new ActionButton<Void>("create account", () -> {
+    public static final Menu<Void> loginMenu = new Menu<>(
+            new ActionButton<>("create account", () -> {
                 (new Form("Enter new username", "Enter password"))
                         .action()
                         .flatMap(data -> Account.create(data[0], data[1]))
-                        .map((x) -> "Account created successfully")
+                        .map(x -> "Account created successfully")
                         .show()
                         .showError();
             }),
-            new ActionButton<Void>("login", () -> {
+            new ActionButton<>("login", () -> {
                 (new Form("Enter username", "Enter password"))
                         .action()
                         .flatMap(data -> Account.login(data[0], data[1]))
                         .showError()
                         .flatMap(x -> mainMenu.action());
             }),
-            new LinkButton<Void>("leaderboard", Account.leaderBoardPage())
+            new LinkButton<>("leaderboard", Account.leaderBoardPage())
     );
 
     public static <U> Page<U> notImplemented() {
-        return new Page<U>() {
-            @Override
-            public Result<U> action() {
-                new Message("ishalla in future").action();
-                return Result.error("end");
-            }
+        return () -> {
+            new Message("ishalla in future").action();
+            return Result.error("end");
         };
     }
 }

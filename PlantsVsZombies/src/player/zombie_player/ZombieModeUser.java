@@ -39,7 +39,7 @@ public class ZombieModeUser implements ZombiePlayer {
         for (ZombieDna zombieDna : zombieDnas)
             if (zombieDna.getFirstHealth() * 10 <= coin)
                 flag = true;
-        if (!flag) throw new EndGameException(Winner.Plants);
+        if (!flag) throw new EndGameException(Winner.PLANTS);
         Result<Unit> x = new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),

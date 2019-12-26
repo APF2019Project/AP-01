@@ -1,8 +1,5 @@
 package account;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import creature.being.BeingDna;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
@@ -13,6 +10,9 @@ import page.Page;
 import util.Result;
 import util.Unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopPage implements Page<Unit> {
 
   @Override
@@ -21,30 +21,28 @@ public class ShopPage implements Page<Unit> {
     while (true) {
       Program.clearScreen();
       System.out.println("Enter number to buy ( or e for exit )");
-      System.out.println("Your money is: "+me.money+"$");
-      int i=0;
+      System.out.println("Your money is: " + me.money + "$");
+      int i = 0;
       ArrayList<BeingDna> buyOptions = new ArrayList<>();
       List<BeingDna> allDna = new ArrayList<>();
       allDna.addAll(PlantDna.getAllDnas());
       allDna.addAll(ZombieDna.getAllDnas());
-      for (BeingDna x: allDna) {
+      for (BeingDna x : allDna) {
         if (me.haveCard(x))
           System.out.println("X. " + x.getName() + "     sold out");
         else if (me.money < x.getShopPrice()) {
-          System.out.println("X. " + x.getName() + "     " + ConsoleColors.red(x.getShopPrice()+"$"));
-        } 
-        else {
-          System.out.println(i + ". " + x.getName() + "     " + x.getShopPrice()+"$");
+          System.out.println("X. " + x.getName() + "     " + ConsoleColors.red(x.getShopPrice() + "$"));
+        } else {
+          System.out.println(i + ". " + x.getName() + "     " + x.getShopPrice() + "$");
           buyOptions.add(x);
-          i++;  
+          i++;
         }
       }
       String s = Program.scanner.nextLine();
       if (s.equals("e")) return Result.error("end");
-      try{
+      try {
         me.buyCard(buyOptions.get(Integer.parseInt(s)));
-      }
-      catch(Exception e) {
+      } catch (Exception e) {
         Message.show("Please enter a valid number");
       }
     }
