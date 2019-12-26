@@ -35,6 +35,10 @@ public class Account implements Serializable {
     return current;
   }
 
+  public Store getStore() {
+    return store;
+  }
+
   private Account(String username, String password) {
     this.username = username;
     this.passwordHash = password;
