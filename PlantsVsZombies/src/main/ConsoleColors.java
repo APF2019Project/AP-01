@@ -11,6 +11,11 @@ public class ConsoleColors {
   public static String green(String x) {
     return GREEN + x + RESET;
   }
+
+
+  public static String yellow(String x) {
+    return YELLOW + x + RESET;
+  }
   // Regular Colors
   public static final String BLACK = "\033[0;30m";   // BLACK
   public static final String RED = "\033[0;31m";     // RED
@@ -80,5 +85,6 @@ public class ConsoleColors {
   public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m"; // PURPLE
   public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";  // CYAN
   public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";   // WHITE
+
 
 }
