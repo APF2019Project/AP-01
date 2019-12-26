@@ -332,6 +332,12 @@ public class GameEngine {
                     );
                 }
                 int cnt=0;
+                for (Ammunition ammunition: DATABASE.ammunitionPerLine.get(i)) {
+                    if (ammunition.getLocation().position == j) cnt++;
+                }
+                if (cnt == 0) res+=".";
+                else res += ConsoleColors.yellow(""+cnt);
+                cnt = 0;
                 for (Zombie zombie: getZombies(i)) {
                     if (zombie.getLocation().position == j) cnt++;
                 }
