@@ -55,7 +55,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.WATER, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -70,7 +70,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -85,7 +85,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -100,7 +100,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.ZOMBIE, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -115,7 +115,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
