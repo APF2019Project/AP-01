@@ -31,6 +31,10 @@ public class Account implements Serializable {
   //private String passwordSalt;
   private int score;
 
+  public static Account getCurrentAccount() {
+    return current;
+  }
+
   private Account(String username, String password) {
     this.username = username;
     this.passwordHash = password;
