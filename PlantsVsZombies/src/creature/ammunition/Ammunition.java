@@ -7,6 +7,7 @@ import creature.Creature;
 import creature.Location;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Ammunition extends Creature {
     private final AmmunitionDna ammunitionDna;
@@ -29,13 +30,12 @@ public class Ammunition extends Creature {
     private boolean move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
-        private boolean findZombie = false;
+        boolean findZombie = false;
         for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
             ArrayList <Zombie> zombies = gameEngine.getZombies(location);
-            zombies.forEach(zombie -> {
-                if (zombie != null && 
-                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1)
-                        findZombie = true;
+            findZombie = zombies.stream().anyMatch(zombie -> {
+                return (zombie != null && 
+                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1);
             });
             if (findZombie) break;
             try {
