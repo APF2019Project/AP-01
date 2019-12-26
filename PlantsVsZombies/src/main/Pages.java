@@ -49,35 +49,27 @@ class DataButton<U> implements Button<U> {
 
 public class Pages {
     public static final Menu<GameResult> chooseGameType = new Menu<GameResult>(
-            new DataButton<>("Day", () -> {
-                return new Collection<PlantDna>(
-                    Account.getCurrentUserPlants(), 7
-                ).action()
-                .map(GameEngine::newDayGame);
-            }),
-            new DataButton<>("Water", () -> {
-                return new Collection<PlantDna>(
-                    Account.getCurrentUserPlants(), 7
-                ).action()
-                .map(GameEngine::newWaterGame);
-            }),
+            new DataButton<>("Day", () -> new Collection<PlantDna>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7
+            ).action()
+                    .map(GameEngine::newDayGame)),
+            new DataButton<>("Water", () -> new Collection<PlantDna>(
+                    (ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7
+            ).action()
+                    .map(GameEngine::newWaterGame)),
             new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
-            new DataButton<>("Zombie", () -> {
-                return new Collection<ZombieDna>(Account.getCurrentUserZombies(), 7).action()
-                        .map(GameEngine::newZombieGame);
-            }),
-            new DataButton<GameResult>("PVP", () -> {
-                return new Form("Enter opponent username").action()
+            new DataButton<>("Zombie", () -> new Collection<ZombieDna>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 7).action()
+                    .map(GameEngine::newZombieGame)),
+            new DataButton<GameResult>("PVP", () -> new Form("Enter opponent username").action()
                     .flatMap(opUsername -> Account.getByUsername(opUsername[0]))
-                    .flatMap(opUser -> 
-                        new Collection<PlantDna>(Account.getCurrentUserPlants(), 7)
-                        .action()
-                        .flatMap(plantHand -> 
-                            new Collection<ZombieDna>(opUser.getZombies(), 7)
-                            .action().map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))
-                        )
-                    );
-            })
+                    .flatMap(opUser ->
+                            new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7)
+                                    .action()
+                                    .flatMap(plantHand ->
+                                            new Collection<ZombieDna>((ArrayList<ZombieDna>) opUser.getZombies(), 7)
+                                                    .action().map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))
+                                    )
+                    ))
     );
 
     public static final Menu<Unit> mainMenu = new Menu<Unit>(
