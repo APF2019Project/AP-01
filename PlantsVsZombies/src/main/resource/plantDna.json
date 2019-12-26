@@ -228,5 +228,66 @@
     "firstHealth": 6,
     "cooldown": 6,
     "ammunitionDna": []
+  },
+  {
+    "name": "Potate Mine",
+    "leftToRight": true,
+    "shopPrice": 100000,
+    "gamePrice": 2,
+    "firstHealth": 1,
+    "cooldown": 3,
+    "Explosive": true,
+    "ammunitionDna": [{
+      "name": "Mine",
+      "speed": 0,
+      "powerOfDestruction": 10000,
+      "cooldown": 1,
+      "minimumDistanceForShoot": 0,
+      "firstHealth": 1
+    }]
+  },
+  {
+    "name": "Cherry Bomb",
+    "leftToRight": true,
+    "shopPrice": 100000,
+    "gamePrice": 2,
+    "firstHealth": 100000,
+    "cooldown": 4,
+    "Explosive": true,
+    "ammunitionDna": [{
+      "name": "Bomb",
+      "powerOfDestruction": 100000,
+      "cooldown": 1,
+      "reduceSpeedRatio": 1,
+      "firstHealth": 1
+    }]
+  },
+  {
+    "name": "Sunflower",
+    "shopPrice": 100000,
+    "gamePrice": 1,
+    "firstHealth": 2,
+    "cooldown": 2,
+    "ammunitionDna": [{
+      "name": "Sun",
+      "sunIncome": 1,
+      "cooldown": 2,
+      "firstHealth": 100000,
+      "type": 0
+    }]
+  },
+  {
+    "name": "Twin Sunflower",
+    "shopPrice": 100000,
+    "gamePrice": 3,
+    "firstHealth": 2,
+    "cooldown": 5,
+    "ammunitionDna": [{
+      "name": "Sun",
+      "sunIncome": 2,
+      "cooldown": 2,
+      "firstHealth": 100000,
+      "type": 0
+    }]
   }
 ]

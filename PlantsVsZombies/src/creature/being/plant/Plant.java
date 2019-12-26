@@ -65,7 +65,6 @@ public class Plant extends Creature {
         this.plantDna = plantDna;
         this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
         this.health = plantDna.getFirstHealth();
-        this.remainingAmmunitionCooldown = plantDna.getFirstCooldown();
     }
 
     @Override
