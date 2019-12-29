@@ -22,7 +22,6 @@ public class PlantDna extends BeingDna {
 
   private final ArrayList <AmmunitionDna> ammunitionDna;
   private final int cooldown;
-  private final int productionNumberOfAmmunitionPerUse;
   private final boolean canContain;
   private final boolean Explosive;
 

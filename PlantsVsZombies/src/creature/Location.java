@@ -24,6 +24,9 @@ public class Location implements Comparable <Location> {
         if (direction == 1) return this.right();
         return this.left();
     }
+    public Location moveBy(int dx, int dy) {
+        return new Location(lineNumber + dx, position + dy);
+    }
 
     public boolean equals(Object location) {
         if (location instanceof Location) {

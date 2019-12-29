@@ -17,8 +17,19 @@ public class Plant extends Creature {
     }
 
     public void createAmmunition() {
+        if (plantDna.getAmmunitionDna().isEmpty()) return;
         plantDna.getAmmunitionDna().forEach(ammunitionDna -> {
-            gameEngine.newAmmunition(this.location, ammunitionDna, this);
+            int Number = ammunitionDna.getProductionNumberOfAmmunitionPerUse();
+            if (Number == 3) {
+                for (int dx = -1; dx <= 1; dx++) {
+                    gameEngine.newAmmunition(this.location.moveBy(dx, 0), ammunitionDna, this);
+                }
+            }
+            else {
+                for (int num = 0; num < Number; ++num) {
+                    gameEngine.newAmmunition(this.location, ammunitionDna, this);
+                }
+            }
         });
         if (plantDna.isExplosive()) gameEngine.killPlant(this);
     }
