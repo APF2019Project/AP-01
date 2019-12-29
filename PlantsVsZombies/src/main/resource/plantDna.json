@@ -166,6 +166,35 @@
     }]
   },
   {
+    "name": "Split Pea",
+    "leftToRight": true,
+    "shopPrice": 100000,
+    "gamePrice": 4,
+    "firstHealth": 3,
+    "cooldown": 4,
+    "ammunitionDna": [
+    {
+      "name": "Pea",
+      "speed": 3,
+      "powerOfDestruction": 1,
+      "cooldown": 3,
+      "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 1,
+      "firstHealth": 1,
+      "type": 1
+    },
+    {
+      "name": "Pea",
+      "speed": -3,
+      "powerOfDestruction": 1,
+      "cooldown": 3,
+      "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 1,
+      "firstHealth": 1,
+      "type": 1
+    }]
+  },
+  {
     "name": "Explode o nut",
     "leftToRight": true,
     "powerOfDestruction": 1,

@@ -1,9 +1,9 @@
 package creature.being.plant;
 
+import creature.Creature;
 import creature.Location;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
-import creature.Creature;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
@@ -15,6 +15,7 @@ public class Plant extends Creature {
         health -= damageAmount;
         if (health <= 0) gameEngine.killPlant(this);
     }
+
     public void createAmmunition() {
         plantDna.getAmmunitionDna().forEach(ammunitionDna -> {
             gameEngine.newAmmunition(this.location, ammunitionDna, this);
@@ -63,7 +64,10 @@ public class Plant extends Creature {
     public Plant(PlantDna plantDna, int lineNumber, int position) {
         super(new Location(lineNumber, position));
         this.plantDna = plantDna;
-        this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+        if (!plantDna.getAmmunitionDna().isEmpty())
+            this.remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+        else
+            this.remainingAmmunitionCooldown = 0;
         this.health = plantDna.getFirstHealth();
     }
 
@@ -71,5 +75,5 @@ public class Plant extends Creature {
     public String toString() {
         return "Plant\ntype = " + plantDna.getName() + "\n" + super.toString() + "remainingAmmunitionCooldown=" + remainingAmmunitionCooldown + "\n\n";
     }
-    
+
 }

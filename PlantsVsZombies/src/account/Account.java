@@ -16,6 +16,7 @@ import util.Unit;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,15 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   //private String passwordSalt;
-  private int score;
+  public int score;
+
+  public static Account getCurrentAccount() {
+    return current;
+  }
+
+  public Store getStore() {
+    return store;
+  }
 
   private Account(String username, String password) {
     this.username = username;
@@ -56,24 +65,24 @@ public class Account implements Serializable {
             format, "Name", "|", "Score", "|", "Money"
     ) +
             "----------------------------------------------------------------------\n";
-    return new Page<Void>() {
-      @Override
-      public Result<Void> action() {
-        String table = ALL.values().stream()
-                .map(x -> String.format(
-                        format, x.username, "|", "" + x.score, "|", "" + x.store.money
-                ))
-                .collect(Collectors.joining());
-        new Message(header + table).action();
-        return Result.error("end page");
-      }
-
+    return () -> {
+      String table = ALL.values().stream().sorted((y,x) -> {
+        if (x.score != y.score) return x.score - y.score;
+        if (x.store.money != y.store.money) return x.store.money - y.store.money;
+        return 0;
+      })
+        .map(x -> String.format(
+          format, x.username, "|", "" + x.score, "|", "" + x.store.money
+        ))
+        .collect(Collectors.joining());
+      new Message(header + table).action();
+      return Result.error("end page");
     };
   }
 
   public static Page<Unit> profilePage() {
-    return new Menu<Unit>(
-            new Button<Unit>() {
+    return new Menu<>(
+            new Button<>() {
               @Override
               public String getLabel() {
                 return "Delete account";
@@ -140,7 +149,8 @@ public class Account implements Serializable {
   }
 
   public static Result<Unit> create(String username, String password) {
-    if (getByUsername(username) != null) return Result.error("invalid username");
+    if (getByUsername(username).isError()) 
+      return Result.error("invalid username");
     new Account(username, password);
     return Result.ok();
   }
@@ -154,7 +164,15 @@ public class Account implements Serializable {
     });
   }
 
-  public ArrayList<PlantDna> getPlants() {
+  public static List<PlantDna> getCurrentUserPlants() {
+    return Account.current.getPlants();
+  }
+
+  public static List<ZombieDna> getCurrentUserZombies() {
+    return Account.current.getZombies();
+  }
+
+  public List<PlantDna> getPlants() {
     ArrayList<PlantDna> res = new ArrayList<>();
     for (PlantDna dna : PlantDna.getAllDnas())
       if (store.haveCard(dna))
@@ -162,20 +180,12 @@ public class Account implements Serializable {
     return res;
   }
 
-  public ArrayList<ZombieDna> getZombies() {
+  public List<ZombieDna> getZombies() {
     ArrayList<ZombieDna> res = new ArrayList<>();
     for (ZombieDna dna : ZombieDna.getAllDnas())
       if (store.haveCard(dna))
         res.add(dna);
     return res;
-  }
-
-  public static ArrayList<PlantDna> getCurrentUserPlants() {
-    return Account.current.getPlants();
-  }
-
-  public static ArrayList<ZombieDna> getCurrentUserZombies() {
-    return Account.current.getZombies();
   }
 
   private Result<Unit> rename(String string) {

@@ -1,13 +1,15 @@
 
-Ksquid:S1068"-Remove this unused "gameState" private field.(ìŠáë8«æÅóğ-
-Jsquid:S1168"+Return an empty collection instead of null.(¥¹ï8«æÅóğ-
-Esquid:S2189@""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ğÖÌéò-
-msquid:S00100¾"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µë®=8«æÅóğ-
-Qsquid:S1135É"2Complete the task associated to this TODO comment.(¢®Ö8É§ïíò-
-Esquid:S2189/""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8¥ÇÈñ-
-rsquid:S00116"SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8«æÅóğ-
-Vsquid:S1135‚"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8‹²ôëò-
-Jsquid:S1168§"+Return an empty collection instead of null.(¥¹ï8«æÅóğ-
-Nsquid:S00108Î")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8«æÅóğ-
-Qsquid:S3010#".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8êšèŸñ-
-Vsquid:S1135İ"2Complete the task associated to this TODO comment.(æÄ±øøÿÿÿÿ8«æÅóğ-
+Nsquid:S00108—")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8ëıäÆó-
+Vsquid:S1135¶"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8ëıäÆó-
+Qsquid:S3010&".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8ëıäÆó-
+Esquid:S21891""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
+Ksquid:S1068"-Remove this unused "gameState" private field.(ìŠáë8ëıäÆó-
+rsquid:S00116"SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8ëıäÆó-
+Esquid:S2189c""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
+Esquid:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
+Esquid:S2189S""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
+Esquid:S2189r""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
+Nsquid:S2440¾"*Remove this instantiation of "Ammunition".(ôô÷Üıÿÿÿÿ8ëıäÆó-
+Jsquid:S1168İ"+Return an empty collection instead of null.(¥¹ï8ëıäÆó-
+Jsquid:S1168æ"+Return an empty collection instead of null.(¥¹ï8ëıäÆó-
+Qsquid:S1135’"2Complete the task associated to this TODO comment.(¢®Ö8ëıäÆó-

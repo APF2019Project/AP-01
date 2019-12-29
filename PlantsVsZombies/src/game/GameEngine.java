@@ -29,7 +29,6 @@ public class GameEngine {
     private PlantPlayer plantPlayer;
     private ZombiePlayer zombiePlayer;
     private static GameEngine currentGameEngine;
-    private GameState gameState = GameState.LOADING;
     private PlayGroundData DATABASE;
     private Integer turn = 0;
     private Random random;
@@ -41,21 +40,6 @@ public class GameEngine {
         random = new Random();
     }
 
-    public static GameResult newDayGame(List<PlantDna> hand) {
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
-        new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.DAY, new DayModeUser(hand), new DayModeAI(), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
-        }
-    }
-
     public static GameResult newWaterGame(List<PlantDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
@@ -63,15 +47,30 @@ public class GameEngine {
                 lines.add(new Line(i, LineState.DRY, null));
             else
                 lines.add(new Line(i, LineState.WATER, null));
-            
+
         new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.WATER, new DayModeUser(hand), new DayModeAI(), lines));
+        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.WATER, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+        }
+    }
+
+    public static GameResult newDayGame(List<PlantDna> hand) {
+        List<Line> lines = new ArrayList<>();
+        for (int i = 0; i < 6; i++)
+            lines.add(new Line(i, LineState.DRY, null));
+        new GameEngine();
+        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
+        try {
+            while (true) {
+                getCurrentGameEngine().nextTurn();
+            }
+        } catch (EndGameException e) {
+            return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -80,29 +79,28 @@ public class GameEngine {
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.RAIL, new RailModeUser(), new RailModeAI(), lines));
+        GameEngine.getCurrentGameEngine().config(new GameDna(new RailModeUser(), new RailModeAI(), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
-
 
     public static GameResult newZombieGame(List<ZombieDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.ZOMBIE, new ZombieModeAI(), new ZombieModeUser(hand), lines));
+        GameEngine.getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.ZOMBIE, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -111,14 +109,21 @@ public class GameEngine {
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(GameMode.PVP, new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
+        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(e.getWiner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
+    }
+
+    public void internalError(String s) {
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("internal error, probably you shoud just ignore it =) :");
+        System.out.println(s);
+        System.out.println("----------------------------------------------------------------------------");
     }
 
     public Random getRandom() {
@@ -129,7 +134,7 @@ public class GameEngine {
         return turn;
     }
 
-    public void config(GameDna gameDna) {
+    private void config(GameDna gameDna) {
         plantPlayer = gameDna.plantPlayer;
         zombiePlayer = gameDna.zombiePlayer;
         DATABASE = new PlayGroundData(19, gameDna.lines);
@@ -138,11 +143,11 @@ public class GameEngine {
             zombieQueue.add(new ArrayList<>());
     }
 
-    public boolean lineNumberChecker(Integer lineNumber) {
+    private boolean lineNumberChecker(Integer lineNumber) {
         return lineNumber >= 0 && lineNumber < DATABASE.width;
     }
 
-    public boolean positionChecker(Integer position) {
+    private boolean positionChecker(Integer position) {
         return position >= 0 && position < DATABASE.length;
     }
 
@@ -158,7 +163,7 @@ public class GameEngine {
         return currentGameEngine;
     }
 
-    public boolean locationChecker(Integer lineNumber, Integer position) {
+    private boolean locationChecker(Integer lineNumber, Integer position) {
         return !lineNumberChecker(lineNumber) || !positionChecker(position);
     }
 
@@ -169,22 +174,25 @@ public class GameEngine {
                 return plant;
         return null;
     }
+
     public Plant getPlant(Location location) {
         return getPlant(location.lineNumber, location.position);
     }
 
-    public ArrayList <Zombie> getZombies(Integer lineNumber, Integer position) {
+    public List<Zombie> getZombies(Integer lineNumber, Integer position) {
         if (locationChecker(lineNumber, position)) return null;
-        SortedSet <Zombie> zombies = getZombies(lineNumber);
-        ArrayList <Zombie> answer = new ArrayList<>();
+        SortedSet<Zombie> zombies = getZombies(lineNumber);
+        ArrayList<Zombie> answer = new ArrayList<>();
         for (Zombie zombie : zombies)
             if (zombie.getLocation().equals(new Location(lineNumber, position)))
                 answer.add(zombie);
         return answer;
     }
-    public ArrayList <Zombie> getZombies(Location location) {
+
+    public List<Zombie> getZombies(Location location) {
         return getZombies(location.lineNumber, location.position);
     }
+
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
@@ -200,11 +208,12 @@ public class GameEngine {
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
     }
-	public void newAmmunition(Location location, AmmunitionDna ammunitionDna, Plant plant) {
+
+    public void newAmmunition(Location location, AmmunitionDna ammunitionDna, Plant plant) {
         Ammunition ammunition = new Ammunition(location, ammunitionDna, plant);
         DATABASE.ammunitionPerLine.get(location.lineNumber).add(ammunition);
-        DATABASE.ammunitions.add(ammunition);
-	}
+        DATABASE.ammunition.add(ammunition);
+    }
 
 
     public void addZombie(Zombie zombie) {
@@ -273,7 +282,6 @@ public class GameEngine {
     }
 
 
-
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
             throw new InvalidGameMoveException("can't insert zombie here");
@@ -306,49 +314,65 @@ public class GameEngine {
         plantPlayer.nextTurn();
         zombiePlayer.nextTurn();
 
-        for (Ammunition ammunition : DATABASE.ammunitions)
-            ammunition.nextTurn();
-        for (Zombie zombie : DATABASE.zombies)
-            zombie.nextTurn();
-        for (Plant plant : DATABASE.plants)
-            plant.nextTurn();
+
+        TreeSet<Plant> local2 = new TreeSet<>(DATABASE.plants);
+        for (Plant plant : local2)
+            if (DATABASE.plants.contains(plant))
+                plant.nextTurn();
+
+                
+        TreeSet<Ammunition> local = new TreeSet<>(DATABASE.ammunition);
+        for (Ammunition ammunition : local)
+            if (DATABASE.ammunition.contains(ammunition))
+                ammunition.nextTurn();
+
+        
+        TreeSet<Zombie> local3 = new TreeSet<>(DATABASE.zombies);
+        for (Zombie zombie : local3)
+            if (DATABASE.zombies.contains(zombie))
+                zombie.nextTurn();
 
         turn += 1;
     }
 
-	public void killAmmunition(Ammunition ammunition) {
-        DATABASE.ammunitions.remove(ammunition);
+    public void killAmmunition(Ammunition ammunition) {
+        DATABASE.ammunition.remove(ammunition);
         DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
     }
-    
+
     public void prettyPrint() {
-        String res = "";
-        for (int i=0; i<getWidth(); i++) {
-            for (int j=0; j<getLength(); j++) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getLength(); j++) {
                 Plant plant = getPlant(i, j);
-                if (plant == null) res+=".";
+                if (plant == null) res.append(".");
                 else {
-                    res += ConsoleColors.green(
-                        ""+plant.getPlantDna().getName().charAt(0)
-                    );
+                    res.append(ConsoleColors.green(
+                            "" + plant.getPlantDna().getName().charAt(0)
+                    ));
                 }
-                int cnt=0;
-                for (Ammunition ammunition: DATABASE.ammunitionPerLine.get(i)) {
+                int cnt = 0;
+                for (Ammunition ammunition : DATABASE.ammunitionPerLine.get(i)) {
                     if (ammunition.getLocation().position == j) cnt++;
                 }
-                if (cnt == 0) res+=".";
-                else res += ConsoleColors.yellow(""+cnt);
+                if (cnt == 0) res.append(".");
+                else res.append(ConsoleColors.yellow("" + cnt));
                 cnt = 0;
-                for (Zombie zombie: getZombies(i)) {
-                    if (zombie.getLocation().position == j) cnt++;
+                char nm = 'A';
+                for (Zombie zombie : getZombies(i)) {
+                    if (zombie.getLocation().position == j) {
+                        cnt++;
+                        nm = zombie.getZombieDna().getName().charAt(0);
+                    }
                 }
-                if (cnt == 0) res+=".";
-                else res += ConsoleColors.red(""+cnt);
-                res+=" ";
+                if (cnt == 0) res.append(".");
+                else if (cnt == 1) res.append(ConsoleColors.red("" + nm));
+                else res.append(ConsoleColors.red("" + cnt));
+                res.append(" ");
             }
-            res+="\n";
+            res.append("\n");
         }
-        Message.show(res);
+        Message.show(res.toString());
     }
 
 }

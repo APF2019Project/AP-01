@@ -15,7 +15,7 @@ public class EndGameException extends Exception {
         this.aborted = true;
     }
 
-    public Winner getWiner() {
+    public Winner getWinner() {
         return winner;
     }
 

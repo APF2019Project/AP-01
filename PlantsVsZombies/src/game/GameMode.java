@@ -1,9 +1,9 @@
 package game;
 
 public enum GameMode {
-    DAY,
-    WATER,
-    RAIL,
-    ZOMBIE,
-    PVP
+  DAY,
+  WATER,
+  RAIL,
+  ZOMBIE,
+  PVP
 }
