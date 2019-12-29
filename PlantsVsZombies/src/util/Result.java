@@ -15,10 +15,14 @@ import page.Message;
 public class Result<T> {
   private Optional<T> value;
   private Optional<String> error;
-
   private Result(T value, String error) {
     this.value = Optional.ofNullable(value);
     this.error = Optional.ofNullable(error);
+  }
+  @Override
+  public String toString() {
+    if (isError()) return "Error: " + getError();
+    return value.toString();
   }
 
   /**
