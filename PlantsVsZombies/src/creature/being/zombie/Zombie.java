@@ -1,10 +1,14 @@
 package creature.being.zombie;
 
+import java.util.List;
+
 import creature.Creature;
 import creature.Location;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
+import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
+import creature.ammunition.Ammunition;
 
 public class Zombie extends Creature {
     private final ZombieDna zombieDna;
@@ -46,6 +50,16 @@ public class Zombie extends Creature {
     
     private Plant move() throws EndGameException {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
+            List <Ammunition> ammunitions = gameEngine.getAmmunitions(location);
+            ammunitions.forEach(ammunition -> {
+                try {
+                    ammunition.effect(this);
+                }
+                catch (Exception exception) {
+                    gameEngine.killZombie(this);
+                    return;
+                }
+            });
             Plant plant = gameEngine.getPlant(location);
             if (plant != null) {
                 if (numberOfJump < zombieDna.getMaxNumberOfJumps()) {

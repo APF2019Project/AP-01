@@ -15,7 +15,7 @@ public class Ammunition extends Creature {
     private final AmmunitionDna ammunitionDna;
     private final Plant owner;
 
-    private void effect(Zombie zombie) throws Exception {
+    public void effect(Zombie zombie) throws Exception {
         if (ammunitionDna.isJustKillShield() &&
                 zombie.getZombieDna().getWhenIDie() == null)
             return;

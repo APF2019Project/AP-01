@@ -189,17 +189,6 @@ public class GameEngine {
         return answer;
     }
 
-    public Plant getAmmunitions(Integer lineNumber, Integer position) {
-        if (locationChecker(lineNumber, position)) return null;
-      //  for (Plant plant : DATABASE.ammunitionPerLine.get(lineNumber))
-        //    if (plant.getLocation().equals(new Location(lineNumber, position)))
-          //      return plant;
-        return null;
-    }
-
-    public Plant getAmmunitions(Location location) {
-        return getAmmunitions(location.lineNumber, location.position);
-    }
     public List<Zombie> getZombies(Location location) {
         return getZombies(location.lineNumber, location.position);
     }
@@ -396,4 +385,7 @@ public class GameEngine {
         return answer;
     }
 
+    public List<Ammunition> getAmmunitions(Location location) {
+        return getAmmunitions(location.lineNumber, location.position);
+    }
 }
