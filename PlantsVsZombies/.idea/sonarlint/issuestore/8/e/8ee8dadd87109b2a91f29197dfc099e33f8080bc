@@ -1,15 +1,23 @@
 
-Nsquid:S00108—")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8ëıäÆó-
-Vsquid:S1135¶"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8ëıäÆó-
-Qsquid:S3010&".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8ëıäÆó-
-Esquid:S21891""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
-Ksquid:S1068"-Remove this unused "gameState" private field.(ìŠáë8ëıäÆó-
-rsquid:S00116"SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8ëıäÆó-
-Esquid:S2189c""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
-Esquid:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
-Esquid:S2189S""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
-Esquid:S2189r""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8ëıäÆó-
-Nsquid:S2440¾"*Remove this instantiation of "Ammunition".(ôô÷Üıÿÿÿÿ8ëıäÆó-
-Jsquid:S1168İ"+Return an empty collection instead of null.(¥¹ï8ëıäÆó-
-Jsquid:S1168æ"+Return an empty collection instead of null.(¥¹ï8ëıäÆó-
-Qsquid:S1135’"2Complete the task associated to this TODO comment.(¢®Ö8ëıäÆó-
+Esquid:S21896""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8Íäåæó-
+[
+squid:S106|"9Replace this use of System.out or System.err by a logger.(Â¥¹»üÿÿÿÿ8š¬¯Œô-
+Osquid:S1168·"+Return an empty collection instead of null.(¦¶É‰ûÿÿÿÿ8µîñŠô-
+Qsquid:S1135¨"2Complete the task associated to this TODO comment.(¢®Ö8µîñŠô-
+Jsquid:S1168ı"+Return an empty collection instead of null.(¥¹ï8µîñŠô-
+[
+squid:S106}"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8©´°Œô-
+V
+squid:S106{"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8æ³Œô-
+V
+squid:S106~"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8é±Œô-
+vsquid:S3776×"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(Ëó¿†ıÿÿÿÿ8µîñŠô-
+Nsquid:S00108­")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8ÿ†»Œô-
+Qsquid:S3010'".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8Íäåæó-
+Vsquid:S1135Ì"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8µîñŠô-
+rsquid:S00116 "SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8Íäåæó-
+Jsquid:S1168ô"+Return an empty collection instead of null.(¥¹ï8µîñŠô-
+Esquid:S2189c""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+Esquid:S2189E""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+Esquid:S2189T""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+Esquid:S2189r""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
