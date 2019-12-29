@@ -375,4 +375,14 @@ public class GameEngine {
         Message.show(res.toString());
     }
 
+    public List<Ammunition> getAmmunitions(Integer lineNumber, Integer position) {
+        if (locationChecker(lineNumber, position)) return null;
+        SortedSet<Ammunition> ammunitions = DATABASE.ammunitionPerLine.get(lineNumber);
+        ArrayList<Ammunition> answer = new ArrayList<>();
+        for (Ammunition ammunition : ammunitions)
+            if (ammunition.getLocation().equals(new Location(lineNumber, position)))
+                answer.add(ammunition);
+        return answer;
+    }
+
 }

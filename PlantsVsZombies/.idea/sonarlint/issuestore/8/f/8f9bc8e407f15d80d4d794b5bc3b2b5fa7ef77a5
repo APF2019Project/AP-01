@@ -1,4 +1,2 @@
 
-¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›Ë’ºıÿÿÿÿ8øÆ¢íò-
-Ksquid:S1185"(Remove this method to simply inherit it.(Êè‡Ëúÿÿÿÿ8øÆ¢íò-
-]squid:S1161":Add the "@Override" annotation above this method signature(Êè‡Ëúÿÿÿÿ8øÆ¢íò-
+Osquid:S1602",Remove useless curly braces around statement(Ê÷ÓÁıÿÿÿÿ8‡òØŒô-
