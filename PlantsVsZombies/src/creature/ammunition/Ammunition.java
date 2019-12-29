@@ -9,6 +9,8 @@ import exception.EndGameException;
 import java.util.List;
 import java.util.SortedSet;
 
+//TODO تیر سر جای خود ایستاد و از گیاه عبور نکرد و قفلی زد
+
 public class Ammunition extends Creature {
     private final AmmunitionDna ammunitionDna;
     private final Plant owner;
