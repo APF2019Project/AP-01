@@ -4,9 +4,9 @@ import creature.Dna;
 
 public class BeingDna extends Dna {
 
-  private int shopPrice;
-  private int gamePrice;
-  private int firstHealth;
+  private final int shopPrice;
+  private final int gamePrice;
+  private final int firstHealth;
 
   public int getShopPrice() {
     return shopPrice;

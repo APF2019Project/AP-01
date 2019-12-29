@@ -4,13 +4,9 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
-
-import com.google.gson.Gson;
-
 import account.Account;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
-import page.Message;
 
 public class Program {
 
