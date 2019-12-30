@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/zombie/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/zombie/Zombie.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -329,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577717592497</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="now gameEngine returns copy and alive added">
+      <created>1577726431160</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1577726431160</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -403,7 +410,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="fix errors in gameEngine" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;PlantsVsZombies/src/game/GameEngine.java" />
     <MESSAGE value="errors solved , gameEngine ready !" />
     <MESSAGE value="DayModeAI implemented" />
@@ -428,7 +434,8 @@
     <MESSAGE value="bug fixing in pages (casting List to ArrayList)" />
     <MESSAGE value="getAmmunition + PlantDna.toString()" />
     <MESSAGE value="lawn mower added :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="lawn mower added :D" />
+    <MESSAGE value="now gameEngine returns copy and alive added" />
+    <option name="LAST_COMMIT_MESSAGE" value="now gameEngine returns copy and alive added" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
