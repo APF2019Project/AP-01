@@ -261,19 +261,12 @@
   {
     "name": "Potate Mine",
     "leftToRight": true,
+    "powerOfDestruction": 100000,
     "shopPrice": 100000,
     "gamePrice": 2,
     "firstHealth": 1,
     "cooldown": 3,
-    "Explosive": true,
-    "ammunitionDna": [{
-      "name": "Mine",
-      "speed": 0,
-      "powerOfDestruction": 10000,
-      "cooldown": 1,
-      "minimumDistanceForShoot": 0,
-      "firstHealth": 1
-    }]
+    "ammunitionDna": []
   },
   {
     "name": "Cherry Bomb",
@@ -292,6 +285,22 @@
     }]
   },
   {
+    "name": "Magnet-shroom",
+    "leftToRight": true,
+    "shopPrice": 100000,
+    "gamePrice": 4,
+    "firstHealth": 2,
+    "cooldown": 4,
+    "ammunitionDna": [{
+      "name": "Bomb",
+      "powerOfDestruction": 100000,
+      "cooldown": 3,
+      "reduceSpeedRatio": 1,
+      "firstHealth": 1,
+      "type": 3
+    }]
+  },
+  {
     "name": "Sunflower",
     "shopPrice": 100000,
     "gamePrice": 1,
@@ -301,8 +310,7 @@
       "name": "Sun",
       "sunIncome": 1,
       "cooldown": 2,
-      "firstHealth": 100000,
-      "type": 0
+      "firstHealth": 100000
     }]
   },
   {
@@ -318,5 +326,35 @@
       "firstHealth": 100000,
       "type": 0
     }]
+  },
+  {
+    "name": "Jalapeno",
+    "leftToRight": true,
+    "shopPrice": 100000,
+    "gamePrice": 4,
+    "firstHealth": 3,
+    "cooldown": 4,
+    "Explosive": true,
+    "ammunitionDna": [
+    {
+      "name": "Pea",
+      "speed": 100000,
+      "powerOfDestruction": 1,
+      "cooldown": 3,
+      "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 1,
+      "firstHealth": 1,
+      "type": 1
+    },
+    {
+      "name": "Pea",
+      "speed": -100000,
+      "powerOfDestruction": 1,
+      "cooldown": 3,
+      "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 1,
+      "firstHealth": 1,
+      "type": 1
+    }]
   }
-]
+] 
