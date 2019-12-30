@@ -376,7 +376,7 @@ public class GameEngine {
     }
 
     public List<Ammunition> getAmmunitions(Integer lineNumber, Integer position) {
-        if (locationChecker(lineNumber, position)) return null;
+        if (locationChecker(lineNumber, position)) return new ArrayList<>();
         SortedSet<Ammunition> ammunitions = DATABASE.ammunitionPerLine.get(lineNumber);
         ArrayList<Ammunition> answer = new ArrayList<>();
         for (Ammunition ammunition : ammunitions)

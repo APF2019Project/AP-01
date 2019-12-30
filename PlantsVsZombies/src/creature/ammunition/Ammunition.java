@@ -32,12 +32,11 @@ public class Ammunition extends Creature {
     private boolean move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
-        boolean findZombie = false;
         for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
             List<Zombie> zombies = gameEngine.getZombies(location);
-            findZombie = zombies.stream().anyMatch(zombie -> (zombie != null &&
-                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1));
-            if (findZombie) break;
+            boolean findZombie = zombies.stream().anyMatch(zombie ->
+                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1);
+            if (findZombie) return true;
             try {
                 location = location.nextLocation(direction);
             } catch (Exception exp) {
@@ -45,7 +44,7 @@ public class Ammunition extends Creature {
                 return false;
             }
         }
-        return findZombie || !gameEngine.getZombies(location).isEmpty();
+        return !gameEngine.getZombies(location).isEmpty();
     }
 
     @Override

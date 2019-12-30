@@ -2,6 +2,8 @@ package creature;
 
 import game.GameEngine;
 
+//TODO add exception to moveBy
+
 public class Location implements Comparable <Location> {
 
     public final int lineNumber;
