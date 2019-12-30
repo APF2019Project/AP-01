@@ -86,7 +86,7 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.RAIL, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
