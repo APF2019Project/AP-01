@@ -5,6 +5,7 @@ import creature.being.plant.PlantDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
+import main.Program;
 import page.Form;
 import page.Message;
 import page.menu.ActionButton;
@@ -61,6 +62,18 @@ public class DayModeUser implements PlantPlayer {
         if (x.isError()) throw new EndGameException();
     }
 
+    private void selectNum(int i) {
+        if (coolDownTimeLeft.get(i) > 0) {
+            Message.show("Cant select this one, cool down time left !");
+            return;
+        }
+        if (plantDans.get(i).getGamePrice() > sun) {
+            Message.show("Cant select this one, not enough sun!");
+            return;
+        }
+        selected = i;
+    }
+
     private void select() {
         Result<String[]> result = new Form("Enter name").action();
         if (result == null || result.getValue().length == 0) {
@@ -69,15 +82,7 @@ public class DayModeUser implements PlantPlayer {
         }
         for (int i = 0; i < plantDans.size(); i++)
             if (plantDans.get(i).getName().equals(result.getValue()[0])) {
-                if (coolDownTimeLeft.get(i) > 0) {
-                    Message.show("Cant select this one, cool down time left !");
-                    return;
-                }
-                if (plantDans.get(i).getGamePrice() > sun) {
-                    Message.show("Cant select this one, not enough sun!");
-                    return;
-                }
-                selected = i;
+                selectNum(i);
                 return;
             }
         Message.show("invalid name !");
@@ -125,13 +130,21 @@ public class DayModeUser implements PlantPlayer {
 
     @Override
     public void showHand() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Sun: ").append(sun).append("\n");
+        Program.clearScreen();
+        System.out.println("Sun: " + sun + "\n");
         for (int i = 0; i < plantDans.size(); i++) {
-            stringBuilder.append(plantDans.get(i).toString()).append('\n');
-            stringBuilder.append("cool down time left: ").append(coolDownTimeLeft.get(i)).append('\n');
+            boolean isSelected = ( selected != null && i == selected );
+            String id = (isSelected ? "X" : i+"");
+            System.out.println(id + ". " + plantDans.get(i).getName());
+            System.out.println("cool down time left: " + coolDownTimeLeft.get(i));
         }
-        Message.show(stringBuilder.toString());
+        String s = Program.scanner.nextLine();
+        try {
+            selectNum(Integer.parseInt(s));
+        }
+        catch (NumberFormatException e) {
+            
+        }
     }
 
     @Override
