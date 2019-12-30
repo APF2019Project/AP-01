@@ -114,6 +114,7 @@ public class RailModeUser implements PlantPlayer {
 
     @Override
     public void showHand() {
+        Program.clearScreen();
         int cnt = 0;
         for (PlantDna plantDan : plantDans) {
             boolean isSelected = selected != null && cnt == selected;
