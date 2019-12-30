@@ -30,7 +30,7 @@ public class Zombie extends Creature {
     public boolean reduceHealth(int damageAmount, int ammunitionType) {
         if (zombieDna.getCrossing().indexOf(ammunitionType) != -1) {
             if (whenIDie == null) return false;
-            return reduceHealth(damageAmount, ammunitionType);
+            return whenIDie.reduceHealth(damageAmount, ammunitionType);
         }
         if (reduceHealth(damageAmount)) {
             if (whenIDie == null) return true;
