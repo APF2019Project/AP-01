@@ -288,7 +288,7 @@ public class GameEngine {
 
 
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
-        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
+        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2 || !DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
             throw new InvalidGameMoveException("can't insert zombie here");
         zombieQueue.get(lineNumber).add(dna);
     }
