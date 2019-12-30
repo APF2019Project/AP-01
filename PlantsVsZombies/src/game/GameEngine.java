@@ -237,20 +237,20 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getPlants() {
-        return DATABASE.plants;
+        return new TreeSet<>(DATABASE.plants);
     }
 
     public SortedSet<Plant> getPlants(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.plantsPerLine.get(lineNumber);
+        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.plantsPerLine.get(lineNumber));
         return null;
     }
 
     public SortedSet<Zombie> getZombies() {
-        return DATABASE.zombies;
+        return new TreeSet<>(DATABASE.zombies);
     }
 
     public SortedSet<Zombie> getZombies(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.zombiesPerLine.get(lineNumber);
+        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.zombiesPerLine.get(lineNumber));
         return null;
     }
 
@@ -263,19 +263,19 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getDeadPlnats() {
-        return DATABASE.deadPlants;
+        return new TreeSet<>(DATABASE.deadPlants);
     }
 
     public SortedSet<Zombie> getDeadZombies() {
-        return DATABASE.deadZombies;
+        return new TreeSet<>(DATABASE.deadZombies);
     }
 
     public SortedSet<Plant> getDeadPlantsLastTurn() {
-        return DATABASE.deadPlants;
+        return new TreeSet<>(DATABASE.deadPlants);
     }
 
     public SortedSet<Zombie> getDeadZombiesLastTurn() {
-        return DATABASE.deadZombies;
+        return new TreeSet<>(DATABASE.deadZombies);
     }
 
     public void addSun(int sunAmount) {
@@ -394,5 +394,17 @@ public class GameEngine {
         if (!lineNumberChecker(lineNumber))
             throw new InvalidGameMoveException("invalid line number for activating lawn mower!");
         DATABASE.lines.get(lineNumber).activateLawnMower();
+    }
+
+    public boolean alive(Plant plant) {
+        return DATABASE.plants.contains(plant);
+    }
+
+    public boolean alive(Zombie zombie) {
+        return DATABASE.zombies.contains(zombie);
+    }
+
+    public boolean alive(Ammunition ammunition) {
+        return DATABASE.ammunition.contains(ammunition);
     }
 }
