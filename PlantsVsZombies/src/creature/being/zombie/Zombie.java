@@ -51,6 +51,7 @@ public class Zombie extends Creature {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
             List<Ammunition> ammunitions = gameEngine.getAmmunition(location);
             for (Ammunition ammunition: ammunitions) {
+                if (!gameEngine.alive(ammunition)) continue;
                 try {
                     ammunition.effect(this);
                 }
