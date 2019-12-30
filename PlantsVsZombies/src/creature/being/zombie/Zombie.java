@@ -50,15 +50,15 @@ public class Zombie extends Creature {
     private Plant move() throws EndGameException {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
             List <Ammunition> ammunitions = gameEngine.getAmmunitions(location);
-            ammunitions.forEach(ammunition -> {
+            for (Ammunition ammunition: ammunitions) {
                 try {
                     ammunition.effect(this);
                 }
                 catch (Exception exception) {
                     gameEngine.killZombie(this);
-                    return;
+                    return null;
                 }
-            });
+            }
             Plant plant = gameEngine.getPlant(location);
             if (plant != null) {
                 if (numberOfJump < zombieDna.getMaxNumberOfJumps()) {
