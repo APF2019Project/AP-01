@@ -7,7 +7,6 @@ import creature.Location;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
-import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
 import creature.ammunition.Ammunition;
 
 public class Zombie extends Creature {
