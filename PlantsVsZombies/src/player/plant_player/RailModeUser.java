@@ -6,6 +6,7 @@ import creature.being.plant.PlantDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
+import main.Program;
 import page.Form;
 import page.Message;
 import page.menu.ActionButton;
@@ -113,11 +114,21 @@ public class RailModeUser implements PlantPlayer {
 
     @Override
     public void showHand() {
-        StringBuilder stringBuilder = new StringBuilder();
+        int cnt = 0;
         for (PlantDna plantDan : plantDans) {
-            stringBuilder.append(plantDan.toString()).append('\n');
+            boolean isSelected = selected != null && cnt == selected;
+            String id = isSelected ? "X" : cnt+"";
+            System.out.println(id + ". " + plantDan.getName());
+            cnt++;
         }
-        Message.show(stringBuilder.toString());
+        System.out.println("Enter a number for select or press enter to continue...");
+        String s = Program.scanner.nextLine();
+        try {
+            selected = Integer.parseInt(s);
+        }
+        catch (NumberFormatException e) {
+            
+        }
     }
 
     @Override
