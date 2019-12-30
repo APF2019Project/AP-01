@@ -1,6 +1,7 @@
 [
   {
     "name": "Peashooter",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 2,
     "firstHealth": 2,
@@ -18,6 +19,7 @@
   },
   {
     "name": "Snow Pea",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 3,
     "firstHealth": 3,
@@ -36,6 +38,7 @@
   },
   {
     "name": "Cabbage pult",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 100000,
     "gamePrice": 2,
@@ -54,6 +57,7 @@
   },
   {
     "name": "Repeater",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 49,
     "gamePrice": 3,
@@ -73,6 +77,7 @@
   },
   {
     "name": "Threepeater",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 81,
     "gamePrice": 4,
@@ -91,6 +96,7 @@
   },
   {
     "name": "Cactus",
+    "lineState": "DRY",
     "leftToRight": true,
     "powerOfDestruction": 1,
     "shopPrice": 101,
@@ -110,6 +116,7 @@
   },
   {
     "name": "Gatling Pea",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 61,
     "gamePrice": 5,
@@ -130,6 +137,7 @@
   },
   {
     "name": "Scaredy shroom",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 1,
     "firstHealth": 1,
@@ -149,6 +157,7 @@
   },
   {
     "name": "Kernel pult",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 3,
     "firstHealth": 2,
@@ -167,6 +176,7 @@
   },
   {
     "name": "Split Pea",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 100000,
     "gamePrice": 4,
@@ -196,6 +206,7 @@
   },
   {
     "name": "Explode o nut",
+    "lineState": "DRY",
     "leftToRight": true,
     "powerOfDestruction": 1,
     "gamePrice": 4,
@@ -205,6 +216,7 @@
   },
   {
     "name": "Melon-pult",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 28,
     "gamePrice": 3,
@@ -224,6 +236,7 @@
   },
   {
     "name": "Winter Melon",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 100000,
     "gamePrice": 4,
@@ -244,6 +257,7 @@
   },
   {
     "name": "Wall-nut",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 2,
     "firstHealth": 4,
@@ -252,6 +266,7 @@
   },
   {
     "name": "Tall-nut",
+    "lineState": "DRY",
     "leftToRight": true,
     "gamePrice": 4,
     "firstHealth": 6,
@@ -260,6 +275,7 @@
   },
   {
     "name": "Potate Mine",
+    "lineState": "DRY",
     "leftToRight": true,
     "powerOfDestruction": 100000,
     "shopPrice": 100000,
@@ -270,6 +286,7 @@
   },
   {
     "name": "Cherry Bomb",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 100000,
     "gamePrice": 2,
@@ -302,6 +319,7 @@
   },
   {
     "name": "Sunflower",
+    "lineState": "DRY",
     "shopPrice": 100000,
     "gamePrice": 1,
     "firstHealth": 2,
@@ -315,6 +333,7 @@
   },
   {
     "name": "Twin Sunflower",
+    "lineState": "DRY",
     "shopPrice": 100000,
     "gamePrice": 3,
     "firstHealth": 2,

@@ -55,6 +55,7 @@ public class Ammunition extends Creature {
         if (!move()) return;
         SortedSet<Zombie> zombies = gameEngine.getZombies(location.lineNumber);
         zombies.forEach(zombie -> {
+            if (!gameEngine.alive(zombie)) return;
             int dis = Math.max(
                     Math.abs(location.lineNumber - zombie.getLocation().lineNumber),
                     Math.abs(location.position - zombie.getLocation().position)

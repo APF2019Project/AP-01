@@ -138,6 +138,7 @@ public class DayModeUser implements PlantPlayer {
             System.out.println(id + ". " + plantDans.get(i).getName());
             System.out.println("cool down time left: " + coolDownTimeLeft.get(i));
         }
+        System.out.println("Enter a number for select or press enter to continue...");
         String s = Program.scanner.nextLine();
         try {
             selectNum(Integer.parseInt(s));

@@ -9,6 +9,7 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import line.LawnMower;
 import line.Line;
 import line.LineState;
 import main.ConsoleColors;
@@ -44,9 +45,9 @@ public class GameEngine {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             if (i < 2 || i > 3)
-                lines.add(new Line(i, LineState.DRY, null));
+                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
             else
-                lines.add(new Line(i, LineState.WATER, null));
+                lines.add(new Line(i, LineState.WATER, new LawnMower(i)));
 
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
@@ -62,7 +63,7 @@ public class GameEngine {
     public static GameResult newDayGame(List<PlantDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
         try {
@@ -77,7 +78,7 @@ public class GameEngine {
     public static GameResult newRailGame() {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new RailModeUser(), new RailModeAI(), lines));
         try {
@@ -85,14 +86,14 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.RAIL, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
         }
     }
 
     public static GameResult newZombieGame(List<ZombieDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
         try {
@@ -107,7 +108,7 @@ public class GameEngine {
     public static GameResult newPVPGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
         try {
@@ -196,6 +197,8 @@ public class GameEngine {
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+            throw new InvalidGameMoveException("can't plant here!");
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
@@ -204,6 +207,8 @@ public class GameEngine {
     //TODO handling first position of zombie considering 0-base
     public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+            throw new InvalidGameMoveException("can't insert zombie here");
         Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
@@ -236,20 +241,20 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getPlants() {
-        return DATABASE.plants;
+        return new TreeSet<>(DATABASE.plants);
     }
 
     public SortedSet<Plant> getPlants(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.plantsPerLine.get(lineNumber);
+        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.plantsPerLine.get(lineNumber));
         return null;
     }
 
     public SortedSet<Zombie> getZombies() {
-        return DATABASE.zombies;
+        return new TreeSet<>(DATABASE.zombies);
     }
 
     public SortedSet<Zombie> getZombies(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return DATABASE.zombiesPerLine.get(lineNumber);
+        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.zombiesPerLine.get(lineNumber));
         return null;
     }
 
@@ -262,19 +267,19 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getDeadPlnats() {
-        return DATABASE.deadPlants;
+        return new TreeSet<>(DATABASE.deadPlants);
     }
 
     public SortedSet<Zombie> getDeadZombies() {
-        return DATABASE.deadZombies;
+        return new TreeSet<>(DATABASE.deadZombies);
     }
 
     public SortedSet<Plant> getDeadPlantsLastTurn() {
-        return DATABASE.deadPlants;
+        return new TreeSet<>(DATABASE.deadPlants);
     }
 
     public SortedSet<Zombie> getDeadZombiesLastTurn() {
-        return DATABASE.deadZombies;
+        return new TreeSet<>(DATABASE.deadZombies);
     }
 
     public void addSun(int sunAmount) {
@@ -283,7 +288,7 @@ public class GameEngine {
 
 
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
-        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
+        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2 || !DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
             throw new InvalidGameMoveException("can't insert zombie here");
         zombieQueue.get(lineNumber).add(dna);
     }
@@ -320,13 +325,13 @@ public class GameEngine {
             if (DATABASE.plants.contains(plant))
                 plant.nextTurn();
 
-                
+
         TreeSet<Ammunition> local = new TreeSet<>(DATABASE.ammunition);
         for (Ammunition ammunition : local)
             if (DATABASE.ammunition.contains(ammunition))
                 ammunition.nextTurn();
 
-        
+
         TreeSet<Zombie> local3 = new TreeSet<>(DATABASE.zombies);
         for (Zombie zombie : local3)
             if (DATABASE.zombies.contains(zombie))
@@ -375,7 +380,7 @@ public class GameEngine {
         Message.show(res.toString());
     }
 
-    public List<Ammunition> getAmmunitions(Integer lineNumber, Integer position) {
+    public List<Ammunition> getAmmunition(Integer lineNumber, Integer position) {
         if (locationChecker(lineNumber, position)) return new ArrayList<>();
         SortedSet<Ammunition> ammunitions = DATABASE.ammunitionPerLine.get(lineNumber);
         ArrayList<Ammunition> answer = new ArrayList<>();
@@ -385,7 +390,25 @@ public class GameEngine {
         return answer;
     }
 
-    public List<Ammunition> getAmmunitions(Location location) {
-        return getAmmunitions(location.lineNumber, location.position);
+    public List<Ammunition> getAmmunition(Location location) {
+        return getAmmunition(location.lineNumber, location.position);
+    }
+
+    public void activateLawnMower(Integer lineNumber) throws InvalidGameMoveException {
+        if (!lineNumberChecker(lineNumber))
+            throw new InvalidGameMoveException("invalid line number for activating lawn mower!");
+        DATABASE.lines.get(lineNumber).activateLawnMower();
+    }
+
+    public boolean alive(Plant plant) {
+        return DATABASE.plants.contains(plant);
+    }
+
+    public boolean alive(Zombie zombie) {
+        return DATABASE.zombies.contains(zombie);
+    }
+
+    public boolean alive(Ammunition ammunition) {
+        return DATABASE.ammunition.contains(ammunition);
     }
 }

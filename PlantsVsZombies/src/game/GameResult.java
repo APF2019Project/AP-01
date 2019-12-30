@@ -43,6 +43,7 @@ public class GameResult implements Page<Unit> {
             moneyDelta = plantsKilled * 10;
         }
         String res = (isWin ? "You won :)" : "You lose :(") + "\n";
+        if (gameMode == GameMode.RAIL) res = "Game over!\n";
         res += "Score gained: " + scoreDelta + "\n";
         res += "Money gained: " + moneyDelta + "$\n";
         Account.getCurrentAccount().getStore().money += moneyDelta;

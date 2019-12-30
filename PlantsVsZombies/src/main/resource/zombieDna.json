@@ -1,6 +1,7 @@
 [
   {
     "name": "Zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 2,
@@ -12,6 +13,7 @@
   },
   {
     "name": "Football Zombie",
+    "lineState": "DRY",
     "haveGlove": true,
     "powerOfDestruction": 1,
     "speed": 3,
@@ -20,6 +22,7 @@
   },
   {
     "name": "Buckethead Zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 2,
@@ -37,6 +40,7 @@
   },
   {
     "name": "Conehead Zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 3,
@@ -51,6 +55,7 @@
   },
   {
     "name": "Zomboni",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 100000,
     "firstHealth": 3,
@@ -65,6 +70,7 @@
   },
   {
     "name": "Catapult zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 100000,
     "firstHealth": 3,
@@ -72,6 +78,7 @@
   },
   {
     "name": "Balloon zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 3,
@@ -79,6 +86,7 @@
   },
   {
     "name": "Newspaper zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 2,
@@ -93,6 +101,7 @@
   },
   {
     "name": "Target zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 3,
@@ -107,6 +116,7 @@
   },
   {
     "name": "Screen Door zombie",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 4,
@@ -122,6 +132,7 @@
   },
   {
     "name": "Giga gargantuar",
+    "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 100000,
     "crossing": [],
@@ -129,6 +140,7 @@
   },
   {
     "name": "Pogo Zombie",
+    "lineState": "DRY",
     "speed": 2,
     "maxNumberOfJumps": 100000,
     "crossing": [],

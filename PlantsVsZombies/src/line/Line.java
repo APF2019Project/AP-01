@@ -1,7 +1,6 @@
 package line;
 
 import exception.InvalidGameMoveException;
-import exception.NotImplementedException;
 
 public class Line {
 
@@ -15,11 +14,19 @@ public class Line {
         this.lawnMower = lawnMower;
     }
 
-    public void activateLawnMower() throws InvalidGameMoveException, NotImplementedException {
+    public void activateLawnMower() throws InvalidGameMoveException {
         if (lawnMower == null) {
             throw new InvalidGameMoveException(String.format("Line number %d does not contain a lawnmower", lineNumber));
         }
         lawnMower.activate();
         lawnMower = null;
+    }
+
+    public Integer getLineNumber() {
+        return lineNumber;
+    }
+
+    public LineState getLineState() {
+        return lineState;
     }
 }

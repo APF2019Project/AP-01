@@ -1,5 +1,5 @@
 
-`squid:S001075"BConstructor has 13 parameters, which is greater than 7 authorized.(§θμ"8‹πσ-
+Dsquid:S1170"!Make this final field static too.(φ¥³―όÿÿÿÿ8ρªάτ-
 squid:S1319!"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(·°™Ά8ρªάτ-
 ‘squid:S13196"sThe type of the "crossing" object should be an interface such as "List" rather than the implementation "ArrayList".(ΐ”‚Λ8ρªάτ-
-Dsquid:S1170"!Make this final field static too.(φ¥³―όÿÿÿÿ8ρªάτ-
+`squid:S001075"BConstructor has 13 parameters, which is greater than 7 authorized.(§θμ"8‹πσ-
