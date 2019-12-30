@@ -2,8 +2,6 @@ package creature;
 
 import game.GameEngine;
 
-//TODO add exception to moveBy
-
 public class Location implements Comparable <Location> {
 
     public final int lineNumber;
@@ -26,7 +24,10 @@ public class Location implements Comparable <Location> {
         if (direction == 1) return this.right();
         return this.left();
     }
-    public Location moveBy(int dx, int dy) {
+    public Location moveBy(int dx, int dy) throws Exception {
+        if (GameEngine.getCurrentGameEngine().locationChecker(lineNumber + dx, position + dy)) {
+            throw new Exception("out of bound"); 
+        }
         return new Location(lineNumber + dx, position + dy);
     }
 

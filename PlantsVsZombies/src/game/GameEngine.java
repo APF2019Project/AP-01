@@ -163,7 +163,7 @@ public class GameEngine {
         return currentGameEngine;
     }
 
-    private boolean locationChecker(Integer lineNumber, Integer position) {
+    public boolean locationChecker(Integer lineNumber, Integer position) {
         return !lineNumberChecker(lineNumber) || !positionChecker(position);
     }
 

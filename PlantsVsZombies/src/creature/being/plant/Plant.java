@@ -22,7 +22,12 @@ public class Plant extends Creature {
             int Number = ammunitionDna.getProductionNumberOfAmmunitionPerUse();
             if (Number == 3) {
                 for (int dx = -1; dx <= 1; dx++) {
-                    gameEngine.newAmmunition(this.location.moveBy(dx, 0), ammunitionDna, this);
+                    try {
+                        gameEngine.newAmmunition(this.location.moveBy(dx, 0), ammunitionDna, this);
+                    }
+                    catch(Exception exception) {
+                        
+                    }
                 }
             }
             else {
