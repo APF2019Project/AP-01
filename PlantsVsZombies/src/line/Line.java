@@ -21,4 +21,12 @@ public class Line {
         lawnMower.activate();
         lawnMower = null;
     }
+
+    public Integer getLineNumber() {
+        return lineNumber;
+    }
+
+    public LineState getLineState() {
+        return lineState;
+    }
 }

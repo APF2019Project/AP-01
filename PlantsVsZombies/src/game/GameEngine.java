@@ -197,6 +197,8 @@ public class GameEngine {
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
             throw new InvalidGameMoveException("can't plant here!");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+            throw new InvalidGameMoveException("can't plant here!");
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
@@ -205,6 +207,8 @@ public class GameEngine {
     //TODO handling first position of zombie considering 0-base
     public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+            throw new InvalidGameMoveException("can't insert zombie here");
         Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
@@ -284,7 +288,7 @@ public class GameEngine {
 
 
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
-        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2)
+        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2 || !DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
             throw new InvalidGameMoveException("can't insert zombie here");
         zombieQueue.get(lineNumber).add(dna);
     }
@@ -321,13 +325,13 @@ public class GameEngine {
             if (DATABASE.plants.contains(plant))
                 plant.nextTurn();
 
-                
+
         TreeSet<Ammunition> local = new TreeSet<>(DATABASE.ammunition);
         for (Ammunition ammunition : local)
             if (DATABASE.ammunition.contains(ammunition))
                 ammunition.nextTurn();
 
-        
+
         TreeSet<Zombie> local3 = new TreeSet<>(DATABASE.zombies);
         for (Zombie zombie : local3)
             if (DATABASE.zombies.contains(zombie))
