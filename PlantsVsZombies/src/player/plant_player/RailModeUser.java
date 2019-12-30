@@ -44,6 +44,7 @@ public class RailModeUser implements PlantPlayer {
         randomPlantDnaAdder();
         Result<Unit> x = new Menu<>(
                 new ActionButton<>("List", this::showHand),
+                new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("Record", this::showRecord),
                 new ActionButton<>("Plant", this::createPlant),
