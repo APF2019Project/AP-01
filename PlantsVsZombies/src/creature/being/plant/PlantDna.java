@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
+import line.LineState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,8 @@ public class PlantDna extends BeingDna {
 
   public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
                   int gamePrice, int firstHealth, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
-                  int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive) {
-    super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+                  int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive, LineState lineState) {
+    super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
     this.ammunitionDna = ammunitionDna;
     this.cooldown = cooldown;
     this.canContain = canContain;

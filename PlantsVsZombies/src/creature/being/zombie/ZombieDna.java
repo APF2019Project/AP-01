@@ -1,6 +1,7 @@
 package creature.being.zombie;
 
 import creature.being.BeingDna;
+import line.LineState;
 
 import java.util.*;
 
@@ -52,8 +53,8 @@ public class ZombieDna extends BeingDna {
 
     public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
             int gamePrice, int firstHealth, ZombieDna whenIDie, ArrayList<Integer> crossing, boolean haveGlove,
-            boolean magnetic, boolean haveHat) {
-        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth);
+            boolean magnetic, boolean haveHat, LineState lineState) {
+        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
         this.whenIDie = whenIDie;
         this.crossing = crossing;
         this.haveGlove = haveGlove;
