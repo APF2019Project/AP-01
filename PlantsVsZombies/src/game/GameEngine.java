@@ -9,6 +9,7 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import line.LawnMower;
 import line.Line;
 import line.LineState;
 import main.ConsoleColors;
@@ -44,9 +45,9 @@ public class GameEngine {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             if (i < 2 || i > 3)
-                lines.add(new Line(i, LineState.DRY, null));
+                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
             else
-                lines.add(new Line(i, LineState.WATER, null));
+                lines.add(new Line(i, LineState.WATER, new LawnMower(i)));
 
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
@@ -62,7 +63,7 @@ public class GameEngine {
     public static GameResult newDayGame(List<PlantDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
         try {
@@ -77,7 +78,7 @@ public class GameEngine {
     public static GameResult newRailGame() {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new RailModeUser(), new RailModeAI(), lines));
         try {
@@ -92,7 +93,7 @@ public class GameEngine {
     public static GameResult newZombieGame(List<ZombieDna> hand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
         try {
@@ -107,7 +108,7 @@ public class GameEngine {
     public static GameResult newPVPGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
         List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, null));
+            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
         GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
         try {
@@ -375,7 +376,7 @@ public class GameEngine {
         Message.show(res.toString());
     }
 
-    public List<Ammunition> getAmmunitions(Integer lineNumber, Integer position) {
+    public List<Ammunition> getAmmunition(Integer lineNumber, Integer position) {
         if (locationChecker(lineNumber, position)) return new ArrayList<>();
         SortedSet<Ammunition> ammunitions = DATABASE.ammunitionPerLine.get(lineNumber);
         ArrayList<Ammunition> answer = new ArrayList<>();
@@ -385,7 +386,13 @@ public class GameEngine {
         return answer;
     }
 
-    public List<Ammunition> getAmmunitions(Location location) {
-        return getAmmunitions(location.lineNumber, location.position);
+    public List<Ammunition> getAmmunition(Location location) {
+        return getAmmunition(location.lineNumber, location.position);
+    }
+
+    public void activateLawnMower(Integer lineNumber) throws InvalidGameMoveException {
+        if (!lineNumberChecker(lineNumber))
+            throw new InvalidGameMoveException("invalid line number for activating lawn mower!");
+        DATABASE.lines.get(lineNumber).activateLawnMower();
     }
 }

@@ -1,13 +1,13 @@
 package creature.being.zombie;
 
-import java.util.List;
-
 import creature.Creature;
 import creature.Location;
+import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
-import creature.ammunition.Ammunition;
+
+import java.util.List;
 
 public class Zombie extends Creature {
     private final ZombieDna zombieDna;
@@ -49,7 +49,7 @@ public class Zombie extends Creature {
     
     private Plant move() throws EndGameException {
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
-            List <Ammunition> ammunitions = gameEngine.getAmmunitions(location);
+            List<Ammunition> ammunitions = gameEngine.getAmmunition(location);
             for (Ammunition ammunition: ammunitions) {
                 try {
                     ammunition.effect(this);
@@ -72,7 +72,11 @@ public class Zombie extends Creature {
                 location = location.left();
             }
             catch(Exception exp) {
-                throw new EndGameException(Winner.ZOMBIES);
+                try {
+                    gameEngine.activateLawnMower(location.lineNumber);
+                } catch (Exception ignored) {
+                    throw new EndGameException(Winner.ZOMBIES);
+                }
             }
         }
         return gameEngine.getPlant(location);
@@ -89,6 +93,7 @@ public class Zombie extends Creature {
         }
     }
 
+    @Override
     public Location getLocation() {
         return location;
     }
