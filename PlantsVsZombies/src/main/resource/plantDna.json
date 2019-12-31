@@ -295,7 +295,6 @@
     "ammunitionDna": [{
       "name": "Bomb",
       "powerOfDestruction": 100000,
-      "cooldown": 1,
       "reduceSpeedRatio": 1,
       "firstTimeHealth": 1,
       "firstHealth": 1
