@@ -4,7 +4,6 @@ import creature.Creature;
 import creature.Location;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
-import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
@@ -39,7 +38,7 @@ public class Plant extends Creature {
                                 this.location.moveBy(dx, dy), ammunitionDna, this);
                         }
                         catch(Exception exception) {
-                            
+
                         }
                     }
                 }
