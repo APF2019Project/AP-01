@@ -56,12 +56,7 @@ public class Zombie extends Creature {
             List<Ammunition> ammunitions = gameEngine.getAmmunition(location);
             for (Ammunition ammunition: ammunitions) {
                 if (!gameEngine.alive(ammunition)) continue;
-                try {
-                    ammunition.effect(this);
-                }
-                catch (Exception exception) {
-                    
-                }
+                ammunition.effect(this);
                 if (!gameEngine.alive(this)) return null;
             }
             Plant plant = gameEngine.getPlant(location);
