@@ -86,6 +86,7 @@ public class Plant extends Creature {
 
     @Override
     public void nextTurn() throws EndGameException {
+        if (plantOnMe != null) plantOnMe.nextTurn();
         super.nextTurn();
         if (remainingAmmunitionCooldown == 0) {
             if (!plantDna.getAmmunitionDna().isEmpty()) {
