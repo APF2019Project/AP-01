@@ -361,24 +361,20 @@
     {
       "name": "Pea",
       "speed": 100000,
-      "powerOfDestruction": 1,
-      "cooldown": 3,
+      "powerOfDestruction": 100000,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
-      "firstTimeHealth": 1,
-      "firstHealth": 1,
-      "type": 1
+      "firstHealth": 100000,
+      "type": 4
     },
     {
       "name": "Pea",
       "speed": -100000,
-      "powerOfDestruction": 1,
-      "cooldown": 3,
+      "powerOfDestruction": 100000,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
-      "firstTimeHealth": 1,
-      "firstHealth": 1,
-      "type": 1
+      "firstHealth": 100000,
+      "type": 4
     }]
   }
 ] 
