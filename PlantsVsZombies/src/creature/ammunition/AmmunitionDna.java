@@ -62,7 +62,7 @@ public class AmmunitionDna extends Dna {
       int cooldown, int sunIncome, int firstHealth, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio,
       int minimumDistanceForShoot, boolean justKillShield, int productionNumberOfAmmunitionPerUse,
       int firstTimeHealth) {
-    super(name, image, speed, leftToRight, powerOfDestruction);
+    super(name, image, speed, powerOfDestruction);
     this.type = type;
     this.cooldown = cooldown;
     this.sunIncome = sunIncome;

@@ -22,7 +22,7 @@ public class BeingDna extends Dna {
 
   public BeingDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
       int gamePrice, int firstHealth, LineState lineState) {
-    super(name, image, speed, leftToRight, powerOfDestruction);
+    super(name, image, speed, powerOfDestruction);
     this.shopPrice = shopPrice;
     this.gamePrice = gamePrice;
     this.firstHealth = firstHealth;
