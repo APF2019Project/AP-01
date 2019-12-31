@@ -122,8 +122,7 @@
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 4,
       "firstHealth": 1,
-      "type": 1,
-      "justKillShield": false
+      "type": 1
     }]
   },
   {
@@ -141,8 +140,7 @@
       "minimumDistanceForShoot": 3,
       "productionNumberOfAmmunitionPerUse": 1,
       "firstHealth": 1,
-      "type": 1,
-      "justKillShield": false
+      "type": 1
     }]
   },
   {
@@ -159,8 +157,7 @@
       "reduceSpeedRatio": 10,
       "productionNumberOfAmmunitionPerUse": 1,
       "firstHealth": 1,
-      "type": 2,
-      "justKillShield": false
+      "type": 2
     }]
   },
   {
@@ -216,8 +213,7 @@
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
       "firstHealth": 1,
-      "type": 2,
-      "justKillShield": false
+      "type": 2
     }]
   },
   {
@@ -245,8 +241,7 @@
       "reduceSpeedRatio": 2,
       "productionNumberOfAmmunitionPerUse": 1,
       "firstHealth": 1,
-      "type": 2,
-      "justKillShield": false
+      "type": 2
     }]
   },
   {
@@ -315,7 +310,7 @@
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 9,
       "firstTimeHealth": 1,
-      "firstHealth": 1,
+      "firstHealth": 100000,
       "type": 3
     }]
   },
