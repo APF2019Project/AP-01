@@ -411,4 +411,10 @@ public class GameEngine {
     public boolean alive(Ammunition ammunition) {
         return DATABASE.ammunition.contains(ammunition);
     }
+
+	
+    public SortedSet<Ammunition> getAmmunitions() {
+        return new TreeSet<>(DATABASE.ammunition);
+    }
+
 }
