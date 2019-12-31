@@ -12,6 +12,7 @@ import java.util.SortedSet;
 public class Ammunition extends Creature {
     private final AmmunitionDna ammunitionDna;
     private final Plant owner;
+    private int timeHealth;
 
     public void effect(Zombie zombie) throws Exception {
         if (ammunitionDna.isJustKillShield() &&
@@ -70,6 +71,8 @@ public class Ammunition extends Creature {
                 }
             }
         });
+        timeHealth--;
+        if (timeHealth == 0) gameEngine.killAmmunition(this); 
     }
 
     public Ammunition(Location location, AmmunitionDna ammunitionDna, Plant owner) {
@@ -77,6 +80,8 @@ public class Ammunition extends Creature {
         this.ammunitionDna = ammunitionDna;
         this.owner = owner;
         this.health = ammunitionDna.getFirstHealth();
+        this.timeHealth = ammunitionDna.getFirstTimeHealth();
+        if (this.timeHealth == 0) this.timeHealth += 100000;
     }
 
 }

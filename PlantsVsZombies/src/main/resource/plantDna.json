@@ -298,6 +298,7 @@
       "powerOfDestruction": 100000,
       "cooldown": 1,
       "reduceSpeedRatio": 1,
+      "firstTimeHealth": 1,
       "firstHealth": 1
     }]
   },
@@ -314,6 +315,7 @@
       "cooldown": 3,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 9,
+      "firstTimeHealth": 1,
       "firstHealth": 1,
       "type": 3
     }]
@@ -363,6 +365,7 @@
       "cooldown": 3,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
+      "firstTimeHealth": 1,
       "firstHealth": 1,
       "type": 1
     },
@@ -373,6 +376,7 @@
       "cooldown": 3,
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 1,
+      "firstTimeHealth": 1,
       "firstHealth": 1,
       "type": 1
     }]

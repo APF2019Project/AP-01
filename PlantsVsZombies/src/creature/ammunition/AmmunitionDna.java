@@ -12,6 +12,7 @@ public class AmmunitionDna extends Dna {
   private final int minimumDistanceForShoot;
   private final boolean justKillShield;
   private final int productionNumberOfAmmunitionPerUse;
+  private final int firstTimeHealth;
 
   public int getCooldown() {
     return cooldown;
@@ -53,9 +54,14 @@ public class AmmunitionDna extends Dna {
     return productionNumberOfAmmunitionPerUse;
   }
 
+  public int getFirstTimeHealth() {
+    return firstTimeHealth;
+  }
+
   public AmmunitionDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int type,
       int cooldown, int sunIncome, int firstHealth, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio,
-      int minimumDistanceForShoot, boolean justKillShield, int productionNumberOfAmmunitionPerUse) {
+      int minimumDistanceForShoot, boolean justKillShield, int productionNumberOfAmmunitionPerUse,
+      int firstTimeHealth) {
     super(name, image, speed, leftToRight, powerOfDestruction);
     this.type = type;
     this.cooldown = cooldown;
@@ -67,6 +73,7 @@ public class AmmunitionDna extends Dna {
     this.minimumDistanceForShoot = minimumDistanceForShoot;
     this.justKillShield = justKillShield;
     this.productionNumberOfAmmunitionPerUse = productionNumberOfAmmunitionPerUse;
+    this.firstTimeHealth = firstTimeHealth;
   }
   
 }
