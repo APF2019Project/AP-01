@@ -350,6 +350,7 @@
   },
   {
     "name": "Jalapeno",
+    "lineState": "DRY",
     "leftToRight": true,
     "shopPrice": 49,
     "gamePrice": 4,
