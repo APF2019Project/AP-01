@@ -4,6 +4,7 @@ import creature.Creature;
 import creature.Location;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
+import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
 
 public class Plant extends Creature {
     private final PlantDna plantDna;
@@ -27,6 +28,19 @@ public class Plant extends Creature {
                     }
                     catch(Exception exception) {
                         
+                    }
+                }
+            }
+            else if (Number == 9) {
+                for (int dx = -1; dx <= 1; dx++) {
+                    for (int dy = -1; dy <= 1; dy++) {
+                        try {
+                            gameEngine.newAmmunition(
+                                this.location.moveBy(dx, dy), ammunitionDna, this);
+                        }
+                        catch(Exception exception) {
+                            
+                        }
                     }
                 }
             }

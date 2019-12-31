@@ -313,6 +313,7 @@
       "powerOfDestruction": 100000,
       "cooldown": 3,
       "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 9,
       "firstHealth": 1,
       "type": 3
     }]
