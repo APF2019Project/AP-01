@@ -56,7 +56,8 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.WATER, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.WATER, e.getWinner(), getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -71,7 +72,8 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -86,7 +88,8 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.RAIL, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.RAIL, e.getWinner(), getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -101,7 +104,8 @@ public class GameEngine {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.ZOMBIE, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.ZOMBIE, e.getWinner(), getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -110,13 +114,15 @@ public class GameEngine {
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
+        GameEngine.getCurrentGameEngine()
+                .config(new GameDna(new DayModeUser(plantHand), new ZombieModeUser(zombieHand), lines));
         try {
             while (true) {
                 getCurrentGameEngine().nextTurn();
             }
         } catch (EndGameException e) {
-            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(), getCurrentGameEngine().zombiesKilled());
+            return new GameResult(GameMode.PVP, e.getWinner(), getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled());
         }
     }
 
@@ -169,7 +175,8 @@ public class GameEngine {
     }
 
     public Plant getPlant(Integer lineNumber, Integer position) {
-        if (locationChecker(lineNumber, position)) return null;
+        if (locationChecker(lineNumber, position))
+            return null;
         for (Plant plant : DATABASE.plantsPerLine.get(lineNumber))
             if (plant.getLocation().equals(new Location(lineNumber, position)))
                 return plant;
@@ -181,7 +188,8 @@ public class GameEngine {
     }
 
     public List<Zombie> getZombies(Integer lineNumber, Integer position) {
-        if (locationChecker(lineNumber, position)) return null;
+        if (locationChecker(lineNumber, position))
+            return null;
         SortedSet<Zombie> zombies = getZombies(lineNumber);
         ArrayList<Zombie> answer = new ArrayList<>();
         for (Zombie zombie : zombies)
@@ -197,27 +205,28 @@ public class GameEngine {
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
         if (locationChecker(lineNumber, position))
             throw new InvalidGameMoveException("can't plant out of lawn!");
-        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
-            throw new InvalidGameMoveException("can't plant here!");
         Plant parent = getPlant(lineNumber, position);
         if (parent != null) {
             if (!parent.createPlantOnMe(dna)) {
                 throw new InvalidGameMoveException("can't plant on this!");
             }
+            return;
         }
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+            throw new InvalidGameMoveException("can't plant here!");
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
     }
 
-    //TODO handling first position of zombie considering 0-base
+    // TODO handling first position of zombie considering 0-base
     public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
-        if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
-        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState())){
+        if (!lineNumberChecker(lineNumber))
+            throw new InvalidGameMoveException("can't insert zombie here");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState())) {
             if (DATABASE.lines.get(lineNumber).getLineState().equals(LineState.WATER)) {
-                //TODO inja check konim ordak dare
-            }
-            else {
+                // TODO inja check konim ordak dare
+            } else {
                 throw new InvalidGameMoveException("can't insert zombie here");
             }
         }
@@ -231,7 +240,6 @@ public class GameEngine {
         DATABASE.ammunitionPerLine.get(location.lineNumber).add(ammunition);
         DATABASE.ammunition.add(ammunition);
     }
-
 
     public void addZombie(Zombie zombie) {
         DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).add(zombie);
@@ -257,7 +265,8 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getPlants(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.plantsPerLine.get(lineNumber));
+        if (lineNumberChecker(lineNumber))
+            return new TreeSet<>(DATABASE.plantsPerLine.get(lineNumber));
         return null;
     }
 
@@ -266,7 +275,8 @@ public class GameEngine {
     }
 
     public SortedSet<Zombie> getZombies(Integer lineNumber) {
-        if (lineNumberChecker(lineNumber)) return new TreeSet<>(DATABASE.zombiesPerLine.get(lineNumber));
+        if (lineNumberChecker(lineNumber))
+            return new TreeSet<>(DATABASE.zombiesPerLine.get(lineNumber));
         return null;
     }
 
@@ -298,9 +308,9 @@ public class GameEngine {
         plantPlayer.addSun(sunAmount);
     }
 
-
     public void putZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
-        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2 || !DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
+        if (!lineNumberChecker(lineNumber) || zombieQueue.get(lineNumber).size() >= 2
+                || !DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
             throw new InvalidGameMoveException("can't insert zombie here");
         zombieQueue.get(lineNumber).add(dna);
     }
@@ -331,12 +341,10 @@ public class GameEngine {
         plantPlayer.nextTurn();
         zombiePlayer.nextTurn();
 
-
         TreeSet<Plant> local2 = new TreeSet<>(DATABASE.plants);
         for (Plant plant : local2)
             if (DATABASE.plants.contains(plant))
                 plant.nextTurn();
-
 
         TreeSet<Ammunition> local = new TreeSet<>(DATABASE.ammunition);
         for (Ammunition ammunition : local) {
@@ -368,18 +376,20 @@ public class GameEngine {
             }
             for (int j = 0; j < getLength(); j++) {
                 Plant plant = getPlant(i, j);
-                if (plant == null) res.append(".");
+                if (plant == null)
+                    res.append(".");
                 else {
-                    res.append(ConsoleColors.green(
-                            "" + plant.getPlantDna().getName().charAt(0)
-                    ));
+                    res.append(ConsoleColors.green("" + plant.getPlantDna().getName().charAt(0)));
                 }
                 int cnt = 0;
                 for (Ammunition ammunition : DATABASE.ammunitionPerLine.get(i)) {
-                    if (ammunition.getLocation().position == j) cnt++;
+                    if (ammunition.getLocation().position == j)
+                        cnt++;
                 }
-                if (cnt == 0) res.append(".");
-                else res.append(ConsoleColors.yellow("" + cnt));
+                if (cnt == 0)
+                    res.append(".");
+                else
+                    res.append(ConsoleColors.yellow("" + cnt));
                 cnt = 0;
                 char nm = 'A';
                 for (Zombie zombie : getZombies(i)) {
@@ -388,9 +398,12 @@ public class GameEngine {
                         nm = zombie.getZombieDna().getName().charAt(0);
                     }
                 }
-                if (cnt == 0) res.append(".");
-                else if (cnt == 1) res.append(ConsoleColors.red("" + nm));
-                else res.append(ConsoleColors.red("" + cnt));
+                if (cnt == 0)
+                    res.append(".");
+                else if (cnt == 1)
+                    res.append(ConsoleColors.red("" + nm));
+                else
+                    res.append(ConsoleColors.red("" + cnt));
                 res.append(" ");
             }
             res.append("\n");
@@ -403,7 +416,8 @@ public class GameEngine {
     }
 
     public List<Ammunition> getAmmunition(Integer lineNumber, Integer position) {
-        if (locationChecker(lineNumber, position)) return new ArrayList<>();
+        if (locationChecker(lineNumber, position))
+            return new ArrayList<>();
         SortedSet<Ammunition> ammunitions = DATABASE.ammunitionPerLine.get(lineNumber);
         ArrayList<Ammunition> answer = new ArrayList<>();
         for (Ammunition ammunition : ammunitions)
@@ -434,7 +448,6 @@ public class GameEngine {
         return DATABASE.ammunition.contains(ammunition);
     }
 
-	
     public SortedSet<Ammunition> getAmmunitions() {
         return new TreeSet<>(DATABASE.ammunition);
     }
