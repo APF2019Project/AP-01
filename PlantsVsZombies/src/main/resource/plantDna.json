@@ -235,6 +235,16 @@
     }]
   },
   {
+    "name": "Lily Pad",
+    "lineState": "WATER",
+    "leftToRight": true,
+    "shopPrice": 1,
+    "firstHealth": 1,
+    "cooldown": 1,
+    "contain": "DRY",
+    "ammunitionDna": []
+  },
+  {
     "name": "Winter Melon",
     "lineState": "DRY",
     "leftToRight": true,
@@ -262,6 +272,16 @@
     "gamePrice": 2,
     "firstHealth": 4,
     "cooldown": 4,
+    "ammunitionDna": []
+  },
+  {
+    "name": "Tangle Kelp",
+    "lineState": "WATER",
+    "leftToRight": true,
+    "powerOfDestruction": 100000,
+    "shopPrice": 1,
+    "gamePrice": 3,
+    "cooldown": 3,
     "ammunitionDna": []
   },
   {
