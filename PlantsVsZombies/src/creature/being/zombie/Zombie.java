@@ -74,6 +74,7 @@ public class Zombie extends Creature {
             catch(Exception exp) {
                 try {
                     gameEngine.activateLawnMower(location.lineNumber);
+                    return null;
                 } catch (Exception ignored) {
                     throw new EndGameException(Winner.ZOMBIES);
                 }
