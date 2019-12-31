@@ -318,7 +318,7 @@
       "reduceSpeedRatio": 1,
       "productionNumberOfAmmunitionPerUse": 9,
       "firstTimeHealth": 1,
-      "firstHealth": 1,
+      "firstHealth": 100000,
       "type": 4
     }]
   },
