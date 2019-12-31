@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -31,6 +32,15 @@ public class Program {
     }
     return workingDirectory+file;
   }
+
+  public static String streamToString(InputStream is) {
+    Scanner s = new Scanner(is);
+    Scanner s2 = s.useDelimiter("\\A");
+    String result = s2.hasNext() ? s2.next() : "";
+    s.close();
+    return result;
+  }
+
   public static void main(String args[]) {
     try{
       scanner = new Scanner(System.in);
@@ -42,14 +52,14 @@ public class Program {
         mainPath.mkdirs();
       }
       PlantDna.loadFromData(
-        Files.readString(Path.of(
-          Program.class.getResource("resource/plantDna.json").getFile()
-        ))
+        streamToString(
+          Program.class.getResourceAsStream("resource/plantDna.json")
+        )
       );
       ZombieDna.loadFromData(
-        Files.readString(Path.of(
-          Program.class.getResource("resource/zombieDna.json").getFile()
-        ))
+        streamToString(
+          Program.class.getResourceAsStream("resource/zombieDna.json")
+        )
       );
       Pages.loginMenu.action();
       Account.backupAll();
