@@ -2,7 +2,6 @@
   {
     "name": "Peashooter",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 2,
     "firstHealth": 2,
     "cooldown": 2,
@@ -20,7 +19,6 @@
   {
     "name": "Snow Pea",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 3,
     "firstHealth": 3,
     "cooldown": 3,
@@ -39,7 +37,6 @@
   {
     "name": "Cabbage pult",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 13,
     "gamePrice": 2,
     "firstHealth": 2,
@@ -58,7 +55,6 @@
   {
     "name": "Repeater",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 49,
     "gamePrice": 3,
     "firstHealth": 4,
@@ -69,7 +65,6 @@
       "powerOfDestruction": 1,
       "cooldown": 3,
       "reduceSpeedRatio": 1,
-      "minimumDistanceForShoot": 0,
       "productionNumberOfAmmunitionPerUse": 2,
       "firstHealth": 1,
       "type": 1
@@ -78,7 +73,6 @@
   {
     "name": "Threepeater",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 81,
     "gamePrice": 4,
     "firstHealth": 5,
@@ -97,7 +91,6 @@
   {
     "name": "Cactus",
     "lineState": "DRY",
-    "leftToRight": true,
     "powerOfDestruction": 1,
     "shopPrice": 101,
     "gamePrice": 5,
@@ -117,7 +110,6 @@
   {
     "name": "Gatling Pea",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 61,
     "gamePrice": 5,
     "firstHealth": 3,
@@ -128,7 +120,6 @@
       "powerOfDestruction": 1,
       "cooldown": 5,
       "reduceSpeedRatio": 1,
-      "minimumDistanceForShoot": 0,
       "productionNumberOfAmmunitionPerUse": 4,
       "firstHealth": 1,
       "type": 1,
@@ -138,7 +129,6 @@
   {
     "name": "Scaredy shroom",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 1,
     "firstHealth": 1,
     "cooldown": 2,
@@ -158,7 +148,6 @@
   {
     "name": "Kernel pult",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 3,
     "firstHealth": 2,
     "cooldown": 3,
@@ -177,7 +166,6 @@
   {
     "name": "Split Pea",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 49,
     "gamePrice": 4,
     "firstHealth": 3,
@@ -207,7 +195,6 @@
   {
     "name": "Explode o nut",
     "lineState": "DRY",
-    "leftToRight": true,
     "powerOfDestruction": 1,
     "gamePrice": 4,
     "firstHealth": 3,
@@ -217,7 +204,6 @@
   {
     "name": "Melon-pult",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 28,
     "gamePrice": 3,
     "firstHealth": 3,
@@ -237,7 +223,6 @@
   {
     "name": "Lily Pad",
     "lineState": "WATER",
-    "leftToRight": true,
     "shopPrice": 1,
     "firstHealth": 1,
     "cooldown": 1,
@@ -247,7 +232,6 @@
   {
     "name": "Winter Melon",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 61,
     "gamePrice": 4,
     "firstHealth": 3,
@@ -268,7 +252,6 @@
   {
     "name": "Wall-nut",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 2,
     "firstHealth": 4,
     "cooldown": 4,
@@ -277,7 +260,6 @@
   {
     "name": "Tangle Kelp",
     "lineState": "WATER",
-    "leftToRight": true,
     "powerOfDestruction": 100000,
     "shopPrice": 1,
     "gamePrice": 3,
@@ -287,7 +269,6 @@
   {
     "name": "Tall-nut",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 4,
     "firstHealth": 6,
     "cooldown": 6,
@@ -296,7 +277,6 @@
   {
     "name": "Potate Mine",
     "lineState": "DRY",
-    "leftToRight": true,
     "powerOfDestruction": 100000,
     "shopPrice": 7,
     "gamePrice": 2,
@@ -307,7 +287,6 @@
   {
     "name": "Cherry Bomb",
     "lineState": "DRY",
-    "leftToRight": true,
     "gamePrice": 2,
     "firstHealth": 100000,
     "cooldown": 4,
@@ -324,7 +303,7 @@
   },
   {
     "name": "Magnet-shroom",
-    "leftToRight": true,
+    "lineState": "DRY",
     "shopPrice": 33,
     "gamePrice": 4,
     "firstHealth": 2,
@@ -371,7 +350,6 @@
   {
     "name": "Jalapeno",
     "lineState": "DRY",
-    "leftToRight": true,
     "shopPrice": 49,
     "gamePrice": 4,
     "firstHealth": 3,

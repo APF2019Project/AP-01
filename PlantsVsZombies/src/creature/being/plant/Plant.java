@@ -1,5 +1,7 @@
 package creature.being.plant;
 
+import java.util.SortedSet;
+
 import creature.Creature;
 import creature.Location;
 import creature.being.zombie.Zombie;
@@ -55,8 +57,17 @@ public class Plant extends Creature {
                 }
             }
             else {
-                for (int num = 0; num < Number; ++num) {
-                    gameEngine.newAmmunition(this.location, ammunitionDna, this);
+                SortedSet <Zombie> zombies = gameEngine.getZombies(this.location.lineNumber);
+                int nearest = 100000;
+                for (Zombie zombie: zombies) {
+                    if (zombie.getLocation().position > this.location.position) {
+                        nearest = Math.min(nearest, zombie.getLocation().position);
+                    }
+                }
+                if (nearest - this.location.position >= ammunitionDna.getMinimumDistanceForShoot()) {
+                    for (int num = 0; num < Number; ++num) {
+                        gameEngine.newAmmunition(this.location, ammunitionDna, this);
+                    }
                 }
             }
         });
@@ -87,8 +98,7 @@ public class Plant extends Creature {
 
     public boolean createPlantOnMe(PlantDna plantDna) {
         if (this.plantOnMe != null) return false;
-        if (!(this.plantDna.getContain() == null || 
-            this.plantDna.getContain() == plantDna.getContain())) return false;
+        if (this.plantDna.getContain() != plantDna.getLineState()) return false;
         this.plantOnMe = new Plant(plantDna, this.location.lineNumber, this.location.position);
         return true;
     }
