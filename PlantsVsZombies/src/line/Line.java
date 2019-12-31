@@ -22,6 +22,10 @@ public class Line {
         lawnMower = null;
     }
 
+    public boolean lawnMower() {
+        return lawnMower != null;
+    }
+
     public Integer getLineNumber() {
         return lineNumber;
     }

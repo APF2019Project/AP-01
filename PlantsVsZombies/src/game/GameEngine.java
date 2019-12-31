@@ -349,6 +349,11 @@ public class GameEngine {
     public void prettyPrint() {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < getWidth(); i++) {
+            if (DATABASE.lines.get(i).lawnMower()) {
+                res.append(" X ");
+            } else {
+                res.append(" - ");
+            }
             for (int j = 0; j < getLength(); j++) {
                 Plant plant = getPlant(i, j);
                 if (plant == null) res.append(".");
