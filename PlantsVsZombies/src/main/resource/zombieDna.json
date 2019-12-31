@@ -6,7 +6,7 @@
     "powerOfDestruction": 1,
     "firstHealth": 2,
     "whenIDie": null,
-    "crossing": [],
+    "crossing": [3],
     "haveGlove": false,
     "magnetic": false,
     "haveHat": false
@@ -18,7 +18,7 @@
     "powerOfDestruction": 1,
     "speed": 3,
     "firstHealth": 4,
-    "crossing": []
+    "crossing": [3]
   },
   {
     "name": "Buckethead Zombie",
@@ -31,7 +31,7 @@
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     },
     "crossing": [],
     "haveGlove": false,
@@ -49,9 +49,9 @@
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     },
-    "crossing": []
+    "crossing": [3]
   },
   {
     "name": "Zomboni",
@@ -64,9 +64,9 @@
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     },
-    "crossing": []
+    "crossing": [3]
   },
   {
     "name": "Catapult zombie",
@@ -74,7 +74,7 @@
     "speed": 2,
     "powerOfDestruction": 100000,
     "firstHealth": 3,
-    "crossing": []
+    "crossing": [3]
   },
   {
     "name": "Balloon zombie",
@@ -82,7 +82,7 @@
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 3,
-    "crossing": [1]
+    "crossing": [1, 3]
   },
   {
     "name": "Newspaper zombie",
@@ -90,13 +90,13 @@
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 2,
-    "crossing": [2],
+    "crossing": [2, 3],
     "whenIDie": {
       "name": "Zombie",
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     }
   },
   {
@@ -105,13 +105,13 @@
     "speed": 2,
     "powerOfDestruction": 1,
     "firstHealth": 3,
-    "crossing": [2],
+    "crossing": [2, 3],
     "whenIDie": {
       "name": "Zombie",
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     }
   },
   {
@@ -126,7 +126,7 @@
       "speed": 2,
       "powerOfDestruction": 1,
       "firstHealth": 2,
-      "crossing": []
+      "crossing": [3]
     },
     "magnetic": true
   },
@@ -135,7 +135,7 @@
     "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 100000,
-    "crossing": [],
+    "crossing": [3],
     "firstHealth": 6
   },
   {
@@ -143,7 +143,7 @@
     "lineState": "DRY",
     "speed": 2,
     "maxNumberOfJumps": 100000,
-    "crossing": [],
+    "crossing": [3],
     "firstHealth": 2
   }
 ]
