@@ -41,6 +41,7 @@ public class ZombieModeUser implements ZombiePlayer {
                 flag = true;
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
         Result<Unit> x = new Menu<>(
+                gameEngine::pretty,
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
                 new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),

@@ -51,6 +51,7 @@ public class DayModeUser implements PlantPlayer {
                 coolDownTimeLeft.set(i, 0);
         }
         Result<Unit> x = new Menu<>(
+                gameEngine::pretty,
             new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
             new ActionButton<>("Show hand", this::showHand),
             new ActionButton<>("Show lawn", this::showLawn),

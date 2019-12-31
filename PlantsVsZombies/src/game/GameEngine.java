@@ -346,7 +346,7 @@ public class GameEngine {
         DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
     }
 
-    public void prettyPrint() {
+    public String pretty() {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < getWidth(); i++) {
             if (DATABASE.lines.get(i).lawnMower()) {
@@ -383,7 +383,11 @@ public class GameEngine {
             }
             res.append("\n");
         }
-        Message.show(res.toString());
+        return res.toString();
+    }
+
+    public void prettyPrint() {
+        Message.show(pretty());
     }
 
     public List<Ammunition> getAmmunition(Integer lineNumber, Integer position) {
