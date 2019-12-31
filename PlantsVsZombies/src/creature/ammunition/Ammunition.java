@@ -29,9 +29,7 @@ public class Ammunition extends Creature {
     }
 
     public void effect(Zombie zombie) {
-        if (ammunitionDna.isJustKillShield() &&
-                zombie.getZombieDna().getWhenIDie() == null)
-            return;
+        if (zombie.getZombieDna().getCrossing().indexOf(this.ammunitionDna.getType()) != -1) return;
 
         if (zombie.reduceHealth(ammunitionDna.getPowerOfDestruction(), ammunitionDna.getType())) {
             gameEngine.killZombie(zombie);
