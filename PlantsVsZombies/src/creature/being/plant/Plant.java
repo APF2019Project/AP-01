@@ -13,6 +13,16 @@ public class Plant extends Creature {
     //remainingCooldown unuse but good :)
 
     public void reduceHealth(int damageAmount) {
+        if (plantOnMe != null) {
+            if (plantOnMe.health <= damageAmount) {
+                damageAmount -= plantOnMe.health;
+                plantOnMe = null;
+            }
+            else {
+                plantOnMe.reduceHealth(damageAmount);
+                return;
+            }
+        }
         health -= damageAmount;
         if (health <= 0) gameEngine.killPlant(this);
     }
