@@ -22,7 +22,8 @@ public class Location implements Comparable <Location> {
     }
     public Location nextLocation(int direction) throws Exception {
         if (direction == 1) return this.right();
-        return this.left();
+        else if (direction == -1) return this.left();
+        return this;
     }
     public Location moveBy(int dx, int dy) throws Exception {
         if (GameEngine.getCurrentGameEngine().locationChecker(lineNumber + dx, position + dy)) {

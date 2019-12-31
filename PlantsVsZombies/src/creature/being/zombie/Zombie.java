@@ -60,9 +60,9 @@ public class Zombie extends Creature {
                     ammunition.effect(this);
                 }
                 catch (Exception exception) {
-                    gameEngine.killZombie(this);
-                    return null;
+                    
                 }
+                if (!gameEngine.alive(this)) return null;
             }
             Plant plant = gameEngine.getPlant(location);
             if (plant != null) {
@@ -91,6 +91,7 @@ public class Zombie extends Creature {
     public void nextTurn() throws EndGameException {
         super.nextTurn();
         Plant plant = move();
+        if (!gameEngine.alive(this)) return;
         if (plant != null) damage(plant);
         if (speed != zombieDna.getSpeed()) {
             remainingStunTurnNumber--;

@@ -5,6 +5,7 @@ import creature.Location;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
+import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
 
 import java.util.List;
 import java.util.SortedSet;
@@ -14,7 +15,23 @@ public class Ammunition extends Creature {
     private final Plant owner;
     private int timeHealth;
 
-    public void effect(Zombie zombie) throws Exception {
+    private void effectAll() {
+        SortedSet<Zombie> zombies = gameEngine.getZombies(location.lineNumber);
+        zombies.forEach(zombie -> {
+            if (!gameEngine.alive(this)) return;
+            if (!gameEngine.alive(zombie)) return;
+            int dis = Math.max(
+                    Math.abs(location.lineNumber - zombie.getLocation().lineNumber),
+                    Math.abs(location.position - zombie.getLocation().position)
+            );
+            if (zombie.getLocation().position == location.position ||
+                    owner.getPlantDna().isExplosive() && dis <= ammunitionDna.getEffectiveRange()) {
+                effect(zombie);
+            }
+        });
+    }
+
+    public void effect(Zombie zombie) {
         if (ammunitionDna.isJustKillShield() &&
                 zombie.getZombieDna().getWhenIDie() == null)
             return;
@@ -23,27 +40,27 @@ public class Ammunition extends Creature {
             gameEngine.killZombie(zombie);
         }
         zombie.reduceSpeed(ammunitionDna.getReduceSpeedRatio(), ammunitionDna.getStunTurnNumber());
-
         health--;
-        if (health == 0) throw new Exception("I Killed");
+        if (health <= 0) {
+            gameEngine.killAmmunition(this);
+        }
     }
 
-    private boolean move() {
+    private void move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
         for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
-            List<Zombie> zombies = gameEngine.getZombies(location);
-            boolean findZombie = zombies.stream().anyMatch(zombie ->
-                    zombie.getZombieDna().getCrossing().indexOf(ammunitionDna.getType()) == -1);
-            if (findZombie) return true;
+            effectAll();
+            if (!gameEngine.alive(this)) return;
             try {
                 location = location.nextLocation(direction);
             } catch (Exception exp) {
                 gameEngine.killAmmunition(this);
-                return false;
+                return;
             }
         }
-        return !gameEngine.getZombies(location).isEmpty();
+        effectAll();
+        return;
     }
 
     @Override
@@ -53,26 +70,11 @@ public class Ammunition extends Creature {
             gameEngine.killAmmunition(this);
             return;
         }
-        if (ammunitionDna.getSpeed() != 0 && !move()) return;
-        SortedSet<Zombie> zombies = gameEngine.getZombies(location.lineNumber);
-        zombies.forEach(zombie -> {
-            if (!gameEngine.alive(zombie)) return;
-            int dis = Math.max(
-                    Math.abs(location.lineNumber - zombie.getLocation().lineNumber),
-                    Math.abs(location.position - zombie.getLocation().position)
-            );
-            if (zombie.getLocation().position == location.position ||
-                    owner.getPlantDna().isExplosive() && dis <= ammunitionDna.getEffectiveRange()) {
-                try {
-                    effect(zombie);
-                } catch (Exception exception) {
-                    gameEngine.killAmmunition(this);
-                    return;
-                }
-            }
-        });
+        if (ammunitionDna.getSpeed() == 0) effectAll();
+        else move();
+        if (!gameEngine.alive(this)) return;
         timeHealth--;
-        if (timeHealth == 0) gameEngine.killAmmunition(this); 
+        if (timeHealth == 0) gameEngine.killAmmunition(this);
     }
 
     public Ammunition(Location location, AmmunitionDna ammunitionDna, Plant owner) {
