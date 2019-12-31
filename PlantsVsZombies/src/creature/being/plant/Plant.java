@@ -9,9 +9,20 @@ public class Plant extends Creature {
     private final PlantDna plantDna;
     private int remainingFirstCooldown;
     private int remainingAmmunitionCooldown;
+    public Plant plantOnMe;
     //remainingCooldown unuse but good :)
 
     public void reduceHealth(int damageAmount) {
+        if (plantOnMe != null) {
+            if (plantOnMe.health <= damageAmount) {
+                damageAmount -= plantOnMe.health;
+                plantOnMe = null;
+            }
+            else {
+                plantOnMe.reduceHealth(damageAmount);
+                return;
+            }
+        }
         health -= damageAmount;
         if (health <= 0) gameEngine.killPlant(this);
     }
@@ -72,6 +83,14 @@ public class Plant extends Creature {
             }
         }
         else remainingAmmunitionCooldown--;
+    }
+
+    public boolean createPlantOnMe(PlantDna plantDna) {
+        if (this.plantOnMe != null) return false;
+        if (!(this.plantDna.getContain() == null || 
+            this.plantDna.getContain() == plantDna.getContain())) return false;
+        this.plantOnMe = new Plant(plantDna, this.location.lineNumber, this.location.position);
+        return true;
     }
 
     public PlantDna getPlantDna() {

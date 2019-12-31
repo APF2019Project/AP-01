@@ -14,18 +14,8 @@ public class PlantDna extends BeingDna {
   private static List<PlantDna> allDnas;
   private final ArrayList<AmmunitionDna> ammunitionDna;
   private final int cooldown;
-  private final boolean canContain;
+  private final LineState contain;
   private final boolean Explosive;
-
-  public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-                  int gamePrice, int firstHealth, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
-                  int productionNumberOfAmmunitionPerUse, boolean canContain, boolean explosive, LineState lineState) {
-    super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
-    this.ammunitionDna = ammunitionDna;
-    this.cooldown = cooldown;
-    this.canContain = canContain;
-    Explosive = explosive;
-  }
 
   public static List<PlantDna> getAllDnas() {
     return allDnas;
@@ -49,10 +39,6 @@ public class PlantDna extends BeingDna {
     return Explosive;
   }
 
-  public boolean isCanContain() {
-    return canContain;
-  }
-
   @Override
   public String toString() {
     return "-------------------------------------------------------------------------------" + "\n" +
@@ -61,4 +47,19 @@ public class PlantDna extends BeingDna {
             "cool down: " + getCooldown() + "\n" +
             "price: " + getGamePrice();
   }
+
+  public PlantDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+      int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
+      LineState contain, boolean explosive) {
+    super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
+    this.ammunitionDna = ammunitionDna;
+    this.cooldown = cooldown;
+    this.contain = contain;
+    Explosive = explosive;
+  }
+
+  public LineState getContain() {
+    return contain;
+  }
+  
 }
