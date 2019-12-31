@@ -125,6 +125,7 @@ public class DayModeUser implements PlantPlayer {
         StringBuilder stringBuilder = new StringBuilder();
         gameEngine.getZombies().forEach(zombie -> stringBuilder.append(zombie.toString()).append('\n'));
         gameEngine.getPlants().forEach(plant -> stringBuilder.append(plant.toString()).append('\n'));
+        gameEngine.getAmmunitions().forEach(plant -> stringBuilder.append(plant.toString()).append('\n'));
         Message.show(stringBuilder.toString());
     }
 
