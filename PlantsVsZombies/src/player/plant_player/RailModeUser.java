@@ -25,6 +25,7 @@ public class RailModeUser implements PlantPlayer {
     private Random rnd;
     private List<PlantDna> plantDans;
     private Integer selected;
+    private int remainTurn;
 
     public RailModeUser() {
         gameEngine = GameEngine.getCurrentGameEngine();
@@ -33,10 +34,13 @@ public class RailModeUser implements PlantPlayer {
     }
 
     private void randomPlantDnaAdder() {
-        if (rnd.nextInt(3) == 0 && plantDans.size() < 10) {
-            List<PlantDna> allDnas = Account.getCurrentUserPlants();
-            plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
+        if (remainTurn != 0) {
+            remainTurn--;
+            return;
         }
+        remainTurn = 1 + rnd.nextInt(3);
+        List<PlantDna> allDnas = Account.getCurrentUserPlants();
+        plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
     }
 
     @Override
