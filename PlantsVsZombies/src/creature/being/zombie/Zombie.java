@@ -6,7 +6,6 @@ import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
-import page.Message;
 
 import java.util.List;
 
