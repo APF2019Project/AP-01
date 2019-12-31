@@ -30,8 +30,9 @@ public class Creature implements Comparable <Creature> {
 
     @Override
     public int compareTo(Creature creature) {
-        if (location.equals(creature.location)) return id - creature.id;
-        return location.compareTo(creature.location);
+       // if (location.equals(creature.location)) 
+       return id - creature.id;
+       // return location.compareTo(creature.location);
     }
 
     @Override
