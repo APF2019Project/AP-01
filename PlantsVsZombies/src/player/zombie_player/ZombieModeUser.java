@@ -43,6 +43,7 @@ public class ZombieModeUser implements ZombiePlayer {
         Result<Unit> x = new Menu<>(
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
+                new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
                 new ActionButton<>("Start", this::start),
                 new ActionButton<>("Put", this::put),
                 new ActionButton<>("Show lanes", this::showLanes),
