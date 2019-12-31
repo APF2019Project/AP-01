@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20a7b1124bdcd994485b980e4502c4ecc7487a07" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20a7b1124bdcd994485b980e4502c4ecc7487a07" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f64d804256222b802cc997a2e3043e660622dc0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f64d804256222b802cc997a2e3043e660622dc0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90ea61836fdab8a485f0278d46ef4f43944fa3fc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90ea61836fdab8a485f0278d46ef4f43944fa3fc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8de755da33f80b51bf0cf3615d47019fec2ed48" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8de755da33f80b51bf0cf3615d47019fec2ed48" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc5b7b5ce17ff2b1b8511e8a51012da571c9ba27" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc5b7b5ce17ff2b1b8511e8a51012da571c9ba27" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebce71e9949b31457c094f91f377c18dd40ea2c8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/ebce71e9949b31457c094f91f377c18dd40ea2c8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/line/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/line/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -379,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577772746391</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="pretty lanMower">
+      <created>1577804707012</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1577804707012</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,7 +449,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="game engine ready to go =)" />
     <MESSAGE value="errors solved =)" />
     <MESSAGE value="error solved again =)" />
     <MESSAGE value="gameEngine v0.1 ready =)" />
@@ -478,7 +473,8 @@
     <MESSAGE value="support of different line states in gameEngine (probably =))" />
     <MESSAGE value="support of different line states in gameEngine v2" />
     <MESSAGE value="AIs now support water and bug fixes in ZombieModeUser" />
-    <option name="LAST_COMMIT_MESSAGE" value="AIs now support water and bug fixes in ZombieModeUser" />
+    <MESSAGE value="pretty lanMower" />
+    <option name="LAST_COMMIT_MESSAGE" value="pretty lanMower" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -7,6 +7,7 @@ import page.Page;
 import util.Result;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +21,7 @@ public class Menu<U> implements Page<U> {
 
   private final ArrayList<Button<U>> buttons;
   private String message = "Choose an option, or e for exit and h for help";
-
+  private Supplier<String> description;
   public Menu(final ArrayList<Button<U>> buttons) {
     this.buttons = buttons;
   }
@@ -31,12 +32,15 @@ public class Menu<U> implements Page<U> {
   }
 
   @SafeVarargs
-  public Menu(String description, final Button<U>... buttons) {
+  public Menu(Supplier<String> description, final Button<U>... buttons) {
+    this.description = description;
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
 
   public Result<U> action() {
     Program.clearScreen();
+    if (description != null)
+      System.out.println(description.get());
     System.out.println(message);
     for (int i = 0; i < buttons.size(); i++) {
       System.out.println(i + ". " + buttons.get(i).getLabel());
