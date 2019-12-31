@@ -5,9 +5,8 @@ import creature.Location;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
-import jdk.jshell.spi.ExecutionControl.ExecutionControlException;
+import page.Message;
 
-import java.util.List;
 import java.util.SortedSet;
 
 public class Ammunition extends Creature {
@@ -47,6 +46,7 @@ public class Ammunition extends Creature {
     }
 
     private void move() {
+        Message.show(location.lineNumber + " " + location.position);
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
         for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
