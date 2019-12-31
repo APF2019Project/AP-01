@@ -195,10 +195,16 @@ public class GameEngine {
     }
 
     public void newPlant(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
-        if (locationChecker(lineNumber, position) || getPlant(lineNumber, position) != null)
-            throw new InvalidGameMoveException("can't plant here!");
+        if (locationChecker(lineNumber, position))
+            throw new InvalidGameMoveException("can't plant out of lawn!");
         if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
             throw new InvalidGameMoveException("can't plant here!");
+        Plant parent = getPlant(lineNumber, position);
+        if (parent != null) {
+            if (!parent.createPlantOnMe(dna)) {
+                throw new InvalidGameMoveException("can't plant on this!");
+            }
+        }
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
