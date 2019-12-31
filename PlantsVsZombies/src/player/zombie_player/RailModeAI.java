@@ -21,9 +21,12 @@ public class RailModeAI implements ZombiePlayer {
     public void nextTurn() {
         if (random.nextInt(4) == 0) {
             List<ZombieDna> allDnas = Account.getCurrentUserZombies();
-            try {
-                gameEngine.newZombie(allDnas.get(random.nextInt(allDnas.size())), random.nextInt(gameEngine.getWidth()));
-            } catch (Exception ignored) {
+            while (true) {
+                try {
+                    gameEngine.newZombie(allDnas.get(random.nextInt(allDnas.size())), random.nextInt(gameEngine.getWidth()));
+                    break;
+                } catch (Exception ignored) {
+                }
             }
         }
     }

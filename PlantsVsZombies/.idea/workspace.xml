@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -349,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577732357700</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="support of different line states in gameEngine v2">
+      <created>1577732472750</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1577732472750</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,7 +434,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="DayModeAI implemented" />
     <MESSAGE value="DayModeAI implemented an solved some errors =)" />
     <MESSAGE value="game engine ready to go =)" />
     <MESSAGE value="errors solved =)" />
@@ -448,7 +458,8 @@
     <MESSAGE value="now gameEngine returns copy and alive added" />
     <MESSAGE value="check alive(ammunition) in Zombie" />
     <MESSAGE value="support of different line states in gameEngine (probably =))" />
-    <option name="LAST_COMMIT_MESSAGE" value="support of different line states in gameEngine (probably =))" />
+    <MESSAGE value="support of different line states in gameEngine v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="support of different line states in gameEngine v2" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
