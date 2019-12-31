@@ -6,6 +6,7 @@ import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
+import page.Message;
 
 import java.util.List;
 
@@ -38,7 +39,9 @@ public class Zombie extends Creature {
             whenIDie.location = location;
             gameEngine.addZombie(whenIDie);
             gameEngine.killZombie(this);
-            return whenIDie.reduceHealth(damageAmount - currentHealth);
+            if (!whenIDie.reduceHealth(damageAmount - currentHealth, ammunitionType)) return false;
+            gameEngine.killZombie(whenIDie);
+            return true;
         }
         return false;
     }
