@@ -213,8 +213,14 @@ public class GameEngine {
     //TODO handling first position of zombie considering 0-base
     public void newZombie(ZombieDna dna, Integer lineNumber) throws InvalidGameMoveException {
         if (!lineNumberChecker(lineNumber)) throw new InvalidGameMoveException("can't insert zombie here");
-        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState()))
-            throw new InvalidGameMoveException("can't insert zombie here");
+        if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState())){
+            if (DATABASE.lines.get(lineNumber).getLineState().equals(LineState.WATER)) {
+                //TODO inja check konim ordak dare
+            }
+            else {
+                throw new InvalidGameMoveException("can't insert zombie here");
+            }
+        }
         Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
