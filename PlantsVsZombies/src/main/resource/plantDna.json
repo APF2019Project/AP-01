@@ -296,8 +296,10 @@
       "name": "Bomb",
       "powerOfDestruction": 100000,
       "reduceSpeedRatio": 1,
+      "productionNumberOfAmmunitionPerUse": 9,
       "firstTimeHealth": 1,
-      "firstHealth": 1
+      "firstHealth": 1,
+      "type": 4
     }]
   },
   {

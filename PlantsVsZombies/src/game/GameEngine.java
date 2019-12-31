@@ -327,10 +327,12 @@ public class GameEngine {
 
 
         TreeSet<Ammunition> local = new TreeSet<>(DATABASE.ammunition);
-        for (Ammunition ammunition : local)
-            if (DATABASE.ammunition.contains(ammunition))
+        for (Ammunition ammunition : local) {
+            Message.show(ammunition + "eyval");
+            if (DATABASE.ammunition.contains(ammunition)) {
                 ammunition.nextTurn();
-
+            }
+        }
 
         TreeSet<Zombie> local3 = new TreeSet<>(DATABASE.zombies);
         for (Zombie zombie : local3)

@@ -53,7 +53,7 @@ public class Ammunition extends Creature {
             gameEngine.killAmmunition(this);
             return;
         }
-        if (!move()) return;
+        if (ammunitionDna.getSpeed() != 0 && !move()) return;
         SortedSet<Zombie> zombies = gameEngine.getZombies(location.lineNumber);
         zombies.forEach(zombie -> {
             if (!gameEngine.alive(zombie)) return;

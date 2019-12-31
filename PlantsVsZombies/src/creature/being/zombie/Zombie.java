@@ -32,12 +32,13 @@ public class Zombie extends Creature {
             if (whenIDie == null) return false;
             return whenIDie.reduceHealth(damageAmount, ammunitionType);
         }
+        int currentHealth = health;
         if (reduceHealth(damageAmount)) {
             if (whenIDie == null) return true;
             whenIDie.location = location;
             gameEngine.addZombie(whenIDie);
             gameEngine.killZombie(this);
-            return false;
+            return whenIDie.reduceHealth(damageAmount - currentHealth);
         }
         return false;
     }

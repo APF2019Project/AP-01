@@ -38,7 +38,7 @@ public class Plant extends Creature {
                                 this.location.moveBy(dx, dy), ammunitionDna, this);
                         }
                         catch(Exception exception) {
-
+                            
                         }
                     }
                 }
@@ -67,7 +67,7 @@ public class Plant extends Creature {
         super.nextTurn();
         if (remainingAmmunitionCooldown == 0) {
             if (!plantDna.getAmmunitionDna().isEmpty()) {
-               remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
+                remainingAmmunitionCooldown = plantDna.getAmmunitionDna().get(0).getCooldown();
                 createAmmunition();
             }
         }
