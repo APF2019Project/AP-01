@@ -47,7 +47,7 @@ public class RailModeUser implements PlantPlayer {
     public void nextTurn() throws EndGameException {
         selected = null;
         randomPlantDnaAdder();
-        Effect<Unit> x = new Menu<>(
+        /*Effect<Unit> x = new Menu<>(
                 gameEngine::pretty,
                 new ActionButton<>("List", this::showHand),
                 new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
@@ -58,11 +58,11 @@ public class RailModeUser implements PlantPlayer {
                 new ActionButton<>("Select", this::select),
                 new ExitButton("End Turn")
         ).action();
-        if (x.isError()) throw new EndGameException();
+        if (x.isError()) throw new EndGameException();*/
     }
 
     private void select() {
-        Effect<String[]> result = new Form("Enter name").action();
+        /*Effect<String[]> result = new Form("Enter name").action();
         if (result == null || result.getValue().length == 0) {
             Message.show("Enter the name :/!");
             return;
@@ -72,7 +72,7 @@ public class RailModeUser implements PlantPlayer {
                 selected = i;
                 return;
             }
-        Message.show("invalid name !");
+        Message.show("invalid name !");*/
     }
 
     private void showRecord() {
@@ -82,8 +82,8 @@ public class RailModeUser implements PlantPlayer {
     private void removePlant() {
         Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
-            Integer x = Integer.valueOf(result.getValue()[0]);
-            Integer y = Integer.valueOf(result.getValue()[1]);
+            Integer x = 0;//Integer.valueOf(result.getValue()[0]);
+            Integer y = 0;//Integer.valueOf(result.getValue()[1]);
             Plant plant = gameEngine.getPlant(x, y);
             if (plant == null) throw new InvalidGameMoveException("there is no plant in that location!");
             gameEngine.killPlant(plant);
@@ -98,8 +98,8 @@ public class RailModeUser implements PlantPlayer {
         Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
             if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
-            Integer x = Integer.valueOf(result.getValue()[0]);
-            Integer y = Integer.valueOf(result.getValue()[1]);
+            Integer x = 0;//Integer.valueOf(result.getValue()[0]);
+            Integer y = 0;//Integer.valueOf(result.getValue()[1]);
             gameEngine.newPlant(plantDans.get(selected), x, y);
             plantDans.remove((int) selected);
         } catch (InvalidGameMoveException e) {

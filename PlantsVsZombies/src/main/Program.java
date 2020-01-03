@@ -12,11 +12,16 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import util.Effect;
 
 public class Program extends Application {
 
   public static Scanner scanner;
+
+  public static double screenX, screenY;
+  public static Stage stage;
 
   public static void clearScreen() {
     System.out.print("\033[H\033[2J");
@@ -56,6 +61,10 @@ public class Program extends Application {
     stage.setFullScreenExitHint("");
     stage.setFullScreen(true);
     stage.show();
+    Screen screen = Screen.getPrimary();
+    screenX = screen.getVisualBounds().getWidth();
+    screenY = screen.getVisualBounds().getHeight();
+    Program.stage = stage;
     try {
       File mainPath = new File(getBackupPath(""));
       if (mainPath.exists()) {
@@ -65,8 +74,13 @@ public class Program extends Application {
       }
       PlantDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/plantDna.json")));
       ZombieDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
-      //Pages.loginMenu.action();
-      Account.backupAll();
+      Pages.loginMenu.action()
+      .discardData()
+      .catchThen(e -> Effect.syncWork(()->{
+        Account.backupAll();
+        System.exit(0);
+      }))
+      .execute();
       l.setText("loaded");
     } catch (Exception e) {
       e.printStackTrace();

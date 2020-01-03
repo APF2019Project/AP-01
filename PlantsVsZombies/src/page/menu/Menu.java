@@ -1,15 +1,19 @@
 package page.menu;
 
-import main.Program;
 import page.Help;
-import page.Message;
 import page.Page;
 import util.Effect;
 
 import java.util.ArrayList;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import main.Program;
+import graphic.CloseButton;
+import graphic.SimpleButton;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 /**
  * Menu is a page that show some {@link Button} to user
@@ -21,7 +25,7 @@ public class Menu<U> implements Page<U> {
 
   private final ArrayList<Button<U>> buttons;
   private String message = "Choose an option, or e for exit and h for help";
-  private Supplier<String> description;
+
   public Menu(final ArrayList<Button<U>> buttons) {
     this.buttons = buttons;
   }
@@ -32,39 +36,35 @@ public class Menu<U> implements Page<U> {
   }
 
   @SafeVarargs
-  public Menu(Supplier<String> description, final Button<U>... buttons) {
-    this.description = description;
+  public Menu(String description, final Button<U>... buttons) {
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
 
   public Effect<U> action() {
-    Program.clearScreen();
-    if (description != null)
-      System.out.println(description.get());
-    System.out.println(message);
-    for (int i = 0; i < buttons.size(); i++) {
-      System.out.println(i + ". " + buttons.get(i).getLabel());
-    }
-    final String s = Program.scanner.nextLine();
-    if (s.equals("e") || s.equals("exit")) return Effect.error("exited");
-    if (s.equals("h") || s.equals("help")) {
-      printHelp();
-      return action();
-    }
-    if (s.equals("")) return action();
-    try {
-      final int k = Integer.parseInt(s);
-      if (k < 0 || k >= buttons.size()) {
-        Message.show("Please enter a number between 0 and " + k);
-        return action();
+    return new Effect<>((h) -> {
+      Pane myPane = new Pane();
+      int cnt = 0, n = buttons.size();
+      CloseButton closeButton = new CloseButton();
+      closeButton.setOnMouseClicked(e -> {
+        h.failure(new Error("end menu"));
+      });
+      myPane.getChildren().add(closeButton);
+      for (final Button<U> button: buttons) {
+        SimpleButton r = new SimpleButton(
+          Program.screenX/3,
+          (2*cnt+1)*Program.screenY/(2*n+1),
+          Program.screenX/3, 
+          Program.screenY/(2*n+1),
+          button.getLabel(),
+          button.action().discardData().catchThen(e -> Effect.syncWork(()->{
+            Program.stage.getScene().setRoot(myPane);
+          }))
+        );
+        myPane.getChildren().add(r);
+        cnt++;
       }
-      final Effect<U> result = buttons.get(k).action();
-      if (result.isError()) return action();
-      else return result;
-    } catch (NumberFormatException e) {
-      Message.show("please enter a number");
-      return action();
-    }
+      Program.stage.getScene().setRoot(myPane);
+    });
   }
 
   private void printHelp() {

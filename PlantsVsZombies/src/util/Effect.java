@@ -1,37 +1,62 @@
 package util;
 
-import java.util.Optional;
+import java.util.ArrayList;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import page.Message;
 
 /**
- * Result can contain a data of type T in case of success and
- * a error message in case of failure
- * @param <T> type of inside data
+ * Effect is an immutable class that represent a work
+ * in world that make a result
+ * @param <T> type of result
  */
 public class Effect<T> {
-  private Optional<T> value;
-  private Optional<String> error;
-  private Effect(T value, String error) {
-    this.value = Optional.ofNullable(value);
-    this.error = Optional.ofNullable(error);
+
+  public interface EffectCallback<U> {
+    public void success(U result);
+    public void failure(Throwable error);
   }
-  @Override
-  public String toString() {
-    if (isError()) return "Error: " + getError();
-    return value.toString();
+
+  public interface EffectContainer<U> {
+    public void execute(EffectCallback<U> handler);
+  }
+
+  public interface Function<V,U> {
+    public U apply(V arg) throws Throwable;
+  }
+
+  public interface Task {
+    void run();
+  }
+
+  public static final Effect<Unit> noOp = new Effect<>(h->h.success(Unit.value));
+
+  private final EffectContainer<T> data;
+
+  public Effect(EffectContainer<T> data) {
+    this.data = data;
+  }
+
+  public void execute() {
+    data.execute(new EffectCallback<>() {
+
+      @Override
+      public void success(T result) {}
+
+      @Override
+      public void failure(Throwable error) {}
+
+    });
   }
 
   /**
    * @param <U> type of value
    * @param value 
-   * @return a Result wrapper that contain value
+   * @return a Effect wrapper that contain value
    */
   public static <U> Effect<U> ok(U value) {
-    return new Effect<>(value, null);
+    return new Effect<>((h) -> h.success(value));
   }
 
   public static Effect<Unit> ok() {
@@ -41,64 +66,68 @@ public class Effect<T> {
   /**
    * @param <U>
    * @param error the message of error
-   * @return a result value failed with error
+   * @return a Effect value failed with error
    */
-  public static <U> Effect<U> error(String error) {
-    return new Effect<>(null, error);
+  public static <U> Effect<U> error(Throwable error) {
+    return new Effect<>((h) -> h.failure(error));
   }
 
   /**
-   * Check this result is failed or not
-   * @return true when fail, false when success
-   */
-  public boolean isError() {
-    return error.isPresent();
-  }
-
-  /**
-   * @return value inside Result object
-   * @throws NoSuchElementException in case of failure
-   */
-  public T getValue() {
-    return value.get();
-  }
-
-  /**
-   * @return error message
-   * @throws NoSuchElementException in case of success
-   */
-  public String getError() {
-    return error.get();
-  }
-
-  /**
-   * chain results and fails with first error
+   * chain Effects and fails with first error
    * @param <U>
-   * @param mapper a function that transform this value to another result
-   * @return combined result
+   * @param mapper a function that transform this value to another Effect
+   * @return combined Effect
    */
   public <U> Effect<U> flatMap(Function<T, Effect<U>> mapper) {
+    return new Effect<U>((h)->{
+      data.execute(new EffectCallback<T>() {
 
-    if (this.isError()) {
-      return Effect.error(this.getError());
-    }
+        @Override
+        public void success(T result) {
+          try{
+            mapper.apply(result).data.execute(h);
+          }
+          catch(Throwable e) {
+            h.failure(e);
+          }
+        }
 
-    return mapper.apply(value.get());
+        @Override
+        public void failure(Throwable error) {
+          h.failure(error);
+        }
+        
+      });
+    });
   }
 
   /**
    * transform inside data with a function in case of success
    * @param <U>
    * @param mapper a function that transform this value to another value
-   * @return transformed result
+   * @return transformed Effect
    */
   public <U> Effect<U> map(Function<T, U> mapper) {
+    return new Effect<U>((h)->{
+      data.execute(new EffectCallback<T>() {
 
-    if (this.isError()) {
-      return Effect.error(this.getError());
-    }
+        @Override
+        public void success(T result) {
+          try{
+            h.success(mapper.apply(result));
+          }
+          catch(Throwable e) {
+            h.failure(e);
+          }
+        }
 
-    return Effect.ok(mapper.apply(value.get()));
+        @Override
+        public void failure(Throwable error) {
+          h.failure(error);
+        }
+      
+      });
+    });
   }
 
   public Effect<Unit> discardData() {
@@ -114,28 +143,67 @@ public class Effect<T> {
 
   /**
    * show contained value in a {@link Message} page in case of success
-   * @return Result of operation
+   * @return Effect of operation
    */
   public Effect<Unit> show() {
-    return this.consume(x -> new Message(x.toString()).action());
+    return this.flatMap(x -> new Message(x.toString()).action());
   }
 
   /**
    * show error in a {@link Message} page in case of error
    * @return this
    */
-  public Effect<T> showError() {
-    if (isError()) new Message("Error: " + getError()).action();
-    return this;
+  public Effect<Unit> showError() {
+    //if (isError()) new Message("Error: " + getError()).action();
+    return discardData()
+      .catchThen(e -> new Message("Error: " + e.getMessage()).action());
   }
 
   /**
-   * lift a supplier with Result monad
+   * lift a supplier with Effect monad
    * @param <U>
    * @param supplier
    * @return lifted supplier
    */
   public static <U> Supplier<Effect<U>> liftSupplier(Supplier<U> supplier) {
     return () -> Effect.ok(supplier.get());
+  }
+
+  public void evaluate(EffectCallback<T> h) {
+    data.execute(h);
+  }
+
+  public Effect<T> catchThen(Function<Throwable, Effect<T>> f) {
+    return new Effect<T>((h)->{
+      data.execute(new EffectCallback<T>() {
+
+        @Override
+        public void success(T result) {
+          h.success(result);
+        }
+
+        @Override
+        public void failure(Throwable error) {
+          try{
+            f.apply(error).evaluate(h);
+          }
+          catch(Throwable e) {
+            h.failure(e);
+          }
+        }
+        
+      });
+    });
+  }
+
+  public static Effect<Unit> syncWork(Task task) {
+    return new Effect<>(h -> {
+      task.run();
+      h.success(Unit.value);
+    });
+  }
+
+  public static <U> Effect<U> error(String string) {
+    return Effect.error(new Error(string));
   }
 }

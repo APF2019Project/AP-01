@@ -81,8 +81,8 @@ public class Account implements Serializable {
   }
 
   public static Page<Unit> profilePage() {
-    return new Menu<>(
-            new Button<>() {
+    return new Menu<Unit>(
+            new Button<Unit>() {
               @Override
               public String getLabel() {
                 return "Delete account";
@@ -101,31 +101,36 @@ public class Account implements Serializable {
               }
 
             },
-            new ActionButton<>("change", () -> {
+            new ActionButton<>("change", 
               (new Form("Enter username", "Enter password"))
                       .action()
-                      .flatMap(data -> Account.login(data[0], data[1]))
+                      .flatMap(data -> Effect.syncWork(()->{
+                        Account.login(data[0], data[1]);
+                      }))
                       .showError()
                       .map(x -> "Account changed successfully")
-                      .show();
-            }),
-            new ActionButton<>("rename", () -> {
+                      .show()
+            ),
+            new ActionButton<>("rename", 
               (new Form("Enter new username"))
                       .action()
                       .flatMap(data -> Account.current.rename(data[0]))
                       .showError()
                       .map(x -> "Your username changed successfully")
-                      .show();
-            }),
-            new ActionButton<>("create", () -> {
+                      .show()
+            ),
+            new ActionButton<>("create",
               (new Form("Enter new username", "Enter password"))
                       .action()
-                      .flatMap(data -> Account.create(data[0], data[1]))
+                      .flatMap(data -> Effect.syncWork(()->{
+                        Account.create(data[0], data[1]);
+                      }))
                       .map((x) -> "Account created successfully")
                       .show()
-                      .showError();
-            }),
-            new ActionButton<>("Show", () -> new Message(current.username).action())
+                      .showError()
+            ),
+            new ActionButton<>("Show", Effect.ok()
+            .map(x -> Account.current.username).show())
     );
   }
 
@@ -142,26 +147,22 @@ public class Account implements Serializable {
     }
   }
 
-  public static Effect<Account> getByUsername(String username) {
-    Account user = ALL.get(username);
-    if (user == null) return Effect.error("Account not found");
-    return Effect.ok(user);
+  public static Account getByUsername(String username) {
+    return ALL.get(username);
   }
 
-  public static Effect<Unit> create(String username, String password) {
-    if (!getByUsername(username).isError()) 
-      return Effect.error("invalid username");
-    new Account(username, password);
-    return Effect.ok();
+  public static Account create(String username, String password) {
+    if (getByUsername(username) != null) 
+      return null;
+    return new Account(username, password);
   }
 
-  public static Effect<Unit> login(String username, String password) {
-    Effect<Unit> error = Effect.error("invalid username or password");
-    return getByUsername(username).flatMap(user -> {
-      if (!user.matchPassword(password)) return error;
-      current = user;
-      return Effect.ok();
-    });
+  public static boolean login(String username, String password) {
+    Account account = getByUsername(username);
+    if (account == null) return false;
+    if (!account.matchPassword(password)) return false;
+    current = account;
+    return true;
   }
 
   public static List<PlantDna> getCurrentUserPlants() {

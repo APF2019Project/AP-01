@@ -1,22 +1,21 @@
 package page.menu;
 
 import util.Effect;
-import util.Task;
+import util.Unit;
 
 public class ActionButton<U> implements Button<U> {
   private String label;
-  private Task task;
+  private Effect<Unit> task;
 
   public String getLabel(){
     return label;
   }
 
   public Effect<U> action() {
-    task.run();
-    return Effect.error("end action");
+    return task.flatMap(x -> Effect.error(new Error("end action")));
   }
 
-  public ActionButton(String label, Task task) {
+  public ActionButton(String label, Effect<Unit> task) {
     this.label = label;
     this.task = task;
   }

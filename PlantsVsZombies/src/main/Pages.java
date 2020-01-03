@@ -48,7 +48,14 @@ class DataButton<U> implements Button<U> {
 }
 
 public class Pages {
-  public static final Menu<GameResult> chooseGameType = new Menu<GameResult>(
+  public static final Page<GameResult> chooseGameType = new Page<GameResult>() {
+    @Override
+    public Effect<GameResult> action() {
+      // TODO Auto-generated method stub
+      return Effect.ok(null);
+    }
+
+  };/*new Menu<GameResult>(
       new DataButton<>("Day",
           () -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7).action()
               .map(GameEngine::newDayGame)),
@@ -64,20 +71,26 @@ public class Pages {
           .flatMap(opUser -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7).action()
               .flatMap(plantHand -> new Collection<ZombieDna>((ArrayList<ZombieDna>) opUser.getZombies(), 7).action()
                   .map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))))));
-
-  public static final Menu<Unit> mainMenu = new Menu<Unit>(new ActionButton<Unit>("play", () -> {
-    Effect<GameResult> x = chooseGameType.action();
-    if (!x.isError()) {
-      x.getValue().action();
-    }
-  }), new LinkButton<Unit>("profile", Account.profilePage()), new LinkButton<Unit>("shop", new ShopPage()));
-  public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account", () -> {
-    (new Form("Enter new username", "Enter password")).action().flatMap(data -> Account.create(data[0], data[1]))
-        .map((x) -> "Account created successfully").show().showError();
-  }), new ActionButton<Void>("login", () -> {
-    (new Form("Enter username", "Enter password")).action().flatMap(data -> Account.login(data[0], data[1])).showError()
-        .flatMap(x -> mainMenu.action());
-  }), new LinkButton<Void>("leaderboard", Account.leaderBoardPage()));
+*/
+  public static final Menu<Unit> mainMenu = new Menu<Unit>(
+    new ActionButton<Unit>("play", chooseGameType.action().discardData()), 
+    new LinkButton<Unit>("profile", Account.profilePage()),
+    new LinkButton<Unit>("shop", new ShopPage()));
+  public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
+    (new Form("Enter new username", "Enter password"))
+    .action()
+    .flatMap(data -> Effect.syncWork(()->{
+      Account.login(data[0], data[1]);
+    }))
+    .map((x) -> "Account created successfully").show().showError()
+  ), new ActionButton<Void>("login",
+    (new Form("Enter username", "Enter password"))
+    .action()
+    .flatMap(data -> Effect.syncWork(()->{
+      Account.login(data[0], data[1]);
+    })).showError()
+        .flatMap(x -> mainMenu.action())
+  ), new LinkButton<Void>("leaderboard", Account.leaderBoardPage()));
 
   public static <U> Page<U> notImplemented() {
     return new Page<U>() {
