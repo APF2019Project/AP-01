@@ -4,7 +4,7 @@ import account.Account;
 import exception.Winner;
 import page.Message;
 import page.Page;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 public class GameResult implements Page<Unit> {
@@ -20,14 +20,14 @@ public class GameResult implements Page<Unit> {
         this.gameMode = gameMode;
     }
 
-    public Result<Unit> action() {
+    public Effect<Unit> action() {
         if (winner == null) {
             Message.show("You abort the game!");
-            return Result.ok();
+            return Effect.ok();
         }
         if (gameMode == GameMode.PVP) {
             Message.show("Game has been finished");
-            return Result.ok();
+            return Effect.ok();
         }
         int moneyDelta = 0;
         int scoreDelta = 0;
@@ -49,7 +49,7 @@ public class GameResult implements Page<Unit> {
         Account.getCurrentAccount().getStore().money += moneyDelta;
         Account.getCurrentAccount().score += scoreDelta;
         Message.show(res);
-        return Result.ok();
+        return Effect.ok();
     }
 
     @Override

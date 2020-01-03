@@ -12,7 +12,7 @@ import page.Message;
 import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class RailModeUser implements PlantPlayer {
     public void nextTurn() throws EndGameException {
         selected = null;
         randomPlantDnaAdder();
-        Result<Unit> x = new Menu<>(
+        Effect<Unit> x = new Menu<>(
                 gameEngine::pretty,
                 new ActionButton<>("List", this::showHand),
                 new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
@@ -62,7 +62,7 @@ public class RailModeUser implements PlantPlayer {
     }
 
     private void select() {
-        Result<String[]> result = new Form("Enter name").action();
+        Effect<String[]> result = new Form("Enter name").action();
         if (result == null || result.getValue().length == 0) {
             Message.show("Enter the name :/!");
             return;
@@ -80,7 +80,7 @@ public class RailModeUser implements PlantPlayer {
     }
 
     private void removePlant() {
-        Result<String[]> result = new Form("Enter X", "Enter Y").action();
+        Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
             Integer x = Integer.valueOf(result.getValue()[0]);
             Integer y = Integer.valueOf(result.getValue()[1]);
@@ -95,7 +95,7 @@ public class RailModeUser implements PlantPlayer {
     }
 
     private void createPlant() {
-        Result<String[]> result = new Form("Enter X", "Enter Y").action();
+        Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
             if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
             Integer x = Integer.valueOf(result.getValue()[0]);

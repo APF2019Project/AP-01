@@ -4,7 +4,7 @@ import main.Program;
 import page.Help;
 import page.Message;
 import page.Page;
-import util.Result;
+import util.Effect;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -37,7 +37,7 @@ public class Menu<U> implements Page<U> {
     this.buttons = Stream.of(buttons).collect(Collectors.toCollection(ArrayList::new));
   }
 
-  public Result<U> action() {
+  public Effect<U> action() {
     Program.clearScreen();
     if (description != null)
       System.out.println(description.get());
@@ -46,7 +46,7 @@ public class Menu<U> implements Page<U> {
       System.out.println(i + ". " + buttons.get(i).getLabel());
     }
     final String s = Program.scanner.nextLine();
-    if (s.equals("e") || s.equals("exit")) return Result.error("exited");
+    if (s.equals("e") || s.equals("exit")) return Effect.error("exited");
     if (s.equals("h") || s.equals("help")) {
       printHelp();
       return action();
@@ -58,7 +58,7 @@ public class Menu<U> implements Page<U> {
         Message.show("Please enter a number between 0 and " + k);
         return action();
       }
-      final Result<U> result = buttons.get(k).action();
+      final Effect<U> result = buttons.get(k).action();
       if (result.isError()) return action();
       else return result;
     } catch (NumberFormatException e) {

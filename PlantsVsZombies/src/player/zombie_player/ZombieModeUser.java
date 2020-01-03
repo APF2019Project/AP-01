@@ -11,7 +11,7 @@ import page.Message;
 import page.menu.ActionButton;
 import page.menu.ExitButton;
 import page.menu.Menu;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class ZombieModeUser implements ZombiePlayer {
             if (zombieDna.getFirstHealth() * 10 <= coin)
                 flag = true;
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
-        Result<Unit> x = new Menu<>(
+        Effect<Unit> x = new Menu<>(
                 gameEngine::pretty,
                 new ActionButton<>("Show hand", this::showHand),
                 new ActionButton<>("Show lawn", this::showLawn),
@@ -54,7 +54,7 @@ public class ZombieModeUser implements ZombiePlayer {
     }
 
     private void put() {
-        Result<String[]> result = new Form("Enter name", "Enter X").action();
+        Effect<String[]> result = new Form("Enter name", "Enter X").action();
         if (result == null || result.getValue().length == 0) {
             Message.show("Enter the name :/!");
             return;

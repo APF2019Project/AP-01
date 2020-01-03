@@ -12,10 +12,10 @@ import page.Message;
  * a error message in case of failure
  * @param <T> type of inside data
  */
-public class Result<T> {
+public class Effect<T> {
   private Optional<T> value;
   private Optional<String> error;
-  private Result(T value, String error) {
+  private Effect(T value, String error) {
     this.value = Optional.ofNullable(value);
     this.error = Optional.ofNullable(error);
   }
@@ -30,12 +30,12 @@ public class Result<T> {
    * @param value 
    * @return a Result wrapper that contain value
    */
-  public static <U> Result<U> ok(U value) {
-    return new Result<>(value, null);
+  public static <U> Effect<U> ok(U value) {
+    return new Effect<>(value, null);
   }
 
-  public static Result<Unit> ok() {
-    return Result.ok(Unit.value);
+  public static Effect<Unit> ok() {
+    return Effect.ok(Unit.value);
   }
 
   /**
@@ -43,8 +43,8 @@ public class Result<T> {
    * @param error the message of error
    * @return a result value failed with error
    */
-  public static <U> Result<U> error(String error) {
-    return new Result<>(null, error);
+  public static <U> Effect<U> error(String error) {
+    return new Effect<>(null, error);
   }
 
   /**
@@ -77,10 +77,10 @@ public class Result<T> {
    * @param mapper a function that transform this value to another result
    * @return combined result
    */
-  public <U> Result<U> flatMap(Function<T, Result<U>> mapper) {
+  public <U> Effect<U> flatMap(Function<T, Effect<U>> mapper) {
 
     if (this.isError()) {
-      return Result.error(this.getError());
+      return Effect.error(this.getError());
     }
 
     return mapper.apply(value.get());
@@ -92,20 +92,20 @@ public class Result<T> {
    * @param mapper a function that transform this value to another value
    * @return transformed result
    */
-  public <U> Result<U> map(Function<T, U> mapper) {
+  public <U> Effect<U> map(Function<T, U> mapper) {
 
     if (this.isError()) {
-      return Result.error(this.getError());
+      return Effect.error(this.getError());
     }
 
-    return Result.ok(mapper.apply(value.get()));
+    return Effect.ok(mapper.apply(value.get()));
   }
 
-  public Result<Unit> discardData() {
+  public Effect<Unit> discardData() {
     return this.map(x -> Unit.value);
   }
 
-  public Result<Unit> consume(Consumer<T> consumer) {
+  public Effect<Unit> consume(Consumer<T> consumer) {
     return this.map(x -> {
       consumer.accept(x);
       return Unit.value;
@@ -116,7 +116,7 @@ public class Result<T> {
    * show contained value in a {@link Message} page in case of success
    * @return Result of operation
    */
-  public Result<Unit> show() {
+  public Effect<Unit> show() {
     return this.consume(x -> new Message(x.toString()).action());
   }
 
@@ -124,7 +124,7 @@ public class Result<T> {
    * show error in a {@link Message} page in case of error
    * @return this
    */
-  public Result<T> showError() {
+  public Effect<T> showError() {
     if (isError()) new Message("Error: " + getError()).action();
     return this;
   }
@@ -135,7 +135,7 @@ public class Result<T> {
    * @param supplier
    * @return lifted supplier
    */
-  public static <U> Supplier<Result<U>> liftSupplier(Supplier<U> supplier) {
-    return () -> Result.ok(supplier.get());
+  public static <U> Supplier<Effect<U>> liftSupplier(Supplier<U> supplier) {
+    return () -> Effect.ok(supplier.get());
   }
 }

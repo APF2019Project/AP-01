@@ -7,7 +7,7 @@ import main.ConsoleColors;
 import main.Program;
 import page.Message;
 import page.Page;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ShopPage implements Page<Unit> {
 
   @Override
-  public Result<Unit> action() {
+  public Effect<Unit> action() {
     Store me = Account.current.store;
     while (true) {
       Program.clearScreen();
@@ -39,7 +39,7 @@ public class ShopPage implements Page<Unit> {
         }
       }
       String s = Program.scanner.nextLine();
-      if (s.equals("e")) return Result.error("end");
+      if (s.equals("e")) return Effect.error("end");
       try {
         me.buyCard(buyOptions.get(Integer.parseInt(s)));
       } catch (Exception e) {

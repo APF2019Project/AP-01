@@ -1,6 +1,6 @@
 package page.menu;
 
-import util.Result;
+import util.Effect;
 import util.Task;
 
 public class ActionButton<U> implements Button<U> {
@@ -11,9 +11,9 @@ public class ActionButton<U> implements Button<U> {
     return label;
   }
 
-  public Result<U> action() {
+  public Effect<U> action() {
     task.run();
-    return Result.error("end action");
+    return Effect.error("end action");
   }
 
   public ActionButton(String label, Task task) {

@@ -14,7 +14,7 @@ import page.menu.ActionButton;
 import page.menu.Button;
 import page.menu.LinkButton;
 import page.menu.Menu;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 class DataButton<U> implements Button<U> {
 
   private final String modeName;
-  private final Supplier<Result<U>> gameSupplier;
+  private final Supplier<Effect<U>> gameSupplier;
 
   @Override
   public String getLabel() {
@@ -36,11 +36,11 @@ class DataButton<U> implements Button<U> {
   }
 
   @Override
-  public Result<U> action() {
+  public Effect<U> action() {
     return gameSupplier.get();
   }
 
-  public DataButton(String modeName, Supplier<Result<U>> gameSupplier) {
+  public DataButton(String modeName, Supplier<Effect<U>> gameSupplier) {
     this.modeName = modeName;
     this.gameSupplier = gameSupplier;
   }
@@ -55,7 +55,7 @@ public class Pages {
       new DataButton<>("Water",
           () -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7)
               .action().map(GameEngine::newWaterGame)),
-      new DataButton<>("Rail", Result.liftSupplier(GameEngine::newRailGame)),
+      new DataButton<>("Rail", Effect.liftSupplier(GameEngine::newRailGame)),
       new DataButton<>("Zombie",
           () -> new Collection<ZombieDna>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 7).action()
               .map(GameEngine::newZombieGame)),
@@ -66,7 +66,7 @@ public class Pages {
                   .map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))))));
 
   public static final Menu<Unit> mainMenu = new Menu<Unit>(new ActionButton<Unit>("play", () -> {
-    Result<GameResult> x = chooseGameType.action();
+    Effect<GameResult> x = chooseGameType.action();
     if (!x.isError()) {
       x.getValue().action();
     }
@@ -82,9 +82,9 @@ public class Pages {
   public static <U> Page<U> notImplemented() {
     return new Page<U>() {
       @Override
-      public Result<U> action() {
+      public Effect<U> action() {
         new Message("ishalla in future").action();
-        return Result.error("end");
+        return Effect.error("end");
       }
     };
   }

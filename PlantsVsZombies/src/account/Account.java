@@ -10,7 +10,7 @@ import page.Page;
 import page.menu.ActionButton;
 import page.menu.Button;
 import page.menu.Menu;
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 import java.io.*;
@@ -76,7 +76,7 @@ public class Account implements Serializable {
         ))
         .collect(Collectors.joining());
       new Message(header + table).action();
-      return Result.error("end page");
+      return Effect.error("end page");
     };
   }
 
@@ -94,10 +94,10 @@ public class Account implements Serializable {
               }
 
               @Override
-              public Result<Unit> action() {
+              public Effect<Unit> action() {
                 Account.current.delete();
                 Message.show("your account deleted successfully");
-                return Result.ok();
+                return Effect.ok();
               }
 
             },
@@ -142,25 +142,25 @@ public class Account implements Serializable {
     }
   }
 
-  public static Result<Account> getByUsername(String username) {
+  public static Effect<Account> getByUsername(String username) {
     Account user = ALL.get(username);
-    if (user == null) return Result.error("Account not found");
-    return Result.ok(user);
+    if (user == null) return Effect.error("Account not found");
+    return Effect.ok(user);
   }
 
-  public static Result<Unit> create(String username, String password) {
+  public static Effect<Unit> create(String username, String password) {
     if (!getByUsername(username).isError()) 
-      return Result.error("invalid username");
+      return Effect.error("invalid username");
     new Account(username, password);
-    return Result.ok();
+    return Effect.ok();
   }
 
-  public static Result<Unit> login(String username, String password) {
-    Result<Unit> error = Result.error("invalid username or password");
+  public static Effect<Unit> login(String username, String password) {
+    Effect<Unit> error = Effect.error("invalid username or password");
     return getByUsername(username).flatMap(user -> {
       if (!user.matchPassword(password)) return error;
       current = user;
-      return Result.ok();
+      return Effect.ok();
     });
   }
 
@@ -188,12 +188,12 @@ public class Account implements Serializable {
     return res;
   }
 
-  private Result<Unit> rename(String string) {
-    if (getByUsername(string) != null) return Result.error("invalid username");
+  private Effect<Unit> rename(String string) {
+    if (getByUsername(string) != null) return Effect.error("invalid username");
     ALL.remove(username);
     username = string;
     ALL.put(username, this);
-    return Result.ok();
+    return Effect.ok();
   }
 
   protected void delete() {

@@ -1,6 +1,6 @@
 package page;
 
-import util.Result;
+import util.Effect;
 
 /**
  * the base of all pages
@@ -12,5 +12,5 @@ public interface Page<U> {
    * Show this page to user and wait for obtain a result
    * @return result of page
    */
-  Result<U> action();
+  Effect<U> action();
 }

@@ -1,6 +1,6 @@
 package page.menu;
 
-import util.Result;
+import util.Effect;
 import util.Unit;
 
 public class ExitButton implements Button<Unit> {
@@ -18,8 +18,8 @@ public class ExitButton implements Button<Unit> {
   }
 
   @Override
-  public Result<Unit> action() {
-    return Result.ok();
+  public Effect<Unit> action() {
+    return Effect.ok();
   }
 
   public ExitButton(String label) {
