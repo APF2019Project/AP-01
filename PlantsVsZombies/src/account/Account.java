@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.naming.NamingException;
+import javax.security.sasl.AuthenticationException;
+
 public class Account implements Serializable {
   private static final long serialVersionUID = -5582985394951882515L;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
@@ -151,18 +154,21 @@ public class Account implements Serializable {
     return ALL.get(username);
   }
 
-  public static Account create(String username, String password) {
-    if (getByUsername(username) != null) 
-      return null;
-    return new Account(username, password);
+  public static Effect<Unit> create(String username, String password) {
+    return Effect.syncWork(()->{
+      if (getByUsername(username) != null) 
+        throw new NamingException();
+      new Account(username, password);
+    });
   }
 
-  public static boolean login(String username, String password) {
-    Account account = getByUsername(username);
-    if (account == null) return false;
-    if (!account.matchPassword(password)) return false;
-    current = account;
-    return true;
+  public static Effect<Unit> login(String username, String password) {
+    return Message.show(""+ALL).then(Effect.syncWork(() -> {
+      Account account = getByUsername(username);
+      if (account == null) throw new AuthenticationException();
+      if (!account.matchPassword(password)) throw new AuthenticationException();
+      current = account;
+    }));
   }
 
   public static List<PlantDna> getCurrentUserPlants() {

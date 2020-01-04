@@ -20,6 +20,8 @@ import util.Unit;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
+import javax.security.sasl.AuthenticationException;
+
 class DataButton<U> implements Button<U> {
 
   private final String modeName;
@@ -79,17 +81,19 @@ public class Pages {
   public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
     (new Form("Enter new username", "Enter password"))
     .action()
-    .flatMap(data -> Effect.syncWork(()->{
-      Account.login(data[0], data[1]);
-    }))
+    .flatMap(data -> Account.create(data[0], data[1]))
     .map((x) -> "Account created successfully").show().showError()
   ), new ActionButton<Void>("login",
     (new Form("Enter username", "Enter password"))
     .action()
-    .flatMap(data -> Effect.syncWork(()->{
-      Account.login(data[0], data[1]);
-    })).showError()
-        .flatMap(x -> mainMenu.action())
+    .flatMap(data -> Account.login(data[0], data[1]))
+    .flatMap(x -> mainMenu.action())
+    .catchThen(e -> {
+      if (e instanceof AuthenticationException) {
+        return Message.show("login failed");
+      }
+      return Effect.noOp;
+    })
   ), new LinkButton<Void>("leaderboard", Account.leaderBoardPage()));
 
   public static <U> Page<U> notImplemented() {

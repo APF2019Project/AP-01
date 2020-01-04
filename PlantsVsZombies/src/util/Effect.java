@@ -27,7 +27,7 @@ public class Effect<T> {
   }
 
   public interface Task {
-    void run();
+    void run() throws Throwable;
   }
 
   public static final Effect<Unit> noOp = new Effect<>(h->h.success(Unit.value));
@@ -198,12 +198,21 @@ public class Effect<T> {
 
   public static Effect<Unit> syncWork(Task task) {
     return new Effect<>(h -> {
-      task.run();
-      h.success(Unit.value);
+      try{
+        task.run();
+        h.success(Unit.value);  
+      }
+      catch(Throwable e) {
+        h.failure(e);
+      }
     });
   }
 
   public static <U> Effect<U> error(String string) {
     return Effect.error(new Error(string));
+  }
+
+  public <U> Effect<U> then(Effect<U> w) {
+    return this.flatMap(r -> w);
   }
 }

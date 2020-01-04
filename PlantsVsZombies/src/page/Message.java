@@ -30,6 +30,7 @@ public class Message implements Page<Unit> {
         Text t = new Text(message);
         t.setFont(Font.font(Program.screenY / 10));
         t.setTranslateY(Program.screenY / 2);
+        t.setWrappingWidth(Program.screenX);
         g.getChildren().add(r);
         g.getChildren().add(t);
         Pane root = (Pane) Program.stage.getScene().getRoot();
