@@ -1,12 +1,11 @@
 package page;
 
-import main.Program;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import main.Program;
 import util.Effect;
 import util.Unit;
 

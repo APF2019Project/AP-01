@@ -1,11 +1,0 @@
-
-t
-squid:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
-Žsquid:S13197"rThe type of the "options" object should be an interface such as "List" rather than the implementation "ArrayList".(áËÜ¡üÿÿÿÿ
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ŽÍå ýÿÿÿÿ
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ï®òéûÿÿÿÿ
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ÿü²¢ùÿÿÿÿ
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(®ÌÏ°

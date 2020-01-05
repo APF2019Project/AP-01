@@ -1,5 +1,0 @@
-
-_squid:S00107"BConstructor has 13 parameters, which is greater than 7 authorized.(•°à®8á”Œó-
-esquid:S1172"IRemove this unused method parameter "productionNumberOfAmmunitionPerUse".(¹Š8ãö––õ-
-™squid:S1319"xThe type of the "ammunitionDna" object should be an interface such as "List" rather than the implementation "ArrayList".(ï®…òúÿÿÿÿ8¥ÍÛŒô-
-vsquid:S00116"TRename this field "Explosive" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÕåìşÿÿÿÿ8á”Œó-

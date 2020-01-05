@@ -1,12 +1,0 @@
-
-ssquid:S2095ˆ"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(¾Å¨Îûÿÿÿÿ8Ã‡Æ†ğ-
-Osquid:S1602p",Remove useless curly braces around statement(ª×ç˜ÿÿÿÿÿ8»Íºêò-
-esquid:S3008"NRename this field "ALL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¤é
-csquid:S21186"@Make the "java.util.Map" class "Serializable" or don't write it.(€½¹ªûÿÿÿÿ8Ã‡Æ†ğ-
-Msquid:S1611|"/Remove the parentheses around the "x" parameter(ŒµäŸ8»Íºêò-
-ssquid:S20955"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(ˆÔ§ğşÿÿÿÿ8Ã‡Æ†ğ-
-Jsquid:S1602h",Remove useless curly braces around statement(‚òß¾8»Íºêò-
-qsquid:S20954"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(šÍîÑşÿÿÿÿ8Ã‡Æ†ğ-
-Jsquid:S1602x",Remove useless curly braces around statement(¶„8»Íºêò-
-qsquid:S2095‡"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(·‰¹Èüÿÿÿÿ8Ã‡Æ†ğ-
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ıÅ¼Ö8»Íºêò-
