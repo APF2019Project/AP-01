@@ -1,7 +1,7 @@
 package page.menu;
 
 import page.Page;
-import util.Result;
+import util.Effect;
 
 public class LinkButton<U> implements Button<U> {
   private String label;
@@ -10,7 +10,7 @@ public class LinkButton<U> implements Button<U> {
   public String getLabel(){
     return label;
   }
-  public Result<U> action() {
+  public Effect<U> action() {
     return page.action();
   }
 

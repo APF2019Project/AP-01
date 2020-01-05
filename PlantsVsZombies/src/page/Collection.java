@@ -7,14 +7,14 @@ import java.util.stream.IntStream;
 import creature.Dna;
 import main.ConsoleColors;
 import main.Program;
-import util.Result;
+import util.Effect;
 
 public class Collection<U extends Dna> implements Page<ArrayList<U>> {
   private ArrayList<U> options; 
   private int count;
 
   @Override
-  public Result<ArrayList<U>> action() {
+  public Effect<ArrayList<U>> action() {
     int n = options.size();
     boolean[] selected = new boolean[n];
     while (true) {
@@ -31,14 +31,14 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
           Message.show("Please choose exactly "+count+" cards");
           continue;
         }
-        return Result.ok(IntStream.range(0, options.size())
+        return Effect.ok(IntStream.range(0, options.size())
           .filter(i -> selected[i])  
           .mapToObj(i -> options.get(i))
           .collect(Collectors.toCollection(ArrayList::new)));
       }
       if (input.equals("")) continue;
       if (input.equals("e")) {
-        return Result.error("intrupted");
+        return Effect.error("intrupted");
       }
       try {
         selected[Integer.parseInt(input)] ^= true;

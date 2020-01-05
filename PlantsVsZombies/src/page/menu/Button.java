@@ -1,6 +1,6 @@
 package page.menu;
 
-import util.Result;
+import util.Effect;
 
 /**
  * Button is an object that provide a name, a work and a description
@@ -19,5 +19,5 @@ public interface Button<U> {
    * run button action
    * @return result of action
    */
-  Result<U> action();
+  Effect<U> action();
 }

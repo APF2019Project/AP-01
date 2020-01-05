@@ -1,7 +1,13 @@
 package page;
 
 import main.Program;
-import util.Result;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import util.Effect;
 import util.Unit;
 
 /**
@@ -10,13 +16,33 @@ import util.Unit;
 public class Message implements Page<Unit> {
 
   private final String message;
+
   @Override
-  public Result<Unit> action() {
-    Program.clearScreen();
-    System.out.println(message);
-    System.out.println("Press enter to continue...");
-    Program.scanner.nextLine();
-    return Result.ok();
+  public Effect<Unit> action() {
+    return new Effect<>(h -> {
+      try {
+        System.out.println(message);
+        Group g = new Group();
+        Rectangle r = new Rectangle();
+        r.setHeight(Program.screenY);
+        r.setWidth(Program.screenX);
+        r.setOpacity(0.5);
+        Text t = new Text(message);
+        t.setFont(Font.font(Program.screenY / 10));
+        t.setTranslateY(Program.screenY / 2);
+        t.setWrappingWidth(Program.screenX);
+        g.getChildren().add(r);
+        g.getChildren().add(t);
+        Pane root = (Pane) Program.stage.getScene().getRoot();
+        root.getChildren().add(g);
+        r.setOnMouseClicked(e -> {
+          root.getChildren().remove(g);
+          h.success(Unit.value);
+        });
+      } catch (Throwable e) {
+        h.failure(e);
+      }
+    });
   }
 
   /**
@@ -26,7 +52,7 @@ public class Message implements Page<Unit> {
     this.message = message;
   }
 
-  public static void show(String message) {
-    (new Message(message)).action();
+  public static Effect<Unit> show(String message) {
+    return (new Message(message)).action();
   }
 }
