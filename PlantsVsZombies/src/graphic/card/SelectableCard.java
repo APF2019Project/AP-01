@@ -2,12 +2,14 @@ package graphic.card;
 
 import creature.Dna;
 import javafx.scene.paint.Color;
+import util.Effect;
+import util.Unit;
 
 public class SelectableCard extends SimpleCard {
 
   private boolean selected = false;
 
-  public SelectableCard(Dna dna, double x, double y, double size) {
+  public SelectableCard(Dna dna, double x, double y, double size, Effect<Unit> onChange) {
     super(dna, x, y, size);
     recolor();
     this.setOnMouseEntered(e -> {
@@ -18,6 +20,7 @@ public class SelectableCard extends SimpleCard {
     });
     this.setOnMouseClicked(e -> {
       selected ^= true;
+      onChange.execute();
     });
   }
 
