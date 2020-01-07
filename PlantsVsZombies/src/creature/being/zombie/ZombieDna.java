@@ -51,10 +51,10 @@ public class ZombieDna extends BeingDna {
         return haveHat;
     }
 
-    public ZombieDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+    public ZombieDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
             int gamePrice, int firstHealth, ZombieDna whenIDie, ArrayList<Integer> crossing, boolean haveGlove,
             boolean magnetic, boolean haveHat, LineState lineState) {
-        super(name, image, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
+        super(name, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
         this.whenIDie = whenIDie;
         this.crossing = crossing;
         this.haveGlove = haveGlove;

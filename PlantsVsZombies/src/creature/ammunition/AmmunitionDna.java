@@ -53,11 +53,11 @@ public class AmmunitionDna extends Dna {
     return firstTimeHealth;
   }
 
-  public AmmunitionDna(String name, String image, int speed, boolean leftToRight, int powerOfDestruction, int type,
+  public AmmunitionDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int type,
       int cooldown, int sunIncome, int firstHealth, int stunTurnNumber, int effectiveRange, int reduceSpeedRatio,
       int minimumDistanceForShoot, int productionNumberOfAmmunitionPerUse,
       int firstTimeHealth) {
-    super(name, image, speed, powerOfDestruction);
+    super(name, speed, powerOfDestruction);
     this.type = type;
     this.cooldown = cooldown;
     this.sunIncome = sunIncome;

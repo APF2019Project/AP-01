@@ -2,13 +2,11 @@ package creature;
 
 public class Dna {
   private final String name;
-  private final String image;
   private final int speed;
   private final int powerOfDestruction;
 
-  public Dna(String name, String image, int speed, int powerOfDestruction) {
+  public Dna(String name, int speed, int powerOfDestruction) {
     this.name = name;
-    this.image = image;
     this.speed = speed;
     this.powerOfDestruction = powerOfDestruction;
   }
