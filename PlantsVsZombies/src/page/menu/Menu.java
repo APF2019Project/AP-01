@@ -56,7 +56,7 @@ public class Menu<U> implements Page<U> {
           Program.screenX/3, 
           Program.screenY/(2*n+1),
           button.getLabel(),
-          button.action().discardData().catchThen(e -> Effect.syncWork(()->{
+          button.action().consume(h::success).catchThen(e -> Effect.syncWork(()->{
             Program.stage.getScene().setRoot(myPane);
           }))
         );

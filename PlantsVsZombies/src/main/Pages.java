@@ -23,7 +23,7 @@ public class Pages {
   public static final Page<GameResult> chooseGameType = new Menu<GameResult>(
       new SimpleButton<>("Day",
           new Collection<PlantDna>(Account::getCurrentUserPlants, 7).action()
-              .map(GameEngine::newDayGame)),
+              .flatMap(GameEngine::newDayGame)),
       new SimpleButton<>("Water",
           new Collection<PlantDna>(Account::getCurrentUserPlants, 7)
               .action().map(GameEngine::newWaterGame)),

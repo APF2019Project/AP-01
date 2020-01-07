@@ -22,6 +22,7 @@ import player.zombie_player.DayModeAI;
 import player.zombie_player.RailModeAI;
 import player.zombie_player.ZombieModeUser;
 import player.zombie_player.ZombiePlayer;
+import util.Effect;
 
 import java.util.*;
 
@@ -61,8 +62,9 @@ public class GameEngine {
         }
     }
 
-    public static GameResult newDayGame(List<PlantDna> hand) {
-        List<Line> lines = new ArrayList<>();
+    public static Effect<GameResult> newDayGame(List<PlantDna> hand) {
+        return Message.show("dar in makan be zoodi bazi ejra mishe").map(x->null);
+        /*List<Line> lines = new ArrayList<>();
         for (int i = 0; i < 6; i++)
             lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
         new GameEngine();
@@ -74,7 +76,7 @@ public class GameEngine {
         } catch (EndGameException e) {
             return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(),
                     getCurrentGameEngine().zombiesKilled());
-        }
+        }*/
     }
 
     public static GameResult newRailGame() {
