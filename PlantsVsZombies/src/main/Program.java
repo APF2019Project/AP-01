@@ -52,6 +52,10 @@ public class Program extends Application {
     launch();
   }
 
+  public static InputStream getRes(String s) {
+    return Program.class.getResourceAsStream("resource/"+s);
+  }
+
   @Override
   public void start(Stage stage) throws Exception {
     Label l = new Label("Loading...");
@@ -72,7 +76,7 @@ public class Program extends Application {
       } else {
         mainPath.mkdirs();
       }
-      PlantDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/plantDna.json")));
+      PlantDna.loadFromData(streamToString(getRes("plantDna.json")));
       ZombieDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
       Pages.loginMenu.action()
       .discardData()

@@ -3,14 +3,10 @@ package page;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import creature.Dna;
 import graphic.CloseButton;
-import graphic.card.SimpleCard;
+import graphic.card.SelectableCard;
 import javafx.scene.layout.Pane;
-import main.ConsoleColors;
 import main.Program;
 import util.Effect;
 
@@ -30,7 +26,7 @@ public class Collection<U extends Dna> implements Page<ArrayList<U>> {
       ArrayList<U> options = optionsSupplier.get();
       Random rnd = new Random();
       for (U option: options) {
-        SimpleCard card = new SimpleCard(
+        SelectableCard card = new SelectableCard(
           option,
           rnd.nextDouble()*Program.screenX,
           rnd.nextDouble()*Program.screenY,

@@ -15,8 +15,8 @@ public class Dna {
     return name;
   }
 
-  public String getImage() {
-    return image;
+  public String getCardImageUrl() {
+    return "images/"+name+"/main";
   }
 
   public int getSpeed() {
