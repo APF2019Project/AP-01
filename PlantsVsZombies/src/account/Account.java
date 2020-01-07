@@ -163,23 +163,23 @@ public class Account implements Serializable {
   }
 
   public static Effect<Unit> login(String username, String password) {
-    return Message.show(""+ALL).then(Effect.syncWork(() -> {
+    return Effect.syncWork(() -> {
       Account account = getByUsername(username);
       if (account == null) throw new AuthenticationException();
       if (!account.matchPassword(password)) throw new AuthenticationException();
       current = account;
-    }));
+    });
   }
 
-  public static List<PlantDna> getCurrentUserPlants() {
+  public static ArrayList<PlantDna> getCurrentUserPlants() {
     return Account.current.getPlants();
   }
 
-  public static List<ZombieDna> getCurrentUserZombies() {
+  public static ArrayList<ZombieDna> getCurrentUserZombies() {
     return Account.current.getZombies();
   }
 
-  public List<PlantDna> getPlants() {
+  public ArrayList<PlantDna> getPlants() {
     ArrayList<PlantDna> res = new ArrayList<>();
     for (PlantDna dna : PlantDna.getAllDnas())
       if (store.haveCard(dna))
@@ -187,7 +187,7 @@ public class Account implements Serializable {
     return res;
   }
 
-  public List<ZombieDna> getZombies() {
+  public ArrayList<ZombieDna> getZombies() {
     ArrayList<ZombieDna> res = new ArrayList<>();
     for (ZombieDna dna : ZombieDna.getAllDnas())
       if (store.haveCard(dna))
