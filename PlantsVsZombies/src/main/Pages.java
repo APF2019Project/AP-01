@@ -11,69 +11,32 @@ import page.Form;
 import page.Message;
 import page.Page;
 import page.menu.ActionButton;
-import page.menu.Button;
 import page.menu.LinkButton;
 import page.menu.Menu;
+import page.menu.SimpleButton;
 import util.Effect;
 import util.Unit;
 
-import java.util.ArrayList;
-import java.util.function.Supplier;
-
 import javax.security.sasl.AuthenticationException;
 
-class DataButton<U> implements Button<U> {
-
-  private final String modeName;
-  private final Supplier<Effect<U>> gameSupplier;
-
-  @Override
-  public String getLabel() {
-    return modeName;
-  }
-
-  @Override
-  public String getHelp() {
-    return "This button will create a game of type " + modeName;
-  }
-
-  @Override
-  public Effect<U> action() {
-    return gameSupplier.get();
-  }
-
-  public DataButton(String modeName, Supplier<Effect<U>> gameSupplier) {
-    this.modeName = modeName;
-    this.gameSupplier = gameSupplier;
-  }
-
-}
-
 public class Pages {
-  public static final Page<GameResult> chooseGameType = new Page<GameResult>() {
-    @Override
-    public Effect<GameResult> action() {
-      // TODO Auto-generated method stub
-      return Effect.ok(null);
-    }
-
-  };/*new Menu<GameResult>(
-      new DataButton<>("Day",
-          () -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7).action()
+  public static final Page<GameResult> chooseGameType = new Menu<GameResult>(
+      new SimpleButton<>("Day",
+          new Collection<PlantDna>(Account::getCurrentUserPlants, 7).action()
               .map(GameEngine::newDayGame)),
-      new DataButton<>("Water",
-          () -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7)
+      new SimpleButton<>("Water",
+          new Collection<PlantDna>(Account::getCurrentUserPlants, 7)
               .action().map(GameEngine::newWaterGame)),
-      new DataButton<>("Rail", Effect.liftSupplier(GameEngine::newRailGame)),
-      new DataButton<>("Zombie",
-          () -> new Collection<ZombieDna>((ArrayList<ZombieDna>) Account.getCurrentUserZombies(), 7).action()
+      new SimpleButton<>("Rail", Effect.noOp.map(x->null)),
+      new SimpleButton<>("Zombie",
+          new Collection<ZombieDna>(Account::getCurrentUserZombies, 7).action()
               .map(GameEngine::newZombieGame)),
-      new DataButton<GameResult>("PVP", () -> new Form("Enter opponent username").action()
-          .flatMap(opUsername -> Account.getByUsername(opUsername[0]))
-          .flatMap(opUser -> new Collection<PlantDna>((ArrayList<PlantDna>) Account.getCurrentUserPlants(), 7).action()
-              .flatMap(plantHand -> new Collection<ZombieDna>((ArrayList<ZombieDna>) opUser.getZombies(), 7).action()
+      new SimpleButton<GameResult>("PVP", new Form("Enter opponent username").action()
+          .map(opUsername -> Account.getByUsername(opUsername[0]))
+          .flatMap(opUser -> new Collection<PlantDna>(Account::getCurrentUserPlants, 7).action()
+              .flatMap(plantHand -> new Collection<ZombieDna>(opUser::getZombies, 7).action()
                   .map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))))));
-*/
+  
   public static final Menu<Unit> mainMenu = new Menu<Unit>(
     new ActionButton<Unit>("play", chooseGameType.action().discardData()), 
     new LinkButton<Unit>("profile", Account.profilePage()),
