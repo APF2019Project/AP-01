@@ -40,7 +40,8 @@ public class Message implements Page<Unit> {
           h.success(Unit.value);
         });
       } catch (Throwable e) {
-        h.failure(e);
+        e.printStackTrace();
+        System.exit(0);
       }
     });
   }
