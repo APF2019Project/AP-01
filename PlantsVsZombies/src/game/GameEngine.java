@@ -9,10 +9,13 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import line.LawnMower;
 import line.Line;
 import line.LineState;
-import main.ConsoleColors;
+import main.Program;
 import page.Message;
 import player.plant_player.DayModeUser;
 import player.plant_player.PlantPlayer;
@@ -63,20 +66,38 @@ public class GameEngine {
     }
 
     public static Effect<GameResult> newDayGame(List<PlantDna> hand) {
-        return Message.show("dar in makan be zoodi bazi ejra mishe").map(x->null);
-        /*List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
-        new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(GameMode.DAY, e.getWinner(), getCurrentGameEngine().plantsKilled(),
-                    getCurrentGameEngine().zombiesKilled());
-        }*/
+        return new Effect<>(h-> {
+            List<Line> lines = new ArrayList<>();
+            for (int i = 0; i < 6; i++)
+                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
+            new GameEngine();
+            getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
+            Pane pane = new Pane();
+            Text text = new Text(getCurrentGameEngine().pretty());
+            text.setFont(Font.font(Program.screenX*0.02));
+            pane.getChildren().add(text);
+            Timer timer = new Timer();
+            timer.schedule(
+            new TimerTask(){
+            
+                @Override
+                public void run() {
+                    try {
+                        getCurrentGameEngine().nextTurn();
+                        text.setText(getCurrentGameEngine().pretty());
+                    } catch (EndGameException e) {
+                        timer.cancel();
+                        h.success(new GameResult(
+                            GameMode.DAY,
+                            e.getWinner(),
+                            getCurrentGameEngine().plantsKilled(),
+                            getCurrentGameEngine().zombiesKilled()
+                        ));
+                    }
+                }
+            },1000,1000);
+            Program.stage.getScene().setRoot(pane);
+        });
     }
 
     public static GameResult newRailGame() {
@@ -381,7 +402,7 @@ public class GameEngine {
                 if (plant == null)
                     res.append(".");
                 else {
-                    res.append(ConsoleColors.green("" + plant.getPlantDna().getName().charAt(0)));
+                    res.append("" + plant.getPlantDna().getName().charAt(0));
                 }
                 int cnt = 0;
                 for (Ammunition ammunition : DATABASE.ammunitionPerLine.get(i)) {
@@ -391,7 +412,7 @@ public class GameEngine {
                 if (cnt == 0)
                     res.append(".");
                 else
-                    res.append(ConsoleColors.yellow("" + cnt));
+                    res.append("" + cnt);
                 cnt = 0;
                 char nm = 'A';
                 for (Zombie zombie : getZombies(i)) {
@@ -403,9 +424,9 @@ public class GameEngine {
                 if (cnt == 0)
                     res.append(".");
                 else if (cnt == 1)
-                    res.append(ConsoleColors.red("" + nm));
+                    res.append("" + nm);
                 else
-                    res.append(ConsoleColors.red("" + cnt));
+                    res.append("" + cnt);
                 res.append(" ");
             }
             res.append("\n");
