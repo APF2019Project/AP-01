@@ -9,6 +9,7 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -82,20 +83,22 @@ public class GameEngine {
             
                 @Override
                 public void run() {
-                    try {
-                        getCurrentGameEngine().nextTurn();
-                        text.setText(getCurrentGameEngine().pretty());
-                    } catch (EndGameException e) {
-                        timer.cancel();
-                        h.success(new GameResult(
-                            GameMode.DAY,
-                            e.getWinner(),
-                            getCurrentGameEngine().plantsKilled(),
-                            getCurrentGameEngine().zombiesKilled()
-                        ));
-                    }
+                    Platform.runLater(()->{
+                        try {
+                            getCurrentGameEngine().nextTurn();
+                            text.setText(getCurrentGameEngine().pretty());
+                        } catch (EndGameException e) {
+                            timer.cancel();
+                            h.success(new GameResult(
+                                GameMode.DAY,
+                                e.getWinner(),
+                                getCurrentGameEngine().plantsKilled(),
+                                getCurrentGameEngine().zombiesKilled()
+                            ));
+                        }
+                    });
                 }
-            },1000,1000);
+            },0,300);
             Program.stage.getScene().setRoot(pane);
         });
     }
