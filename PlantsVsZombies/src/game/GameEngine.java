@@ -9,7 +9,9 @@ import creature.being.zombie.Zombie;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
+import graphic.GameBackground;
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -74,6 +76,8 @@ public class GameEngine {
             new GameEngine();
             getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
             Pane pane = new Pane();
+            GameBackground background = new GameBackground(GameMode.DAY);
+            pane.getChildren().add(background);
             Text text = new Text(getCurrentGameEngine().pretty());
             text.setFont(Font.font(Program.screenX*0.02));
             pane.getChildren().add(text);
