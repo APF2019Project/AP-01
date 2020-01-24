@@ -104,7 +104,7 @@ public class GameEngine {
                         }
                     });
                 }
-            },0,300);
+            },0,1000);
             Program.stage.getScene().setRoot(pane);
         });
     }
