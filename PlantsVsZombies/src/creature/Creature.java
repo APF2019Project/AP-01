@@ -1,13 +1,14 @@
 package creature;
 import exception.EndGameException;
 import game.GameEngine;
+import graphic.game.CreatureNode;
 
 public class Creature implements Comparable <Creature> {
     protected Location location;
     protected GameEngine gameEngine;
     protected final int id;
     protected int health;
-
+    public CreatureNode creatureNode;
     private static int counter;
 
     public Location getLocation() {
@@ -19,7 +20,9 @@ public class Creature implements Comparable <Creature> {
     }
     
     public void nextTurn() throws EndGameException {
-
+        if (creatureNode != null) {
+            creatureNode.update();
+        }
     }
 
     public Creature(Location location) {

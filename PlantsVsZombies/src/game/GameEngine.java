@@ -1,5 +1,6 @@
 package game;
 
+import creature.Creature;
 import creature.Location;
 import creature.ammunition.Ammunition;
 import creature.ammunition.AmmunitionDna;
@@ -10,7 +11,9 @@ import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import graphic.GameBackground;
+import graphic.game.CreatureNode;
 import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -40,7 +43,7 @@ public class GameEngine {
     private PlayGroundData DATABASE;
     private Integer turn = 0;
     private Random random;
-
+    private Group group;
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
     public GameEngine() {
@@ -78,9 +81,9 @@ public class GameEngine {
             Pane pane = new Pane();
             GameBackground background = new GameBackground(GameMode.DAY);
             pane.getChildren().add(background);
-            Text text = new Text(getCurrentGameEngine().pretty());
-            text.setFont(Font.font(Program.screenX*0.02));
-            pane.getChildren().add(text);
+            Group group = new Group();
+            getCurrentGameEngine().group = group;
+            pane.getChildren().add(group);
             Timer timer = new Timer();
             timer.schedule(
             new TimerTask(){
@@ -90,7 +93,6 @@ public class GameEngine {
                     Platform.runLater(()->{
                         try {
                             getCurrentGameEngine().nextTurn();
-                            text.setText(getCurrentGameEngine().pretty());
                         } catch (EndGameException e) {
                             timer.cancel();
                             h.success(new GameResult(
@@ -247,6 +249,9 @@ public class GameEngine {
         Plant plant = new Plant(dna, lineNumber, position);
         DATABASE.plantsPerLine.get(lineNumber).add(plant);
         DATABASE.plants.add(plant);
+        CreatureNode creatureNode = new CreatureNode(plant);
+        group.getChildren().add(creatureNode);
+        plant.creatureNode = creatureNode;
     }
 
     // TODO handling first position of zombie considering 0-base
@@ -263,6 +268,9 @@ public class GameEngine {
         Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
+        CreatureNode creatureNode = new CreatureNode(zombie);
+        group.getChildren().add(creatureNode);
+        zombie.creatureNode = creatureNode;
     }
 
     public void newAmmunition(Location location, AmmunitionDna ammunitionDna, Plant plant) {
@@ -281,6 +289,7 @@ public class GameEngine {
         DATABASE.plantsPerLine.get(plant.getLocation().lineNumber).remove(plant);
         DATABASE.plantsKilled += 1;
         DATABASE.deadPlants.add(plant);
+        group.getChildren().remove(plant.creatureNode);
     }
 
     public void killZombie(Zombie zombie) {
@@ -288,6 +297,7 @@ public class GameEngine {
         DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).remove(zombie);
         DATABASE.zombiesKilled += 1;
         DATABASE.deadZombies.add(zombie);
+        group.getChildren().remove(zombie.creatureNode);
     }
 
     public SortedSet<Plant> getPlants() {
@@ -482,4 +492,11 @@ public class GameEngine {
         return new TreeSet<>(DATABASE.ammunition);
     }
 
+	public double getGraphicalX(Creature plant) {
+		return Program.screenX*plant.getLocation().position/DATABASE.width;
+	}
+
+    public double getGraphicalY(Creature plant) {
+		return Program.screenY*plant.getLocation().lineNumber/DATABASE.lines.size();
+	}
 }

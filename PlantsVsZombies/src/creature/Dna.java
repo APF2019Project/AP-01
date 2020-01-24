@@ -19,6 +19,10 @@ public class Dna {
     return "images/"+name+"/main";
   }
 
+  public String getGameImageUrl() {
+    return "images/"+name+"/main";
+  }
+
   public int getSpeed() {
     return speed;
   }
