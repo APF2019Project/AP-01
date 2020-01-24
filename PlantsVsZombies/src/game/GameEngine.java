@@ -277,11 +277,17 @@ public class GameEngine {
         Ammunition ammunition = new Ammunition(location, ammunitionDna, plant);
         DATABASE.ammunitionPerLine.get(location.lineNumber).add(ammunition);
         DATABASE.ammunition.add(ammunition);
+        CreatureNode creatureNode = new CreatureNode(ammunition);
+        group.getChildren().add(creatureNode);
+        ammunition.creatureNode = creatureNode;
     }
 
     public void addZombie(Zombie zombie) {
         DATABASE.zombiesPerLine.get(zombie.getLocation().lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);
+        CreatureNode creatureNode = new CreatureNode(zombie);
+        group.getChildren().add(creatureNode);
+        zombie.creatureNode = creatureNode;
     }
 
     public void killPlant(Plant plant) {
@@ -298,6 +304,12 @@ public class GameEngine {
         DATABASE.zombiesKilled += 1;
         DATABASE.deadZombies.add(zombie);
         group.getChildren().remove(zombie.creatureNode);
+    }
+
+    public void killAmmunition(Ammunition ammunition) {
+        DATABASE.ammunition.remove(ammunition);
+        DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
+        group.getChildren().remove(ammunition.creatureNode);
     }
 
     public SortedSet<Plant> getPlants() {
@@ -399,11 +411,6 @@ public class GameEngine {
                 zombie.nextTurn();
 
         turn += 1;
-    }
-
-    public void killAmmunition(Ammunition ammunition) {
-        DATABASE.ammunition.remove(ammunition);
-        DATABASE.ammunitionPerLine.get(ammunition.getLocation().lineNumber).remove(ammunition);
     }
 
     public String pretty() {

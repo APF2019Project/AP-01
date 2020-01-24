@@ -12,6 +12,10 @@ public class Ammunition extends Creature {
     private final Plant owner;
     private int timeHealth;
 
+    public AmmunitionDna getAmmunitionDna() {
+        return ammunitionDna;
+    }
+
     private void effectAll() {
         SortedSet<Zombie> zombies = gameEngine.getZombies(location.lineNumber);
         zombies.forEach(zombie -> {
@@ -60,6 +64,7 @@ public class Ammunition extends Creature {
 
     @Override
     public void nextTurn() throws EndGameException {
+        super.nextTurn();
         if (ammunitionDna.getType() == 0) {
             gameEngine.addSun(ammunitionDna.getSunIncome());
             gameEngine.killAmmunition(this);

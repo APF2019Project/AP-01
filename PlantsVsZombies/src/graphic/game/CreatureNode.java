@@ -2,6 +2,7 @@ package graphic.game;
 
 import creature.Creature;
 import creature.Dna;
+import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import game.GameEngine;
@@ -22,6 +23,9 @@ public class CreatureNode extends ImageView {
     if (creature instanceof Zombie) {
       dna = ((Zombie)creature).getZombieDna();
     }
+    if (creature instanceof Ammunition) {
+      dna = ((Ammunition)creature).getAmmunitionDna();
+    }
     try{
       this.setImage(new Image(
         Program.getRes(dna.getGameImageUrl())
@@ -33,8 +37,9 @@ public class CreatureNode extends ImageView {
       ));
     }
     this.creature = creature;
-    this.setFitHeight(100);
-    this.setFitWidth(100);
+    double s = Program.screenY/10;
+    this.setFitHeight(s);
+    this.setFitWidth(s);
     this.update();
   }
 
