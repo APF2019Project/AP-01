@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_20190722_javadoc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/189ce57d6ffe2697d7f2cd9100993ce0eb5d3ec3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Dna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Dna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/BeingDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/BeingDna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/RailModeAI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -386,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577804707012</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="add FRAME">
+      <created>1579884989836</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1579884989836</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,7 +461,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="errors solved =)" />
     <MESSAGE value="error solved again =)" />
     <MESSAGE value="gameEngine v0.1 ready =)" />
     <MESSAGE value="gameEngine v0.1.1 ready =)" />
@@ -485,7 +485,8 @@
     <MESSAGE value="support of different line states in gameEngine v2" />
     <MESSAGE value="AIs now support water and bug fixes in ZombieModeUser" />
     <MESSAGE value="pretty lanMower" />
-    <option name="LAST_COMMIT_MESSAGE" value="pretty lanMower" />
+    <MESSAGE value="add FRAME" />
+    <option name="LAST_COMMIT_MESSAGE" value="add FRAME" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

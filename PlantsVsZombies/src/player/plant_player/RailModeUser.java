@@ -9,11 +9,7 @@ import game.GameEngine;
 import main.Program;
 import page.Form;
 import page.Message;
-import page.menu.ActionButton;
-import page.menu.ExitButton;
-import page.menu.Menu;
 import util.Effect;
-import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +35,7 @@ public class RailModeUser implements PlantPlayer {
             return;
         }
         remainTurn = 1 + rnd.nextInt(3);
+        remainTurn *= GameEngine.getFRAME();
         List<PlantDna> allDnas = Account.getCurrentUserPlants();
         plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
     }
