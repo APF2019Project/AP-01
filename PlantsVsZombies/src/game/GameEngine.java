@@ -82,12 +82,18 @@ public class GameEngine {
             new GameEngine();
             getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
             Pane pane = new Pane();
-            GameBackground background = new GameBackground(GameMode.DAY);
+            Timer timer = new Timer();
+            GameBackground background = new GameBackground(
+                GameMode.DAY,
+                Effect.syncWork(()->{
+                    timer.cancel();
+                    h.success(new GameResult());
+                })
+            );
             pane.getChildren().add(background);
             Group group = new Group();
             getCurrentGameEngine().group = group;
             pane.getChildren().add(group);
-            Timer timer = new Timer();
             timer.schedule(
             new TimerTask(){
             
