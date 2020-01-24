@@ -15,16 +15,20 @@ public class CreatureNode extends ImageView {
 
   Creature creature;
   Dna dna;
+  double size;
 
   public CreatureNode(Creature creature) {
+    size = Program.screenY/10;
     if (creature instanceof Plant) {
       dna = ((Plant)creature).getPlantDna();
     }
     if (creature instanceof Zombie) {
       dna = ((Zombie)creature).getZombieDna();
+      size *= 2;
     }
     if (creature instanceof Ammunition) {
       dna = ((Ammunition)creature).getAmmunitionDna();
+      size /= 2;
     }
     try{
       this.setImage(new Image(
@@ -37,9 +41,8 @@ public class CreatureNode extends ImageView {
       ));
     }
     this.creature = creature;
-    double s = Program.screenY/10;
-    this.setFitHeight(s);
-    this.setFitWidth(s);
+    this.setFitHeight(size);
+    this.setFitWidth(size);
     this.update();
   }
 
