@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_20190722_javadoc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/189ce57d6ffe2697d7f2cd9100993ce0eb5d3ec3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Dna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Dna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +85,7 @@
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Program" />
       <module name="PlantsVsZombies" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -90,6 +96,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Dummy" />
+      <item itemvalue="Application.PlantsVsZombies" />
+      <item itemvalue="Application.Program" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Program" />

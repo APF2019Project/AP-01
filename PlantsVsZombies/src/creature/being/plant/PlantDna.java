@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
+import game.GameEngine;
 import line.LineState;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class PlantDna extends BeingDna {
   }
 
   public int getCooldown() {
-    return cooldown;
+    return cooldown * GameEngine.getFRAME();
   }
 
   public boolean isExplosive() {

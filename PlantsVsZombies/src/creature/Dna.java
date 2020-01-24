@@ -16,11 +16,11 @@ public class Dna {
   }
 
   public String getCardImageUrl() {
-    return "images/"+name+"/main";
+    return "images/" + name + "/main";
   }
 
   public String getGameImageUrl() {
-    return "images/"+name+"/main";
+    return "images/" + name + "/main";
   }
 
   public int getSpeed() {

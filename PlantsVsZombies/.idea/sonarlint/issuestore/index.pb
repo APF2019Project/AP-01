@@ -11,8 +11,6 @@ E
 src/main/Program.java,9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3
 H
 src/account/Account.java,8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0
-D
-src/util/Result.java,1/8/189ce57d6ffe2697d7f2cd9100993ce0eb5d3ec3
 C
 src/main/Pages.java,3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae
 S

@@ -1,5 +1,6 @@
 package creature.ammunition;
 import creature.Dna;
+import game.GameEngine;
 
 public class AmmunitionDna extends Dna {
   private final int type;
@@ -14,7 +15,7 @@ public class AmmunitionDna extends Dna {
   private final int firstTimeHealth;
 
   public int getCooldown() {
-    return cooldown;
+    return cooldown * GameEngine.getFRAME();
   }
 
   public int getStunTurnNumber() {

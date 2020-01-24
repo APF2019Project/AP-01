@@ -14,10 +14,7 @@ import graphic.GameBackground;
 import graphic.game.CreatureNode;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import line.LawnMower;
 import line.Line;
 import line.LineState;
@@ -45,6 +42,12 @@ public class GameEngine {
     private Random random;
     private Group group;
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
+
+    private static Integer FRAME = 30;
+
+    public static Integer getFRAME() {
+        return FRAME;
+    }
 
     public GameEngine() {
         currentGameEngine = this;
@@ -104,7 +107,7 @@ public class GameEngine {
                         }
                     });
                 }
-            },0,1000);
+            }, 0, 1000 / FRAME);
             Program.stage.getScene().setRoot(pane);
         });
     }
@@ -176,7 +179,7 @@ public class GameEngine {
     private void config(GameDna gameDna) {
         plantPlayer = gameDna.plantPlayer;
         zombiePlayer = gameDna.zombiePlayer;
-        DATABASE = new PlayGroundData(19, gameDna.lines);
+        DATABASE = new PlayGroundData(19 * FRAME, gameDna.lines);
         zombieQueue = new ArrayList<>();
         for (int i = 0; i < DATABASE.width; i++)
             zombieQueue.add(new ArrayList<>());
