@@ -1,7 +1,12 @@
 package graphic;
 
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import util.Effect;
 import util.Unit;
@@ -20,6 +25,9 @@ public class SimpleButton extends Group {
         button.setOnAction(e -> {
           action.execute();
         });
+        button.setBackground(new Background(new BackgroundFill(
+          Color.rgb(98, 98, 132), CornerRadii.EMPTY, Insets.EMPTY)));
+        button.setTextFill(Color.rgb(40, 220, 49));
         this.getChildren().add(button);
   }
 
