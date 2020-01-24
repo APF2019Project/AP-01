@@ -493,7 +493,7 @@ public class GameEngine {
     }
 
 	public double getGraphicalX(Creature plant) {
-		return Program.screenX*plant.getLocation().position/DATABASE.width;
+		return Program.screenX*plant.getLocation().position/DATABASE.length;
 	}
 
     public double getGraphicalY(Creature plant) {
