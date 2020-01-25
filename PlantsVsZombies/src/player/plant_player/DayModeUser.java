@@ -43,9 +43,9 @@ public class DayModeUser implements PlantPlayer {
             coolDownTimeLeft.add(0);
             group.getChildren().add(new GameCard(
                 dna,
+                (i+0.3)*Program.screenX*0.11,
                 10,
-                i*Program.screenX/10,
-                Program.screenX/10
+                Program.screenX*0.06
             ));
             i++;
         }
