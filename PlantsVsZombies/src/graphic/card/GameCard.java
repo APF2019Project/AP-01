@@ -1,6 +1,9 @@
 package graphic.card;
 
 import creature.Dna;
+import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
@@ -9,33 +12,41 @@ import javafx.scene.layout.Pane;
 import main.Program;
 import page.Message;
 
-public class GameCard extends SimpleCard {
+class Delta {
+  double x,y;
+}
 
-  private static double dragX, dragY;
-  private static GameCard draged = null;
-  private static boolean attached = false;
-  public static void attachGlass() {
-    if (attached) return;
-    attached = true;
-    Program.stage.getScene().addEventFilter(MouseEvent.MOUSE_MOVED,e -> {
-      if (draged == null) return;
-      draged.setTranslateX(e.getX() - dragX);
-      draged.setTranslateY(e.getY() - dragY);
-    });
-  }
+public class GameCard extends SimpleCard {
 
   public GameCard(Dna dna, double x, double y, double size) {
     super(dna, x, y, size);
-    attachGlass();
-    this.imageView.setOnMouseDragged(e -> {
-      System.out.println("press\n");
-      dragX = e.getX();
-      dragY = e.getY();
-      draged = this;
+    final Delta dragDelta = new Delta();
+    Node label = this;
+    label.setOnMousePressed(new EventHandler<MouseEvent>() {
+      @Override public void handle(MouseEvent mouseEvent) {
+        // record a delta distance for the drag and drop operation.
+        dragDelta.x = label.getLayoutX() - mouseEvent.getSceneX();
+        dragDelta.y = label.getLayoutY() - mouseEvent.getSceneY();
+        label.setCursor(Cursor.MOVE);
+      }
     });
-    this.imageView.setOnMouseDragReleased(e->{
-      System.out.println("release\n");
-      //draged = null;
+    label.setOnMouseReleased(new EventHandler<MouseEvent>() {
+      @Override public void handle(MouseEvent mouseEvent) {
+        label.setCursor(Cursor.HAND);
+        label.setLayoutX(x);
+        label.setLayoutY(y);
+      }
+    });
+    label.setOnMouseDragged(new EventHandler<MouseEvent>() {
+      @Override public void handle(MouseEvent mouseEvent) {
+        label.setLayoutX(mouseEvent.getSceneX() + dragDelta.x);
+        label.setLayoutY(mouseEvent.getSceneY() + dragDelta.y);
+      }
+    });
+    label.setOnMouseEntered(new EventHandler<MouseEvent>() {
+      @Override public void handle(MouseEvent mouseEvent) {
+        label.setCursor(Cursor.HAND);
+      }
     });
   }
 
