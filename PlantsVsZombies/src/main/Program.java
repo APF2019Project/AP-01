@@ -1,10 +1,5 @@
 package main;
 
-import java.io.File;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Scanner;
 import account.Account;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
@@ -12,9 +7,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import util.Effect;
+
+import java.io.File;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class Program extends Application {
 
@@ -65,9 +63,9 @@ public class Program extends Application {
     stage.setFullScreenExitHint("");
     stage.setFullScreen(true);
     stage.show();
-    Screen screen = Screen.getPrimary();
-    screenX = screen.getVisualBounds().getWidth();
-    screenY = screen.getVisualBounds().getHeight();
+
+    screenX = stage.getWidth();
+    screenY = stage.getHeight();
     Program.stage = stage;
     try {
       File mainPath = new File(getBackupPath(""));

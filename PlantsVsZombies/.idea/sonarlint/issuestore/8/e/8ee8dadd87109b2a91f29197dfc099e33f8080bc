@@ -1,24 +1,27 @@
 
-}squid:S1192Ñ"YDefine a constant instead of duplicating this literal "can't insert zombie here" 3 times.(¢Æ‡æúÿÿÿÿ8¢·§Áõ-
-V
-squid:S106|"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8æ³Œô-
-V
-squid:S106"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8é±Œô-
-Vsquid:S1135Ï"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8¹»©¹õ-
-[
-squid:S106}"9Replace this use of System.out or System.err by a logger.(Â¥¹»üÿÿÿÿ8š¬¯Œô-
-Jsquid:S1168‚"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
-Esquid:S21897""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8Íäåæó-
-Esquid:S2189s""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-Osquid:S1168¸"+Return an empty collection instead of null.(¦¶É‰ûÿÿÿÿ8¹»©¹õ-
-Esquid:S2189F""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-Qsquid:S3010(".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8Íäåæó-
-Jsquid:S1168ù"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
-Esquid:S2189U""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-Qsquid:S1135­"2Complete the task associated to this TODO comment.(¢®Ö8¹»©¹õ-
-Nsquid:S00108²")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8¹»©¹õ-
-[
-squid:S106~"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8©´°Œô-
-vsquid:S3776Ü"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(Ëó¿†ıÿÿÿÿ8¹»©¹õ-
-rsquid:S00116!"SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8Íäåæó-
-Esquid:S2189d""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+\
+squid:S106§"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8©´°Œô-
+Qsquid:S1135ú"2Complete the task associated to this TODO comment.(¢®Ö8¹»©¹õ-
+Fsquid:S2189Š""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8Íäåæó-
+Esquid:S2189z""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+Jsquid:S1168ã"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
+W
+squid:S106¨"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8é±Œô-
+Jsquid:S1168Å"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
+vsquid:S3776£"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(çúÔãøÿÿÿÿ8ªË¦Ãı-
+Esquid:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+W
+squid:S106¥"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8æ³Œô-
+Nsquid:S00108ÿ")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8¹»©¹õ-
+Vsquid:S1135„"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8¹»©¹õ-
+Fsquid:S2189›""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+ssquid:S3008."PRename this field "FRAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ‘ùËùÿÿÿÿ8÷ı·Ãı-
+Isquid:S1172M"+Remove this unused method parameter "hand".(¿®š¿8ªË¦Ãı-
+rsquid:S00116("SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8Íäåæó-
+\
+squid:S106¦"9Replace this use of System.out or System.err by a logger.(Â¥¹»üÿÿÿÿ8š¬¯Œô-
+Jsquid:S1168Ï"+Return an empty collection instead of null.(¥¹ï8ªË¦Ãı-
+xsquid:S1192‡"YDefine a constant instead of duplicating this literal "can't insert zombie here" 3 times.(Üşš•8ªË¦Ãı-
+Qsquid:S30105".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8Íäåæó-
+bsquid:HiddenFieldCheckW"9Rename "group" which hides the field declared at line 43.(ôÔ÷ï8ªË¦Ãı-
+Qsquid:S1135Š"2Complete the task associated to this TODO comment.(Ûëã›8ªË¦Ãı-

@@ -15,6 +15,8 @@ public class GameBackground extends Group {
     ));
     imageView.setFitHeight(Program.screenY);
     imageView.setFitWidth(Program.screenX);
+
+
     this.getChildren().add(imageView);
     SimpleButton close = new SimpleButton(
       Program.screenX*0.8, 0, Program.screenX*0.2,

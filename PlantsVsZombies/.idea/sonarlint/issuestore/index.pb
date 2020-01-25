@@ -1,6 +1,4 @@
 
-Y
-).idea/libraries/json_20190722_javadoc.xml,0/a/0ad511583187a765d13de6405f8b752a819e227d
 C
 PlantsVsZombies.iml,9/a/9a4ef964a2973a55615d6d7bd6e77622ec0adbc6
 B
@@ -114,3 +112,7 @@ I
 src/account/ShopPage.java,5/1/51daff588399f90abd8e7bfe041bb5d91b479f10
 G
 src/page/menu/Menu.java,4/7/47718b68373a29b0df5a3c22144127ed534a654f
+G
+.idea/libraries/lib.xml,5/6/563a23e064e6fdd2d09bd0c2d99ef456aff71a31
+O
+src/graphic/GameBackground.java,9/a/9a02bca500620c7c9e1ff30ea124ba23204df9dc
