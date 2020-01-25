@@ -12,6 +12,8 @@ import main.Program;
 import graphic.CloseButton;
 import graphic.SimpleButton;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
@@ -43,6 +45,12 @@ public class Menu<U> implements Page<U> {
   public Effect<U> action() {
     return new Effect<>((h) -> {
       Pane myPane = new Pane();
+      ImageView imageView = new ImageView(new Image(
+        Program.getRes("images/menu/background.png")
+      ));
+      imageView.setFitHeight(Program.screenY);
+      imageView.setFitWidth(Program.screenX);
+      myPane.getChildren().add(imageView);
       int cnt = 0, n = buttons.size();
       CloseButton closeButton = new CloseButton();
       closeButton.setOnMouseClicked(e -> {
