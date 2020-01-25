@@ -33,8 +33,8 @@ public class GameCard extends SimpleCard {
     label.setOnMouseReleased(new EventHandler<MouseEvent>() {
       @Override public void handle(MouseEvent mouseEvent) {
         label.setCursor(Cursor.HAND);
-        label.setLayoutX(x);
-        label.setLayoutY(y);
+        label.setLayoutX(0);
+        label.setLayoutY(0);
       }
     });
     label.setOnMouseDragged(new EventHandler<MouseEvent>() {
