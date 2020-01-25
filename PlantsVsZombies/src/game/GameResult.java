@@ -13,6 +13,13 @@ public class GameResult implements Page<Unit> {
     public final Integer zombiesKilled;
     public final GameMode gameMode;
 
+    public GameResult() {
+        winner = null;
+        plantsKilled = null;
+        zombiesKilled = null;
+        gameMode = null;
+    }
+
     public GameResult(GameMode gameMode, Winner winner, Integer plantsKilled, Integer zombiesKilled) {
         this.winner = winner;
         this.plantsKilled = plantsKilled;

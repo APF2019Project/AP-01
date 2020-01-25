@@ -43,7 +43,7 @@ public class GameEngine {
     private Group group;
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
-    private static Integer FRAME = 30;
+    private static Integer FRAME = 150;
 
     public static Integer getFRAME() {
         return FRAME;
@@ -82,12 +82,18 @@ public class GameEngine {
             new GameEngine();
             getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
             Pane pane = new Pane();
-            GameBackground background = new GameBackground(GameMode.DAY);
+            Timer timer = new Timer();
+            GameBackground background = new GameBackground(
+                GameMode.DAY,
+                Effect.syncWork(()->{
+                    timer.cancel();
+                    h.success(new GameResult());
+                })
+            );
             pane.getChildren().add(background);
             Group group = new Group();
             getCurrentGameEngine().group = group;
             pane.getChildren().add(group);
-            Timer timer = new Timer();
             timer.schedule(
             new TimerTask(){
             
@@ -107,7 +113,7 @@ public class GameEngine {
                         }
                     });
                 }
-            }, 0, 1000 / FRAME);
+            }, 0, 5000 / FRAME);
             Program.stage.getScene().setRoot(pane);
         });
     }
