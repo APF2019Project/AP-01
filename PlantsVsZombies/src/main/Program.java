@@ -66,6 +66,14 @@ public class Program extends Application {
 
     screenX = stage.getWidth();
     screenY = stage.getHeight();
+    stage.widthProperty().addListener((e)-> {
+      screenX = stage.getWidth();
+      screenY = stage.getHeight();    
+    });
+    stage.heightProperty().addListener((e)-> {
+      screenX = stage.getWidth();
+      screenY = stage.getHeight();    
+    });
     Program.stage = stage;
     try {
       File mainPath = new File(getBackupPath(""));
