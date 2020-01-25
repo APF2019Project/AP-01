@@ -44,4 +44,10 @@ public class ZombieModeAI implements PlantPlayer {
     public void addSun(int sunAmount) {
 
     }
+
+    @Override
+    public void plant(PlantDna dna, int x, int y) {
+        // TODO Auto-generated method stub
+
+    }
 }

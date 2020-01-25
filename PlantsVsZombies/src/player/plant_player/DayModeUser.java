@@ -1,5 +1,6 @@
 package player.plant_player;
 
+import creature.Location;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import exception.EndGameException;
@@ -39,14 +40,10 @@ public class DayModeUser implements PlantPlayer {
         this.plantDans = plantDans;
         coolDownTimeLeft = new ArrayList<>();
         int i = 0;
-        for (PlantDna dna: plantDans){
+        for (PlantDna dna : plantDans) {
             coolDownTimeLeft.add(0);
-            group.getChildren().add(new GameCard(
-                dna,
-                (i+0.3)*Program.screenX*0.11,
-                10,
-                Program.screenX*0.06
-            ));
+            group.getChildren()
+                    .add(new GameCard(this, dna, (i + 0.3) * Program.screenX * 0.11, 10, Program.screenX * 0.06));
             i++;
         }
     }
@@ -80,26 +77,23 @@ public class DayModeUser implements PlantPlayer {
     }
 
     private void select() {
-        /*Effect<String[]> result = new Form("Enter name").action();
-        if (result == null || result.getValue().length == 0) {
-            Message.show("Enter the name :/!");
-            return;
-        }
-        for (int i = 0; i < plantDans.size(); i++)
-            if (plantDans.get(i).getName().equals(result.getValue()[0])) {
-                selectNum(i);
-                return;
-            }
-        Message.show("invalid name !");*/
+        /*
+         * Effect<String[]> result = new Form("Enter name").action(); if (result == null
+         * || result.getValue().length == 0) { Message.show("Enter the name :/!");
+         * return; } for (int i = 0; i < plantDans.size(); i++) if
+         * (plantDans.get(i).getName().equals(result.getValue()[0])) { selectNum(i);
+         * return; } Message.show("invalid name !");
+         */
     }
 
     private void removePlant() {
         Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
-            Integer x = 0;//Integer.valueOf(result.getValue()[0]);
-            Integer y = 0;//Integer.valueOf(result.getValue()[1]);
+            Integer x = 0;// Integer.valueOf(result.getValue()[0]);
+            Integer y = 0;// Integer.valueOf(result.getValue()[1]);
             Plant plant = gameEngine.getPlant(x, y);
-            if (plant == null) throw new InvalidGameMoveException("there is no plant in that location!");
+            if (plant == null)
+                throw new InvalidGameMoveException("there is no plant in that location!");
             gameEngine.killPlant(plant);
         } catch (InvalidGameMoveException e) {
             Message.show(e.getMessage());
@@ -111,9 +105,10 @@ public class DayModeUser implements PlantPlayer {
     private void createPlant() {
         Effect<String[]> result = new Form("Enter X", "Enter Y").action();
         try {
-            if (selected == null) throw new InvalidGameMoveException("Select a card first! =)");
-            Integer x = 0;//Integer.valueOf(result.getValue()[0]);
-            Integer y = 0;//Integer.valueOf(result.getValue()[1]);
+            if (selected == null)
+                throw new InvalidGameMoveException("Select a card first! =)");
+            Integer x = 0;// Integer.valueOf(result.getValue()[0]);
+            Integer y = 0;// Integer.valueOf(result.getValue()[1]);
             PlantDna p = plantDans.get(selected);
             gameEngine.newPlant(p, x, y);
             sun -= p.getGamePrice();
@@ -131,8 +126,8 @@ public class DayModeUser implements PlantPlayer {
         Program.clearScreen();
         System.out.println("Sun: " + sun + "\n");
         for (int i = 0; i < plantDans.size(); i++) {
-            boolean isSelected = ( selected != null && i == selected );
-            String id = (isSelected ? "X" : i+"");
+            boolean isSelected = (selected != null && i == selected);
+            String id = (isSelected ? "X" : i + "");
             System.out.println(id + ". " + plantDans.get(i).getName());
             System.out.println("cool down time left: " + coolDownTimeLeft.get(i));
         }
@@ -140,9 +135,8 @@ public class DayModeUser implements PlantPlayer {
         String s = Program.scanner.nextLine();
         try {
             selectNum(Integer.parseInt(s));
-        }
-        catch (NumberFormatException e) {
-            
+        } catch (NumberFormatException e) {
+
         }
     }
 
@@ -150,5 +144,15 @@ public class DayModeUser implements PlantPlayer {
     public void addSun(int sunAmount) {
         sun += sunAmount;
 
+    }
+
+    @Override
+    public void plant(PlantDna dna, int x, int y) {
+        try {
+            gameEngine.newPlant2(dna, x, y);
+        } catch (InvalidGameMoveException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
