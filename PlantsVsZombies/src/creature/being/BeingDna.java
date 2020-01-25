@@ -1,6 +1,7 @@
 package creature.being;
 
 import creature.Dna;
+import game.GameEngine;
 import line.LineState;
 
 public class BeingDna extends Dna {
@@ -25,7 +26,7 @@ public class BeingDna extends Dna {
     super(name, speed, powerOfDestruction);
     this.shopPrice = shopPrice;
     this.gamePrice = gamePrice;
-    this.firstHealth = firstHealth;
+    this.firstHealth = firstHealth * GameEngine.getFRAME();
     this.lineState = lineState;
   }
 

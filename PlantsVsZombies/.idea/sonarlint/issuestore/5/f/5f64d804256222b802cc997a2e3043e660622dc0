@@ -1,10 +1,22 @@
 
-Isquid:S00108’")Either remove or fill this block of code.(°‘’É8þèº®õ-
+Isquid:S00108”")Either remove or fill this block of code.(°‘’É8þèº®õ-
 \
-squid:S106†"9Replace this use of System.out or System.err by a logger.(ïÙ¦ýÿÿÿÿ8þèº®õ-
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ïçòÞÿÿÿÿÿ8þèº®õ-
 \
-squid:S106‹"9Replace this use of System.out or System.err by a logger.(©òÍ‡ÿÿÿÿÿ8þèº®õ-
+squid:S106"9Replace this use of System.out or System.err by a logger.(©òÍ‡ÿÿÿÿÿ8ß®ÅÔõ-
 \
-squid:S106Š"9Replace this use of System.out or System.err by a logger.(ïçòÞÿÿÿÿÿ8þèº®õ-
+squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(ïÙ¦ýÿÿÿÿ8þèº®õ-
+]squid:S1854]":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8ôßÃý-
+]squid:S1854l":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8ôßÃý-
 W
-squid:S106"9Replace this use of System.out or System.err by a logger.(“Ñ»Š8ß®ÅÔõ-
+squid:S106"9Replace this use of System.out or System.err by a logger.(“Ñ»Š8ôßÃý-
+Nsquid:S1481]"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃý-
+Nsquid:S1481l"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃý-
+\squid:UnusedPrivateMethodN"+Remove this unused private "select" method.(÷¼¿Ýøÿÿÿÿ8ôßÃý-
+\squid:UnusedPrivateMethod\"0Remove this unused private "removePlant" method.(ˆÐª¤8ôßÃý-
+\squid:UnusedPrivateMethodk"0Remove this unused private "createPlant" method.(×Ïô¬8ôßÃý-
+^squid:UnusedPrivateMethod}"-Remove this unused private "showLawn" method.(æÊÞüÿÿÿÿ8ôßÃý-
+nsquid:CommentedOutCodeLine>"<This block of commented-out lines of code should be removed.(Ü¤Ê«þÿÿÿÿ8ôßÃý-
+isquid:CommentedOutCodeLineO"<This block of commented-out lines of code should be removed.(Ú¡Î‚8ôßÃý-
+isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(á î8ôßÃý-
+isquid:CommentedOutCodeLineo"<This block of commented-out lines of code should be removed.(á î8ôßÃý-

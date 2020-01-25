@@ -42,9 +42,10 @@ public class DayModeAI implements ZombiePlayer {
     @Override
     public void nextTurn() throws EndGameException {
         if (attackState == AttackState.ATTACKING) {
-            attack();
+            if (counter % GameEngine.getFRAME() == 0)
+                attack();
             counter++;
-            if (counter == 3) {
+            if (counter == GameEngine.getFRAME() * 3) {
                 attackState = AttackState.WAITING;
                 counter = 0;
             }
@@ -53,13 +54,13 @@ public class DayModeAI implements ZombiePlayer {
             if (!gameEngine.getZombies().isEmpty())
                 counter = 0;
             if (waveNumber == 1) {
-                if (counter == 3) {
+                if (counter == GameEngine.getFRAME() * 3) {
                     attackState = AttackState.ATTACKING;
                     waveNumber++;
                     counter = 0;
                 }
             } else if (waveNumber < 4) {
-                if (counter == 7) {
+                if (counter == GameEngine.getFRAME() * 7) {
                     attackState = AttackState.ATTACKING;
                     waveNumber++;
                     counter = 0;

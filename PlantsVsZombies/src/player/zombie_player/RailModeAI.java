@@ -19,7 +19,7 @@ public class RailModeAI implements ZombiePlayer {
 
     @Override
     public void nextTurn() {
-        if (random.nextInt(4) == 0) {
+        if (random.nextInt(4 * GameEngine.getFRAME()) == 0) {
             List<ZombieDna> allDnas = Account.getCurrentUserZombies();
             while (true) {
                 try {
