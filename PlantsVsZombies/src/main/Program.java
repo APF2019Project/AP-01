@@ -56,6 +56,21 @@ public class Program extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
+    stage.widthProperty().addListener((e)-> {
+      screenX = stage.getWidth();
+      screenY = stage.getHeight();    
+    });
+    stage.heightProperty().addListener((e)-> {
+      screenX = stage.getWidth();
+      screenY = stage.getHeight();
+      Pages.loginMenu.action()
+      .discardData()
+      .catchThen(e2 -> Effect.syncWork(()->{
+        Account.backupAll();
+        System.exit(0);
+      }))
+      .execute();   
+    });
     Label l = new Label("Loading...");
     l.setStyle("-fx-font: 3cm arial");
     Scene scene = new Scene(new StackPane(l), 640, 480);
@@ -63,17 +78,8 @@ public class Program extends Application {
     stage.setFullScreenExitHint("");
     stage.setFullScreen(true);
     stage.show();
-
     screenX = stage.getWidth();
     screenY = stage.getHeight();
-    stage.widthProperty().addListener((e)-> {
-      screenX = stage.getWidth();
-      screenY = stage.getHeight();    
-    });
-    stage.heightProperty().addListener((e)-> {
-      screenX = stage.getWidth();
-      screenY = stage.getHeight();    
-    });
     Program.stage = stage;
     try {
       File mainPath = new File(getBackupPath(""));
@@ -84,14 +90,6 @@ public class Program extends Application {
       }
       PlantDna.loadFromData(streamToString(getRes("plantDna.json")));
       ZombieDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
-      Pages.loginMenu.action()
-      .discardData()
-      .catchThen(e -> Effect.syncWork(()->{
-        Account.backupAll();
-        System.exit(0);
-      }))
-      .execute();
-      l.setText("loaded");
     } catch (Exception e) {
       e.printStackTrace();
     }
