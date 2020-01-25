@@ -1,27 +1,20 @@
 
-\
-squid:S106§"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ8©´°Œô-
-Qsquid:S1135ú"2Complete the task associated to this TODO comment.(¢®Ö8¹»©¹õ-
-Fsquid:S2189Š""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8Íäåæó-
-Esquid:S2189z""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-Jsquid:S1168ã"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
-W
-squid:S106¨"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8é±Œô-
-Jsquid:S1168Å"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
-vsquid:S3776£"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(çúÔãøÿÿÿÿ8ªË¦Ãı-
-Esquid:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-W
-squid:S106¥"9Replace this use of System.out or System.err by a logger.(ª¨ÅÕ8æ³Œô-
-Nsquid:S00108ÿ")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8¹»©¹õ-
-Vsquid:S1135„"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8¹»©¹õ-
-Fsquid:S2189›""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
-ssquid:S3008."PRename this field "FRAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ‘ùËùÿÿÿÿ8÷ı·Ãı-
-Isquid:S1172M"+Remove this unused method parameter "hand".(¿®š¿8ªË¦Ãı-
+Jsquid:S1168Ê"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
+Vsquid:S1135‰"2Complete the task associated to this TODO comment.(ŸÛÌüÿÿÿÿ8¹»©¹õ-
+Jsquid:S1168Ô"+Return an empty collection instead of null.(¥¹ï8ªË¦Ãı-
+Fsquid:S2189¢""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+Fsquid:S2189‘""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8Íäåæó-
+Qsquid:S1135"2Complete the task associated to this TODO comment.(Ûëã›8ªË¦Ãı-
+Esquid:S2189D""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8µû¬İı-
 rsquid:S00116("SRename this field "DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¢ò™8Íäåæó-
-\
-squid:S106¦"9Replace this use of System.out or System.err by a logger.(Â¥¹»üÿÿÿÿ8š¬¯Œô-
-Jsquid:S1168Ï"+Return an empty collection instead of null.(¥¹ï8ªË¦Ãı-
-xsquid:S1192‡"YDefine a constant instead of duplicating this literal "can't insert zombie here" 3 times.(Üşš•8ªË¦Ãı-
-Qsquid:S30105".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8Íäåæó-
-bsquid:HiddenFieldCheckW"9Rename "group" which hides the field declared at line 43.(ôÔ÷ï8ªË¦Ãı-
-Qsquid:S1135Š"2Complete the task associated to this TODO comment.(Ûëã›8ªË¦Ãı-
+nsquid:S3008."PRename this field "FRAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²†Ö¾8÷ı·Ãı-
+Qsquid:S30105".Remove this assignment of "currentGameEngine".(­ğÌÀøÿÿÿÿ8µû¬İı-
+Fsquid:S2189""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8½±ª•ô-
+xsquid:S1192Œ"YDefine a constant instead of duplicating this literal "can't insert zombie here" 3 times.(Üşš•8ªË¦Ãı-
+Jsquid:S1168ä"+Return an empty collection instead of null.(¥¹ï8¹»©¹õ-
+Nsquid:S00108„")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿ8¹»©¹õ-
+vsquid:S3776¨"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(çúÔãøÿÿÿÿ8ªË¦Ãı-
+Qsquid:S1135ÿ"2Complete the task associated to this TODO comment.(¢®Ö8¹»©¹õ-
+Isquid:S1172M"+Remove this unused method parameter "hand".(¿®š¿8µû¬İı-
+bsquid:HiddenFieldCheck^"9Rename "group" which hides the field declared at line 43.(ôÔ÷ï8µû¬İı-
+isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(Â¢¨è8Ë·Ğåı-

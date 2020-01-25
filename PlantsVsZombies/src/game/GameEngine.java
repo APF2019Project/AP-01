@@ -77,7 +77,7 @@ public class GameEngine {
     public static Effect<GameResult> newDayGame(List<PlantDna> hand) {
         return new Effect<>(h-> {
             List<Line> lines = new ArrayList<>();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
                 lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
             new GameEngine();
             getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
@@ -92,6 +92,7 @@ public class GameEngine {
             );
             pane.getChildren().add(background);
             Group group = new Group();
+            //group.setTranslateY();
             getCurrentGameEngine().group = group;
             pane.getChildren().add(group);
             timer.schedule(
@@ -167,12 +168,6 @@ public class GameEngine {
         }
     }
 
-    public void internalError(String s) {
-        System.out.println("----------------------------------------------------------------------------");
-        System.out.println("internal error, probably you shoud just ignore it =) :");
-        System.out.println(s);
-        System.out.println("----------------------------------------------------------------------------");
-    }
 
     public Random getRandom() {
         return random;
@@ -261,6 +256,10 @@ public class GameEngine {
         CreatureNode creatureNode = new CreatureNode(plant);
         group.getChildren().add(creatureNode);
         plant.creatureNode = creatureNode;
+    }
+
+    public void newPlant2(PlantDna dna, Integer lineNumber, Integer position) throws InvalidGameMoveException {
+        newPlant(dna, lineNumber, position * getFRAME() * 2 + getFRAME());
     }
 
     // TODO handling first position of zombie considering 0-base

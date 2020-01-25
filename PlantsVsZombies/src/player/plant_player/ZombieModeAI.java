@@ -26,7 +26,7 @@ public class ZombieModeAI implements PlantPlayer {
             for (int j = 0; j < gameEngine.getWidth(); j++) {
                 while (true) {
                     try {
-                        gameEngine.newPlant(allDnas.get(random.nextInt(allDnas.size())), j, i);
+                        gameEngine.newPlant2(allDnas.get(random.nextInt(allDnas.size())), j, i);
                         break;
                     } catch (Exception ignored) {
                     }

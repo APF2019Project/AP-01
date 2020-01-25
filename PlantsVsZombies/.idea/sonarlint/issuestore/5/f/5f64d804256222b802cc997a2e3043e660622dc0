@@ -1,22 +1,22 @@
 
-Isquid:S00108”")Either remove or fill this block of code.(°‘’É8şèº®õ-
-\
-squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ïçòŞÿÿÿÿÿ8şèº®õ-
+Nsquid:S1481l"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃı-
+^squid:UnusedPrivateMethod}"-Remove this unused private "showLawn" method.(æÊŞüÿÿÿÿ8ôßÃı-
+isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(á î8ôßÃı-
 \
 squid:S106"9Replace this use of System.out or System.err by a logger.(©òÍ‡ÿÿÿÿÿ8ß®ÅÔõ-
+Isquid:S00108”")Either remove or fill this block of code.(°‘’É8şèº®õ-
+isquid:CommentedOutCodeLineO"<This block of commented-out lines of code should be removed.(Ú¡Î‚8ôßÃı-
+\squid:UnusedPrivateMethodN"+Remove this unused private "select" method.(÷¼¿İøÿÿÿÿ8ôßÃı-
 \
 squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(ïÙ¦ıÿÿÿÿ8şèº®õ-
+\
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ïçòŞÿÿÿÿÿ8şèº®õ-
+nsquid:CommentedOutCodeLine>"<This block of commented-out lines of code should be removed.(Ü¤Ê«şÿÿÿÿ8ôßÃı-
+\squid:UnusedPrivateMethod\"0Remove this unused private "removePlant" method.(ˆĞª¤8ôßÃı-
 ]squid:S1854]":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8ôßÃı-
-]squid:S1854l":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8ôßÃı-
 W
 squid:S106"9Replace this use of System.out or System.err by a logger.(“Ñ»Š8ôßÃı-
-Nsquid:S1481]"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃı-
-Nsquid:S1481l"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃı-
-\squid:UnusedPrivateMethodN"+Remove this unused private "select" method.(÷¼¿İøÿÿÿÿ8ôßÃı-
-\squid:UnusedPrivateMethod\"0Remove this unused private "removePlant" method.(ˆĞª¤8ôßÃı-
 \squid:UnusedPrivateMethodk"0Remove this unused private "createPlant" method.(×Ïô¬8ôßÃı-
-^squid:UnusedPrivateMethod}"-Remove this unused private "showLawn" method.(æÊŞüÿÿÿÿ8ôßÃı-
-nsquid:CommentedOutCodeLine>"<This block of commented-out lines of code should be removed.(Ü¤Ê«şÿÿÿÿ8ôßÃı-
-isquid:CommentedOutCodeLineO"<This block of commented-out lines of code should be removed.(Ú¡Î‚8ôßÃı-
-isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(á î8ôßÃı-
+Nsquid:S1481]"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8ôßÃı-
+]squid:S1854l":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8ôßÃı-
 isquid:CommentedOutCodeLineo"<This block of commented-out lines of code should be removed.(á î8ôßÃı-

@@ -8,7 +8,6 @@ import creature.being.zombie.Zombie;
 import game.GameEngine;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import main.Program;
 
 public class CreatureNode extends ImageView {
@@ -17,18 +16,20 @@ public class CreatureNode extends ImageView {
   Dna dna;
   double size;
 
+  static double marginY = Program.screenY;
+
   public CreatureNode(Creature creature) {
-    size = Program.screenY/10;
+    size = Program.screenY / 8;
     if (creature instanceof Plant) {
       dna = ((Plant)creature).getPlantDna();
     }
     if (creature instanceof Zombie) {
       dna = ((Zombie)creature).getZombieDna();
-      size *= 2;
+      size *= 1.6;
     }
     if (creature instanceof Ammunition) {
       dna = ((Ammunition)creature).getAmmunitionDna();
-      size /= 2;
+      size /= 2.6;
     }
     try{
       this.setImage(new Image(
