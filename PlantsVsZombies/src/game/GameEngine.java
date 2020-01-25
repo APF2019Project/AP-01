@@ -44,6 +44,7 @@ public class GameEngine {
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
     private static Integer FRAME = 150;
+    private Group playerGroup;
 
     public static Integer getFRAME() {
         return FRAME;
@@ -80,7 +81,6 @@ public class GameEngine {
             for (int i = 0; i < 5; i++)
                 lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
             new GameEngine();
-            getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
             Pane pane = new Pane();
             Timer timer = new Timer();
             GameBackground background = new GameBackground(
@@ -95,6 +95,9 @@ public class GameEngine {
             //group.setTranslateY();
             getCurrentGameEngine().group = group;
             pane.getChildren().add(group);
+            getCurrentGameEngine().playerGroup = new Group();
+            pane.getChildren().add(getCurrentGameEngine().playerGroup);
+            getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
             timer.schedule(
             new TimerTask(){
             
@@ -513,5 +516,9 @@ public class GameEngine {
 
     public double getGraphicalY(Creature plant) {
 		return Program.screenY*plant.getLocation().lineNumber/DATABASE.lines.size();
+	}
+
+	public Group getPlayerGroup() {
+		return playerGroup;
 	}
 }

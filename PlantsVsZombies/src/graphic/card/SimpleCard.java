@@ -13,6 +13,7 @@ import main.Program;
 public class SimpleCard extends Group {
   
   protected Rectangle rectangle;
+  protected ImageView imageView;
 
   public SimpleCard(Dna dna, double x, double y, double size) {
     super();
@@ -30,7 +31,7 @@ public class SimpleCard extends Group {
     this.getChildren().add(tName);
     try {
       double imageMargin = size * 0.03;
-      ImageView imageView = new ImageView(
+      imageView = new ImageView(
         new Image(
           Program.getRes(dna.getCardImageUrl())
         )

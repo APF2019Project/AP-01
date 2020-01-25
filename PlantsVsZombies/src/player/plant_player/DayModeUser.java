@@ -5,6 +5,10 @@ import creature.being.plant.PlantDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
+import graphic.card.GameCard;
+import graphic.card.SimpleCard;
+import javafx.scene.Group;
+import javafx.scene.layout.HBox;
 import main.Program;
 import page.Form;
 import page.Message;
@@ -26,14 +30,25 @@ public class DayModeUser implements PlantPlayer {
     private List<PlantDna> plantDans;
     private List<Integer> coolDownTimeLeft;
     private Integer selected;
+    private Group group;
 
     public DayModeUser(List<PlantDna> plantDans) {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
+        group = gameEngine.getPlayerGroup();
         this.plantDans = plantDans;
         coolDownTimeLeft = new ArrayList<>();
-        for (int i = 0; i < plantDans.size(); i++)
+        int i = 0;
+        for (PlantDna dna: plantDans){
             coolDownTimeLeft.add(0);
+            group.getChildren().add(new GameCard(
+                dna,
+                10,
+                i*Program.screenX/10,
+                Program.screenX/10
+            ));
+            i++;
+        }
     }
 
     private void randomSunAdder() {
@@ -50,17 +65,6 @@ public class DayModeUser implements PlantPlayer {
             if (coolDownTimeLeft.get(i) < 0)
                 coolDownTimeLeft.set(i, 0);
         }
-        /*Effect<Unit> x = new Menu<>(
-                gameEngine::pretty,
-            new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
-            new ActionButton<>("Show hand", this::showHand),
-            new ActionButton<>("Show lawn", this::showLawn),
-            new ActionButton<>("Plant", this::createPlant),
-            new ActionButton<>("Remove", this::removePlant),
-            new ActionButton<>("Select", this::select),
-            new ExitButton("End Turn")
-        ).action();
-        if (x.isError()) throw new EndGameException();*/
     }
 
     private void selectNum(int i) {
@@ -120,14 +124,6 @@ public class DayModeUser implements PlantPlayer {
         } catch (NumberFormatException e) {
             Message.show("invalid input format :D!");
         }
-    }
-
-    private void showLawn() {
-        StringBuilder stringBuilder = new StringBuilder();
-        gameEngine.getZombies().forEach(zombie -> stringBuilder.append(zombie.toString()).append('\n'));
-        gameEngine.getPlants().forEach(plant -> stringBuilder.append(plant.toString()).append('\n'));
-        gameEngine.getAmmunitions().forEach(plant -> stringBuilder.append(plant.toString()).append('\n'));
-        Message.show(stringBuilder.toString());
     }
 
     @Override
