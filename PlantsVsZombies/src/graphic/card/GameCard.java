@@ -1,17 +1,11 @@
 package graphic.card;
 
-import creature.Dna;
 import creature.being.plant.PlantDna;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
-import javafx.scene.layout.Pane;
 import main.Program;
-import page.Message;
 import player.plant_player.PlantPlayer;
 
 class Delta {
@@ -37,7 +31,7 @@ public class GameCard extends SimpleCard {
         label.setCursor(Cursor.HAND);
         double x = label.getTranslateX()+label.getLayoutX();
         double y = label.getTranslateY()+label.getLayoutY();
-        x /= Program.screenX/9;
+        x /= Program.screenX / 10;
         y /= Program.screenY/5;
         owner.plant(dna, (int)y, (int)x);
         label.setLayoutX(0);

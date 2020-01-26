@@ -45,7 +45,8 @@ public class GameEngine {
     private Group group;
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
-    private static Integer FRAME = 160;
+    private static Integer SEC_PER_TURN = 3;
+    private static Integer FRAME = 60 * SEC_PER_TURN;
     private Group playerGroup;
 
     public static Integer getFRAME() {
@@ -104,7 +105,7 @@ public class GameEngine {
                     }
                 });
             }
-        }, 0, 3000 / FRAME);
+        }, 0, SEC_PER_TURN * 1000 / FRAME);
         Program.stage.getScene().setRoot(pane);
     }
 
