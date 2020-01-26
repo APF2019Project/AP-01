@@ -5,6 +5,7 @@ import creature.Location;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import exception.EndGameException;
+
 import java.util.SortedSet;
 
 public class Ammunition extends Creature {
@@ -48,7 +49,7 @@ public class Ammunition extends Creature {
     private void move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
-        for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
+        for (int i = 0; i != ammunitionDna.getSpeed() * 2; i += direction) {
             effectAll();
             if (!gameEngine.alive(this)) return;
             try {

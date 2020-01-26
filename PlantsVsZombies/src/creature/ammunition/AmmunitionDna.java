@@ -15,7 +15,7 @@ public class AmmunitionDna extends Dna {
   private final int firstTimeHealth;
 
   public int getCooldown() {
-    return cooldown * GameEngine.getFRAME();
+      return cooldown * GameEngine.getFRAME() * 2 / 3;
   }
 
   public int getStunTurnNumber() {

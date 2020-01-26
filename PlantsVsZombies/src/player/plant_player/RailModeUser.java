@@ -36,7 +36,7 @@ public class RailModeUser implements PlantPlayer {
 
     private void randomPlantDnaAdder() {
         if (remainTurn != 0) {
-            remainTurn--;
+            if (gameEngine.getTurn() % GameEngine.getFRAME() == 0) remainTurn--;
             return;
         }
         remainTurn = (1 + rnd.nextInt(3))*GameEngine.getFRAME();

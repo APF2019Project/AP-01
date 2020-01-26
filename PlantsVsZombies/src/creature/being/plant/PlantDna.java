@@ -52,7 +52,7 @@ public class PlantDna extends BeingDna {
   public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
       int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
       LineState contain, boolean explosive) {
-    super(name, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
+      super(name, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth * GameEngine.getFRAME() * 3, lineState);
     this.ammunitionDna = ammunitionDna;
     this.cooldown = cooldown;
     this.contain = contain;

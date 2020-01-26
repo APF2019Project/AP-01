@@ -1,13 +1,11 @@
 package player.plant_player;
 
-import creature.Location;
 import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
-import graphic.card.SimpleCard;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -15,19 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import main.Program;
 import page.Form;
 import page.Message;
-import page.menu.ActionButton;
-import page.menu.ExitButton;
-import page.menu.Menu;
 import util.Effect;
-import util.Unit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +69,7 @@ public class DayModeUser implements PlantPlayer {
     }
 
     private void randomSunAdder() {
+        if (gameEngine.getTurn() % GameEngine.getFRAME() != 0) return;
         Integer added = rnd.nextInt(2) * (2 + rnd.nextInt(4));
         sun += added;
     }
@@ -178,7 +171,10 @@ public class DayModeUser implements PlantPlayer {
     @Override
     public void plant(PlantDna dna, int x, int y) {
         try {
+            if (dna.getGamePrice() > sun)
+                throw new InvalidGameMoveException("not enough sun");
             gameEngine.newPlant2(dna, x, y);
+            sun -= dna.getGamePrice();
         } catch (InvalidGameMoveException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
