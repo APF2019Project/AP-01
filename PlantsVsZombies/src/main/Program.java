@@ -56,6 +56,7 @@ public class Program extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
+    Program.stage = stage;
     stage.widthProperty().addListener((e)-> {
       screenX = stage.getWidth();
       screenY = stage.getHeight();    
@@ -80,7 +81,7 @@ public class Program extends Application {
     stage.show();
     screenX = stage.getWidth();
     screenY = stage.getHeight();
-    Program.stage = stage;
+
     try {
       File mainPath = new File(getBackupPath(""));
       if (mainPath.exists()) {
