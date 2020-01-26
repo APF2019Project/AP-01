@@ -29,8 +29,10 @@ import player.zombie_player.RailModeAI;
 import player.zombie_player.ZombieModeUser;
 import player.zombie_player.ZombiePlayer;
 import util.Effect;
+import util.Unit;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class GameEngine {
 
@@ -75,67 +77,77 @@ public class GameEngine {
         }
     }
 
+    private static void commonGraphic(GameMode gameMode, Effect<Unit> onAbort, Consumer<EndGameException> consumer){
+        Pane pane = new Pane();
+        Timer timer = new Timer();
+        GameBackground background = new GameBackground(
+            gameMode,
+            Effect.syncWork(timer::cancel).then(onAbort)
+        );
+        pane.getChildren().add(background);
+        Group group = new Group();
+        //group.setTranslateY();
+        getCurrentGameEngine().group = group;
+        pane.getChildren().add(group);
+        getCurrentGameEngine().playerGroup = new Group();
+        pane.getChildren().add(getCurrentGameEngine().playerGroup);
+        timer.schedule(
+        new TimerTask(){
+            @Override
+            public void run() {
+                Platform.runLater(()->{
+                    try {
+                        getCurrentGameEngine().nextTurn();
+                    } catch (EndGameException e) {
+                        timer.cancel();
+                        consumer.accept(e);
+                    }
+                });
+            }
+        }, 0, 5000 / FRAME);
+        Program.stage.getScene().setRoot(pane);
+    }
+
     public static Effect<GameResult> newDayGame(List<PlantDna> hand) {
         return new Effect<>(h-> {
             List<Line> lines = new ArrayList<>();
             for (int i = 0; i < 5; i++)
                 lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
             new GameEngine();
-            Pane pane = new Pane();
-            Timer timer = new Timer();
-            GameBackground background = new GameBackground(
+            commonGraphic(
                 GameMode.DAY,
-                Effect.syncWork(()->{
-                    timer.cancel();
-                    h.success(new GameResult());
-                })
-            );
-            pane.getChildren().add(background);
-            Group group = new Group();
-            //group.setTranslateY();
-            getCurrentGameEngine().group = group;
-            pane.getChildren().add(group);
-            getCurrentGameEngine().playerGroup = new Group();
-            pane.getChildren().add(getCurrentGameEngine().playerGroup);
+                Effect.syncWork(() -> h.success(new GameResult())),
+                (e)->{
+                h.success(new GameResult(
+                    GameMode.DAY,
+                    e.getWinner(),
+                    getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled()
+                ));
+            });
             getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
-            timer.schedule(
-            new TimerTask(){
-            
-                @Override
-                public void run() {
-                    Platform.runLater(()->{
-                        try {
-                            getCurrentGameEngine().nextTurn();
-                        } catch (EndGameException e) {
-                            timer.cancel();
-                            h.success(new GameResult(
-                                GameMode.DAY,
-                                e.getWinner(),
-                                getCurrentGameEngine().plantsKilled(),
-                                getCurrentGameEngine().zombiesKilled()
-                            ));
-                        }
-                    });
-                }
-            }, 0, 5000 / FRAME);
-            Program.stage.getScene().setRoot(pane);
         });
     }
 
-    public static GameResult newRailGame() {
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
-        new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(new RailModeUser(), new RailModeAI(), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(GameMode.RAIL, e.getWinner(), getCurrentGameEngine().plantsKilled(),
-                    getCurrentGameEngine().zombiesKilled());
-        }
+    public static Effect<GameResult> newRailGame() {
+        return new Effect<>(h-> {
+            List<Line> lines = new ArrayList<>();
+            for (int i = 0; i < 5; i++)
+                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
+            new GameEngine();
+            commonGraphic(
+                GameMode.RAIL,
+                Effect.syncWork(() -> h.success(new GameResult())),
+                (e)->{
+                h.success(new GameResult(
+                    GameMode.RAIL,
+                    e.getWinner(),
+                    getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled()
+                ));
+            });
+            getCurrentGameEngine().config(new GameDna(new RailModeUser(), new RailModeAI(), lines));
+        });
     }
 
     public static GameResult newZombieGame(List<ZombieDna> hand) {

@@ -6,6 +6,8 @@ import creature.being.plant.PlantDna;
 import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
+import graphic.card.GameCard;
+import javafx.scene.Group;
 import main.Program;
 import page.Form;
 import page.Message;
@@ -22,11 +24,14 @@ public class RailModeUser implements PlantPlayer {
     private List<PlantDna> plantDans;
     private Integer selected;
     private int remainTurn;
+    private Group group;
+    private ArrayList<GameCard> gameCards = new ArrayList<>();
 
     public RailModeUser() {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
         this.plantDans = new ArrayList<>();
+        this.group = gameEngine.getPlayerGroup();
     }
 
     private void randomPlantDnaAdder() {
@@ -34,28 +39,27 @@ public class RailModeUser implements PlantPlayer {
             remainTurn--;
             return;
         }
-        remainTurn = 1 + rnd.nextInt(3);
-        remainTurn *= GameEngine.getFRAME();
+        remainTurn = (1 + rnd.nextInt(3))*GameEngine.getFRAME();
         List<PlantDna> allDnas = Account.getCurrentUserPlants();
-        plantDans.add(allDnas.get(rnd.nextInt(allDnas.size())));
+        PlantDna plantDna = allDnas.get(rnd.nextInt(allDnas.size()));
+        plantDans.add(plantDna);
+        GameCard gameCard = new GameCard(this, plantDna, 0, 10, Program.screenX * 0.06);
+        gameCards.add(gameCard);
+        group.getChildren().add(gameCard);
     }
 
     @Override
     public void nextTurn() throws EndGameException {
-        selected = null;
         randomPlantDnaAdder();
-        /*Effect<Unit> x = new Menu<>(
-                gameEngine::pretty,
-                new ActionButton<>("List", this::showHand),
-                new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
-                new ActionButton<>("Show lawn", this::showLawn),
-                new ActionButton<>("Record", this::showRecord),
-                new ActionButton<>("Plant", this::createPlant),
-                new ActionButton<>("Remove", this::removePlant),
-                new ActionButton<>("Select", this::select),
-                new ExitButton("End Turn")
-        ).action();
-        if (x.isError()) throw new EndGameException();*/
+        reArrange();
+    }
+
+    private void reArrange() {
+        int i = 0;
+        for (GameCard gameCard: gameCards) {
+            gameCard.setTranslateX((i + 0.3) * Program.screenX * 0.11);
+            i++;
+        }
     }
 
     private void select() {
@@ -116,22 +120,7 @@ public class RailModeUser implements PlantPlayer {
 
     @Override
     public void showHand() {
-        Program.clearScreen();
-        int cnt = 0;
-        for (PlantDna plantDan : plantDans) {
-            boolean isSelected = selected != null && cnt == selected;
-            String id = isSelected ? "X" : cnt+"";
-            System.out.println(id + ". " + plantDan.getName());
-            cnt++;
-        }
-        System.out.println("Enter a number for select or press enter to continue...");
-        String s = Program.scanner.nextLine();
-        try {
-            selected = Integer.parseInt(s);
-        }
-        catch (NumberFormatException e) {
-            
-        }
+        
     }
 
     @Override
@@ -141,7 +130,16 @@ public class RailModeUser implements PlantPlayer {
 
     @Override
     public void plant(PlantDna dna, int x, int y) {
-        // TODO Auto-generated method stub
-
+        try {
+            gameEngine.newPlant2(dna, x, y);
+            int i = plantDans.indexOf(dna);
+            plantDans.remove(i);
+            group.getChildren().remove(gameCards.get(i));
+            gameCards.remove(i);
+            reArrange();
+        } catch (InvalidGameMoveException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

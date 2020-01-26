@@ -27,7 +27,7 @@ public class Pages {
       new SimpleButton<>("Water",
           new Collection<PlantDna>(Account::getCurrentUserPlants, 7)
               .action().map(GameEngine::newWaterGame)),
-      new SimpleButton<>("Rail", Effect.noOp.map(x->null)),
+      new SimpleButton<>("Rail", GameEngine.newRailGame()),
       new SimpleButton<>("Zombie",
           new Collection<ZombieDna>(Account::getCurrentUserZombies, 7).action()
               .map(GameEngine::newZombieGame)),
