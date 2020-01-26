@@ -523,11 +523,11 @@ public class GameEngine {
     }
 
 	public double getGraphicalX(Creature plant) {
-		return Program.screenX*plant.getLocation().position/DATABASE.length;
+        return Program.screenX * (plant.getLocation().position * 2) / (DATABASE.length * 2 + 2 * FRAME);
 	}
 
     public double getGraphicalY(Creature plant) {
-		return Program.screenY*plant.getLocation().lineNumber/DATABASE.lines.size();
+        return Program.screenY * (plant.getLocation().lineNumber * 2 + 1.5) / (DATABASE.lines.size() * 2 + 2);
 	}
 
 	public Group getPlayerGroup() {

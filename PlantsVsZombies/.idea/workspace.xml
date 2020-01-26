@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="null stage solved">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="cool down, health and speed syncing with frame">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/being/BeingDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/BeingDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/RailModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -418,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580033271633</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="cool down, health and speed syncing with frame">
+      <created>1580051250879</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1580051250879</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="RailModeAI added" />
     <MESSAGE value="small changes in account" />
     <MESSAGE value="zombie mode ai added" />
     <MESSAGE value="miner bug fixes =)" />
@@ -517,7 +517,8 @@
     <MESSAGE value="full screen update" />
     <MESSAGE value="random update" />
     <MESSAGE value="null stage solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="null stage solved" />
+    <MESSAGE value="cool down, health and speed syncing with frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="cool down, health and speed syncing with frame" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
