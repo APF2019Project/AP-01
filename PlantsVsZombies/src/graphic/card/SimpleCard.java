@@ -12,17 +12,34 @@ import main.Program;
 
 public class SimpleCard extends Group {
   
-  protected Rectangle rectangle;
+  protected Rectangle rectangle, progress;
   protected ImageView imageView;
+  protected double size;
+
+  public void setColor(Color c) {
+    progress.setHeight(0);
+    rectangle.setFill(c);
+  }
+
+  public void setColor(Color cUp, Color cDown, double percent) {
+    progress.setHeight(size*1.3*percent);
+    rectangle.setFill(cDown);
+    progress.setFill(cUp);
+  }
 
   public SimpleCard(Dna dna, double x, double y, double size) {
     super();
+    this.size = size;
     this.setTranslateX(x);
     this.setTranslateY(y);
     rectangle = new Rectangle();
     rectangle.setWidth(size);
     rectangle.setHeight(size*1.3);
+    progress = new Rectangle();
+    progress.setWidth(size);
+    progress.setHeight(0);
     this.getChildren().add(rectangle);
+    this.getChildren().add(progress);
     Text tName = new Text();
     tName.setText(dna.getName());
     tName.setX(0);

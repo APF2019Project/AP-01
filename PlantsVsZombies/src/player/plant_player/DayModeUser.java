@@ -6,6 +6,7 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
+import graphic.game.CreatureNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -35,6 +36,7 @@ public class DayModeUser implements PlantPlayer {
     private Integer selected;
     private Group group;
     private Label sunText;
+    private ArrayList<GameCard> gameCards = new ArrayList<>();
 
     public DayModeUser(List<PlantDna> plantDans) {
         gameEngine = GameEngine.getCurrentGameEngine();
@@ -62,9 +64,11 @@ public class DayModeUser implements PlantPlayer {
         group.getChildren().add(sunText);
         for (PlantDna dna : plantDans) {
             coolDownTimeLeft.add(0);
+            GameCard x = new GameCard(this, dna, (i + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06);
             group.getChildren()
-                    .add(new GameCard(this, dna, (i + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06));
+                    .add(x);
             i++;
+            gameCards.add(x);
         }
     }
 
@@ -79,9 +83,21 @@ public class DayModeUser implements PlantPlayer {
         selected = null;
         randomSunAdder();
         for (int i = 0; i < coolDownTimeLeft.size(); i++) {
-            coolDownTimeLeft.set(i, coolDownTimeLeft.get(i) - 1);
-            if (coolDownTimeLeft.get(i) < 0)
-                coolDownTimeLeft.set(i, 0);
+            int k = coolDownTimeLeft.get(i) - 1;
+            if (k < 0) k = 0;
+            coolDownTimeLeft.set(i, k);
+            if (k == 0 && plantDans.get(i).getGamePrice() <= sun) {
+                gameCards.get(i).setColor(Color.WHITE);
+                gameCards.get(i).enabled = true;
+            }
+            else {
+                gameCards.get(i).setColor(
+                    Color.RED,
+                    Color.GREEN,
+                    1-(k*1.0/plantDans.get(i).getCooldown())
+                );
+                gameCards.get(i).enabled = false;
+            }
         }
         sunText.setText(sun+"");
     }
@@ -173,6 +189,8 @@ public class DayModeUser implements PlantPlayer {
         try {
             if (dna.getGamePrice() > sun)
                 throw new InvalidGameMoveException("not enough sun");
+            int i = plantDans.indexOf(dna);
+            coolDownTimeLeft.set(i, dna.getCooldown());
             gameEngine.newPlant2(dna, x, y);
             sun -= dna.getGamePrice();
         } catch (InvalidGameMoveException e) {

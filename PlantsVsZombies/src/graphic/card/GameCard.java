@@ -14,6 +14,9 @@ class Delta {
 
 public class GameCard extends SimpleCard {
 
+  public boolean enabled = true;
+  private boolean dragged = false;
+
   public GameCard(PlantPlayer owner, PlantDna dna, double x, double y, double size) {
     super(dna, x, y, size);
     final Delta dragDelta = new Delta();
@@ -21,6 +24,8 @@ public class GameCard extends SimpleCard {
     label.setOnMousePressed(new EventHandler<MouseEvent>() {
       @Override public void handle(MouseEvent mouseEvent) {
         // record a delta distance for the drag and drop operation.
+        if (!enabled) return;
+        dragged = true;
         dragDelta.x = label.getLayoutX() - mouseEvent.getSceneX();
         dragDelta.y = label.getLayoutY() - mouseEvent.getSceneY();
         label.setCursor(Cursor.MOVE);
@@ -28,6 +33,8 @@ public class GameCard extends SimpleCard {
     });
     label.setOnMouseReleased(new EventHandler<MouseEvent>() {
       @Override public void handle(MouseEvent mouseEvent) {
+        if (!dragged) return;
+        dragged = false;
         label.setCursor(Cursor.HAND);
         double x = label.getTranslateX()+label.getLayoutX();
         double y = label.getTranslateY()+label.getLayoutY();
@@ -40,6 +47,7 @@ public class GameCard extends SimpleCard {
     });
     label.setOnMouseDragged(new EventHandler<MouseEvent>() {
       @Override public void handle(MouseEvent mouseEvent) {
+        if (!dragged) return;
         label.setLayoutX(mouseEvent.getSceneX() + dragDelta.x);
         label.setLayoutY(mouseEvent.getSceneY() + dragDelta.y);
       }
