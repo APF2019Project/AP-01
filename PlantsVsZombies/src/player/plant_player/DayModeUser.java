@@ -8,8 +8,18 @@ import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
 import graphic.card.SimpleCard;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import main.Program;
 import page.Form;
 import page.Message;
@@ -32,6 +42,7 @@ public class DayModeUser implements PlantPlayer {
     private List<Integer> coolDownTimeLeft;
     private Integer selected;
     private Group group;
+    private Label sunText;
 
     public DayModeUser(List<PlantDna> plantDans) {
         gameEngine = GameEngine.getCurrentGameEngine();
@@ -40,10 +51,27 @@ public class DayModeUser implements PlantPlayer {
         this.plantDans = plantDans;
         coolDownTimeLeft = new ArrayList<>();
         int i = 0;
+        Rectangle rectangle = new Rectangle();
+        rectangle.setX(Program.screenX*0.02);
+        rectangle.setY(Program.screenX*0.01);
+        rectangle.setWidth(Program.screenX*0.06);
+        rectangle.setHeight(Program.screenX*0.06);
+        rectangle.setFill(Color.rgb(106, 71, 27));
+        group.getChildren().add(rectangle);
+        sunText = new Label("0");
+        sunText.setTranslateX(Program.screenX*0.025);
+        sunText.setTranslateY(Program.screenX*0.04);
+        sunText.setPrefWidth(Program.screenX*0.05);
+        sunText.setFont(Font.font(Program.screenX*0.02));
+        sunText.setAlignment(Pos.CENTER);
+        sunText.setBackground(new Background(
+            new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)
+        ));
+        group.getChildren().add(sunText);
         for (PlantDna dna : plantDans) {
             coolDownTimeLeft.add(0);
             group.getChildren()
-                    .add(new GameCard(this, dna, (i + 0.3) * Program.screenX * 0.11, 10, Program.screenX * 0.06));
+                    .add(new GameCard(this, dna, (i + 0.9) * Program.screenX * 0.11, 10, Program.screenX * 0.06));
             i++;
         }
     }
@@ -62,6 +90,7 @@ public class DayModeUser implements PlantPlayer {
             if (coolDownTimeLeft.get(i) < 0)
                 coolDownTimeLeft.set(i, 0);
         }
+        sunText.setText(sun+"");
     }
 
     private void selectNum(int i) {
