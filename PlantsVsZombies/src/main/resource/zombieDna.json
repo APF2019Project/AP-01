@@ -77,7 +77,7 @@
     "crossing": [3]
   },
   {
-    "name": "Balloon zombie",
+    "name": "Balloon Zombie",
     "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,

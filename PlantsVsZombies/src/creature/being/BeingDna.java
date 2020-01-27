@@ -1,6 +1,7 @@
 package creature.being;
 
 import creature.Dna;
+import game.GameEngine;
 import line.LineState;
 
 public class BeingDna extends Dna {
@@ -17,7 +18,7 @@ public class BeingDna extends Dna {
     return gamePrice;
   }
   public int getFirstHealth() {
-    return firstHealth;
+    return firstHealth * GameEngine.getFRAME();
   }
 
   public BeingDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,

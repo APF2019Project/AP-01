@@ -32,11 +32,6 @@ public class PlantDna extends BeingDna {
     return ammunitionDna;
   }
 
-  @Override
-  public int getFirstHealth() {
-    return super.getFirstHealth() * GameEngine.getFRAME();
-  }
-
   public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
                   int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
                   LineState contain, boolean explosive) {

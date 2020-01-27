@@ -3,6 +3,7 @@ package graphic.game;
 import creature.Creature;
 import creature.Dna;
 import creature.ammunition.Ammunition;
+import creature.being.BeingDna;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import game.GameEngine;
@@ -19,20 +20,17 @@ public class CreatureNode extends Group {
   Dna dna;
   double size;
   private ImageView image;
-  private Rectangle health1, health2;
+  private Rectangle health1;
 
   static double marginY = Program.screenY;
 
   public CreatureNode(Creature creature) {
     image = new ImageView();
     health1 = new Rectangle();
-    health2 = new Rectangle();
     size = Program.screenY / 8;
     health1.setWidth(size);
-    health1.setHeight(size * 0.1);
+    health1.setHeight(size * 0.08);
     health1.setFill(Color.RED);
-    health2.setFill(Color.GREEN);
-    health2.setHeight(size * 0.1);
     if (creature instanceof Plant) {
       dna = ((Plant) creature).getPlantDna();
     }
@@ -55,7 +53,6 @@ public class CreatureNode extends Group {
     this.getChildren().add(image);
     if (!(creature instanceof Ammunition)) {
       this.getChildren().add(health1);
-      this.getChildren().add(health2);
     }
     this.update();
   }
@@ -69,7 +66,7 @@ public class CreatureNode extends Group {
       this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
     }
     if (!(creature instanceof Ammunition)) {
-      health2.setWidth(creature.getHealth()/GameEngine.getFRAME());
+      health1.setWidth(size * creature.getHealth() / ((BeingDna) dna).getFirstHealth());
     }
   }
 }
