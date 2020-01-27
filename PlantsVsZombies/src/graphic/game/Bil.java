@@ -1,16 +1,15 @@
 package graphic.game;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import creature.being.plant.Plant;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import main.Program;
-import player.plant_player.PlantPlayer;
 
 class Delta {
   double x,y;
@@ -36,7 +35,7 @@ public class Bil extends ImageView {
     this.setFitWidth(size);
     this.setFitHeight(size);
     this.setImage(new Image(
-      Program.getRes("images/lanat.png")
+            Program.getRes("images/shovel.png")
     ));
     final Delta dragDelta = new Delta();
     Node label = this;

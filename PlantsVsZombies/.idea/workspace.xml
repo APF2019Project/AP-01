@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/main.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/x" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/shovel.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/CloseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/CloseButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/Gargantuar.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/images/lanat.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/images/lanat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/zombieDna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/zombieDna.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/game/Bil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/game/Bil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00001" summary="IntelliJ install json">
-      <created>1575802105762</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1575802105762</updated>
     </task>
     <task id="LOCAL-00002" summary="Declaration of gameEngine, gameData, graphics and player">
       <created>1576138191994</created>
@@ -466,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580137036689</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="image of zombies">
+      <created>1580138272212</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1580138272215</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -541,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug fixes and minor changes in ZombieMode" />
     <MESSAGE value="PVP mode added" />
     <MESSAGE value="ammunition methods added to game engine" />
     <MESSAGE value="ammunition methods added to game engine v 0.1" />
@@ -566,7 +558,8 @@
     <MESSAGE value="FRAME sync" />
     <MESSAGE value="FRAME sync v2" />
     <MESSAGE value="speed af Amu" />
-    <option name="LAST_COMMIT_MESSAGE" value="speed af Amu" />
+    <MESSAGE value="image of zombies" />
+    <option name="LAST_COMMIT_MESSAGE" value="image of zombies" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
