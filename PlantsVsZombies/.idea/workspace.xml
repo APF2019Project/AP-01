@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/a/3a7640f8667406a30982f8e8f3626467320235a2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dc4325f34561bbd4bad8a8fb73a034e01b8d091" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/563a23e064e6fdd2d09bd0c2d99ef456aff71a31" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9a02bca500620c7c9e1ff30ea124ba23204df9dc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baae76ac76027f0aed9071419d0e3e67833330ef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb0b7e36f992a93bf8472ac9f3183b3f3f49206d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resource/plantDna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/plantDna.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -447,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580053839487</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="FRAME sync">
+      <created>1580128820784</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1580128820784</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +520,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="miner bug fixes =)" />
     <MESSAGE value="zombie mode first release ! =D" />
     <MESSAGE value="bug fixes and minor changes" />
     <MESSAGE value="bug fixes and minor changes in ZombieMode" />
@@ -546,7 +544,8 @@
     <MESSAGE value="cool down, health and speed syncing with frame" />
     <MESSAGE value="graphic alignment" />
     <MESSAGE value="make drag and drop more convenient and adds SEC_PER_TURN constant" />
-    <option name="LAST_COMMIT_MESSAGE" value="make drag and drop more convenient and adds SEC_PER_TURN constant" />
+    <MESSAGE value="FRAME sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="FRAME sync" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

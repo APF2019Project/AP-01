@@ -61,7 +61,7 @@ public class PlantDna extends BeingDna {
   }
 
   public int getCooldown() {
-    return cooldown;
+    return cooldown * GameEngine.getFRAME();
   }
 
   public LineState getContain() {

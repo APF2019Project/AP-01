@@ -61,7 +61,7 @@ public class CreatureNode extends Group {
   }
 
   public void update() {
-    if (creature instanceof Zombie) {
+    if ((creature instanceof Zombie) || (creature instanceof Ammunition)) {
       this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature) + GameEngine.getFRAME() / 3);
       this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
     } else {

@@ -71,10 +71,5 @@ public class AmmunitionDna extends Dna {
   public int getMinimumDistanceForShoot() {
     return minimumDistanceForShoot * GameEngine.getFRAME();
   }
-
-  @Override
-  public int getSpeed() {
-    return super.getSpeed() * GameEngine.getFRAME();
-  }
   
 }
