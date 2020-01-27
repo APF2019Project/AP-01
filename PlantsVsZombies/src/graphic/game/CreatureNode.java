@@ -36,7 +36,7 @@ public class CreatureNode extends Group {
     }
     if (creature instanceof Zombie) {
       dna = ((Zombie) creature).getZombieDna();
-      size *= 1.6;
+      size *= 1.1;
     }
     if (creature instanceof Ammunition) {
       dna = ((Ammunition) creature).getAmmunitionDna();
@@ -59,7 +59,7 @@ public class CreatureNode extends Group {
 
   public void update() {
     if ((creature instanceof Zombie) || (creature instanceof Ammunition)) {
-      this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature) + GameEngine.getFRAME() / 3);
+      this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature) + GameEngine.getFRAME());
       this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
     } else {
       this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature));

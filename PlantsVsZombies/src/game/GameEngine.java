@@ -45,7 +45,7 @@ public class GameEngine {
     private Group group;
     private ArrayList<ArrayList<ZombieDna>> zombieQueue;
 
-    private static Integer SEC_PER_TURN = 3;
+    private static Integer SEC_PER_TURN = 2;
     private static Integer FRAME = 60 * SEC_PER_TURN;
     private Group playerGroup;
 
