@@ -3,7 +3,6 @@ package graphic.game;
 import creature.Creature;
 import creature.Dna;
 import creature.ammunition.Ammunition;
-import creature.being.BeingDna;
 import creature.being.plant.Plant;
 import creature.being.zombie.Zombie;
 import game.GameEngine;
@@ -62,8 +61,13 @@ public class CreatureNode extends Group {
   }
 
   public void update() {
-    this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature));
-    this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
+    if (creature instanceof Zombie) {
+      this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature) + GameEngine.getFRAME() / 3);
+      this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
+    } else {
+      this.setTranslateX(GameEngine.getCurrentGameEngine().getGraphicalX(creature));
+      this.setTranslateY(GameEngine.getCurrentGameEngine().getGraphicalY(creature));
+    }
     if (!(creature instanceof Ammunition)) {
       health2.setWidth(creature.getHealth()/GameEngine.getFRAME());
     }

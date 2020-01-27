@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
+import game.GameEngine;
 import line.LineState;
 
 import java.util.ArrayList;
@@ -29,6 +30,11 @@ public class PlantDna extends BeingDna {
 
   public List<AmmunitionDna> getAmmunitionDna() {
     return ammunitionDna;
+  }
+
+  @Override
+  public int getFirstHealth() {
+    return super.getFirstHealth() * GameEngine.getFRAME();
   }
 
   public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,

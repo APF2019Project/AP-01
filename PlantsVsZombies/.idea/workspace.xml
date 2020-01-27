@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/a/3a7640f8667406a30982f8e8f3626467320235a2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dc4325f34561bbd4bad8a8fb73a034e01b8d091" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/563a23e064e6fdd2d09bd0c2d99ef456aff71a31" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9a02bca500620c7c9e1ff30ea124ba23204df9dc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baae76ac76027f0aed9071419d0e3e67833330ef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb0b7e36f992a93bf8472ac9f3183b3f3f49206d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/Ammunition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/plant/PlantDna.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/plantDna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/plantDna.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +49,9 @@
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="game" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resource/images/Pea" />
     </key>
   </component>
   <component name="RunDashboard">
