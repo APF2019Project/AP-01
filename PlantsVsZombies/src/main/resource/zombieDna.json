@@ -69,15 +69,7 @@
     "crossing": [3]
   },
   {
-    "name": "Catapult zombie",
-    "lineState": "DRY",
-    "speed": 2,
-    "powerOfDestruction": 100000,
-    "firstHealth": 3,
-    "crossing": [3]
-  },
-  {
-    "name": "Balloon Zombie",
+    "name": "Ballon Zombie",
     "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 1,
@@ -114,6 +106,7 @@
       "crossing": [3]
     }
   },
+
   {
     "name": "Screen Door zombie",
     "lineState": "DRY",
@@ -131,19 +124,11 @@
     "magnetic": true
   },
   {
-    "name": "Giga gargantuar",
+    "name": "Giga gargantaur",
     "lineState": "DRY",
     "speed": 2,
     "powerOfDestruction": 100000,
     "crossing": [3],
     "firstHealth": 6
-  },
-  {
-    "name": "Pogo Zombie",
-    "lineState": "DRY",
-    "speed": 2,
-    "maxNumberOfJumps": 100000,
-    "crossing": [3],
-    "firstHealth": 2
   }
 ]

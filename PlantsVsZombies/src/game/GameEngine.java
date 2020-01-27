@@ -296,6 +296,7 @@ public class GameEngine {
                 throw new InvalidGameMoveException("can't insert zombie here");
             }
         }
+        System.out.println(dna.getName());
         Zombie zombie = new Zombie(dna, lineNumber, getLength());
         DATABASE.zombiesPerLine.get(lineNumber).add(zombie);
         DATABASE.zombies.add(zombie);

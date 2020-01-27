@@ -74,7 +74,7 @@ public class AmmunitionDna extends Dna {
 
   @Override
   public int getSpeed() {
-    return super.getSpeed() * 2;
+    return super.getSpeed() * 4;
   }
 
   @Override

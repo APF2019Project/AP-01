@@ -10,9 +10,9 @@ public class CloseButton extends Group {
     super();
     Circle circle = new Circle();
     circle.setFill(Color.RED);
-    circle.setCenterX(Program.screenX / 200);
-    circle.setCenterY(Program.screenX / 200);
-    circle.setRadius(Program.screenX / 200);
+    circle.setCenterX(Program.screenX / 80);
+    circle.setCenterY(Program.screenX / 80);
+    circle.setRadius(Program.screenX / 80);
     getChildren().add(circle);
     this.setOnMouseEntered(e -> {
       circle.setFill(Color.PURPLE);
