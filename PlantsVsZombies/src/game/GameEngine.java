@@ -62,24 +62,28 @@ public class GameEngine {
         random = new Random();
     }
 
-    public static GameResult newWaterGame(List<PlantDna> hand) {
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            if (i < 2 || i > 3)
-                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
-            else
-                lines.add(new Line(i, LineState.WATER, new LawnMower(i)));
-
-        new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(GameMode.WATER, e.getWinner(), getCurrentGameEngine().plantsKilled(),
-                    getCurrentGameEngine().zombiesKilled());
-        }
+    public static Effect<GameResult> newWaterGame(List<PlantDna> hand) {
+        return new Effect<>(h-> {
+            List<Line> lines = new ArrayList<>();
+            for (int i = 0; i < 5; i++)
+                if (i == 2)
+                    lines.add(new Line(i, LineState.WATER, new LawnMower(i)));        
+                else
+                    lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
+            new GameEngine();
+            commonGraphic(
+                GameMode.WATER,
+                Effect.syncWork(() -> h.success(new GameResult())),
+                (e)->{
+                h.success(new GameResult(
+                    GameMode.WATER,
+                    e.getWinner(),
+                    getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled()
+                ));
+            });
+            getCurrentGameEngine().config(new GameDna(new DayModeUser(hand), new DayModeAI(), lines));
+        });
     }
 
     private static void commonGraphic(GameMode gameMode, Effect<Unit> onAbort, Consumer<EndGameException> consumer){
