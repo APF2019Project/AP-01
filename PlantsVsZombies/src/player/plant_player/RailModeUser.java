@@ -36,10 +36,11 @@ public class RailModeUser implements PlantPlayer {
 
     private void randomPlantDnaAdder() {
         if (remainTurn != 0) {
-            if (gameEngine.getTurn() % GameEngine.getFRAME() == 0) remainTurn--;
+            remainTurn--;
             return;
         }
         remainTurn = (1 + rnd.nextInt(3))*GameEngine.getFRAME();
+        if (plantDans.size() > 7) return;
         List<PlantDna> allDnas = Account.getCurrentUserPlants();
         PlantDna plantDna = allDnas.get(rnd.nextInt(allDnas.size()));
         plantDans.add(plantDna);
@@ -57,7 +58,7 @@ public class RailModeUser implements PlantPlayer {
     private void reArrange() {
         int i = 0;
         for (GameCard gameCard: gameCards) {
-            gameCard.setTranslateX((i + 0.3) * Program.screenX * 0.11);
+            gameCard.setTranslateX((i + 0.5) * Program.screenX * 0.07);
             i++;
         }
     }
