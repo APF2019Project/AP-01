@@ -49,7 +49,7 @@ public class Ammunition extends Creature {
     private void move() {
         int direction = 1;
         if (ammunitionDna.getSpeed() < 0) direction = -1;
-        for (int i = 0; i != ammunitionDna.getSpeed() * 2; i += direction) {
+        for (int i = 0; i != ammunitionDna.getSpeed(); i += direction) {
             effectAll();
             if (!gameEngine.alive(this)) return;
             try {

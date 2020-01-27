@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
-import game.GameEngine;
 import line.LineState;
 
 import java.util.ArrayList;
@@ -32,8 +31,14 @@ public class PlantDna extends BeingDna {
     return ammunitionDna;
   }
 
-  public int getCooldown() {
-    return cooldown * GameEngine.getFRAME();
+  public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
+                  int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
+                  LineState contain, boolean explosive) {
+    super(name, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth, lineState);
+    this.ammunitionDna = ammunitionDna;
+    this.cooldown = cooldown;
+    this.contain = contain;
+    Explosive = explosive;
   }
 
   public boolean isExplosive() {
@@ -49,14 +54,8 @@ public class PlantDna extends BeingDna {
             "price: " + getGamePrice();
   }
 
-  public PlantDna(String name, int speed, boolean leftToRight, int powerOfDestruction, int shopPrice,
-      int gamePrice, int firstHealth, LineState lineState, ArrayList<AmmunitionDna> ammunitionDna, int cooldown,
-      LineState contain, boolean explosive) {
-      super(name, speed, leftToRight, powerOfDestruction, shopPrice, gamePrice, firstHealth * GameEngine.getFRAME() * 3, lineState);
-    this.ammunitionDna = ammunitionDna;
-    this.cooldown = cooldown;
-    this.contain = contain;
-    Explosive = explosive;
+  public int getCooldown() {
+    return cooldown;
   }
 
   public LineState getContain() {

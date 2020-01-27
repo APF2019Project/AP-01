@@ -53,6 +53,10 @@ public class GameEngine {
         return FRAME;
     }
 
+    public static Integer getSecPerTurn() {
+        return SEC_PER_TURN;
+    }
+
     public GameEngine() {
         currentGameEngine = this;
         random = new Random();
@@ -87,7 +91,6 @@ public class GameEngine {
         );
         pane.getChildren().add(background);
         Group group = new Group();
-        //group.setTranslateY();
         getCurrentGameEngine().group = group;
         pane.getChildren().add(group);
         getCurrentGameEngine().playerGroup = new Group();
