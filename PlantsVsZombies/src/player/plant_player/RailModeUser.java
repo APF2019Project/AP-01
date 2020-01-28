@@ -63,7 +63,7 @@ public class RailModeUser implements PlantPlayer {
         List<PlantDna> allDnas = Account.getCurrentUserPlants();
         PlantDna plantDna = allDnas.get(rnd.nextInt(allDnas.size()));
         plantDans.add(plantDna);
-        GameCard gameCard = new GameCard(this, plantDna, 0, 10, Program.screenX * 0.06);
+        GameCard gameCard = new GameCard(this, plantDna, 0, 10, Program.screenX * 0.055);
         gameCards.add(gameCard);
         group.getChildren().add(gameCard);
     }
