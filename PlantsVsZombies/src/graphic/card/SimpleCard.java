@@ -27,7 +27,7 @@ public class SimpleCard extends Group {
   }
 
   public void setColor(Color cUp, Color cDown, double percent) {
-    progress.setHeight(size*1.3*percent);
+    progress.setHeight(size * 1.4 * percent);
     rectangle.setFill(cDown);
     progress.setFill(cUp);
   }
