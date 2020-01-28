@@ -7,7 +7,6 @@ import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
 import graphic.game.Bil;
-import graphic.game.CreatureNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -70,7 +69,7 @@ public class DayModeUser implements PlantPlayer {
                 dna,
                 (i + 1.5) * Program.screenX * 0.07,
                 10,
-                Program.screenX * 0.06
+                    Program.screenX * 0.055
             );
             group.getChildren()
                     .add(x);

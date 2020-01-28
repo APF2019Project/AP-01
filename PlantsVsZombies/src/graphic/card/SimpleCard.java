@@ -19,6 +19,7 @@ public class SimpleCard extends Group {
   protected ImageView imageView;
   protected double size;
   protected Text description;
+  protected Text tName;
 
   public void setColor(Color c) {
     progress.setHeight(0);
@@ -38,17 +39,20 @@ public class SimpleCard extends Group {
     this.setTranslateY(y);
     rectangle = new Rectangle();
     rectangle.setWidth(size);
-    rectangle.setHeight(size*1.3);
+    rectangle.setHeight(size * 1.4);
     progress = new Rectangle();
     progress.setWidth(size);
     progress.setHeight(0);
     this.getChildren().add(rectangle);
     this.getChildren().add(progress);
     Text tName = new Text();
-    tName.setText(" " + dna.getName());
+    tName.setText(dna.getName());
+    tName.setWrappingWidth(size);
+    tName.setTextAlignment(TextAlignment.CENTER);
     tName.setX(0);
     tName.setY(size / 8);
     tName.setFont(Font.font(size / 8));
+    this.tName = tName;
     this.getChildren().add(tName);
     try {
       double imageMargin = size * 0.03;
@@ -59,7 +63,7 @@ public class SimpleCard extends Group {
       );
       imageView.setFitHeight(size-2*imageMargin);
       imageView.setFitWidth(size-2*imageMargin);
-      imageView.setY(size / 8 + imageMargin);
+      imageView.setY(size / 8 + size / 10 + imageMargin);
       imageView.setX(imageMargin);
       this.getChildren().add(imageView);
     } catch (Throwable e) {
