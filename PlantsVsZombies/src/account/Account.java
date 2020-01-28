@@ -2,7 +2,11 @@ package account;
 
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
-import javafx.scene.layout.Pane;
+import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import main.Program;
 import page.ErrorMessage;
 import page.Form;
@@ -14,40 +18,33 @@ import page.menu.Menu;
 import util.Effect;
 import util.Unit;
 
+import javax.naming.NamingException;
+import javax.security.sasl.AuthenticationException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.naming.NamingException;
-import javax.security.sasl.AuthenticationException;
 
 public class Account implements Serializable {
   private static final long serialVersionUID = -5582985394951882515L;
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
   static Account current;
   private static Map<String, Account> ALL = new HashMap<>();
+  //private String passwordSalt;
+  public int score;
   Store store;
   private String username;
   private String passwordHash;
-  //private String passwordSalt;
-  public int score;
-
-  public static Account getCurrentAccount() {
-    return current;
-  }
-
-  public Store getStore() {
-    return store;
-  }
 
   private Account(String username, String password) {
     this.username = username;
     this.passwordHash = password;
     this.store = new Store(this);
     ALL.put(username, this);
+  }
+
+  public static Account getCurrentAccount() {
+    return current;
   }
 
   public static void backupAll() {
@@ -61,18 +58,6 @@ public class Account implements Serializable {
     } catch (IOException i) {
       ErrorMessage.from(i).action();
     }
-  }
-
-  public static class LeaderBoardPage implements Page<Void> {
-
-    @Override
-    public Effect<Void> action() {
-      return new Effect<>(h->{
-        Pane pane = new Pane();
-        Program.stage.getScene().setRoot(pane);
-      });
-    }
-    
   }
 
   public static Page<Unit> profilePage() {
@@ -96,36 +81,36 @@ public class Account implements Serializable {
               }
 
             },
-            new ActionButton<>("change", 
-              (new Form("Enter username", "Enter password"))
-                      .action()
-                      .flatMap(data -> Effect.syncWork(()->{
-                        Account.login(data[0], data[1]);
-                      }))
-                      .showError()
-                      .map(x -> "Account changed successfully")
-                      .show()
+            new ActionButton<>("change",
+                    (new Form("Enter username", "Enter password"))
+                            .action()
+                            .flatMap(data -> Effect.syncWork(() -> {
+                              Account.login(data[0], data[1]);
+                            }))
+                            .showError()
+                            .map(x -> "Account changed successfully")
+                            .show()
             ),
-            new ActionButton<>("rename", 
-              (new Form("Enter new username"))
-                      .action()
-                      .flatMap(data -> Account.current.rename(data[0]))
-                      .showError()
-                      .map(x -> "Your username changed successfully")
-                      .show()
+            new ActionButton<>("rename",
+                    (new Form("Enter new username"))
+                            .action()
+                            .flatMap(data -> Account.current.rename(data[0]))
+                            .showError()
+                            .map(x -> "Your username changed successfully")
+                            .show()
             ),
             new ActionButton<>("create",
-              (new Form("Enter new username", "Enter password"))
-                      .action()
-                      .flatMap(data -> Effect.syncWork(()->{
-                        Account.create(data[0], data[1]);
-                      }))
-                      .map((x) -> "Account created successfully")
-                      .show()
-                      .showError()
+                    (new Form("Enter new username", "Enter password"))
+                            .action()
+                            .flatMap(data -> Effect.syncWork(() -> {
+                              Account.create(data[0], data[1]);
+                            }))
+                            .map((x) -> "Account created successfully")
+                            .show()
+                            .showError()
             ),
             new ActionButton<>("Show", Effect.ok()
-            .map(x -> Account.current.username).show())
+                    .map(x -> Account.current.username).show())
     );
   }
 
@@ -147,8 +132,8 @@ public class Account implements Serializable {
   }
 
   public static Effect<Unit> create(String username, String password) {
-    return Effect.syncWork(()->{
-      if (getByUsername(username) != null) 
+    return Effect.syncWork(() -> {
+      if (getByUsername(username) != null)
         throw new NamingException();
       new Account(username, password);
     });
@@ -169,6 +154,10 @@ public class Account implements Serializable {
 
   public static ArrayList<ZombieDna> getCurrentUserZombies() {
     return Account.current.getZombies();
+  }
+
+  public Store getStore() {
+    return store;
   }
 
   public ArrayList<PlantDna> getPlants() {
@@ -201,5 +190,44 @@ public class Account implements Serializable {
 
   private boolean matchPassword(String password) {
     return this.passwordHash.equals(password);
+  }
+
+  public static class LeaderBoardPage implements Page<Void> {
+    String format = "    %-30s %5s %7s %5s %7s";
+    String header = String.format(
+            format, "Name", "|", "Score", "|", "Money"
+    );
+    String between = "----------------------------------------------------------------------";
+
+    Text txt(String s) {
+      Text txt = new Text(s);
+      txt.setFont(Font.font("monospaced", 25));
+      return txt;
+    }
+
+    @Override
+    public Effect<Void> action() {
+      return new Effect<>(h -> {
+
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.TOP_CENTER);
+
+        pane.getChildren().add(txt(header));
+        pane.getChildren().add(txt(between));
+        ALL.values().stream().sorted((y, x) -> {
+          if (x.score != y.score) return x.score - y.score;
+          if (x.store.money != y.store.money) return x.store.money - y.store.money;
+          return 0;
+        }).forEachOrdered(x -> pane.getChildren().add(txt(String.format(
+                format, x.username, "|", "" + x.score, "|", "" + x.store.money
+        ))));
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(pane);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        Program.stage.getScene().setRoot(scrollPane);
+      });
+    }
+
   }
 }
