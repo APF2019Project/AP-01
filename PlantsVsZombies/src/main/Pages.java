@@ -30,7 +30,7 @@ public class Pages {
           new SimpleButton<>("Rail", GameEngine.newRailGame()),
           new SimpleButton<>("Zombie",
                   new Collection<ZombieDna>(Account::getCurrentUserZombies, 7).action()
-                          .map(GameEngine::newZombieGame)),
+                          .flatMap(GameEngine::newZombieGame)),
           new SimpleButton<GameResult>("PVP", new Form("Enter opponent username").action()
                   .map(opUsername -> Account.getByUsername(opUsername[0]))
                   .flatMap(opUser -> new Collection<PlantDna>(Account::getCurrentUserPlants, 7).action()
