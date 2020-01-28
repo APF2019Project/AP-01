@@ -4,7 +4,6 @@
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/Wallpaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Wallpaper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +35,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23793103" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -115,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00006" summary="declares plant and zombie">
-      <created>1576410355147</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1576410355147</updated>
     </task>
     <task id="LOCAL-00007" summary="bezan bere">
       <created>1576411616061</created>
@@ -459,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580216557045</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="new back ground">
+      <created>1580222838286</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1580222838286</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug fixing in pages (casting List to ArrayList)" />
     <MESSAGE value="getAmmunition + PlantDna.toString()" />
     <MESSAGE value="lawn mower added :D" />
     <MESSAGE value="now gameEngine returns copy and alive added" />
@@ -559,7 +558,8 @@
     <MESSAGE value="adds leader board" />
     <MESSAGE value="adds close button to leader board" />
     <MESSAGE value="fixes leader board" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes leader board" />
+    <MESSAGE value="new back ground" />
+    <option name="LAST_COMMIT_MESSAGE" value="new back ground" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

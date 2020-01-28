@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -197,16 +196,16 @@ public class Account implements Serializable {
   }
 
   public static class LeaderBoardPage implements Page<Void> {
-    String format = "    %-30s %5s %7s %5s %7s";
+    String format = "    %-10s %5s %7s %5s %7s";
     String header = String.format(
             format, "Name", "|", "Score", "|", "Money"
     );
-    String between = "----------------------------------------------------------------------";
+    String between = "-----------------------------------------------------";
 
     Text txt(String s) {
       Text txt = new Text(s);
-      txt.setFill(Color.WHITESMOKE);
-      txt.setFont(Font.font("monospaced", FontWeight.SEMI_BOLD, Program.screenX / 60));
+      //txt.setFill(Color.WHITESMOKE);
+      txt.setFont(Font.font("monospaced", FontWeight.EXTRA_BOLD, Program.screenX / 50));
       return txt;
     }
 
@@ -215,6 +214,7 @@ public class Account implements Serializable {
       return new Effect<>(h -> {
         VBox pane = new VBox();
         pane.setAlignment(Pos.TOP_CENTER);
+
         CloseButton closeButton = new CloseButton();
         closeButton.setOnMouseClicked(e -> {
           h.failure(new Error("end menu"));
@@ -224,6 +224,8 @@ public class Account implements Serializable {
         hBox.setAlignment(Pos.CENTER_LEFT);
         pane.getChildren().add(hBox);
 
+
+        pane.getChildren().addAll(txt(""));
         pane.getChildren().add(txt(header));
         pane.getChildren().add(txt(between));
         ALL.values().stream().sorted((y, x) -> {
