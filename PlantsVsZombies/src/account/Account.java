@@ -212,6 +212,10 @@ public class Account implements Serializable {
     @Override
     public Effect<Void> action() {
       return new Effect<>(h -> {
+        Image image = new Image(Program.getRes("images/wallpaper.jpg"));
+        Background background = new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false)));
+
         VBox pane = new VBox();
         pane.setAlignment(Pos.TOP_CENTER);
 
@@ -236,13 +240,11 @@ public class Account implements Serializable {
                 format, x.username, "|", "" + x.score, "|", "" + x.store.money
         ))));
         ScrollPane scrollPane = new ScrollPane();
-        pane.setBackground(new Background(new BackgroundImage(new Image(Program.getRes("images/wallpaper.jpg")), BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+        pane.setBackground(background);
         scrollPane.setContent(pane);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
-        scrollPane.setBackground(new Background(new BackgroundImage(new Image(Program.getRes("images/wallpaper.jpg")), BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+        scrollPane.setBackground(background);
 
         Program.stage.getScene().setRoot(scrollPane);
       });
