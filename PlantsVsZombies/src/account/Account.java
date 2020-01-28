@@ -8,6 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import main.Program;
 import page.ErrorMessage;
@@ -203,7 +204,8 @@ public class Account implements Serializable {
 
     Text txt(String s) {
       Text txt = new Text(s);
-      txt.setFont(Font.font("monospaced", 25));
+      //txt.setFill(Color.WHITESMOKE);
+      txt.setFont(Font.font("monospaced", FontWeight.SEMI_BOLD, Program.screenX / 60));
       return txt;
     }
 
