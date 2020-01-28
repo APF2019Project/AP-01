@@ -7,7 +7,15 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import game.GameEngine;
 import graphic.card.GameCard;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import main.Program;
 import page.Form;
 import page.Message;
@@ -26,12 +34,23 @@ public class RailModeUser implements PlantPlayer {
     private int remainTurn;
     private Group group;
     private ArrayList<GameCard> gameCards = new ArrayList<>();
-
+    private Label recordText;
+    
     public RailModeUser() {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
         this.plantDans = new ArrayList<>();
         this.group = gameEngine.getPlayerGroup();
+        recordText = new Label("0");
+        recordText.setTranslateX(Program.screenX*0.86);
+        recordText.setTranslateY(Program.screenY*0.95);
+        recordText.setPrefWidth(Program.screenX*0.14);
+        recordText.setFont(Font.font(Program.screenY*0.05));
+        recordText.setAlignment(Pos.CENTER);
+        recordText.setBackground(new Background(
+            new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)
+        ));
+        group.getChildren().add(recordText);
     }
 
     private void randomPlantDnaAdder() {
@@ -49,10 +68,14 @@ public class RailModeUser implements PlantPlayer {
         group.getChildren().add(gameCard);
     }
 
+    int turn = 0;
+
     @Override
     public void nextTurn() throws EndGameException {
         randomPlantDnaAdder();
         reArrange();
+        turn ++;
+        recordText.setText(turn+":"+gameEngine.getDeadZombies().size()+"");
     }
 
     private void reArrange() {
