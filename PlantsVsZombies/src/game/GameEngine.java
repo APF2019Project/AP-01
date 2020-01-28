@@ -175,7 +175,7 @@ public class GameEngine {
                     getCurrentGameEngine().zombiesKilled()
                 ));
             });
-            getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new DayModeAI(), lines));
+            getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
         });
     }
 
