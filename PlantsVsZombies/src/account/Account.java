@@ -2,6 +2,7 @@ package account;
 
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
+import javafx.scene.layout.Pane;
 import main.Program;
 import page.ErrorMessage;
 import page.Form;
@@ -62,25 +63,16 @@ public class Account implements Serializable {
     }
   }
 
-  public static Page<Void> leaderBoardPage() {
-    String format = "    %-30s %5s %7s %5s %7s\n";
-    String header = String.format(
-            format, "Name", "|", "Score", "|", "Money"
-    ) +
-            "----------------------------------------------------------------------\n";
-    return () -> {
-      String table = ALL.values().stream().sorted((y,x) -> {
-        if (x.score != y.score) return x.score - y.score;
-        if (x.store.money != y.store.money) return x.store.money - y.store.money;
-        return 0;
-      })
-        .map(x -> String.format(
-          format, x.username, "|", "" + x.score, "|", "" + x.store.money
-        ))
-        .collect(Collectors.joining());
-      new Message(header + table).action();
-      return Effect.error("end page");
-    };
+  public static class LeaderBoardPage implements Page<Void> {
+
+    @Override
+    public Effect<Void> action() {
+      return new Effect<>(h->{
+        Pane pane = new Pane();
+        Program.stage.getScene().setRoot(pane);
+      });
+    }
+    
   }
 
   public static Page<Unit> profilePage() {

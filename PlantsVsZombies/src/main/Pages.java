@@ -57,7 +57,7 @@ public class Pages {
       }
       return Effect.noOp;
     })
-  ), new LinkButton<Void>("leaderboard", Account.leaderBoardPage()));
+  ), new LinkButton<Void>("leaderboard", new Account.LeaderBoardPage()));
 
   public static <U> Page<U> notImplemented() {
     return new Page<U>() {
