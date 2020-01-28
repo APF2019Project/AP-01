@@ -6,6 +6,7 @@ import creature.ammunition.Ammunition;
 import creature.being.plant.Plant;
 import exception.EndGameException;
 import exception.Winner;
+import game.GameEngine;
 
 import java.util.List;
 
@@ -51,6 +52,8 @@ public class Zombie extends Creature {
     }
     
     private Plant move() throws EndGameException {
+        // tof daram mizanam
+        if (GameEngine.getCurrentGameEngine().getTurn() % 2 == 0) return null;
         for (int i = 0; i < zombieDna.getSpeed(); i++) {
             List<Ammunition> ammunitions = gameEngine.getAmmunition(location);
             for (Ammunition ammunition: ammunitions) {
