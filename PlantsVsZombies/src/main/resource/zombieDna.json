@@ -69,6 +69,16 @@
     "crossing": [3]
   },
   {
+    "name": "Catapult zombie",
+    "lineState": "DRY",
+    "speed": 2,
+    "powerOfDestruction": 100000,
+    "firstHealth": 3,
+    "crossing": [
+      3
+    ]
+  },
+  {
     "name": "Ballon Zombie",
     "lineState": "DRY",
     "speed": 2,
@@ -130,5 +140,15 @@
     "powerOfDestruction": 100000,
     "crossing": [3],
     "firstHealth": 6
+  },
+  {
+    "name": "Pogo Zombie",
+    "lineState": "DRY",
+    "speed": 2,
+    "maxNumberOfJumps": 100000,
+    "crossing": [
+      3
+    ],
+    "firstHealth": 2
   }
 ]

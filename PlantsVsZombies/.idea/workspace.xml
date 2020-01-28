@@ -2,10 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cabbage pult/Cabbage-pult-1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cabbage pult/Cabbage_Pult_Seed.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cabbage pult/Cabbagepult_cabbage.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cabbage pult/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cabbage/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Cactus/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Catapult zombie/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Gatling Pea/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Jalapeno/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel pult/Cornpult_butter.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel pult/Cornpult_kernal.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel pult/Kernel-Pult_Seed.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel pult/Kernel-pult.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel pult/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Kernel/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Lily Pad/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Magnet-shroom/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Melon-pult/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Melon/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Pogo Zombie/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Potato Mine/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Repeater/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Snow -Pea/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Split Pea/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Tall-nut/main.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Tangle Kelp/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Threepeater/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Twin Sunflower/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Winter -Melon/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Winter Melon/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resource/images/Winter Melon/main.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/card/SimpleCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/SimpleCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/DayModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Cabbage-pult/Cabbage-pult-1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Cabbage-pult/Cabbage_Pult_Seed.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Cabbage-pult/Cabbagepult_cabbage.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Cabbage-pult/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Cactus/Cactus.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Gatling Pea/GatlingPea2009HD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Giga gargantaur/main.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Jalapeno/Jalapeno.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Kernel-pult/Cornpult_butter.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Kernel-pult/Cornpult_kernal.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Kernel-pult/Kernel-Pult_Seed.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Kernel-pult/Kernel-pult.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Kernel-pult/Kernelpult2009HD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Lily Pad/Lilypad.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Magnet-shroom/HD_MAGNET.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Melon-pult/Melonpult2009HD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Potato Mine/Transparent_potato_mine.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Repeater/1769829-plant_peashooter_thumb.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Split Pea/Splitpea2009HD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Tall-nut/main" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/images/Tall-nut/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Tangle Kelp/Tangle-kelp.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Threepeater/Threepeater2009HD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Twin Sunflower/TwinSunflowerHD.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/images/Winter Melon/Winter_Melon.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/plantDna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/plantDna.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resource/zombieDna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resource/zombieDna.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,13 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00013" summary="game engine ready to go =)">
-      <created>1576587950355</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1576587950355</updated>
     </task>
     <task id="LOCAL-00014" summary="errors solved =)">
       <created>1576588358994</created>
@@ -461,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580239746831</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="adds collection for choosing hand">
+      <created>1580243948432</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1580243948432</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -536,7 +591,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="AIs now support water and bug fixes in ZombieModeUser" />
     <MESSAGE value="pretty lanMower" />
     <MESSAGE value="add FRAME" />
     <MESSAGE value="player small fixes to sync with FRAME" />
@@ -561,7 +615,8 @@
     <MESSAGE value="adds store , shopCard, etc ..." />
     <MESSAGE value="game card size fixed" />
     <MESSAGE value="makes zombies 2x slower" />
-    <option name="LAST_COMMIT_MESSAGE" value="makes zombies 2x slower" />
+    <MESSAGE value="adds collection for choosing hand" />
+    <option name="LAST_COMMIT_MESSAGE" value="adds collection for choosing hand" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

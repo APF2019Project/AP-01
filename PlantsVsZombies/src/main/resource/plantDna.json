@@ -233,7 +233,7 @@
     "firstHealth": 3,
     "cooldown": 5,
     "ammunitionDna": [{
-      "name": "Winter Melon",
+      "name": "Winter -Melon",
       "speed": 3,
       "powerOfDestruction": 3,
       "cooldown": 4,
@@ -270,7 +270,7 @@
     "ammunitionDna": []
   },
   {
-    "name": "Potate Mine",
+    "name": "Potato Mine",
     "lineState": "DRY",
     "powerOfDestruction": 100000,
     "shopPrice": 7,
