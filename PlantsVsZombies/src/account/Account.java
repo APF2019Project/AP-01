@@ -3,9 +3,11 @@ package account;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import graphic.CloseButton;
+import graphic.Wallpaper;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -212,7 +214,8 @@ public class Account implements Serializable {
     @Override
     public Effect<Void> action() {
       return new Effect<>(h -> {
-
+        Pane asli = new Pane();
+        Wallpaper.addTo(asli);
         VBox pane = new VBox();
         pane.setAlignment(Pos.TOP_CENTER);
         CloseButton closeButton = new CloseButton();
@@ -237,7 +240,8 @@ public class Account implements Serializable {
         scrollPane.setContent(pane);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
-        Program.stage.getScene().setRoot(scrollPane);
+        asli.getChildren().add(scrollPane);
+        Program.stage.getScene().setRoot(asli);
       });
     }
 

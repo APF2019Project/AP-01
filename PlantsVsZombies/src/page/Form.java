@@ -6,6 +6,7 @@ import main.Program;
 import graphic.CloseButton;
 import graphic.SimpleButton;
 import graphic.SimpleLabel;
+import graphic.Wallpaper;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -21,6 +22,7 @@ public class Form implements Page<String[]> {
   public Effect<String[]> action() {
     return new Effect<>(h -> {
       Pane myPane = new Pane();
+      Wallpaper.addTo(myPane);
       int cnt = 0, n = asks.length+1;
       double sizeY = Program.screenY/(2*n+1)/3;
       double sizeX = Program.screenX/2;
