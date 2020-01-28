@@ -6,6 +6,7 @@ import exception.EndGameException;
 import exception.InvalidGameMoveException;
 import exception.Winner;
 import game.GameEngine;
+import graphic.SimpleButton;
 import page.Form;
 import page.Message;
 import page.menu.ActionButton;
@@ -13,6 +14,9 @@ import page.menu.ExitButton;
 import page.menu.Menu;
 import util.Effect;
 import util.Unit;
+
+import javafx.scene.Group;
+import main.Program;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +28,21 @@ public class ZombieModeUser implements ZombiePlayer {
     private Integer coin = 50;
     private Random rnd;
     private List <ZombieDna> zombieDnas;
+    private Group group;
 
     public ZombieModeUser(List<ZombieDna> zombieDnas) {
         gameEngine = GameEngine.getCurrentGameEngine();
         rnd = gameEngine.getRandom();
         this.zombieDnas = zombieDnas;
+        this.group = gameEngine.getPlayerGroup();
+        /*group.getChildren().add(new SimpleButton(
+            Program.screenX*0.01,
+            0,
+            Program.screenX*0.58,
+            Program.screenY*0.145,
+            "Put zombie",
+            Effect.noOp
+        ));*/
     }
 
     @Override
@@ -40,17 +54,6 @@ public class ZombieModeUser implements ZombiePlayer {
             if (zombieDna.getFirstHealth() * 10 <= coin)
                 flag = true;
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
-        /*Effect<Unit> x = new Menu<>(
-                gameEngine::pretty,
-                new ActionButton<>("Show hand", this::showHand),
-                new ActionButton<>("Show lawn", this::showLawn),
-                new ActionButton<>("show lawn pretty", GameEngine.getCurrentGameEngine()::prettyPrint),
-                new ActionButton<>("Start", this::start),
-                new ActionButton<>("Put", this::put),
-                new ActionButton<>("Show lanes", this::showLanes),
-                new ExitButton("End Turn")
-        ).action();
-        if (x.isError()) throw new EndGameException();*/
     }
 
     private void put() {

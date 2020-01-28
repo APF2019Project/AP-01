@@ -30,6 +30,7 @@ public class GameBackground extends Group {
     r.setWidth(Program.screenX*0.58);
     r.setX(Program.screenX*0.01);
     r.setFill(Color.BROWN);
-    this.getChildren().add(r);
+    if (gameMode != GameMode.ZOMBIE)
+      this.getChildren().add(r);
   }
 }

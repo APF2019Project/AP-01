@@ -158,20 +158,25 @@ public class GameEngine {
         });
     }
 
-    public static GameResult newZombieGame(List<ZombieDna> hand) {
-        List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < 6; i++)
-            lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
-        new GameEngine();
-        GameEngine.getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
-        try {
-            while (true) {
-                getCurrentGameEngine().nextTurn();
-            }
-        } catch (EndGameException e) {
-            return new GameResult(GameMode.ZOMBIE, e.getWinner(), getCurrentGameEngine().plantsKilled(),
-                    getCurrentGameEngine().zombiesKilled());
-        }
+    public static Effect<GameResult> newZombieGame(List<ZombieDna> hand) {
+        return new Effect<>(h-> {
+            List<Line> lines = new ArrayList<>();
+            for (int i = 0; i < 5; i++)
+                lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
+            new GameEngine();
+            commonGraphic(
+                GameMode.ZOMBIE,
+                Effect.syncWork(() -> h.success(new GameResult())),
+                (e)->{
+                h.success(new GameResult(
+                    GameMode.ZOMBIE,
+                    e.getWinner(),
+                    getCurrentGameEngine().plantsKilled(),
+                    getCurrentGameEngine().zombiesKilled()
+                ));
+            });
+            getCurrentGameEngine().config(new GameDna(new ZombieModeAI(), new ZombieModeUser(hand), lines));
+        });
     }
 
     public static GameResult newPVPGame(List<PlantDna> plantHand, List<ZombieDna> zombieHand) {
