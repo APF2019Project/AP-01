@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resource/images/wallpaper.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Wallpaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Wallpaper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00005" summary="implementing basic gameEngine">
-      <created>1576409907758</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1576409907758</updated>
     </task>
     <task id="LOCAL-00006" summary="declares plant and zombie">
       <created>1576410355147</created>
@@ -459,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580215857412</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="fixes leader board">
+      <created>1580216557044</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1580216557045</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug fixes in game engine" />
     <MESSAGE value="bug fixing in pages (casting List to ArrayList)" />
     <MESSAGE value="getAmmunition + PlantDna.toString()" />
     <MESSAGE value="lawn mower added :D" />
@@ -559,7 +558,8 @@
     <MESSAGE value="bill" />
     <MESSAGE value="adds leader board" />
     <MESSAGE value="adds close button to leader board" />
-    <option name="LAST_COMMIT_MESSAGE" value="adds close button to leader board" />
+    <MESSAGE value="fixes leader board" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes leader board" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

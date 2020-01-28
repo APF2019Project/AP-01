@@ -3,12 +3,11 @@ package account;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import graphic.CloseButton;
-import graphic.Wallpaper;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -206,7 +205,7 @@ public class Account implements Serializable {
 
     Text txt(String s) {
       Text txt = new Text(s);
-      //txt.setFill(Color.WHITESMOKE);
+      txt.setFill(Color.WHITESMOKE);
       txt.setFont(Font.font("monospaced", FontWeight.SEMI_BOLD, Program.screenX / 60));
       return txt;
     }
@@ -214,8 +213,6 @@ public class Account implements Serializable {
     @Override
     public Effect<Void> action() {
       return new Effect<>(h -> {
-        Pane asli = new Pane();
-        Wallpaper.addTo(asli);
         VBox pane = new VBox();
         pane.setAlignment(Pos.TOP_CENTER);
         CloseButton closeButton = new CloseButton();
@@ -237,11 +234,15 @@ public class Account implements Serializable {
                 format, x.username, "|", "" + x.score, "|", "" + x.store.money
         ))));
         ScrollPane scrollPane = new ScrollPane();
+        pane.setBackground(new Background(new BackgroundImage(new Image(Program.getRes("images/wallpaper.jpg")), BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
         scrollPane.setContent(pane);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
-        asli.getChildren().add(scrollPane);
-        Program.stage.getScene().setRoot(asli);
+        scrollPane.setBackground(new Background(new BackgroundImage(new Image(Program.getRes("images/wallpaper.jpg")), BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+
+        Program.stage.getScene().setRoot(scrollPane);
       });
     }
 
