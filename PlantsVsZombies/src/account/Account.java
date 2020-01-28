@@ -2,8 +2,10 @@ package account;
 
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
+import graphic.CloseButton;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -211,6 +213,14 @@ public class Account implements Serializable {
 
         VBox pane = new VBox();
         pane.setAlignment(Pos.TOP_CENTER);
+        CloseButton closeButton = new CloseButton();
+        closeButton.setOnMouseClicked(e -> {
+          h.failure(new Error("end menu"));
+        });
+        HBox hBox = new HBox();
+        hBox.getChildren().add(closeButton);
+        hBox.setAlignment(Pos.CENTER_LEFT);
+        pane.getChildren().add(hBox);
 
         pane.getChildren().add(txt(header));
         pane.getChildren().add(txt(between));
