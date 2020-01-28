@@ -18,7 +18,7 @@ public class GameCard extends SimpleCard {
   private boolean dragged = false;
 
   public GameCard(PlantPlayer owner, PlantDna dna, double x, double y, double size) {
-    super(dna, x, y, size);
+    super(dna, x, y, size, dna.getGamePrice() + "");
     final Delta dragDelta = new Delta();
     Node label = this;
     label.setOnMousePressed(new EventHandler<MouseEvent>() {

@@ -10,7 +10,7 @@ public class SelectableCard extends SimpleCard {
   private boolean selected = false;
 
   public SelectableCard(Dna dna, double x, double y, double size, Effect<Unit> onChange) {
-    super(dna, x, y, size);
+    super(dna, x, y, size, "");
     recolor();
     this.setOnMouseEntered(e -> {
       rectangle.setFill(Color.CADETBLUE);

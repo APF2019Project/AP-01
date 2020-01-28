@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/card/GameCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/GameCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/card/SelectableCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/SelectableCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/card/SimpleCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/SimpleCard.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,13 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00008" summary="fix errors in gameEngine">
-      <created>1576413732469</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1576413732469</updated>
     </task>
     <task id="LOCAL-00009" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;PlantsVsZombies/src/game/GameEngine.java">
       <created>1576495397843</created>
@@ -459,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580223241297</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="leader board fix =(">
+      <created>1580224104860</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1580224104861</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +536,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="lawn mower added :D" />
     <MESSAGE value="now gameEngine returns copy and alive added" />
     <MESSAGE value="check alive(ammunition) in Zombie" />
     <MESSAGE value="support of different line states in gameEngine (probably =))" />
@@ -559,7 +560,8 @@
     <MESSAGE value="fixes leader board" />
     <MESSAGE value="new back ground" />
     <MESSAGE value="leader board ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="leader board ready" />
+    <MESSAGE value="leader board fix =(" />
+    <option name="LAST_COMMIT_MESSAGE" value="leader board fix =(" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
