@@ -2,26 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/041881d005b3e829ba43b379332532273f3e6a14" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/041881d005b3e829ba43b379332532273f3e6a14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2ea043d9dae8789a33811ff71355fbf7cfa8aefc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30ed312fcacb5d1a522b3f0edabc4d6d64e312ae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dc4325f34561bbd4bad8a8fb73a034e01b8d091" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dc4325f34561bbd4bad8a8fb73a034e01b8d091" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47d434b5b9ac225763f7f25cd4cbfe74870cd89a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f64d804256222b802cc997a2e3043e660622dc0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f64d804256222b802cc997a2e3043e660622dc0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/742520f5b5f1c181bd04cf27221dbd8270789ac1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89ef9530803ecac5fa2e357c3a03393b5fb70bb0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/e/8ee8dadd87109b2a91f29197dfc099e33f8080bc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f9bc8e407f15d80d4d794b5bc3b2b5fa7ef77a5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92915ecb4988961451e0927bde69b4ccbc2b80e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92b1f6917312ef5b4f563b0edfb00cc10415c2ad" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8de755da33f80b51bf0cf3615d47019fec2ed48" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8de755da33f80b51bf0cf3615d47019fec2ed48" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baae76ac76027f0aed9071419d0e3e67833330ef" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baae76ac76027f0aed9071419d0e3e67833330ef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/4/e434d4e44ea1813ddc65c650467f6ec0f28332f7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8e86cf355ab09d483dd7f73b96cfa44f24b0faf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8e86cf355ab09d483dd7f73b96cfa44f24b0faf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb0b7e36f992a93bf8472ac9f3183b3f3f49206d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb0b7e36f992a93bf8472ac9f3183b3f3f49206d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/AuthenticationForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/Wallpaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/Wallpaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Pages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Pages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/Message.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +119,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00015" summary="error solved again =)">
-      <created>1576589398499</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1576589398499</updated>
     </task>
     <task id="LOCAL-00016" summary="gameEngine v0.1 ready =)">
       <created>1576590759183</created>
@@ -477,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580248114686</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="leader board update">
+      <created>1580278651564</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1580278651565</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -552,7 +538,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add FRAME" />
     <MESSAGE value="player small fixes to sync with FRAME" />
     <MESSAGE value="full screen update" />
     <MESSAGE value="random update" />
@@ -577,7 +562,8 @@
     <MESSAGE value="makes zombies 2x slower" />
     <MESSAGE value="adds collection for choosing hand" />
     <MESSAGE value="makes images great again :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="makes images great again :D" />
+    <MESSAGE value="leader board update" />
+    <option name="LAST_COMMIT_MESSAGE" value="leader board update" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

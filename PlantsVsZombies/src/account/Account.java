@@ -90,17 +90,15 @@ public class Account implements Serializable {
                             .flatMap(data -> Effect.syncWork(() -> {
                               Account.login(data[0], data[1]);
                             }))
-                            .showError()
                             .map(x -> "Account changed successfully")
-                            .show()
+                            .show().showError()
             ),
             new ActionButton<>("rename",
                     (new Form("Enter new username"))
                             .action()
                             .flatMap(data -> Account.current.rename(data[0]))
-                            .showError()
                             .map(x -> "Your username changed successfully")
-                            .show()
+                            .show().showError()
             ),
             new ActionButton<>("create",
                     (new Form("Enter new username", "Enter password"))
@@ -113,7 +111,7 @@ public class Account implements Serializable {
                             .showError()
             ),
             new ActionButton<>("Show", Effect.ok()
-                    .map(x -> Account.current.username).show())
+                    .map(x -> "Username: " + Account.current.username).show())
     );
   }
 
@@ -137,7 +135,7 @@ public class Account implements Serializable {
   public static Effect<Unit> create(String username, String password) {
     return Effect.syncWork(() -> {
       if (getByUsername(username) != null)
-        throw new NamingException();
+          throw new NamingException("Username used before");
       new Account(username, password);
     });
   }

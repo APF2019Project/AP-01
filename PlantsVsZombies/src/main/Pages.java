@@ -6,10 +6,7 @@ import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import game.GameEngine;
 import game.GameResult;
-import page.Collection;
-import page.Form;
-import page.Message;
-import page.Page;
+import page.*;
 import page.menu.ActionButton;
 import page.menu.LinkButton;
 import page.menu.Menu;
@@ -17,6 +14,7 @@ import page.menu.SimpleButton;
 import util.Effect;
 import util.Unit;
 
+import javax.naming.NamingException;
 import javax.security.sasl.AuthenticationException;
 
 public class Pages {
@@ -42,18 +40,23 @@ public class Pages {
           new LinkButton<Unit>("profile", Account.profilePage()),
           new LinkButton<Unit>("shop", new ShopPage()));
   public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
-          (new Form("Enter new username", "Enter password"))
+          (new AuthenticationForm("Enter new username", "Enter password"))
                   .action()
                   .flatMap(data -> Account.create(data[0], data[1]))
-                  .map((x) -> "Account created successfully").show().showError()
+                  .map((x) -> "Account created successfully").show().catchThen(e -> {
+              if (e instanceof NamingException) {
+                  return Message.show("username used before");
+              }
+              return Effect.noOp;
+          })
   ), new ActionButton<Void>("login",
-          (new Form("Enter username", "Enter password"))
+          (new AuthenticationForm("Enter username", "Enter password"))
                   .action()
                   .flatMap(data -> Account.login(data[0], data[1]))
                   .flatMap(x -> mainMenu.action())
                   .catchThen(e -> {
                     if (e instanceof AuthenticationException) {
-                      return Message.show("login failed");
+                        return Message.show("username or password in not correct");
                     }
                     return Effect.noOp;
                   })
