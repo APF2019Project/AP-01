@@ -1,3 +1,6 @@
 
-¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÎóÉúÿÿÿÿ8Ìê†ó-
-wsquid:S1210 "YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(§ş™8Ìê†ó-
+isquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(Çº•¦8ö§×‘ş-
+"squid:ClassVariableVisibilityCheck"XMake creatureNode a static final constant or non-public and provide accessors if needed.( öãÕ8ö§×‘ş-
+wsquid:S1210'"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(§ş™8Ìê†ó-
+nsquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(¡“öÍúÿÿÿÿ8ö§×‘ş-
+°%squid:RedundantThrowsDeclarationCheck"sRemove the declaration of thrown exception 'exception.EndGameException', as it cannot be thrown from method's body.(ÎóÉúÿÿÿÿ8ö§×‘ş-

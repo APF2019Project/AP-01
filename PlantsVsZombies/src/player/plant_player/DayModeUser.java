@@ -202,8 +202,8 @@ public class DayModeUser implements PlantPlayer {
             if (dna.getGamePrice() > sun)
                 throw new InvalidGameMoveException("not enough sun");
             int i = plantDans.indexOf(dna);
-            coolDownTimeLeft.set(i, dna.getCooldown());
             gameEngine.newPlant2(dna, x, y);
+            coolDownTimeLeft.set(i, dna.getCooldown());
             sun -= dna.getGamePrice();
         } catch (InvalidGameMoveException e) {
             // TODO Auto-generated catch block
