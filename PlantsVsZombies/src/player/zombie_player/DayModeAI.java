@@ -74,4 +74,10 @@ public class DayModeAI implements ZombiePlayer {
     public void showHand() {
         throw new UnsupportedOperationException("zombie ai can't show hand =)!");
     }
+
+    @Override
+    public void zombie(ZombieDna dna, int x, int y) {
+        // TODO Auto-generated method stub
+
+    }
 }

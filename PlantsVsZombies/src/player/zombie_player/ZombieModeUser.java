@@ -5,7 +5,19 @@ import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
 import exception.Winner;
 import game.GameEngine;
+import graphic.card.GameCard;
+import graphic.card.ZombieGameCard;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import main.Program;
 import page.Message;
 
 import java.util.ArrayList;
@@ -19,6 +31,8 @@ public class ZombieModeUser implements ZombiePlayer {
     private Random rnd;
     private List <ZombieDna> zombieDnas;
     private Group group;
+    private Label sunText;
+    private List<ZombieGameCard> gameCards;
 
     public ZombieModeUser(List<ZombieDna> zombieDnas) {
         gameEngine = GameEngine.getCurrentGameEngine();
@@ -26,14 +40,37 @@ public class ZombieModeUser implements ZombiePlayer {
         this.zombieDnas = zombieDnas;
         this.group = gameEngine.getPlayerGroup();
         coin = 100 * GameEngine.getFRAME();
-        /*group.getChildren().add(new SimpleButton(
-            Program.screenX*0.01,
-            0,
-            Program.screenX*0.58,
-            Program.screenY*0.145,
-            "Put zombie",
-            Effect.noOp
-        ));*/
+        Rectangle rectangle = new Rectangle();
+        rectangle.setX(Program.screenX*0.02);
+        rectangle.setY(Program.screenX*0.01);
+        rectangle.setWidth(Program.screenX*0.06);
+        rectangle.setHeight(Program.screenX*0.06);
+        rectangle.setFill(Color.rgb(106, 71, 27));
+        group.getChildren().add(rectangle);
+        sunText = new Label("0");
+        sunText.setTranslateX(Program.screenX*0.025);
+        sunText.setTranslateY(Program.screenX*0.04);
+        sunText.setPrefWidth(Program.screenX*0.05);
+        sunText.setFont(Font.font(Program.screenX*0.02));
+        sunText.setAlignment(Pos.CENTER);
+        sunText.setBackground(new Background(
+            new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)
+        ));
+        group.getChildren().add(sunText);
+        int i = 0;
+        for (ZombieDna dna : zombieDnas) {
+            ZombieGameCard x = new ZombieGameCard(
+                this,
+                dna,
+                (i + 1.5) * Program.screenX * 0.07,
+                10,
+                    Program.screenX * 0.055
+            );
+            group.getChildren()
+                    .add(x);
+            i++;
+            gameCards.add(x);
+        }
     }
 
     @Override
@@ -46,6 +83,19 @@ public class ZombieModeUser implements ZombiePlayer {
                 flag = true;
         }
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
+        sunText.setText(coin+"");
+        for (int i=0;i<gameCards.size(); i++) {
+            if (zombieDnas.get(i).getGamePrice() <= coin) {
+                gameCards.get(i).setColor(Color.WHITE);
+                gameCards.get(i).enabled = true;
+            }
+            else {
+                gameCards.get(i).setColor(
+                    Color.RED
+                );
+                gameCards.get(i).enabled = false;
+            }
+        }
     }
 
     private void put() {
@@ -103,6 +153,12 @@ public class ZombieModeUser implements ZombiePlayer {
             stringBuilder.append(zombieDna.toString()).append('\n');
         }
         Message.show(stringBuilder.toString());
+    }
+
+    @Override
+    public void zombie(ZombieDna dna, int x, int y) {
+        // TODO Auto-generated method stub
+
     }
 }
 
