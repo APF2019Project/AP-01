@@ -35,6 +35,7 @@ public class ZombieModeUser implements ZombiePlayer {
         rnd = gameEngine.getRandom();
         this.zombieDnas = zombieDnas;
         this.group = gameEngine.getPlayerGroup();
+        coin = 100;
         /*group.getChildren().add(new SimpleButton(
             Program.screenX*0.01,
             0,
