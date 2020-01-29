@@ -3,20 +3,10 @@ package player.zombie_player;
 import creature.being.plant.Plant;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
-import exception.InvalidGameMoveException;
 import exception.Winner;
 import game.GameEngine;
-import graphic.SimpleButton;
-import page.Form;
-import page.Message;
-import page.menu.ActionButton;
-import page.menu.ExitButton;
-import page.menu.Menu;
-import util.Effect;
-import util.Unit;
-
 import javafx.scene.Group;
-import main.Program;
+import page.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +25,7 @@ public class ZombieModeUser implements ZombiePlayer {
         rnd = gameEngine.getRandom();
         this.zombieDnas = zombieDnas;
         this.group = gameEngine.getPlayerGroup();
-        coin = 100;
+        coin = 100 * GameEngine.getFRAME();
         /*group.getChildren().add(new SimpleButton(
             Program.screenX*0.01,
             0,
@@ -51,9 +41,10 @@ public class ZombieModeUser implements ZombiePlayer {
         for (Plant plant : gameEngine.getDeadPlantsLastTurn())
             coin += plant.getPlantDna().getFirstHealth();
         boolean flag = false;
-        for (ZombieDna zombieDna : zombieDnas)
+        for (ZombieDna zombieDna : zombieDnas) {
             if (zombieDna.getFirstHealth() * 10 <= coin)
                 flag = true;
+        }
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
     }
 
