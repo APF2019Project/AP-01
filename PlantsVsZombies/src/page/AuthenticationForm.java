@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -67,7 +68,14 @@ public class AuthenticationForm extends Form {
             ));
 
             vBox.setBackground(background);
-            Program.stage.getScene().setRoot(vBox);
+
+            Pane pane = new Pane();
+            pane.getChildren().add(vBox);
+            vBox.setMinHeight(Y);
+            vBox.setMaxHeight(Y);
+            vBox.setMinWidth(X);
+            vBox.setMaxWidth(X);
+            Program.stage.getScene().setRoot(pane);
 
         });
     }
