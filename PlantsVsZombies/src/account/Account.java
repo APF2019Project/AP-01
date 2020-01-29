@@ -87,25 +87,27 @@ public class Account implements Serializable {
             new ActionButton<>("change",
                     (new Form("Enter username", "Enter password"))
                             .action()
-                            .flatMap(data -> Effect.syncWork(() -> {
-                              Account.login(data[0], data[1]);
-                            }))
+                            .flatMap(data -> Account.login(data[0], data[1]))
                             .map(x -> "Account changed successfully")
-                            .show().showError()
+                            .show().catchThen(e->
+                              Message.show("ghalate ramz ya username")
+                            )
             ),
             new ActionButton<>("rename",
                     (new Form("Enter new username"))
                             .action()
                             .flatMap(data -> Account.current.rename(data[0]))
                             .map(x -> "Your username changed successfully")
-                            .show().showError()
+                            .show().catchThen(e->
+                              Message.show("tekrarie username")
+                            )
             ),
             new ActionButton<>("create",
                     (new Form("Enter new username", "Enter password"))
                             .action()
-                            .flatMap(data -> Effect.syncWork(() -> {
-                              Account.create(data[0], data[1]);
-                            }))
+                            .flatMap(data -> 
+                              Account.create(data[0], data[1])
+                            )
                             .map((x) -> "Account created successfully")
                             .show()
                             .showError()
@@ -142,10 +144,15 @@ public class Account implements Serializable {
 
   public static Effect<Unit> login(String username, String password) {
     return Effect.syncWork(() -> {
+      System.out.println("x1"+current);
       Account account = getByUsername(username);
+      System.out.println("x"+username);
+      System.out.println("x2"+current);
       if (account == null) throw new AuthenticationException();
       if (!account.matchPassword(password)) throw new AuthenticationException();
+      System.out.println("x3"+current);
       current = account;
+      System.out.println("x4"+current);
     });
   }
 
@@ -263,5 +270,11 @@ public class Account implements Serializable {
       });
     }
 
+  }
+
+  @Override
+  public String toString() {
+    return "Account [passwordHash=" + passwordHash + ", score=" + score + ", store=" + store + ", username=" + username
+        + "]";
   }
 }
