@@ -4,11 +4,11 @@ import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import graphic.CloseButton;
 import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import main.Program;
 import page.ErrorMessage;
@@ -196,16 +196,16 @@ public class Account implements Serializable {
   }
 
   public static class LeaderBoardPage implements Page<Void> {
-    String format = "    %-10s %5s %7s %5s %7s";
+    String format = "    %-15s %5s %7s %5s %7s";
     String header = String.format(
             format, "Name", "|", "Score", "|", "Money"
     );
-    String between = "-----------------------------------------------------";
+    String between = "----------------------------------------------------------";
 
     Text txt(String s) {
       Text txt = new Text(s);
-      //txt.setFill(Color.WHITESMOKE);
-      txt.setFont(Font.font("monospaced", FontWeight.EXTRA_BOLD, Program.screenX / 50));
+      txt.setFill(Color.WHITESMOKE);
+      txt.setFont(Font.font("monospaced", Program.screenX / 60));
       return txt;
     }
 
@@ -229,7 +229,7 @@ public class Account implements Serializable {
         pane.getChildren().add(hBox);
 
 
-        pane.getChildren().addAll(txt(""));
+        // pane.getChildren().addAll(txt(""));
         pane.getChildren().add(txt(header));
         pane.getChildren().add(txt(between));
         ALL.values().stream().sorted((y, x) -> {
@@ -239,14 +239,29 @@ public class Account implements Serializable {
         }).forEachOrdered(x -> pane.getChildren().add(txt(String.format(
                 format, x.username, "|", "" + x.score, "|", "" + x.store.money
         ))));
-        ScrollPane scrollPane = new ScrollPane();
-        pane.setBackground(background);
-        scrollPane.setContent(pane);
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
-        scrollPane.setBackground(background);
+//        ScrollPane scrollPane = new ScrollPane();
+//        pane.setBackground(background);
+//        scrollPane.setContent(pane);
+//        scrollPane.setFitToWidth(true);
+//        scrollPane.setFitToHeight(true);
+//        scrollPane.setBackground(background);
 
-        Program.stage.getScene().setRoot(scrollPane);
+
+        final double X = Program.screenX;
+        final double Y = Program.screenY;
+        Rectangle rec = new Rectangle();
+        rec.setHeight(Y);
+        double len = X * 2 / 3;
+        rec.setWidth(len);
+        rec.setX(X - len / 2);
+        rec.setFill(Color.rgb(0, 0, 0, 0.9));
+
+        StackPane stackPane = new StackPane();
+
+        stackPane.setBackground(background);
+        stackPane.getChildren().addAll(rec, pane);
+
+        Program.stage.getScene().setRoot(stackPane);
       });
     }
 

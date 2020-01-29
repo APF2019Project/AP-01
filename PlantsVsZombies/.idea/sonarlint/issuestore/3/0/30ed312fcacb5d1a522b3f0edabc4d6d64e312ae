@@ -1,9 +1,7 @@
 
-Fsquid:S1604i"(Make this anonymous inner class a lambda(Ãƒ“†8«˜ô-
-|squid:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹“½¾ùÿÿÿÿ8«˜ô-
-|squid:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŒÊ“³şÿÿÿÿ8«˜ô-
-Msquid:S1611Z"/Remove the parentheses around the "x" parameter(ŒµäŸ8«˜ô-
-Jsquid:S1602V",Remove useless curly braces around statement(äÚ·ß8«˜ô-
-]squid:S11182":Add a private constructor to hide the implicit public one.(Î†‰šÿÿÿÿÿ8èÖóğ-
-wsquid:S2293U"YReplace the type specification in this constructor call with the diamond operator ("<>").(åú’Ó8«˜ô-
-Jsquid:S1602^",Remove useless curly braces around statement(÷ËŸ8«˜ô-
+]squid:S1118":Add a private constructor to hide the implicit public one.(Î†‰šÿÿÿÿÿ8èÖóğ-
+|squid:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(ŒÊ“³şÿÿÿÿ8«˜ô-
+|squid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÚàÂÑüÿÿÿÿ8ì¿ĞÛş-
+Rsquid:S16110"/Remove the parentheses around the "x" parameter(´œ¾ıÿÿÿÿ8ì¿ĞÛş-
+Fsquid:S1604?"(Make this anonymous inner class a lambda(Ãƒ“†8«˜ô-
+wsquid:S2293,"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğ„•·8ì¿ĞÛş-

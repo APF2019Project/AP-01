@@ -1,20 +1,17 @@
 
-T
-squid:S106|"9Replace this use of System.out or System.err by a logger.(³´å°þÿÿÿÿ
-Vsquid:S1854P":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ
-Bsquid:S00108„")Either remove or fill this block of code.(°‘’É
-gsquid:CommentedOutCodeLine9"<This block of commented-out lines of code should be removed.(Ü¤Ê«þÿÿÿÿ
-Usquid:UnusedPrivateMethod^"0Remove this unused private "createPlant" method.(×Ïô¬
-bsquid:CommentedOutCodeLine>"<This block of commented-out lines of code should be removed.(Ú¡Î‚
-™squid:S1186Š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÆœÁò
-Gsquid:S1481_"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ
-Gsquid:S1481P"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ
-Tsquid:UnusedPrivateMethodK"/Remove this unused private "showRecord" method.(Ê¢öô
-bsquid:CommentedOutCodeLineR"<This block of commented-out lines of code should be removed.(á î
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(“Ñ»Š
-Usquid:UnusedPrivateMethodO"0Remove this unused private "removePlant" method.(ˆÐª¤
-bsquid:CommentedOutCodeLineb"<This block of commented-out lines of code should be removed.(á î
-Usquid:UnusedPrivateMethod="+Remove this unused private "select" method.(÷¼¿Ýøÿÿÿÿ
-Wsquid:UnusedPrivateMethodn"-Remove this unused private "showLawn" method.(æÊÞüÿÿÿÿ
-Vsquid:S1854_":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ
+]squid:S1854l":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8Óò’“þ-
+_squid:UnusedPrivateMethodŠ"-Remove this unused private "showLawn" method.(æÊÞüÿÿÿÿ8Óò’“þ-
+ squid:S1186—"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÆœÁò8Óò’“þ-
+[squid:UnusedPrivateMethodg"/Remove this unused private "showRecord" method.(Ê¢öô8Óò’“þ-
+\squid:UnusedPrivateMethodz"0Remove this unused private "createPlant" method.(×Ïô¬8Óò’“þ-
+Nsquid:S1481l"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8Óò’“þ-
+Gsquid:S1148¦"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8Óò’“þ-
+]squid:S1854{":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8Óò’“þ-
+Vsquid:S1135¥"2Complete the task associated to this TODO comment.(ÕÌ®þÿÿÿÿ8Óò’“þ-
+isquid:CommentedOutCodeLinen"<This block of commented-out lines of code should be removed.(á î8Óò’“þ-
+isquid:CommentedOutCodeLine~"<This block of commented-out lines of code should be removed.(á î8Óò’“þ-
+¥squid:S1186’"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(´ž—ûÿÿÿÿ8Óò’“þ-
+Nsquid:S1481{"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8Óò’“þ-
+\squid:UnusedPrivateMethodk"0Remove this unused private "removePlant" method.(ˆÐª¤8Óò’“þ-
+isquid:CommentedOutCodeLineZ"<This block of commented-out lines of code should be removed.(Ú¡Î‚8Óò’“þ-
+\squid:UnusedPrivateMethodY"+Remove this unused private "select" method.(÷¼¿Ýøÿÿÿÿ8Óò’“þ-
