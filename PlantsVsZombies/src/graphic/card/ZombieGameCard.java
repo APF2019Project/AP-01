@@ -2,6 +2,7 @@ package graphic.card;
 
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
+import game.GameEngine;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -16,7 +17,7 @@ public class ZombieGameCard extends SimpleCard {
   private boolean dragged = false;
 
   public ZombieGameCard(ZombiePlayer owner, ZombieDna dna, double x, double y, double size) {
-    super(dna, x, y, size, dna.getGamePrice() + "");
+    super(dna, x, y, size, 10*dna.getFirstHealth()/GameEngine.getFRAME() + "");
     final Delta dragDelta = new Delta();
     Node label = this;
     label.setOnMousePressed(new EventHandler<MouseEvent>() {
