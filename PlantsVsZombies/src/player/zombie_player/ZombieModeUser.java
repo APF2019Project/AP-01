@@ -83,7 +83,7 @@ public class ZombieModeUser implements ZombiePlayer {
                 flag = true;
         }
         if (!flag && gameEngine.getZombies().isEmpty()) throw new EndGameException(Winner.PLANTS);
-        sunText.setText(coin+"");
+        sunText.setText((coin/GameEngine.getFRAME())+"");
         for (int i=0;i<gameCards.size(); i++) {
             if (zombieDnas.get(i).getGamePrice() <= coin) {
                 gameCards.get(i).setColor(Color.WHITE);
