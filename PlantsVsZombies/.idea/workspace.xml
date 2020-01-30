@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PlantsVsZombies" />
+      <artifact name="PlantsVsZombies:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="zombie progress for dayModeUserAi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23793103" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -116,20 +120,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00021" summary="zombie mode ai added">
-      <created>1577021033166</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1577021033166</updated>
-    </task>
-    <task id="LOCAL-00022" summary="miner bug fixes =)">
-      <created>1577021175170</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1577021175170</updated>
     </task>
     <task id="LOCAL-00023" summary="zombie mode first release ! =D">
       <created>1577089495851</created>
@@ -460,7 +450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1580386973973</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="zombieCard done">
+      <created>1580389455771</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1580389455771</updated>
+    </task>
+    <task id="LOCAL-00071" summary="zombie progress for dayModeUserAi">
+      <created>1580392944221</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1580392944221</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -535,8 +539,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="graphic alignment" />
-    <MESSAGE value="make drag and drop more convenient and adds SEC_PER_TURN constant" />
     <MESSAGE value="FRAME sync" />
     <MESSAGE value="FRAME sync v2" />
     <MESSAGE value="speed af Amu" />
@@ -560,7 +562,9 @@
     <MESSAGE value="Zombie mode user coins syncs with frame" />
     <MESSAGE value="zombie AI ignores explosives" />
     <MESSAGE value="lily pad update + water mode zombie support" />
-    <option name="LAST_COMMIT_MESSAGE" value="lily pad update + water mode zombie support" />
+    <MESSAGE value="zombieCard done" />
+    <MESSAGE value="zombie progress for dayModeUserAi" />
+    <option name="LAST_COMMIT_MESSAGE" value="zombie progress for dayModeUserAi" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
