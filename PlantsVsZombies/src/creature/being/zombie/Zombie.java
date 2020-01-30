@@ -54,7 +54,7 @@ public class Zombie extends Creature {
     private Plant move() throws EndGameException {
         // tof daram mizanam
         if (GameEngine.getCurrentGameEngine().getTurn() % 2 == 0) return null;
-        for (int i = 0; i < zombieDna.getSpeed(); i++) {
+        for (int i = 0; i < speed; i++) {
             List<Ammunition> ammunitions = gameEngine.getAmmunition(location);
             for (Ammunition ammunition: ammunitions) {
                 if (!gameEngine.alive(ammunition)) continue;

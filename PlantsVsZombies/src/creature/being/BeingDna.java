@@ -12,7 +12,7 @@ public class BeingDna extends Dna {
   private final LineState lineState;
 
   public int getShopPrice() {
-    return shopPrice;
+      return shopPrice * 100;
   }
   public int getGamePrice() {
     return gamePrice;

@@ -16,9 +16,11 @@ public class GameCard extends SimpleCard {
 
   public boolean enabled = true;
   private boolean dragged = false;
+  private double margin;
 
   public GameCard(PlantPlayer owner, PlantDna dna, double x, double y, double size) {
     super(dna, x, y, size, dna.getGamePrice() + "");
+    margin = size * 0.7;
     final Delta dragDelta = new Delta();
     Node label = this;
     label.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -37,10 +39,13 @@ public class GameCard extends SimpleCard {
         dragged = false;
         label.setCursor(Cursor.HAND);
         double x = label.getTranslateX()+label.getLayoutX();
-        double y = label.getTranslateY()+label.getLayoutY();
+        double y = label.getTranslateY() + label.getLayoutY() + margin;
         x /= Program.screenX / 10;
-        y /= Program.screenY/5;
-        owner.plant(dna, (int)y, (int)x);
+        y /= Program.screenY / 24;
+        if (y >= 3 && y <= 23) {
+          y = (y - 3) / 4;
+          owner.plant(dna, (int) y, (int) x);
+        }
         label.setLayoutX(0);
         label.setLayoutY(0);
       }

@@ -52,9 +52,10 @@ public class DayModeAI implements ZombiePlayer {
         List<ZombieDna> allDnas = ZombieDna.getAllDnas();
         int send = 1 + random.nextInt(2 * waveNumber);
         for (int i = 0; i < send; i++) {
+            int pos = random.nextInt(gameEngine.getWidth());
             while (true) {
                 try {
-                    gameEngine.newZombie(allDnas.get(random.nextInt(allDnas.size())), random.nextInt(gameEngine.getWidth()));
+                    gameEngine.newZombie(allDnas.get(random.nextInt(allDnas.size())), pos);
                     break;
                 } catch (Exception ignored) {
                 }
