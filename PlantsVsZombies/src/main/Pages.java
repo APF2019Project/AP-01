@@ -36,7 +36,9 @@ public class Pages {
                                   .map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))))));
 
   public static final Menu<Unit> mainMenu = new Menu<Unit>(
-          new ActionButton<Unit>("play", chooseGameType.action().show()),
+          new ActionButton<Unit>("play", chooseGameType.action().flatMap(
+                result -> result.action()
+          )),
           new LinkButton<Unit>("profile", Account.profilePage()),
           new LinkButton<Unit>("shop", new ShopPage()));
   public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
