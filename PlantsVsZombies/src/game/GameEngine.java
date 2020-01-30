@@ -297,6 +297,8 @@ public class GameEngine {
         if (!DATABASE.lines.get(lineNumber).getLineState().equals(dna.getLineState())) {
             if (DATABASE.lines.get(lineNumber).getLineState().equals(LineState.WATER)) {
                 // TODO inja check konim ordak dare
+                throw new InvalidGameMoveException("ordak not supported :D");
+
             } else {
                 throw new InvalidGameMoveException("can't insert zombie here");
             }

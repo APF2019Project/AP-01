@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,13 +116,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00019" summary="RailModeAI added">
-      <created>1577014718332</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1577014718332</updated>
     </task>
     <task id="LOCAL-00020" summary="small changes in account">
       <created>1577016221185</created>
@@ -459,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580329632400</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="zombie AI ignores explosives">
+      <created>1580382629646</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1580382629647</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="null stage solved" />
     <MESSAGE value="cool down, health and speed syncing with frame" />
     <MESSAGE value="graphic alignment" />
     <MESSAGE value="make drag and drop more convenient and adds SEC_PER_TURN constant" />
@@ -559,7 +559,8 @@
     <MESSAGE value="adds basic AuthenticationForm" />
     <MESSAGE value="Ath... complete" />
     <MESSAGE value="Zombie mode user coins syncs with frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zombie mode user coins syncs with frame" />
+    <MESSAGE value="zombie AI ignores explosives" />
+    <option name="LAST_COMMIT_MESSAGE" value="zombie AI ignores explosives" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

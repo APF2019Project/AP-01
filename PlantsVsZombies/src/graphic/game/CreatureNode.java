@@ -34,6 +34,8 @@ public class CreatureNode extends Group {
     health1.setFill(Color.RED);
     if (creature instanceof Plant) {
       dna = ((Plant) creature).getPlantDna();
+      if (dna.getName().equals("Lily Pad"))
+        size *= 1.3;
     }
     if (creature instanceof Zombie) {
       dna = ((Zombie) creature).getZombieDna();
@@ -71,12 +73,15 @@ public class CreatureNode extends Group {
     }
     if (creature instanceof Plant) {
       Plant plant = (Plant)creature;
+      double lilipadMargin = Program.screenY / 50;
       if (onMe == null) {
         if (plant.plantOnMe != null) {
+          health1.setWidth(0);
           onMe = new CreatureNode(plant.plantOnMe);
           this.getChildren().add(onMe);
           onMe.setTranslateX(0);
-          onMe.setTranslateY(-10);
+          onMe.setTranslateY(-lilipadMargin);
+          // this.setTranslateY(this.getTranslateY() +lilipadMargin);
         }
       }
       else {
@@ -85,9 +90,11 @@ public class CreatureNode extends Group {
           onMe = null;
         }
         else if (plant.plantOnMe == onMe.creature) {
+          health1.setWidth(0);
           onMe.update();
           onMe.setTranslateX(0);
-          onMe.setTranslateY(-10);
+          onMe.setTranslateY(-lilipadMargin);
+          // this.setTranslateY(this.getTranslateY() +lilipadMargin);
         }
         else {
           System.exit(0);
