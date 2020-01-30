@@ -21,6 +21,7 @@ public class CreatureNode extends Group {
   double size;
   private ImageView image;
   private Rectangle health1;
+  private CreatureNode onMe;
 
   static double marginY = Program.screenY;
 
@@ -67,6 +68,31 @@ public class CreatureNode extends Group {
     }
     if (!(creature instanceof Ammunition)) {
       health1.setWidth(size * creature.getHealth() / ((BeingDna) dna).getFirstHealth());
+    }
+    if (creature instanceof Plant) {
+      Plant plant = (Plant)creature;
+      if (onMe == null) {
+        if (plant.plantOnMe != null) {
+          onMe = new CreatureNode(plant.plantOnMe);
+          this.getChildren().add(onMe);
+          onMe.setTranslateX(0);
+          onMe.setTranslateY(-10);
+        }
+      }
+      else {
+        if (plant.plantOnMe == null) {
+          this.getChildren().remove(onMe);
+          onMe = null;
+        }
+        else if (plant.plantOnMe == onMe.creature) {
+          onMe.update();
+          onMe.setTranslateX(0);
+          onMe.setTranslateY(-10);
+        }
+        else {
+          System.exit(0);
+        }
+      }
     }
   }
 }
