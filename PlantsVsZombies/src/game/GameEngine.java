@@ -388,11 +388,11 @@ public class GameEngine {
     }
 
     public SortedSet<Plant> getDeadPlantsLastTurn() {
-        return new TreeSet<>(DATABASE.deadPlants);
+        return new TreeSet<>(DATABASE.deadPlantsLastTurn);
     }
 
     public SortedSet<Zombie> getDeadZombiesLastTurn() {
-        return new TreeSet<>(DATABASE.deadZombies);
+        return new TreeSet<>(DATABASE.deadZombiesLastTurn);
     }
 
     public void addSun(int sunAmount) {

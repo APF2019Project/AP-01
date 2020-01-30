@@ -4,7 +4,7 @@
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/game/CreatureNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,13 +116,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00020" summary="small changes in account">
-      <created>1577016221185</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1577016221185</updated>
     </task>
     <task id="LOCAL-00021" summary="zombie mode ai added">
       <created>1577021033166</created>
@@ -460,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580382629647</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="lily pad update + water mode zombie support">
+      <created>1580386973973</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1580386973973</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -535,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cool down, health and speed syncing with frame" />
     <MESSAGE value="graphic alignment" />
     <MESSAGE value="make drag and drop more convenient and adds SEC_PER_TURN constant" />
     <MESSAGE value="FRAME sync" />
@@ -560,7 +559,8 @@
     <MESSAGE value="Ath... complete" />
     <MESSAGE value="Zombie mode user coins syncs with frame" />
     <MESSAGE value="zombie AI ignores explosives" />
-    <option name="LAST_COMMIT_MESSAGE" value="zombie AI ignores explosives" />
+    <MESSAGE value="lily pad update + water mode zombie support" />
+    <option name="LAST_COMMIT_MESSAGE" value="lily pad update + water mode zombie support" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -3,9 +3,9 @@ package player.zombie_player;
 import creature.being.plant.Plant;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
+import exception.InvalidGameMoveException;
 import exception.Winner;
 import game.GameEngine;
-import graphic.card.GameCard;
 import graphic.card.ZombieGameCard;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -76,7 +76,7 @@ public class ZombieModeUser implements ZombiePlayer {
     @Override
     public void nextTurn() throws EndGameException {
         for (Plant plant : gameEngine.getDeadPlantsLastTurn())
-            coin += plant.getPlantDna().getFirstHealth();
+            coin += plant.getPlantDna().getFirstHealth() * 10;
         boolean flag = false;
         for (ZombieDna zombieDna : zombieDnas) {
             if (zombieDna.getFirstHealth() * 10 <= coin)
@@ -157,7 +157,15 @@ public class ZombieModeUser implements ZombiePlayer {
 
     @Override
     public void zombie(ZombieDna dna, int x, int y) {
-        // TODO Auto-generated method stub
+        try {
+            if (dna.getFirstHealth() * 10 > coin)
+                throw new InvalidGameMoveException("not enough coin");
+            gameEngine.newZombie(dna, x);
+            coin -= dna.getFirstHealth() * 10;
+        } catch (InvalidGameMoveException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 }
