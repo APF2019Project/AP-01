@@ -280,23 +280,6 @@
     "ammunitionDna": []
   },
   {
-    "name": "Cherry Bomb",
-    "lineState": "DRY",
-    "gamePrice": 2,
-    "firstHealth": 100000,
-    "cooldown": 4,
-    "Explosive": true,
-    "ammunitionDna": [{
-      "name": "Bomb",
-      "powerOfDestruction": 100000,
-      "reduceSpeedRatio": 1,
-      "productionNumberOfAmmunitionPerUse": 9,
-      "firstTimeHealth": 1,
-      "firstHealth": 100000,
-      "type": 4
-    }]
-  },
-  {
     "name": "Magnet-shroom",
     "lineState": "DRY",
     "shopPrice": 33,
