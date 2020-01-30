@@ -150,5 +150,28 @@
       3
     ],
     "firstHealth": 2
+  },
+  {
+    "name": "Snorkel Zombie",
+    "lineState": "WATER",
+    "speed": 2,
+    "firstHealth": 2,
+    "crossing": [3],
+    "powerOfDestruction": 1
+  },
+  {
+    "name": "Dolphin Rider Zombie",
+    "lineState": "WATER",
+    "speed": 2,
+    "firstHealth": 2,
+    "powerOfDestruction": 1,
+    "crossing": [3],
+    "whenIDie": {
+      "name": "Snorkel Zombie",
+      "speed": 2,
+      "powerOfDestruction": 1,
+      "firstHealth": 2,
+      "crossing": [3]
+    }
   }
 ]
