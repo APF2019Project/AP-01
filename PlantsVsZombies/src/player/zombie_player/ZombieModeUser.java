@@ -32,7 +32,7 @@ public class ZombieModeUser implements ZombiePlayer {
     private List <ZombieDna> zombieDnas;
     private Group group;
     private Label sunText;
-    private List<ZombieGameCard> gameCards;
+    private List<ZombieGameCard> gameCards = new ArrayList<>();
 
     public ZombieModeUser(List<ZombieDna> zombieDnas) {
         gameEngine = GameEngine.getCurrentGameEngine();

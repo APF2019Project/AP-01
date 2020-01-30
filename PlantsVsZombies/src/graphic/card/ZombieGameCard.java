@@ -10,10 +10,6 @@ import main.Program;
 import player.plant_player.PlantPlayer;
 import player.zombie_player.ZombiePlayer;
 
-class Delta {
-  double x,y;
-}
-
 public class ZombieGameCard extends SimpleCard {
 
   public boolean enabled = true;
