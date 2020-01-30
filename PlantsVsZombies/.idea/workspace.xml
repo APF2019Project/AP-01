@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/ZombieModeUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/plant_player/ZombieModeAI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00018" summary="RailModeUser added">
-      <created>1577013074099</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1577013074099</updated>
     </task>
     <task id="LOCAL-00019" summary="RailModeAI added">
       <created>1577014718332</created>
@@ -459,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580329104520</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Zombie mode user coins syncs with frame">
+      <created>1580329632400</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1580329632400</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="random update" />
     <MESSAGE value="null stage solved" />
     <MESSAGE value="cool down, health and speed syncing with frame" />
     <MESSAGE value="graphic alignment" />
@@ -559,7 +558,8 @@
     <MESSAGE value="leader board update" />
     <MESSAGE value="adds basic AuthenticationForm" />
     <MESSAGE value="Ath... complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ath... complete" />
+    <MESSAGE value="Zombie mode user coins syncs with frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zombie mode user coins syncs with frame" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
