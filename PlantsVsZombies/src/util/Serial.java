@@ -14,6 +14,6 @@ public class Serial {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    return Base64.getEncoder().encode(baos.toByteArray()).toString();
+    return new String(Base64.getEncoder().encode(baos.toByteArray()));
   }
 }

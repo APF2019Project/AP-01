@@ -83,12 +83,6 @@ public class Program extends Application {
     screenY = stage.getHeight();
 
     try {
-      File mainPath = new File(getBackupPath(""));
-      if (mainPath.exists()) {
-        Account.recoverAll();
-      } else {
-        mainPath.mkdirs();
-      }
       PlantDna.loadFromData(streamToString(getRes("plantDna.json")));
       ZombieDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
     } catch (Exception e) {

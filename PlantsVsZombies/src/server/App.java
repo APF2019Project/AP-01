@@ -1,5 +1,6 @@
 package server;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -11,10 +12,12 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import account.Account;
+import main.Program;
 
 public class App {
 
   public static void main(String[] args) throws Exception {
+    preload();
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
     server.createContext("/", (t) -> {
       Scanner scanner = new Scanner(t.getRequestBody());
@@ -28,6 +31,27 @@ public class App {
     });
     server.setExecutor(null); // creates a default executor
     server.start();
+  }
+
+  public static String getBackupPath(String file) {
+    String workingDirectory;
+    String OS = (System.getProperty("os.name")).toUpperCase();
+    if (OS.contains("WIN")) {
+      workingDirectory = System.getenv("AppData");
+    } else {
+      workingDirectory = System.getProperty("user.home");
+      workingDirectory += "/Library/Application Support/PVZ4/";
+    }
+    return workingDirectory + file;
+  }
+
+  private static void preload() {
+    File mainPath = new File(Program.getBackupPath(""));
+    if (mainPath.exists()) {
+      Account.recoverAll();
+    } else {
+      mainPath.mkdirs();
+    }
   }
 
   static String handle(String url, Scanner body) {
