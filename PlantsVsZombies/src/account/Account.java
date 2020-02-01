@@ -24,6 +24,9 @@ import util.Unit;
 
 import javax.naming.NamingException;
 import javax.security.sasl.AuthenticationException;
+
+import client.Client;
+
 import java.io.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public class Account implements Serializable {
   private String username;
   private String passwordHash;
   private String token = null;
+  public static String myToken = null;
 
   private Account(String username, String password) {
     this.username = username;
@@ -154,16 +158,13 @@ public class Account implements Serializable {
   }
 
   public static Effect<Unit> login(String username, String password) {
-    return Effect.syncWork(() -> {
-      System.out.println("x1"+current);
-      Account account = getByUsername(username);
-      System.out.println("x"+username);
-      System.out.println("x2"+current);
-      if (account == null) throw new AuthenticationException();
-      if (!account.matchPassword(password)) throw new AuthenticationException();
-      System.out.println("x3"+current);
-      current = account;
-      System.out.println("x4"+current);
+    return Client.get("login", username+"\n"+password+"\n").flatMap(r->{
+      String[] rs = r.split("\n");
+      if (rs[0].equals("OK")) {
+        Account.myToken = rs[1];
+        return Effect.ok();
+      }
+      throw new AuthenticationException();
     });
   }
 
