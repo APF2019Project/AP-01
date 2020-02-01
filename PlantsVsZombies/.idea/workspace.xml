@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="PlantsVsZombies" />
       <artifact name="PlantsVsZombies:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="zombie progress for dayModeUserAi">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/account/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/account/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/ammunition/AmmunitionDna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/BeingDna.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/BeingDna.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/being/zombie/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/being/zombie/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/card/GameCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/GameCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphic/card/ZombieGameCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphic/card/ZombieGameCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/zombie_player/DayModeAI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,13 +126,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00023" summary="zombie mode first release ! =D">
-      <created>1577089495851</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1577089495851</updated>
     </task>
     <task id="LOCAL-00024" summary="bug fixes and minor changes">
       <created>1577098120450</created>
@@ -464,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580392944221</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="jar ready for release =)">
+      <created>1580394833556</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1580394833556</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="FRAME sync" />
     <MESSAGE value="FRAME sync v2" />
     <MESSAGE value="speed af Amu" />
     <MESSAGE value="image of zombies" />
@@ -564,7 +569,8 @@
     <MESSAGE value="lily pad update + water mode zombie support" />
     <MESSAGE value="zombieCard done" />
     <MESSAGE value="zombie progress for dayModeUserAi" />
-    <option name="LAST_COMMIT_MESSAGE" value="zombie progress for dayModeUserAi" />
+    <MESSAGE value="jar ready for release =)" />
+    <option name="LAST_COMMIT_MESSAGE" value="jar ready for release =)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

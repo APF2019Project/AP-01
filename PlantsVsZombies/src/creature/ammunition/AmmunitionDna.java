@@ -33,11 +33,11 @@ public class AmmunitionDna extends Dna {
   }
 
   public int getStunTurnNumber() {
-    return stunTurnNumber;
+    return stunTurnNumber * GameEngine.getFRAME();
   }
 
   public int getEffectiveRange() {
-    return effectiveRange;
+    return effectiveRange * GameEngine.getFRAME();
   }
 
   public int getReduceSpeedRatio() {
