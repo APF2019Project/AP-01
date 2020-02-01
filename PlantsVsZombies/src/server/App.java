@@ -10,6 +10,8 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+import account.Account;
+
 public class App {
 
   public static void main(String[] args) throws Exception {
@@ -35,7 +37,7 @@ public class App {
       String username = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
       String password = body.nextLine();
-      String token = User.athenticate(username, password);
+      String token = Account.athenticate(username, password);
       if (token != null) {
         return "OK\n"+token+"\n";
       }
@@ -48,10 +50,7 @@ public class App {
       String username = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
       String password = body.nextLine();
-      if (!body.hasNextLine()) return "BAD";
-      String profile = body.nextLine();
-      if (!User.isStrongPassword(password)) return "WEAK\n";
-      if (User.createAccount(username, password, profile)) {
+      if (Account.createSync(username, password)) {
         return "OK\n";
       }
       else{
@@ -61,20 +60,20 @@ public class App {
     if (url.equals("/getUser")) {
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
-      User user = User.getByUsername(username);
+      Account user = Account.getByUsername(username);
       if (user == null) return "FAIL404\n";
-      return user.getProfile();
+      return user.toBase64();
     }
     if (url.equals("/getAllUsers")) {
-      return User.all().stream()
+      return Account.all().stream()
         .map(x->x.getUsername() + "\n").collect(Collectors.joining());
     }
-    if (url.equals("/getChat")) {
+    /*if (url.equals("/getChat")) {
       if (!body.hasNextLine()) return "BAD";
       String token = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
-      User user = User.getByToken(token);
+      Account user = Account.getByToken(token);
       if (user == null) return "FAIL401\n";
       return user.getChat(username).toString();
     }
@@ -101,7 +100,7 @@ public class App {
       if (user == null) return "FAIL401\n";
       user.newPost(new Post(caption, photo));
       return "OK\n";
-    }
+    }*/
     return "404\n";
   }
 

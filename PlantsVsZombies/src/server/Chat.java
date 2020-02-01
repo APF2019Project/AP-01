@@ -3,12 +3,14 @@ package server;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import account.Account;
+
 public class Chat {
   public static class Message {
-    User sender;
+    Account sender;
     String text;
 
-    public Message(User sender, String text) {
+    public Message(Account sender, String text) {
       this.sender = sender;
       this.text = text;
     }

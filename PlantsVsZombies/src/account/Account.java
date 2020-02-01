@@ -19,12 +19,15 @@ import page.menu.ActionButton;
 import page.menu.Button;
 import page.menu.Menu;
 import util.Effect;
+import util.Serial;
 import util.Unit;
 
 import javax.naming.NamingException;
 import javax.security.sasl.AuthenticationException;
 import java.io.*;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,11 +36,13 @@ public class Account implements Serializable {
   private static final String BACKUP_ADDRESS = Program.getBackupPath("account.ser");
   static Account current;
   private static Map<String, Account> ALL = new HashMap<>();
+  private static Map<String, Account> BY_TOKEN = new HashMap<>();
   //private String passwordSalt;
   public int score;
   Store store;
   private String username;
   private String passwordHash;
+  private String token = null;
 
   private Account(String username, String password) {
     this.username = username;
@@ -140,6 +145,12 @@ public class Account implements Serializable {
           throw new NamingException("Username used before");
       new Account(username, password);
     });
+  }
+
+  public static boolean createSync(String username, String password) {
+    if (ALL.containsKey(username)) return false;
+    new Account(username, password);
+    return true;
   }
 
   public static Effect<Unit> login(String username, String password) {
@@ -276,5 +287,49 @@ public class Account implements Serializable {
   public String toString() {
     return "Account [passwordHash=" + passwordHash + ", score=" + score + ", store=" + store + ", username=" + username
         + "]";
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public static String athenticate(String username, String password) {
+    if (!ALL.containsKey(username)) return null;
+    Account user = ALL.get(username);
+    if (user.matchPassword(password)) {
+      return user.generateToken();
+    }
+    return null;
+  }
+  
+  private static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  private static SecureRandom rnd = new SecureRandom();
+  
+  private String randomString( int len ){
+    StringBuilder sb = new StringBuilder( len );
+    for( int i = 0; i < len; i++ ) 
+       sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+    return sb.toString();
+  }
+  
+  private String generateToken() {
+    if (this.token != null) {
+      BY_TOKEN.remove(this.token);
+    }
+    this.token = randomString(100);
+    BY_TOKEN.put(this.token, this);
+    return this.token;
+  }
+
+  public String toBase64() {
+    return Serial.toBase64(this);
+  }
+
+  public static Collection<Account> all() {
+    return ALL.values();
+  }
+
+  public static Account getByToken(String token) {
+    return BY_TOKEN.get(token);
   }
 }
