@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -54,8 +55,19 @@ public class App {
     }
   }
 
+  public static ArrayList<String> scannerToStringArray(Scanner sc) {
+    ArrayList<String> result = new ArrayList<>();
+    while (sc.hasNextLine()) {
+      result.add(sc.nextLine());
+    }
+    return result;
+  }
+
   static String handle(String url, Scanner body) {
     System.out.println("request: "+url);
+    if (url.startsWith("/pvp")) {
+      return PVPHandler.handle(url.substring(5), scannerToStringArray(body));
+    }
     if (url.equals("/login")) {
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
