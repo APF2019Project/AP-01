@@ -29,6 +29,7 @@ public class App {
       } 
       catch (Throwable e) {
         response = "ERROR:"+e;
+        e.printStackTrace();
       }
       System.out.println("response: "+response);
       scanner.close();
