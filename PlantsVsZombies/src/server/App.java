@@ -14,6 +14,8 @@ import com.sun.net.httpserver.HttpServer;
 
 import account.Account;
 import chat.Chat;
+import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 import main.Program;
 
 public class App {
@@ -60,6 +62,12 @@ public class App {
       Account.recoverAll();
     } else {
       mainPath.mkdirs();
+    }
+    try {
+      PlantDna.loadFromData(Program.streamToString(Program.getRes("plantDna.json")));
+      ZombieDna.loadFromData(Program.streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 
