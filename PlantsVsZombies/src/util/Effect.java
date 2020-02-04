@@ -215,4 +215,15 @@ public class Effect<T> {
   public <U> Effect<U> then(Effect<U> w) {
     return this.flatMap(r -> w);
   }
+
+  public static <X> Effect<X> fromSync(Supplier<X> x) {
+    return new Effect<>(h -> {
+      try{
+        h.success(x.get());  
+      }
+      catch(Throwable e) {
+        h.failure(e);
+      }
+    });
+  }
 }
