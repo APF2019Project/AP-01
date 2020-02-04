@@ -13,6 +13,7 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import account.Account;
+import chat.Chat;
 import main.Program;
 
 public class App {
@@ -104,14 +105,14 @@ public class App {
       return Account.all().stream()
         .map(x->x.getUsername() + "\n").collect(Collectors.joining());
     }
-    /*if (url.equals("/getChat")) {
+    if (url.equals("/getChat")) {
       if (!body.hasNextLine()) return "BAD";
       String token = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
       Account user = Account.getByToken(token);
       if (user == null) return "FAIL401\n";
-      return user.getChat(username).toString();
+      return Chat.get(user.getUsername(), username).toString();
     }
     if (url.equals("/sendMessage")) {
       if (!body.hasNextLine()) return "BAD";
@@ -120,23 +121,11 @@ public class App {
       String username = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
       String text = body.nextLine();
-      User user = User.getByToken(token);
+      Account user = Account.getByToken(token);
       if (user == null) return "FAIL401\n";
-      user.sendMessage(username, text);
+      Chat.sendMessage(user.getUsername(), username, text);
       return "OK\n";
     }
-    if (url.equals("/newPost")) {
-      if (!body.hasNextLine()) return "BAD";
-      String token = body.nextLine();
-      if (!body.hasNextLine()) return "BAD";
-      String caption = body.nextLine();
-      if (!body.hasNextLine()) return "BAD";
-      String photo = body.nextLine();
-      User user = User.getByToken(token);
-      if (user == null) return "FAIL401\n";
-      user.newPost(new Post(caption, photo));
-      return "OK\n";
-    }*/
     return "404\n";
   }
 

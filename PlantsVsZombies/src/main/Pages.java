@@ -2,6 +2,7 @@ package main;
 
 import account.Account;
 import account.ShopPage;
+import chat.ChatPage;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import game.GameEngine;
@@ -40,7 +41,11 @@ public class Pages {
                 result -> result.action()
           )),
           new LinkButton<Unit>("profile", Account.profilePage()),
-          new LinkButton<Unit>("shop", new ShopPage()));
+          new LinkButton<Unit>("shop", new ShopPage()),
+          new ActionButton<Unit>("chat", new Form("Enter oon yeki username:")
+          .action().map(x->x[0])
+          .flatMap(user -> new ChatPage(user).action()).discardData())
+          );
   public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
           (new AuthenticationForm("Enter new username", "Enter password"))
                   .action()
