@@ -46,4 +46,8 @@ public class Client {
         }); 
     });
   }
+
+  public static Effect<String> get(String path, String[] data) {
+    return get(path, String.join("\n", data)+"\n");
+  }
 }

@@ -3,6 +3,7 @@ package main;
 import account.Account;
 import account.ShopPage;
 import chat.ChatPage;
+import client.Client;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import game.GameEngine;
@@ -49,8 +50,10 @@ public class Pages {
   public static final Menu<Void> loginMenu = new Menu<Void>(new ActionButton<Void>("create account",
           (new AuthenticationForm("Enter new username", "Enter password"))
                   .action()
-                  .flatMap(data -> Account.create(data[0], data[1]))
-                  .map((x) -> "Account created successfully").show().catchThen(e -> {
+                  .flatMap(data -> Client.get("createAccount", data))
+                  .map((x) -> x.equals("OK\n") ?
+                        "Account created successfully"
+                        : "Username used before").show().catchThen(e -> {
               if (e instanceof NamingException) {
                   return Message.show("username used before");
               }
