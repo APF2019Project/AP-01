@@ -23,7 +23,13 @@ public class App {
     HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
     server.createContext("/", (t) -> {
       Scanner scanner = new Scanner(t.getRequestBody());
-      String response = handle(t.getRequestURI().getPath(), scanner);
+      String response;
+      try {
+        response = handle(t.getRequestURI().getPath(), scanner);
+      } 
+      catch (Throwable e) {
+        response = "ERROR:"+e;
+      }
       System.out.println("response: "+response);
       scanner.close();
       t.sendResponseHeaders(200, response.length());
