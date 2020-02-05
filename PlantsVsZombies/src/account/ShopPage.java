@@ -35,7 +35,7 @@ public class ShopPage implements Page<Unit> {
 
   @Override
   public Effect<Unit> action() {
-    return new Effect<>(h -> {
+    return Program.reloadAll().then(new Effect<>(h -> {
       javafx.scene.image.Image image = new Image(Program.getRes("images/wallpaper.jpg"));
       Background background = new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
               BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false)));
@@ -119,6 +119,6 @@ public class ShopPage implements Page<Unit> {
 
       Program.stage.getScene().setRoot(stackPane);
 
-    });
+    }));
   }
 }
