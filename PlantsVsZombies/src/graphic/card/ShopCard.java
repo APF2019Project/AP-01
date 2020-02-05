@@ -55,14 +55,13 @@ public class ShopCard extends SimpleCard {
     }
 
     public void update() {
+        this.dna.shopCount = BeingDna.getByName(dna.getName()).shopCount;
         int money = Account.getCurrentAccount().getStore().money;
-        if (state == 1) {
-            if (money >= dna.getShopPrice())
-                setState(2);
-        } else if (state == 2) {
-            if (money < dna.getShopPrice())
-                setState(1);
-        }
+        if (state == 0) setState(0);
+        else if (money >= dna.getShopPrice())
+            setState(2);
+        else if (money < dna.getShopPrice())
+            setState(1);
     }
 
 }
