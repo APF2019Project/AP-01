@@ -91,6 +91,7 @@ public class Program extends Application {
       .flatMap(x -> Effect.syncWork(()->{
         PlantDna.loadFromBase64(x[0]);
         ZombieDna.loadFromBase64(x[1]);
-      }));
+      }))
+      .then(Account.reloadCurrent());
   }
 }

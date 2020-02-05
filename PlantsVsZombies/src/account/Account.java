@@ -346,4 +346,11 @@ public class Account implements Serializable {
   public static Account getByToken(String token) {
     return BY_TOKEN.get(token);
   }
+
+  public static Effect<Unit> reloadCurrent() {
+    return getAccountFromServer(current.username)
+      .flatMap(account -> Effect.syncWork(()->{
+        current = account;
+      }));
+  }
 }
