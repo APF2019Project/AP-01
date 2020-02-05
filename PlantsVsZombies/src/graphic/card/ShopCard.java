@@ -2,10 +2,12 @@ package graphic.card;
 
 import account.Account;
 import account.ShopPage;
+import client.Client;
 import creature.being.BeingDna;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import main.Program;
+import util.Effect;
 
 public class ShopCard extends SimpleCard {
 
@@ -46,11 +48,10 @@ public class ShopCard extends SimpleCard {
     }
 
     private void mouseClick() {
-        if (state == 2) {
-            Account.getCurrentAccount().getStore().buyCard(dna);
-            setState(0);
-            shopPage.update();
-        }
+        Client.get("shop/buy", Account.myToken, dna.getName())
+        .then(Program.reloadAll())
+        .then(Effect.syncWork(shopPage::update))
+        .execute();
     }
 
     public void update() {
