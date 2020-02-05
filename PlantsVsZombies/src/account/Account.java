@@ -348,6 +348,7 @@ public class Account implements Serializable {
   }
 
   public static Effect<Unit> reloadCurrent() {
+    if (current == null) return Effect.noOp;
     return getAccountFromServer(current.username)
       .flatMap(account -> Effect.syncWork(()->{
         current = account;
