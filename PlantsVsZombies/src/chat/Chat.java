@@ -45,6 +45,7 @@ public class Chat {
   public static Map<String, Chat> BY_MEMBER = new HashMap<>();
 
   public static Chat get(String username1, String username2) {
+    if (username1.compareTo(username2) < 0) return get(username2, username1); 
     String s = username1+"#"+username2;
     if (BY_MEMBER.containsKey(s)) return BY_MEMBER.get(s);
     Chat chat = new Chat();
