@@ -1,6 +1,10 @@
 package creature;
 
-public class Dna {
+import java.io.Serializable;
+
+public class Dna implements Serializable {
+
+  private static final long serialVersionUID = -3742700220299156865L;
   private final String name;
   private final int speed;
   private final int powerOfDestruction;

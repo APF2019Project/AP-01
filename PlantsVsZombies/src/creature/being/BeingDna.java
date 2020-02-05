@@ -1,11 +1,14 @@
 package creature.being;
 
+import java.io.Serializable;
+
 import creature.Dna;
 import game.GameEngine;
 import line.LineState;
 
-public class BeingDna extends Dna {
+public class BeingDna extends Dna implements Serializable {
 
+  private static final long serialVersionUID = 3795559829997184761L;
   private final int shopPrice;
   private final int gamePrice;
   private final int firstHealth;
