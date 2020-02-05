@@ -19,6 +19,7 @@ public class Store implements Serializable {
   public void buyCard(BeingDna card) {
     myCard.add(card.getName());
     money -= card.getShopPrice();
+    card.shopCount--;
   }
 
   public boolean haveCard(Dna card) {

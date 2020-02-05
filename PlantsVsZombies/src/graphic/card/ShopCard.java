@@ -36,12 +36,12 @@ public class ShopCard extends SimpleCard {
     public void setState(int newState) {
         state = newState;
         if (state == 0) {
-            setDescription("SOLD OUT!", Color.YELLOW);
+            setDescription("SOLD OUT!/"+dna.shopCount, Color.YELLOW);
 
         } else if (state == 1) {
-            setDescription(dna.getShopPrice() + "$", Color.RED);
+            setDescription(dna.getShopPrice() + "$/"+dna.shopCount, Color.RED);
         } else {
-            setDescription(dna.getShopPrice() + "$", Color.LIGHTGREEN);
+            setDescription(dna.getShopPrice() + "$/"+dna.shopCount, Color.LIGHTGREEN);
         }
     }
 
