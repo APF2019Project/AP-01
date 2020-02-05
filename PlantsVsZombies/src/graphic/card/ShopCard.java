@@ -1,12 +1,14 @@
 package graphic.card;
 
 import account.Account;
+import account.AccountForm;
 import account.ShopPage;
 import client.Client;
 import creature.being.BeingDna;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import main.Program;
+import page.QuestionForm;
 import util.Effect;
 
 public class ShopCard extends SimpleCard {
@@ -48,10 +50,30 @@ public class ShopCard extends SimpleCard {
     }
 
     private void mouseClick() {
-        Client.get("shop/buy", Account.myToken, dna.getName())
-        .then(Program.reloadAll())
-        .then(Effect.syncWork(shopPage::update))
-        .execute();
+        if (state == 0) {
+            new QuestionForm("sell", "give to another person")
+            .action()
+            .flatMap(x -> {
+                if (x == 0) {
+                    return Client.get("shop/sell", Account.myToken, dna.getName());
+                }
+                return new AccountForm()
+                    .action()
+                    .flatMap(username -> Client.get(
+                        "shop/transfer",
+                        Account.myToken,
+                        dna.getName(),
+                        username
+                    ));
+            })
+            .execute();
+        }
+        else {
+            Client.get("shop/buy", Account.myToken, dna.getName())
+            .then(Program.reloadAll())
+            .then(Effect.syncWork(shopPage::update))
+            .execute();
+        }
     }
 
     public void update() {
