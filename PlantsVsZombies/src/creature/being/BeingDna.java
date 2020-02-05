@@ -3,6 +3,8 @@ package creature.being;
 import java.io.Serializable;
 
 import creature.Dna;
+import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 import game.GameEngine;
 import line.LineState;
 
@@ -13,6 +15,7 @@ public class BeingDna extends Dna implements Serializable {
   private final int gamePrice;
   private final int firstHealth;
   private final LineState lineState;
+  public int shopCount;
 
   public int getShopPrice() {
       return shopPrice * 100;
@@ -35,6 +38,16 @@ public class BeingDna extends Dna implements Serializable {
 
   public LineState getLineState() {
     return lineState;
+  }
+  
+  public static BeingDna getByName(String name) {
+    for (PlantDna x: PlantDna.getAllDnas()) {
+      if (x.getName().equals(name)) return x;
+    }
+    for (ZombieDna x: ZombieDna.getAllDnas()) {
+      if (x.getName().equals(name)) return x;
+    }
+    return null;
   }
 
 
