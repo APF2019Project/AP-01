@@ -55,6 +55,16 @@ public class Account implements Serializable {
     ALL.put(username, this);
   }
 
+  private Account() {}
+
+  public static Effect<Account> getAccountFromServer(String username) {
+    return Client.get("getUser", username+"\n").map(x -> Account.fromBase64(x));
+  }
+
+  private static Account fromBase64(String x) {
+    return (Account)Serial.fromBase64(x);
+  }
+
   public static Account getCurrentAccount() {
     return current;
   }
@@ -165,7 +175,10 @@ public class Account implements Serializable {
         return Effect.ok();
       }
       throw new AuthenticationException();
-    });
+    }).then(getAccountFromServer(username)
+      .flatMap(account -> Effect.syncWork(()->{
+      current = account;
+    })));
   }
 
   public static ArrayList<PlantDna> getCurrentUserPlants() {

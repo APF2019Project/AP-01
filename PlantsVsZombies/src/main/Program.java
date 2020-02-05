@@ -1,6 +1,7 @@
 package main;
 
 import account.Account;
+import client.Client;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 import javafx.application.Application;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import util.Effect;
+import util.Unit;
 
 import java.io.File;
 import java.io.InputStream;
@@ -81,12 +83,14 @@ public class Program extends Application {
     stage.show();
     screenX = stage.getWidth();
     screenY = stage.getHeight();
+  }
 
-    try {
-      PlantDna.loadFromData(streamToString(getRes("plantDna.json")));
-      ZombieDna.loadFromData(streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public static Effect<Unit> reloadAll() {
+    return Client.get("shop/getDna","")
+      .map(x -> x.split("\n"))
+      .flatMap(x -> Effect.syncWork(()->{
+        PlantDna.loadFromBase64(x[0]);
+        ZombieDna.loadFromBase64(x[1]);
+      }));
   }
 }

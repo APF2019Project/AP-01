@@ -64,6 +64,7 @@ public class Pages {
                   .action()
                   .flatMap(data -> Account.login(data[0], data[1]))
                   .flatMap(x -> mainMenu.action())
+                  .then(Program.reloadAll())
                   .catchThen(e -> {
                     if (e instanceof AuthenticationException) {
                         return Message.show("username or password in not correct");

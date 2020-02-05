@@ -8,11 +8,13 @@ import game.GameEngine;
 import line.LineState;
 import util.Serial;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantDna extends BeingDna {
+public class PlantDna extends BeingDna implements Serializable {
 
+  private static final long serialVersionUID = 3612493169475278488L;
   private static ArrayList<PlantDna> allDnas;
   private final ArrayList<AmmunitionDna> ammunitionDna;
   private final int cooldown;
@@ -66,6 +68,11 @@ public class PlantDna extends BeingDna {
 
   public static String getAllBase64() {
     return Serial.toBase64(allDnas);
+  }
+
+  @SuppressWarnings("unchecked")
+  public static void loadFromBase64(String string) {
+    allDnas = (ArrayList<PlantDna>)Serial.fromBase64(string);
   }
   
 }

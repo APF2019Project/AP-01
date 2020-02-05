@@ -4,12 +4,15 @@ import creature.being.BeingDna;
 import line.LineState;
 import util.Serial;
 
+import java.io.Serializable;
 import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class ZombieDna extends BeingDna {
+public class ZombieDna extends BeingDna implements Serializable {
+    
+    private static final long serialVersionUID = -2252200475101843881L;
     private static ArrayList<ZombieDna> allDnas;
 
     public static List<ZombieDna> getAllDnas() {
@@ -65,6 +68,11 @@ public class ZombieDna extends BeingDna {
 
 	public static String getAllBase64() {
 		return Serial.toBase64(allDnas);
+    }
+    
+    @SuppressWarnings("unchecked")
+	public static void loadFromBase64(String string) {
+        allDnas = (ArrayList<ZombieDna>)Serial.fromBase64(string);
 	}
     
 }
