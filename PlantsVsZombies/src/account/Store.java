@@ -17,6 +17,8 @@ public class Store implements Serializable {
   private Set<String> myCard = new HashSet<>();
     public int money = 10000;
   public void buyCard(BeingDna card) {
+    if (myCard.contains(card.getName())) throw new Error("darish");
+    if (money < card.getShopPrice()) throw new Error("pool nadari");
     myCard.add(card.getName());
     money -= card.getShopPrice();
     card.shopCount--;
@@ -33,5 +35,12 @@ public class Store implements Serializable {
     for (BeingDna x: allDna) {
       if (x.getShopPrice() == 0) myCard.add(x.getName());
     }
+  }
+
+  public void sellCard(BeingDna card) {
+    if (!myCard.contains(card.getName())) throw new Error("nadarish");
+    myCard.remove(card.getName());
+    money += card.getShopPrice();
+    card.shopCount++;
   }
 }

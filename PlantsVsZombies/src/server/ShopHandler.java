@@ -17,11 +17,26 @@ public class ShopHandler {
       if (user == null) return "FAIL401";
       BeingDna dna = BeingDna.getByName(body.get(1));
       if (dna == null) return "FAIL404";
-      user.getStore().buyCard(dna);
-      return "OK";
+      try {
+        user.getStore().buyCard(dna);
+        return "OK";
+      }
+      catch (Throwable e) {
+        return "FAIL: "+e;
+      }
     }
-    if (url.equals("join")){
-      // inja zombia mitoonan join shan
+    if (url.equals("sell")){
+      Account user = Account.getByToken(body.get(0));
+      if (user == null) return "FAIL401";
+      BeingDna dna = BeingDna.getByName(body.get(1));
+      if (dna == null) return "FAIL404";
+      try {
+        user.getStore().sellCard(dna);
+        return "OK";
+      }
+      catch (Throwable e) {
+        return "FAIL: "+e;
+      }
     }
     return "404";
   }
