@@ -6,13 +6,14 @@ import creature.ammunition.AmmunitionDna;
 import creature.being.BeingDna;
 import game.GameEngine;
 import line.LineState;
+import util.Serial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlantDna extends BeingDna {
 
-  private static List<PlantDna> allDnas;
+  private static ArrayList<PlantDna> allDnas;
   private final ArrayList<AmmunitionDna> ammunitionDna;
   private final int cooldown;
   private final LineState contain;
@@ -61,6 +62,10 @@ public class PlantDna extends BeingDna {
 
   public LineState getContain() {
     return contain;
+  }
+
+  public static String getAllBase64() {
+    return Serial.toBase64(allDnas);
   }
   
 }

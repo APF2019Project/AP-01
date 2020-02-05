@@ -2,6 +2,7 @@ package creature.being.zombie;
 
 import creature.being.BeingDna;
 import line.LineState;
+import util.Serial;
 
 import java.util.*;
 
@@ -9,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class ZombieDna extends BeingDna {
-    private static List<ZombieDna> allDnas;
+    private static ArrayList<ZombieDna> allDnas;
 
     public static List<ZombieDna> getAllDnas() {
         return allDnas;
@@ -61,5 +62,9 @@ public class ZombieDna extends BeingDna {
         this.magnetic = magnetic;
         this.haveHat = haveHat;
     }
+
+	public static String getAllBase64() {
+		return Serial.toBase64(allDnas);
+	}
     
 }

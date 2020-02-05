@@ -3,11 +3,12 @@ package server;
 import java.util.ArrayList;
 
 import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
 
 public class ShopHandler {
   public static String handle(String url, ArrayList<String> body) {
     if (url.equals("getDna")){
-      //return PlantDna.getAllBase64();
+      return PlantDna.getAllBase64()+"\n"+ZombieDna.getAllBase64();
     }
     if (url.equals("create")){
       // inja plantia mitoonan bazi besazan
