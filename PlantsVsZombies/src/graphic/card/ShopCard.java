@@ -66,6 +66,9 @@ public class ShopCard extends SimpleCard {
                         username
                     ));
             })
+            .then(Effect.syncWork(()->{
+                Program.stage.getScene().setRoot(shopPage.root);
+            }))
             .execute();
         }
         else {

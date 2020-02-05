@@ -26,6 +26,7 @@ public class ShopPage implements Page<Unit> {
 
   private Text moneyTxt;
   private ArrayList<ShopCard> cards = new ArrayList<>();
+  public StackPane root;
 
   public void update() {
     moneyTxt.setText(Account.getCurrentAccount().getStore().money + "$");
@@ -109,15 +110,15 @@ public class ShopPage implements Page<Unit> {
       rec.setX((X - rec.getWidth()) / 2);
       rec.setFill(Color.rgb(0, 0, 0, 0.9));
 
-      StackPane stackPane = new StackPane();
+      StackPane root = new StackPane();
 
-      stackPane.setBackground(background);
-      stackPane.getChildren().addAll(rec, vBox);
+      root.setBackground(background);
+      root.getChildren().addAll(rec, vBox);
 
       vBox.setSpacing(Y / 50);
 
 
-      Program.stage.getScene().setRoot(stackPane);
+      Program.stage.getScene().setRoot(root);
 
     }));
   }
