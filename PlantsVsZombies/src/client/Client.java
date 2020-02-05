@@ -54,4 +54,8 @@ public class Client {
   public static Effect<String> get(String path, String data1, String data2) {
     return get(path, data1 + "\n" + data2 + "\n");
   }
+
+  public static Effect<String> get(String path, String data1, String data2, String data3) {
+    return get(path, data1 + "\n" + data2 + "\n" + data3 + "\n");
+  }
 }
