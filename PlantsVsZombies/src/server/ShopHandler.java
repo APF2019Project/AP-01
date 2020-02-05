@@ -2,6 +2,8 @@ package server;
 
 import java.util.ArrayList;
 
+import account.Account;
+import creature.being.BeingDna;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
 
@@ -10,22 +12,16 @@ public class ShopHandler {
     if (url.equals("getDna")){
       return PlantDna.getAllBase64()+"\n"+ZombieDna.getAllBase64();
     }
-    if (url.equals("create")){
-      // inja plantia mitoonan bazi besazan
-      // bayad token va hando bedan
+    if (url.equals("buy")){
+      Account user = Account.getByToken(body.get(0));
+      if (user == null) return "FAIL401";
+      BeingDna dna = BeingDna.getByName(body.get(1));
+      if (dna == null) return "FAIL404";
+      user.getStore().buyCard(dna);
       return "OK";
     }
     if (url.equals("join")){
       // inja zombia mitoonan join shan
-    }
-    if (url.equals("get")){
-      // inja hame mitoonan chizaye bazio begiran
-      // ham baraye bazikonast ke hey seda konan bebinan yaroo che khabar shod
-      // ham bara mellati ke mikhan bazio bebinan
-    }
-    if (url.equals("play")){
-      // inja oonayi ke access daran tokeneshoono 
-      // midan va ye harekat too bazi mizanan
     }
     return "404";
   }
