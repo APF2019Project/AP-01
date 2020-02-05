@@ -110,7 +110,7 @@ public class ShopPage implements Page<Unit> {
       rec.setX((X - rec.getWidth()) / 2);
       rec.setFill(Color.rgb(0, 0, 0, 0.9));
 
-      StackPane root = new StackPane();
+      root = new StackPane();
 
       root.setBackground(background);
       root.getChildren().addAll(rec, vBox);
