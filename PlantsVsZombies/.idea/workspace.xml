@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="pvp server side and list of games">
+    <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/pvp/PvpGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/pvp/PvpGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/pvp/listMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/pvp/listMenu.java" afterDir="false" />
@@ -136,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00026" summary="PVP mode added">
-      <created>1577099981424</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1577099981424</updated>
     </task>
     <task id="LOCAL-00027" summary="ammunition methods added to game engine">
       <created>1577208026835</created>
@@ -480,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580990116478</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="adds basic game list">
+      <created>1580993258813</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1580993258813</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,7 +555,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="image of zombies" />
     <MESSAGE value="bill" />
     <MESSAGE value="adds leader board" />
     <MESSAGE value="adds close button to leader board" />
@@ -580,7 +579,8 @@
     <MESSAGE value="jar ready for release =)" />
     <MESSAGE value="makes freezing Amu work =)" />
     <MESSAGE value="pvp server side and list of games" />
-    <option name="LAST_COMMIT_MESSAGE" value="pvp server side and list of games" />
+    <MESSAGE value="adds basic game list" />
+    <option name="LAST_COMMIT_MESSAGE" value="adds basic game list" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

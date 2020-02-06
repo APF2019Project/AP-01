@@ -13,7 +13,7 @@ import main.Program;
 import java.util.ArrayList;
 
 public class PvpGame {
-    private static final Integer randomizer = 1982043865;
+    private static final Integer randomizer = 3865;
     private static final ArrayList<PvpGame> allIds = new ArrayList<>();
 
     private final Integer id;
@@ -31,16 +31,17 @@ public class PvpGame {
 
         id = allIds.size() ^ randomizer;
         allIds.add(this);
-
+        System.out.println(allIds.size());
     }
 
     public static HBox packet(String id, String plant, String zombie, String gameState) {
 
-        String format = "    %-9s %5s %-7s %5s %-7s ";
+        String format = "%-4s %5s %-13s %5s %-13s    ";
 
         Text text = new Text();
         Button button = new Button();
         HBox hBox = new HBox();
+        hBox.setSpacing(Program.screenX / 50);
         hBox.setAlignment(Pos.CENTER);
         text.setFill(Color.WHITESMOKE);
         text.setFont(Font.font("monospaced", Program.screenX / 60));
@@ -52,7 +53,7 @@ public class PvpGame {
         button.setFont(Font.font("monospaced", Program.screenX / 60));
 
         if (gameState == null) {
-            text.setText(String.format(format, "game id", "", "plants", "", "zombies"));
+            text.setText(String.format(format, "ID", "", "plants", "", "zombies"));
             button.setText("status");
         } else {
             String username = Account.getCurrentAccount().getUsername();

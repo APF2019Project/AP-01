@@ -15,6 +15,7 @@ import page.Page;
 import util.Effect;
 import util.Unit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,9 +55,13 @@ public class listMenu implements Page<Unit> {
             vBox.getChildren().addAll(hBox, newGameBox);
 
             vBox.getChildren().add(PvpGame.packet(null, null, null, null));
-            List<String> newlist = list.subList(0, list.size() - 1);
-            if (list.size() > 7)
-                newlist = list.subList(list.size() - 7, list.size() - 1);
+            List<String> newlist = list;
+            int mx = 12;
+            if (list.size() > mx)
+                newlist = list.subList(list.size() - mx, list.size());
+            if (newlist.size() == 1 && newlist.get(0).length() == 0) newlist = new ArrayList<>();
+            System.out.println(list.size());
+            System.out.println(newlist.size());
             for (String game : newlist) {
                 String[] res = game.split("\t");
                 vBox.getChildren().add(PvpGame.packet(res[0], res[1], res[2], res[3]));
