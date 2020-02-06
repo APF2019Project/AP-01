@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import util.Effect;
 import util.Unit;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Scanner;
 

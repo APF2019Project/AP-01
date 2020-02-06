@@ -1,5 +1,14 @@
 package server;
 
+import account.Account;
+import chat.Chat;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+import creature.being.plant.PlantDna;
+import creature.being.zombie.ZombieDna;
+import main.Program;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -7,16 +16,6 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
-
-import account.Account;
-import chat.Chat;
-import creature.being.plant.PlantDna;
-import creature.being.zombie.ZombieDna;
-import main.Program;
 
 public class App {
 
@@ -82,7 +81,7 @@ public class App {
   static String handle(String url, Scanner body) {
     System.out.println("request: "+url);
     if (url.startsWith("/pvp")) {
-      return PVPHandler.handle(url.substring(5), scannerToStringArray(body));
+      return game.pvp.PvpGame.handle(url.substring(5), scannerToStringArray(body));
     }
     if (url.startsWith("/shop")) {
       return ShopHandler.handle(url.substring(6), scannerToStringArray(body));
