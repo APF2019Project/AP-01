@@ -38,6 +38,21 @@ public class ShopHandler {
         return "FAIL: "+e;
       }
     }
+    if (url.equals("transfer")){
+      Account user = Account.getByToken(body.get(0));
+      if (user == null) return "FAIL401";
+      BeingDna dna = BeingDna.getByName(body.get(1));
+      if (dna == null) return "FAIL404";
+      Account user2 = Account.getByUsername(body.get(2));
+      if (user2 == null) return "FAIL401";
+      try {
+        user.getStore().transferCard(dna, user2);
+        return "OK";
+      }
+      catch (Throwable e) {
+        return "FAIL: "+e;
+      }
+    }
     return "404";
   }
 }

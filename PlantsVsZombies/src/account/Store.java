@@ -43,4 +43,11 @@ public class Store implements Serializable {
     money += card.getShopPrice();
     card.shopCount++;
   }
+
+  public void transferCard(BeingDna card, Account user2) {
+    if (!myCard.contains(card.getName())) throw new Error("nadarish");
+    if (user2.store.myCard.contains(card.getName())) throw new Error("oon dare");
+    myCard.remove(card.getName());
+    user2.store.myCard.add(card.getName());
+  }
 }
