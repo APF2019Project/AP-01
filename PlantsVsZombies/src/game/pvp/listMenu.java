@@ -19,7 +19,7 @@ public class listMenu implements Page<Unit> {
     public Effect<Unit> action() {
         return Client.get("pvp/list", "").map(x -> x.split("\n")).
                 map(Arrays::asList).map(list -> list.size() > 6 ? list : list.subList(6, list.size())).
-                flatMap(list -> new Effect(h -> {
+                flatMap(list -> new Effect<>(h -> {
                     javafx.scene.image.Image image = new Image(Program.getRes("images/wallpaper.jpg"));
                     Background background = new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
                             BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false)));
@@ -59,6 +59,6 @@ public class listMenu implements Page<Unit> {
 
                     Program.stage.getScene().setRoot(stackPane);
 
-                }));
+                })).showError();
     }
 }
