@@ -16,10 +16,13 @@ import main.Program;
 import page.Collection;
 import util.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class PvpGame {
+public class PvpGame implements Serializable {
+    
+    private static final long serialVersionUID = -1568760709015661149L;
     private static final Integer randomizer = 3865;
     private static final ArrayList<PvpGame> allIds = new ArrayList<>();
 
@@ -29,7 +32,8 @@ public class PvpGame {
     private ArrayList<String> plantHand = new ArrayList<>();
     private ArrayList<String> zombieHand = new ArrayList<>();
 
-    private ArrayList<ArrayList<String>> moves = new ArrayList<>();
+    String[][] plants = new String[5][7];
+    String[][] zombies = new String[5][7];
 
     private GameState gameState;
 
@@ -151,83 +155,6 @@ public class PvpGame {
                 if (gameId.equals(game.id)) {
                     if (game.plant.equals(username) || game.zombie.equals(username)) {
                         game.gameState = GameState.CANCELED;
-                        return "OK";
-                    }
-                    return "Action not allowed";
-                }
-            return "No game with such ID found";
-        }
-        if (url.equals("join")) {
-            Integer gameId = Integer.parseInt(body.get(1));
-            String username = body.get(0);
-            for (PvpGame game : allIds)
-                if (gameId.equals(game.id)) {
-                    if (game.gameState == GameState.WAITING_TO_JOIN && game.zombie.equals(username)) {
-                        game.gameState = GameState.RUNNING_PLANTS;
-                        return "OK";
-                    }
-                    return "Action not allowed";
-                }
-            return "No game with such ID found";
-        }
-        if (url.equals("get")) {
-            Integer gameId = Integer.parseInt(body.get(1));
-            for (PvpGame game : allIds)
-                if (gameId.equals(game.id)) {
-                    StringBuilder res = new StringBuilder();
-                    for (ArrayList<String> arr : game.moves) {
-                        for (String s : arr)
-                            res.append(s).append("\t");
-                        res.append("\n");
-                    }
-                    return res.toString();
-                }
-            return "No game with such ID found";
-        }
-        if (url.equals("getLast")) {
-            Integer gameId = Integer.parseInt(body.get(1));
-            String username = body.get(0);
-            for (PvpGame game : allIds)
-                if (gameId.equals(game.id)) {
-                    StringBuilder res = new StringBuilder();
-                    if (!game.moves.isEmpty()) {
-                        for (String e : game.moves.get(game.moves.size() - 1)) {
-                            res.append(e).append('\t');
-                        }
-                    }
-                    if (username.equals(game.zombie)) {
-                        if (game.gameState == GameState.RUNNING_ZOMBIE) {
-                            return res.toString();
-                        }
-                        return "WAIT";
-                    }
-                    if (username.equals(game.plant)) {
-                        if (game.gameState == GameState.RUNNING_PLANTS) {
-                            return res.toString();
-                        }
-                        return "WAIT";
-                    }
-                    return res.toString();
-                }
-            return "No game with such ID found";
-        }
-        if (url.equals("play")) {
-            String username = body.get(0);
-            Integer gameId = Integer.parseInt(body.get(1));
-            for (PvpGame game : allIds)
-                if (gameId.equals(game.id)) {
-                    if (username.equals(game.plant) || username.equals(game.zombie)) {
-                        if (username.equals(game.zombie) && game.gameState == GameState.RUNNING_ZOMBIE)
-                            game.gameState = GameState.RUNNING_PLANTS;
-                        else if (username.equals(game.plant) && game.gameState == GameState.RUNNING_PLANTS)
-                            game.gameState = GameState.RUNNING_ZOMBIE;
-                        else
-                            return "NOT YOUR TURN";
-                        game.moves.add((ArrayList<String>) body.subList(2, body.size()));
-                        if (game.moves.get(game.moves.size() - 1).get(0).equals("END")) {
-                            game.gameState = game.moves.get(game.moves.size() - 1).get(1).equals("PLANTS") ?
-                                    GameState.PLANTS_WIN : GameState.ZOMBIES_WIN;
-                        }
                         return "OK";
                     }
                     return "Action not allowed";
