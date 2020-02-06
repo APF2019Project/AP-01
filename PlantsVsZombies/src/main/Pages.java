@@ -30,17 +30,13 @@ public class Pages {
           new SimpleButton<>("Rail", GameEngine.newRailGame()),
           new SimpleButton<>("Zombie",
                   new Collection<ZombieDna>(Account::getCurrentUserZombies, 7).action()
-                          .flatMap(GameEngine::newZombieGame)),
-          new SimpleButton<GameResult>("PVP", new Form("Enter opponent username").action()
-                  .map(opUsername -> Account.getByUsername(opUsername[0]))
-                  .flatMap(opUser -> new Collection<PlantDna>(Account::getCurrentUserPlants, 7).action()
-                          .flatMap(plantHand -> new Collection<ZombieDna>(opUser::getZombies, 7).action()
-                                  .map(zombieHand -> GameEngine.newPVPGame(plantHand, zombieHand))))));
+                          .flatMap(GameEngine::newZombieGame)));
 
   public static final Menu<Unit> mainMenu = new Menu<Unit>(
           new ActionButton<Unit>("play", chooseGameType.action().flatMap(
-                result -> result.action()
+                  GameResult::action
           )),
+          new LinkButton<>("online", new game.pvp.listMenu()),
           new LinkButton<Unit>("profile", Account.profilePage()),
           new LinkButton<Unit>("shop", new ShopPage()),
           new ActionButton<Unit>("chat", new Form("Enter oon yeki username:")

@@ -1,22 +1,22 @@
 
+]squid:UnusedPrivateMethod‹"0Remove this unused private "removePlant" method.(ˆĞª¤8¾®õ·ş-
+^squid:S1854œ":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8¾®õ·ş-
 \
 squid:S106¶"9Replace this use of System.out or System.err by a logger.(©òÍ‡ÿÿÿÿÿ8¾®õ·ş-
-^squid:S1854œ":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8¾®õ·ş-
-Vsquid:S1135Ñ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8—ú€ˆş-
-^squid:S1854Œ":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8¾®õ·ş-
-W
-squid:S106¸"9Replace this use of System.out or System.err by a logger.(“Ñ»Š8¾®õ·ş-
-Nsquid:S00108¼")Either remove or fill this block of code.(é–³öûÿÿÿÿ8¾®õ·ş-
+jsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(á î8¾®õ·ş-
+Osquid:S1481Œ"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8¾®õ·ş-
 jsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(á î8¾®õ·ş-
-jsquid:CommentedOutCodeLineƒ"<This block of commented-out lines of code should be removed.(ÃÒ–Æ8¾®õ·ş-
 \
 squid:S106µ"9Replace this use of System.out or System.err by a logger.(ïçòŞÿÿÿÿÿ8¾®õ·ş-
-jsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(á î8¾®õ·ş-
-]squid:UnusedPrivateMethod"+Remove this unused private "select" method.(÷¼¿İøÿÿÿÿ8¾®õ·ş-
-]squid:UnusedPrivateMethod‹"0Remove this unused private "removePlant" method.(ˆĞª¤8¾®õ·ş-
-]squid:UnusedPrivateMethod›"0Remove this unused private "createPlant" method.(×Ïô¬8¾®õ·ş-
 Gsquid:S1148Ò"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8—ú€ˆş-
 \
 squid:S106±"9Replace this use of System.out or System.err by a logger.(ïÙ¦ıÿÿÿÿ8¾®õ·ş-
-Osquid:S1481Œ"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8¾®õ·ş-
+]squid:UnusedPrivateMethod›"0Remove this unused private "createPlant" method.(×Ïô¬8¾®õ·ş-
+Vsquid:S1135Ñ"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ8—ú€ˆş-
+W
+squid:S106¸"9Replace this use of System.out or System.err by a logger.(“Ñ»Š8¾®õ·ş-
+^squid:S1854Œ":Remove this useless assignment to local variable "result".(òÂšƒüÿÿÿÿ8¾®õ·ş-
+Nsquid:S00108¼")Either remove or fill this block of code.(é–³öûÿÿÿÿ8¾®õ·ş-
 Osquid:S1481œ"+Remove this unused "result" local variable.(òÂšƒüÿÿÿÿ8¾®õ·ş-
+jsquid:CommentedOutCodeLineƒ"<This block of commented-out lines of code should be removed.(ÃÒ–Æ8¾®õ·ş-
+]squid:UnusedPrivateMethod"+Remove this unused private "select" method.(÷¼¿İøÿÿÿÿ8¾®õ·ş-
