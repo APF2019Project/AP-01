@@ -45,13 +45,15 @@ public class PvpGame {
         text.setFill(Color.WHITESMOKE);
         text.setFont(Font.font("monospaced", Program.screenX / 60));
         button.setTextAlignment(TextAlignment.CENTER);
-        button.setStyle("-fx-background-color: transparent;");
+        button.setStyle(
+                "-fx-background-color: rgba(0 , 255 , 0 , 0.2);"
+        );
         button.setTextFill(Color.WHITESMOKE);
         button.setFont(Font.font("monospaced", Program.screenX / 60));
 
         if (gameState == null) {
             text.setText(String.format(format, "game id", "", "plants", "", "zombies"));
-            button.setVisible(false);
+            button.setText("status");
         } else {
             String username = Account.getCurrentAccount().getUsername();
             if (gameState.equals("WAITING_TO_JOIN")) {
@@ -81,7 +83,6 @@ public class PvpGame {
             StringBuilder res = new StringBuilder();
             for (PvpGame game : allIds)
                 res.append(game.toString()).append('\n');
-
             return res.toString();
         }
         if (url.equals("stateOfGame")) {
