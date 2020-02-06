@@ -22,20 +22,20 @@ import java.util.stream.Collectors;
 
 public class PvpGame implements Serializable {
     
-    private static final long serialVersionUID = -1568760709015661149L;
-    private static final Integer randomizer = 3865;
-    private static final ArrayList<PvpGame> allIds = new ArrayList<>();
+    public static final long serialVersionUID = -1568760709015661149L;
+    public static final Integer randomizer = 3865;
+    public static final ArrayList<PvpGame> allIds = new ArrayList<>();
 
-    private final Integer id;
-    private final String plant;
-    private final String zombie;
-    private ArrayList<String> plantHand = new ArrayList<>();
-    private ArrayList<String> zombieHand = new ArrayList<>();
+    public final Integer id;
+    public final String plant;
+    public final String zombie;
+    public ArrayList<String> plantHand = new ArrayList<>();
+    public ArrayList<String> zombieHand = new ArrayList<>();
 
     String[][] plants = new String[5][7];
     String[][] zombies = new String[5][7];
 
-    private GameState gameState;
+    public GameState gameState;
 
     public PvpGame(String plant, String zombie) {
         this.plant = plant;
@@ -99,7 +99,7 @@ public class PvpGame implements Serializable {
                 .collect(Collectors.joining("\n"))+"\n"
             )
             .flatMap(x -> Client.get("pvp/join", x))
-            .show();
+            .then(GameManager.init(id));
     }
 
     private static PvpGame findGameById(String id) {
@@ -160,6 +160,10 @@ public class PvpGame implements Serializable {
                     return "Action not allowed";
                 }
             return "No game with such ID found";
+        }
+        if (url.equals("get")) {
+            PvpGame game = findGameById(body.get(0));
+            return Serial.toBase64(game); 
         }
         return "404";
     }

@@ -103,7 +103,7 @@ public class listMenu implements Page<Unit> {
                 .map(y -> Account.myToken + "\n" + y + "\n" + x)
             )
             .flatMap(x -> Client.get("pvp/create", x))
-            .show()
+            .flatMap(GameManager::init)
             .discardData();
     }
 }
