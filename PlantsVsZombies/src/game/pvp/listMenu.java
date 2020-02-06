@@ -28,7 +28,8 @@ import account.AccountForm;
 public class listMenu implements Page<Unit> {
     @Override
     public Effect<Unit> action() {
-        return Client.get("pvp/list", "").map(x -> x.split("\n")).
+        return Program.reloadAll().then(
+            Client.get("pvp/list", "").map(x -> x.split("\n")).
                 map(Arrays::asList).flatMap(list -> new Effect<>(h -> {
             Image image = new Image(Program.getRes("images/wallpaper.jpg"));
             Background background = new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
@@ -89,7 +90,7 @@ public class listMenu implements Page<Unit> {
 
             Program.stage.getScene().setRoot(stackPane);
 
-        })).showError();
+        }))).showError();
     }
 
     private Effect<Unit> newGame() {
