@@ -1,6 +1,7 @@
 package game.pvp;
 
 import account.Account;
+import creature.being.plant.PlantDna;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -19,6 +20,7 @@ public class PvpGame {
     private final Integer id;
     private final String plant;
     private final String zombie;
+    private ArrayList<String> plantHand = new ArrayList<>();
 
     private ArrayList<ArrayList<String>> moves = new ArrayList<>();
 
@@ -95,9 +97,15 @@ public class PvpGame {
             return "No game with such ID found";
         }
         if (url.equals("create")) {
+            Account user = Account.getByToken(body.get(0));
+            if (user == null) return "FAIL401";      
             if (Account.getByUsername(body.get(1)) == null)
                 return "Not a valid username for zombie player";
-            return new PvpGame(body.get(0), body.get(1)).id + "";
+            PvpGame game =  new PvpGame(user.getUsername(), body.get(1));
+            for (int i = 2; i < body.size(); i++) {
+                game.plantHand.add(body.get(i));
+            }
+            return game.id+"";
         }
         if (url.equals("cancel")) {
             Integer gameId = Integer.parseInt(body.get(1));

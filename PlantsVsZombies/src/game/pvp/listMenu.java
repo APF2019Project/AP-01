@@ -1,6 +1,7 @@
 package game.pvp;
 
 import client.Client;
+import creature.being.plant.PlantDna;
 import graphic.CloseButton;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import main.Program;
+import page.Collection;
 import page.Page;
 import util.Effect;
 import util.Unit;
@@ -18,6 +20,10 @@ import util.Unit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import account.Account;
+import account.AccountForm;
 
 public class listMenu implements Page<Unit> {
     @Override
@@ -51,6 +57,7 @@ public class listMenu implements Page<Unit> {
             );
             newGameBtn.setTextFill(Color.WHITESMOKE);
             newGameBtn.setFont(Font.font("monospaced", Program.screenX / 60));
+            newGameBtn.setOnMouseClicked(e -> newGame().execute());
             newGameBox.getChildren().add(newGameBtn);
             vBox.getChildren().addAll(hBox, newGameBox);
 
@@ -83,5 +90,19 @@ public class listMenu implements Page<Unit> {
             Program.stage.getScene().setRoot(stackPane);
 
         })).showError();
+    }
+
+    private Effect<Unit> newGame() {
+        return new Collection<PlantDna>(Account::getCurrentUserPlants, 7)
+            .action()
+            .map(x -> x.stream().map(y -> y.getName())
+                .collect(Collectors.joining("\n"))+"\n"
+            )
+            .flatMap(x -> new AccountForm().action()
+                .map(y -> Account.myToken + "\n" + y + "\n" + x)
+            )
+            .flatMap(x -> Client.get("pvp/create", x))
+            .show()
+            .discardData();
     }
 }
