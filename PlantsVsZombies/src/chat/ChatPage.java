@@ -1,24 +1,22 @@
 package chat;
 
-import javafx.scene.control.Spinner;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.TextFlow;
-import main.Program;
-import page.Page;
-import graphic.CloseButton;
-import graphic.SimpleButton;
 import account.Account;
 import client.Client;
+import graphic.CloseButton;
+import graphic.SimpleButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
+import main.Program;
+import page.Page;
 import util.Effect;
 import util.Unit;
 
@@ -42,12 +40,16 @@ public class ChatPage implements Page<Void> {
     int reply = -1;
     Text choosen = null;
 
-    void setReply(int val) {
-        if (val == -1) {
-            choosen = null;
-            reply = -1;
+
+    private void recolor(boolean b) {
+        if (choosen == null) return;
+        if (b) {
+            choosen.setFill(Color.AQUA);
+        } else {
+            choosen.setFill(Color.YELLOW);
         }
     }
+
 
     public Effect<Unit> reload() {
         return Client.get("getChat", Account.myToken + "\n" + username + "\n")
@@ -55,8 +57,6 @@ public class ChatPage implements Page<Void> {
                 .flatMap(data -> Effect.syncWork(() -> {
                     vBox = new VBox();
                     for (int i = 0; i < data.length / 3; i++) {
-//                        Text text = new Text(data[2 * i] + ": " + data[2 * i + 1]);
-//                        text.setFont(Font.font(Program.screenY / 20));
                         TextFlow textFlow = new TextFlow();
                         String username = data[3 * i];
                         int rep = Integer.parseInt(data[3 * i + 1]);
@@ -65,21 +65,40 @@ public class ChatPage implements Page<Void> {
                         {
                             Text txt = new Text(i + " -> ");
                             txt.setFill(Color.YELLOW);
-                            txt.setFont(Font.font(Y / 20));
+                            txt.setFont(Font.font(Y / 30));
                             textFlow.getChildren().add(txt);
+                            if (reply == i) {
+                                choosen = txt;
+                                recolor(true);
+                            }
+
+                            int finalI = i;
+                            txt.setOnMouseClicked(e -> {
+                                if (finalI == reply) {
+                                    reply = -1;
+                                    recolor(false);
+                                    choosen = null;
+                                    return;
+                                }
+                                recolor(false);
+                                choosen = txt;
+                                reply = finalI;
+                                recolor(true);
+                            });
+
                         }
 
                         if (rep != -1) {
-                            Text txt = new Text("reply to message number " + reply + " ");
+                            Text txt = new Text("reply to message number " + rep + " ");
                             txt.setFill(Color.RED);
-                            txt.setFont(Font.font(Y / 20));
+                            txt.setFont(Font.font(Y / 30));
                             textFlow.getChildren().add(txt);
                         }
 
                         {
                             Text txt = new Text(username + ":\n");
                             txt.setFill(Color.GREEN);
-                            txt.setFont(Font.font(Y / 20));
+                            txt.setFont(Font.font(Y / 30));
                             textFlow.getChildren().add(txt);
                         }
 
@@ -88,10 +107,11 @@ public class ChatPage implements Page<Void> {
                             for (String s : res) {
                                 Text txt = new Text(s + "\n");
                                 txt.setFill(Color.WHITESMOKE);
-                                txt.setFont(Font.font(Y / 20));
+                                txt.setFont(Font.font(Y / 30));
                                 textFlow.getChildren().add(txt);
                             }
                         }
+
 
                         vBox.getChildren().add(textFlow);
                     }
