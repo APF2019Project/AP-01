@@ -1,9 +1,13 @@
 package game.pvp;
 
+import account.Account;
+import client.Client;
+import creature.Dna;
 import game.GameMode;
 import graphic.GameBackground;
 import graphic.game.CreatureNode;
 import javafx.scene.layout.Pane;
+import main.Program;
 import page.Page;
 import util.Effect;
 import util.Unit;
@@ -27,6 +31,11 @@ public class PutPage implements Page<Unit> {
       pane.getChildren().add(background);
       update(game);
     });
+  }
+
+  public Effect<Unit> put(Dna dna, int i, int j) {
+    return Client.get("pvp/put", Account.myToken, game.id+"",
+      i+"", j+"", dna.getName()).discardData();
   }
 
   public void update(PvpGame newGame) {

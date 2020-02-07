@@ -140,7 +140,7 @@ public class PvpGame implements Serializable {
         }
         if (url.equals("join")) {
             Account user = Account.getByToken(body.get(0));
-            if (user == null) return "FAIL401";      
+            if (user == null) return "FAIL401";     
             PvpGame game = findGameById(body.get(1));
             for (int i = 2; i < body.size(); i++) {
                 game.zombieHand.add(body.get(i));
@@ -164,6 +164,22 @@ public class PvpGame implements Serializable {
         if (url.equals("get")) {
             PvpGame game = findGameById(body.get(0));
             return Serial.toBase64(game); 
+        }
+        if (url.equals("put")) {
+            Account user = Account.getByToken(body.get(0));
+            if (user == null) return "FAIL401";
+            PvpGame game = findGameById(body.get(1));
+            int i = Integer.parseInt(body.get(2));
+            int j = Integer.parseInt(body.get(3));
+            if (user.getUsername().equals(game.plant)) {
+                game.plants[i][j] = body.get(4);
+                return "OK";
+            }
+            if (user.getUsername().equals(game.zombie)) {
+                game.zombies[i][j] = body.get(4);
+                return "OK";
+            }
+            return "FAIL";
         }
         return "404";
     }
