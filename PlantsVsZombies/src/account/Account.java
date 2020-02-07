@@ -97,9 +97,8 @@ public class Account implements Serializable {
 
               @Override
               public Effect<Unit> action() {
-                Account.current.delete();
-                Message.show("your account deleted successfully");
-                return Effect.ok();
+                return Client.get("account/delete", myToken+"\n").then(
+                Message.show("your account deleted successfully"));
               }
 
             },
@@ -115,7 +114,9 @@ public class Account implements Serializable {
             new ActionButton<>("rename",
                     (new Form("Enter new username"))
                             .action()
-                            .flatMap(data -> Account.current.rename(data[0]))
+                            .flatMap(data -> 
+                              Client.get("account/rename", myToken, data[0])
+                            )
                             .map(x -> "Your username changed successfully")
                             .show().catchThen(e->
                               Message.show("tekrarie username")
@@ -209,7 +210,7 @@ public class Account implements Serializable {
     return res;
   }
 
-  private Effect<Unit> rename(String string) {
+  public Effect<Unit> rename(String string) {
     if (getByUsername(string) != null) return Effect.error("invalid username");
     ALL.remove(username);
     username = string;
@@ -217,7 +218,7 @@ public class Account implements Serializable {
     return Effect.ok();
   }
 
-  protected void delete() {
+  public void delete() {
     ALL.remove(username);
   }
 
@@ -353,5 +354,18 @@ public class Account implements Serializable {
       .flatMap(account -> Effect.syncWork(()->{
         current = account;
       }));
+  }
+
+  public String getToken() {
+    return token;
+  }
+
+  public static Effect<Unit> logout() {
+    return Client.get("account/logout", myToken+"\n").discardData();
+  }
+
+  public void removeToken() {
+    BY_TOKEN.remove(token);
+    token = null;
   }
 }

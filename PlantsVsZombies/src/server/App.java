@@ -19,9 +19,11 @@ import java.util.stream.Collectors;
 
 public class App {
 
+  private static int port = 8000;
   public static void main(String[] args) throws Exception {
     preload();
-    HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+    HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+    printStatus();
     server.createContext("/", (t) -> {
       Scanner scanner = new Scanner(t.getRequestBody());
       String response;
@@ -32,7 +34,7 @@ public class App {
         response = "ERROR:"+e;
         e.printStackTrace();
       }
-      System.out.println("response: "+response);
+      printStatus();
       scanner.close();
       t.sendResponseHeaders(200, response.length());
       OutputStream os = t.getResponseBody();
@@ -41,6 +43,23 @@ public class App {
     });
     server.setExecutor(null); // creates a default executor
     server.start();
+  }
+
+  public static void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
+
+  private static void printStatus() {
+    clearScreen();
+    port++;
+    System.out.println("Listening on port "+port);
+    for (Account a: Account.all()) {
+      if (a.getToken() == null)
+        System.out.println(a.getUsername()+": offline");
+      else
+        System.out.println(a.getUsername()+": online");
+    }
   }
 
   public static String getBackupPath(String file) {
@@ -85,6 +104,9 @@ public class App {
     }
     if (url.startsWith("/shop")) {
       return ShopHandler.handle(url.substring(6), scannerToStringArray(body));
+    }
+    if (url.startsWith("/account")) {
+      return AccountHandler.handle(url.substring(9), scannerToStringArray(body));
     }
     if (url.equals("/login")) {
       if (!body.hasNextLine()) return "BAD";

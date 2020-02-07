@@ -172,25 +172,6 @@ public class DayModeUser implements PlantPlayer {
     }
 
     @Override
-    public void showHand() {
-        Program.clearScreen();
-        System.out.println("Sun: " + sun + "\n");
-        for (int i = 0; i < plantDans.size(); i++) {
-            boolean isSelected = (selected != null && i == selected);
-            String id = (isSelected ? "X" : i + "");
-            System.out.println(id + ". " + plantDans.get(i).getName());
-            System.out.println("cool down time left: " + coolDownTimeLeft.get(i));
-        }
-        System.out.println("Enter a number for select or press enter to continue...");
-        String s = Program.scanner.nextLine();
-        try {
-            selectNum(Integer.parseInt(s));
-        } catch (NumberFormatException e) {
-
-        }
-    }
-
-    @Override
     public void addSun(int sunAmount) {
         sun += sunAmount;
 
@@ -209,5 +190,11 @@ public class DayModeUser implements PlantPlayer {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void showHand() {
+        // TODO Auto-generated method stub
+
     }
 }
