@@ -5,7 +5,9 @@ import creature.Dna;
 import creature.ammunition.Ammunition;
 import creature.being.BeingDna;
 import creature.being.plant.Plant;
+import creature.being.plant.PlantDna;
 import creature.being.zombie.Zombie;
+import creature.being.zombie.ZombieDna;
 import game.GameEngine;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -24,6 +26,10 @@ public class CreatureNode extends Group {
   private CreatureNode onMe;
 
   static double marginY = Program.screenY;
+
+  public Dna getDna() {
+    return dna;
+  }
 
   public CreatureNode(Creature creature) {
     image = new ImageView();
@@ -58,6 +64,14 @@ public class CreatureNode extends Group {
       this.getChildren().add(health1);
     }
     this.update();
+  }
+
+  public static CreatureNode from(String name, int line, int pos) {
+    BeingDna dna = BeingDna.getByName(name);
+    if (dna instanceof PlantDna) {
+      return new CreatureNode(new Plant((PlantDna)dna, line, pos));
+    }
+    return new CreatureNode(new Zombie((ZombieDna)dna, line, pos));
   }
 
   public void update() {
