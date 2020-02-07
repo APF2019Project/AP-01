@@ -1,6 +1,8 @@
 package client;
 
 import util.Effect;
+import util.Unit;
+
 import java.net.*;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -57,5 +59,9 @@ public class Client {
 
   public static Effect<String> get(String path, String data1, String data2, String data3) {
     return get(path, data1 + "\n" + data2 + "\n" + data3 + "\n");
+  }
+
+  public static Effect<String> get(String path, String data1, String data2, String data3, String data4, String data5) {
+    return get(path, data1 + "\n" + data2 + "\n" + data3 + "\n" + data4 + "\n" + data5 + "\n");
   }
 }
