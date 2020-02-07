@@ -8,8 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f81be2d0-b49f-4360-bbad-6854f8cc3688" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/pvp/PvpGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/pvp/PvpGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chat/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/ChatPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/pvp/listMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/pvp/listMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/App.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +66,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Program">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.App" />
       <module name="PlantsVsZombies" />
       <extension name="coverage">
@@ -97,7 +99,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Program" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Program" />
       <module name="PlantsVsZombies" />
       <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml" />
@@ -111,16 +113,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="2client" type="CompoundRunConfigurationType">
+      <toRun name="App" type="Application" />
+      <toRun name="Program" type="Application" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType">
+      <toRun name="App" type="Application" />
+      <toRun name="Program" type="Application" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Application.Dummy" />
-      <item itemvalue="Application.PlantsVsZombies" />
       <item itemvalue="Application.Program" />
       <item itemvalue="Application.App" />
+      <item itemvalue="Application.Dummy" />
+      <item itemvalue="Application.PlantsVsZombies" />
+      <item itemvalue="Compound.2client" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Program" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.Dummy" />
         <item itemvalue="Application.PlantsVsZombies" />
       </list>
@@ -136,13 +147,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575801896901</updated>
-    </task>
-    <task id="LOCAL-00027" summary="ammunition methods added to game engine">
-      <created>1577208026835</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1577208026835</updated>
     </task>
     <task id="LOCAL-00028" summary="ammunition methods added to game engine v 0.1">
       <created>1577208102911</created>
@@ -480,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580993258813</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="basic list menu for pvp complite">
+      <created>1580994551205</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1580994551206</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -555,7 +566,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bill" />
     <MESSAGE value="adds leader board" />
     <MESSAGE value="adds close button to leader board" />
     <MESSAGE value="fixes leader board" />
@@ -580,7 +590,8 @@
     <MESSAGE value="makes freezing Amu work =)" />
     <MESSAGE value="pvp server side and list of games" />
     <MESSAGE value="adds basic game list" />
-    <option name="LAST_COMMIT_MESSAGE" value="adds basic game list" />
+    <MESSAGE value="basic list menu for pvp complite" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic list menu for pvp complite" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

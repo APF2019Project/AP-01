@@ -15,16 +15,18 @@ public class Chat {
     private static final long serialVersionUID = -8096962699448160363L;
     String sender;
     String text;
+    String reply;
 
 
-    public Message(String sender, String text) {
+    public Message(String sender, String reply, String text) {
       this.sender = sender;
       this.text = text;
+      this.reply = reply;
     }
 
     @Override
     public String toString() {
-      return sender + "\n" + text + "\n";
+      return sender + "\n" + reply + "\n" + text + "\n";
     }
 
     public String toBase64() {
@@ -53,8 +55,8 @@ public class Chat {
     return chat;
   }
 
-  public static void sendMessage(String username1, String username2, String text) {
+  public static void sendMessage(String username1, String username2, String reply, String text) {
     Chat chat = Chat.get(username1, username2);
-    chat.messages.add(new Message(username1, text));
+    chat.messages.add(new Message(username1, reply , text));
   }
 }

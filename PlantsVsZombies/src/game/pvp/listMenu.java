@@ -28,8 +28,7 @@ import account.AccountForm;
 public class listMenu implements Page<Unit> {
     @Override
     public Effect<Unit> action() {
-        return Program.reloadAll().then(
-            Client.get("pvp/list", "").map(x -> x.split("\n")).
+        return Client.get("pvp/list", "").map(x -> x.split("\n")).
                 map(Arrays::asList).flatMap(list -> new Effect<>(h -> {
             Image image = new Image(Program.getRes("images/wallpaper.jpg"));
             Background background = new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
@@ -68,8 +67,6 @@ public class listMenu implements Page<Unit> {
             if (list.size() > mx)
                 newlist = list.subList(list.size() - mx, list.size());
             if (newlist.size() == 1 && newlist.get(0).length() == 0) newlist = new ArrayList<>();
-            System.out.println(list.size());
-            System.out.println(newlist.size());
             for (String game : newlist) {
                 String[] res = game.split("\t");
                 vBox.getChildren().add(PvpGame.packet(res[0], res[1], res[2], res[3]));
@@ -90,7 +87,7 @@ public class listMenu implements Page<Unit> {
 
             Program.stage.getScene().setRoot(stackPane);
 
-        }))).showError();
+        }));
     }
 
     private Effect<Unit> newGame() {
@@ -103,7 +100,7 @@ public class listMenu implements Page<Unit> {
                 .map(y -> Account.myToken + "\n" + y + "\n" + x)
             )
             .flatMap(x -> Client.get("pvp/create", x))
-            .flatMap(GameManager::init)
+            .show()
             .discardData();
     }
 }

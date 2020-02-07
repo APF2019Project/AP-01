@@ -137,10 +137,12 @@ public class App {
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
       if (!body.hasNextLine()) return "BAD";
+      String reply = body.nextLine();
+      if (!body.hasNextLine()) return "BAD";
       String text = body.nextLine();
       Account user = Account.getByToken(token);
       if (user == null) return "FAIL401\n";
-      Chat.sendMessage(user.getUsername(), username, text);
+      Chat.sendMessage(user.getUsername(), username, reply , text);
       return "OK\n";
     }
     return "404\n";
