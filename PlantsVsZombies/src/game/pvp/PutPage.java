@@ -30,6 +30,7 @@ public class PutPage implements Page<Unit> {
       );
       pane.getChildren().add(background);
       update(game);
+      Program.stage.getScene().setRoot(pane);
     });
   }
 
