@@ -57,7 +57,7 @@ public class listMenu implements Page<Unit> {
             );
             newGameBtn.setTextFill(Color.WHITESMOKE);
             newGameBtn.setFont(Font.font("monospaced", Program.screenX / 60));
-            newGameBtn.setOnMouseClicked(e -> newGame().execute());
+            newGameBtn.setOnMouseClicked(e -> Program.reloadAll().then(newGame()).execute());
             newGameBox.getChildren().add(newGameBtn);
             vBox.getChildren().addAll(hBox, newGameBox);
 
