@@ -191,4 +191,10 @@ public class DayModeUser implements PlantPlayer {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void showHand() {
+        // TODO Auto-generated method stub
+
+    }
 }
