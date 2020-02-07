@@ -354,4 +354,8 @@ public class Account implements Serializable {
         current = account;
       }));
   }
+
+  public String getToken() {
+    return token;
+  }
 }

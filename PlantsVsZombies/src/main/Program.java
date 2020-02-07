@@ -22,11 +22,6 @@ public class Program extends Application {
   public static double screenX, screenY;
   public static Stage stage;
 
-  public static void clearScreen() {
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
-  }
-
   public static String getBackupPath(String file) {
     String workingDirectory;
     String OS = (System.getProperty("os.name")).toUpperCase();
