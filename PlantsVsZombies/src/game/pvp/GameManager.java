@@ -1,6 +1,7 @@
 package game.pvp;
 
 import client.Client;
+import game.GameMode;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Label;
@@ -32,6 +33,8 @@ public class GameManager {
 
   }
 
+  static PutPage putPage;
+
   public static Effect<Unit> reload(){
     return Client.get("pvp/get", id+"\n")
       .map(x -> (PvpGame)Serial.fromBase64(x))
@@ -46,8 +49,21 @@ public class GameManager {
             return;
           }
           if (game.gameState == GameState.RUNNING_PLANTS ) {
-            System.exit(0);
+            putPage = new PutPage(GameMode.DAY, game);
+            putPage.action().execute();
             return;
+          }
+          if (game.gameState == GameState.RUNNING_ZOMBIE ) {
+            new PutPage(GameMode.ZOMBIE, game).action().execute();
+            return;
+          }
+        }
+        else {
+          if (game.gameState == GameState.RUNNING_PLANTS ) {
+            putPage.update(game);
+          }
+          if (game.gameState == GameState.RUNNING_ZOMBIE ) {
+            putPage.update(game);
           }
         }
       }));

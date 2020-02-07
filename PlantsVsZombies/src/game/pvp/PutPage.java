@@ -25,11 +25,12 @@ public class PutPage implements Page<Unit> {
           Effect.noOp
       );
       pane.getChildren().add(background);
-      update();
+      update(game);
     });
   }
 
-  public void update() {
+  public void update(PvpGame newGame) {
+    game = newGame;
     objs = gameMode == GameMode.DAY ? game.plants : game.zombies;
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 7; j++) {
@@ -59,6 +60,11 @@ public class PutPage implements Page<Unit> {
   private void remove(int i, int j) {
     if (nodes[i][j] == null) return;
     pane.getChildren().remove(nodes[i][j]);
+  }
+
+  public PutPage(GameMode gameMode, PvpGame game) {
+    this.gameMode = gameMode;
+    this.game = game;
   }
 
 }
