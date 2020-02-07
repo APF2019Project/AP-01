@@ -358,4 +358,13 @@ public class Account implements Serializable {
   public String getToken() {
     return token;
   }
+
+  public static Effect<Unit> logout() {
+    return Client.get("account/logout", myToken+"\n").discardData();
+  }
+
+  public void removeToken() {
+    BY_TOKEN.remove(token);
+    token = null;
+  }
 }

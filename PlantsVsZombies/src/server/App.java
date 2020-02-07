@@ -105,6 +105,9 @@ public class App {
     if (url.startsWith("/shop")) {
       return ShopHandler.handle(url.substring(6), scannerToStringArray(body));
     }
+    if (url.startsWith("/account")) {
+      return AccountHandler.handle(url.substring(9), scannerToStringArray(body));
+    }
     if (url.equals("/login")) {
       if (!body.hasNextLine()) return "BAD";
       String username = body.nextLine();
