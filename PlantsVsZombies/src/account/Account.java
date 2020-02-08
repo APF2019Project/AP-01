@@ -179,7 +179,8 @@ public class Account implements Serializable {
     }).then(getAccountFromServer(username)
       .flatMap(account -> Effect.syncWork(()->{
       current = account;
-    })));
+    })))
+    .then(Program.reloadAll());
   }
 
   public static ArrayList<PlantDna> getCurrentUserPlants() {
