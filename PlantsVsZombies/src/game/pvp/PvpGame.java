@@ -166,6 +166,20 @@ public class PvpGame implements Serializable {
             PvpGame game = findGameById(body.get(0));
             return Serial.toBase64(game); 
         }
+        if (url.equals("ready")) {
+            Account user = Account.getByToken(body.get(0));
+            if (user == null) return "FAIL401";
+            PvpGame game = findGameById(body.get(1));
+            if (game.plant.equals(user.getUsername()) && game.gameState == GameState.RUNNING_PLANTS) {
+                game.gameState = GameState.RUNNING_ZOMBIE;
+                return "OK";
+            }
+            if (game.zombie.equals(user.getUsername()) && game.gameState == GameState.RUNNING_ZOMBIE) {
+                game.gameState = GameState.RUNNING_PLANTS;
+                return "OK";
+            }
+            return "FAIL";
+        }
         if (url.equals("put")) {
             Account user = Account.getByToken(body.get(0));
             if (user == null) return "FAIL401";

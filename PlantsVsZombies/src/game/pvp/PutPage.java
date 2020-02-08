@@ -8,6 +8,7 @@ import creature.Dna;
 import creature.being.BeingDna;
 import game.GameMode;
 import graphic.GameBackground;
+import graphic.SimpleButton;
 import graphic.card.SimpleGameCard;
 import graphic.game.PutNode;
 import javafx.scene.layout.Pane;
@@ -20,9 +21,10 @@ public class PutPage implements Page<Unit> {
 
   private GameMode gameMode;
   private PvpGame game;
-  private PutNode[][] nodes = new PutNode[5][7];
+  private PutNode[][] nodes = new PutNode[PvpGame.size1][PvpGame.size2];
   private Pane pane;
   private String[][] objs;
+  private boolean myTurn = false;
 
   @Override
   public Effect<Unit> action() {
@@ -34,21 +36,29 @@ public class PutPage implements Page<Unit> {
       );
       pane.getChildren().add(background);
       update(game);
-      ArrayList<String> dnas = game.plantHand;
-      int i = 0;
-      for (String dnaName: dnas) {
-        BeingDna dna = BeingDna.getByName(dnaName);
-        SimpleGameCard c = new SimpleGameCard(
-          (d, x, y) -> {
-            put(d, x, y).execute();
-          },
-          dna,
-          (i + 1.5) * Program.screenX * 0.07,
-          10,
-          Program.screenX * 0.055
-        );
-        pane.getChildren().add(c);
-        i++;
+      myTurn = game.zombie.equals(Account.getCurrentAccount().getUsername()) ^ gameMode == GameMode.DAY;
+      if (myTurn) {
+        SimpleButton ready = new SimpleButton(
+          Program.screenX*0.6, 0, Program.screenX*0.2,
+          Program.screenX*0.04, "ready",
+          Client.get("pvp/ready", Account.myToken, game.id+"").discardData());
+        pane.getChildren().add(ready);
+        ArrayList<String> dnas = gameMode == GameMode.DAY ? game.plantHand : game.zombieHand;
+        int i = 0;
+        for (String dnaName: dnas) {
+          BeingDna dna = BeingDna.getByName(dnaName);
+          SimpleGameCard c = new SimpleGameCard(
+            (d, x, y) -> {
+              put(d, x, y).execute();
+            },
+            dna,
+            (i + 1.5) * Program.screenX * 0.07,
+            10,
+            Program.screenX * 0.055
+          );
+          pane.getChildren().add(c);
+          i++;
+        }
       }
       Program.stage.getScene().setRoot(pane);
     });

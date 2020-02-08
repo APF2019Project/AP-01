@@ -43,7 +43,6 @@ public class GameManager {
       }))
       .then(Effect.syncWork(()->{
         if (!game.gameState.equals(state)) {
-          System.out.println("a");
           state = game.gameState;
           if (game.gameState == GameState.WAITING_TO_JOIN) {
             new WaitingPage().action().execute();
@@ -55,12 +54,12 @@ public class GameManager {
             return;
           }
           if (game.gameState == GameState.RUNNING_ZOMBIE ) {
-            new PutPage(GameMode.ZOMBIE, game).action().execute();
+            putPage = new PutPage(GameMode.ZOMBIE, game);
+            putPage.action().execute();
             return;
           }
         }
         else {
-          System.out.println("b");
           if (game.gameState == GameState.RUNNING_PLANTS ) {
             putPage.update(game);
           }
