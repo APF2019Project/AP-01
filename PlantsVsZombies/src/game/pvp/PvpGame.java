@@ -31,9 +31,10 @@ public class PvpGame implements Serializable {
     public final String zombie;
     public ArrayList<String> plantHand = new ArrayList<>();
     public ArrayList<String> zombieHand = new ArrayList<>();
+    public static int size1 = 5, size2 = 9;
 
-    String[][] plants = new String[5][7];
-    String[][] zombies = new String[5][7];
+    String[][] plants = new String[size1][size2];
+    String[][] zombies = new String[size1][size2];
 
     public GameState gameState;
 
@@ -116,7 +117,7 @@ public class PvpGame implements Serializable {
         if (url.equals("list")) {
             StringBuilder res = new StringBuilder();
             for (PvpGame game : allIds)
-                res.append(game.toString()).append('\n');
+                res.append(game.toListString()).append('\n');
             return res.toString();
         }
         if (url.equals("stateOfGame")) {
@@ -186,6 +187,17 @@ public class PvpGame implements Serializable {
 
     @Override
     public String toString() {
-        return id + "\t" + plant + "\t" + zombie + "\t" + gameState;
+        String res = "";
+        for (int i = 0; i < plants.length; i++) {
+            for (int j = 0; j < plants[i].length; j++) {
+                res += plants[i][j] + " ";
+            }
+            res += "\n";
+        }
+        return id + "\t" + plant + "\t" + zombie + "\t" + gameState + "\n" + res;
+    }
+
+    public String toListString() {
+        return id + "\t" + plant + "\t" + zombie + "\t" + gameState;    
     }
 }

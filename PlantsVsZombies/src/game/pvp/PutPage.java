@@ -1,11 +1,15 @@
 package game.pvp;
 
+import java.util.ArrayList;
+
 import account.Account;
 import client.Client;
 import creature.Dna;
+import creature.being.BeingDna;
 import game.GameMode;
 import graphic.GameBackground;
-import graphic.game.CreatureNode;
+import graphic.card.SimpleGameCard;
+import graphic.game.PutNode;
 import javafx.scene.layout.Pane;
 import main.Program;
 import page.Page;
@@ -16,7 +20,7 @@ public class PutPage implements Page<Unit> {
 
   private GameMode gameMode;
   private PvpGame game;
-  private CreatureNode[][] nodes = new CreatureNode[5][7];
+  private PutNode[][] nodes = new PutNode[5][7];
   private Pane pane;
   private String[][] objs;
 
@@ -30,6 +34,22 @@ public class PutPage implements Page<Unit> {
       );
       pane.getChildren().add(background);
       update(game);
+      ArrayList<String> dnas = game.plantHand;
+      int i = 0;
+      for (String dnaName: dnas) {
+        BeingDna dna = BeingDna.getByName(dnaName);
+        SimpleGameCard c = new SimpleGameCard(
+          (d, x, y) -> {
+            put(d, x, y).execute();
+          },
+          dna,
+          (i + 1.5) * Program.screenX * 0.07,
+          10,
+          Program.screenX * 0.055
+        );
+        pane.getChildren().add(c);
+        i++;
+      }
       Program.stage.getScene().setRoot(pane);
     });
   }
@@ -42,32 +62,34 @@ public class PutPage implements Page<Unit> {
   public void update(PvpGame newGame) {
     game = newGame;
     objs = gameMode == GameMode.DAY ? game.plants : game.zombies;
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 7; j++) {
-        if (objs[i][j] == null) {
-          remove(i,j);
-          return;
+    //System.out.println(game);
+    try {
+      for (int i = 0; i < PvpGame.size1; i++) {
+        for (int j = 0; j < PvpGame.size2; j++) {
+          if (objs[i][j] == null) remove(i,j);
+          else if (nodes[i][j] == null) add(i,j);
+          else if (!objs[i][j].equals(nodes[i][j].getDna().getName())) { 
+            remove(i,j);
+            add(i,j);
+          }
         }
-        if (nodes[i][j] == null) {
-          add(i,j);
-          return;
-        }
-        if (objs[i][j].equals(nodes[i][j].getDna().getName())) {
-          return;
-        }
-        remove(i,j);
-        add(i,j);
       }
+    }
+    catch(Throwable e) {
+      e.printStackTrace();
+      System.exit(0);
     }
   }
 
   private void add(int i, int j) {
+    System.out.println("add "+objs[i][j]);
     if (objs[i][j] == null) return;
-    nodes[i][j] = CreatureNode.from(objs[i][j], i, j);
+    nodes[i][j] = PutNode.from(objs[i][j], i, j);
     pane.getChildren().add(nodes[i][j]);
   }
 
   private void remove(int i, int j) {
+    System.out.println("remove "+i+" "+j);
     if (nodes[i][j] == null) return;
     pane.getChildren().remove(nodes[i][j]);
   }

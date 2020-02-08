@@ -75,18 +75,14 @@ public class App {
   }
 
   private static void preload() {
-    File mainPath = new File(Program.getBackupPath(""));
-    if (mainPath.exists()) {
-      Account.recoverAll();
-    } else {
-      mainPath.mkdirs();
-    }
     try {
       PlantDna.loadFromData(Program.streamToString(Program.getRes("plantDna.json")));
       ZombieDna.loadFromData(Program.streamToString(Program.class.getResourceAsStream("resource/zombieDna.json")));
     } catch (Exception e) {
       e.printStackTrace();
     }
+    Account.createSync("x", "x");
+    Account.createSync("y", "y");
   }
 
   public static ArrayList<String> scannerToStringArray(Scanner sc) {
