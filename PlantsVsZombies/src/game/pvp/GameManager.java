@@ -19,6 +19,7 @@ public class GameManager {
   static String id;
   static PvpGame game;
   static GameState state = null;
+  static Timeline timer;
 
   static class WaitingPage implements Page<Unit> {
 
@@ -43,14 +44,19 @@ public class GameManager {
       }))
       .then(Effect.syncWork(()->{
         if (!game.gameState.equals(state)) {
+          if (game.gameState == GameState.RUNNING_PLANTS ) {
+            if (state == GameState.RUNNING_ZOMBIE) {
+              timer.pause();
+              
+              return;
+            }
+            putPage = new PutPage(GameMode.DAY, game);
+            putPage.action().execute();
+            return;
+          }
           state = game.gameState;
           if (game.gameState == GameState.WAITING_TO_JOIN) {
             new WaitingPage().action().execute();
-            return;
-          }
-          if (game.gameState == GameState.RUNNING_PLANTS ) {
-            putPage = new PutPage(GameMode.DAY, game);
-            putPage.action().execute();
             return;
           }
           if (game.gameState == GameState.RUNNING_ZOMBIE ) {
@@ -73,11 +79,11 @@ public class GameManager {
   public static Effect<Unit> init(String myId) {
     id = myId;
     return reload().then(Effect.syncWork(()->{
-      Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+      timer = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
         reload().execute();
       }));
-      fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
-      fiveSecondsWonder.play();
+      timer.setCycleCount(Timeline.INDEFINITE);
+      timer.play();
     }));
   }
   

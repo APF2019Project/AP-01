@@ -86,7 +86,7 @@ public class GameEngine {
         });
     }
 
-    private static void commonGraphic(GameMode gameMode, Effect<Unit> onAbort, Consumer<EndGameException> consumer){
+    public static void commonGraphic(GameMode gameMode, Effect<Unit> onAbort, Consumer<EndGameException> consumer){
         Pane pane = new Pane();
         Timer timer = new Timer();
         GameBackground background = new GameBackground(
@@ -205,7 +205,7 @@ public class GameEngine {
         return turn;
     }
 
-    private void config(GameDna gameDna) {
+    public void config(GameDna gameDna) {
         plantPlayer = gameDna.plantPlayer;
         zombiePlayer = gameDna.zombiePlayer;
         DATABASE = new PlayGroundData(19 * FRAME, gameDna.lines);

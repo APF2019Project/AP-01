@@ -12,7 +12,7 @@ public class GameDna {
     final ZombiePlayer zombiePlayer;
     final List<Line> lines;
 
-    GameDna(PlantPlayer plantPlayer, ZombiePlayer zombiePlayer, List<Line> lines) {
+    public GameDna(PlantPlayer plantPlayer, ZombiePlayer zombiePlayer, List<Line> lines) {
         this.plantPlayer = plantPlayer;
         this.zombiePlayer = zombiePlayer;
         this.lines = lines;
