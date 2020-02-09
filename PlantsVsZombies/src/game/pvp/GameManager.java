@@ -47,7 +47,12 @@ public class GameManager {
           if (game.gameState == GameState.RUNNING_PLANTS ) {
             if (state == GameState.RUNNING_ZOMBIE) {
               timer.pause();
-              
+              GameMonitor.run(game).then(Effect.syncWork(()->{
+                state = game.gameState;
+                putPage = new PutPage(GameMode.DAY, game);
+                putPage.action().execute();
+                timer.play();
+              }));
               return;
             }
             putPage = new PutPage(GameMode.DAY, game);

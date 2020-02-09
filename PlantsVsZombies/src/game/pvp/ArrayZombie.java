@@ -1,19 +1,36 @@
 package game.pvp;
 
+import creature.being.BeingDna;
 import creature.being.zombie.ZombieDna;
 import exception.EndGameException;
+import exception.Winner;
+import game.GameEngine;
 import player.zombie_player.ZombiePlayer;
 
 public class ArrayZombie implements ZombiePlayer {
 
+  String[][] zombies;
+  GameEngine gameEngine;
+
   public ArrayZombie(String[][] zombies) {
-    
+    this.zombies = zombies;
+    gameEngine = GameEngine.getCurrentGameEngine();
   }
 
   @Override
   public void nextTurn() throws EndGameException {
-    // TODO Auto-generated method stub
-
+    if (gameEngine.getTurn() % GameEngine.getFRAME() == 0) {
+      int cnt = gameEngine.getTurn() / GameEngine.getFRAME();
+      if (cnt == PvpGame.size2) throw new EndGameException(Winner.PLANTS);
+      for (int i = 0; i < PvpGame.size1; i++) {
+        try {
+          ZombieDna dna = (ZombieDna)BeingDna.getByName(zombies[i][cnt]);
+          gameEngine.newZombie(dna, i);
+        }
+        catch(Throwable ignored) {
+        }
+      }
+    }
   }
 
   @Override
