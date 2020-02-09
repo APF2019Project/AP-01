@@ -20,16 +20,13 @@ public class ArrayPlant implements PlantPlayer {
   public void nextTurn() throws EndGameException {
     if (!gameEngine.getTurn().equals(0)) return;
     for (int i = 0; i < PvpGame.size1; i++) {
-        for (int j = 0; j < PvpGame.size2; j++) {
-            while (true) {
-                try {
-                  PlantDna dna = (PlantDna)BeingDna.getByName(plants[i][j]);
-                  gameEngine.newPlant2(dna, i, j);
-                  break;
-                } catch (Exception ignored) {
-                }
-            }
+      for (int j = 0; j < PvpGame.size2; j++) {
+        try {
+          PlantDna dna = (PlantDna)BeingDna.getByName(plants[i][j]);
+          gameEngine.newPlant2(dna, i, j);
+        } catch (Exception ignored) {
         }
+      }
     }
   }
 

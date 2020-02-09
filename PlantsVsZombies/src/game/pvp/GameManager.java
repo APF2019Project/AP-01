@@ -52,7 +52,7 @@ public class GameManager {
                 putPage = new PutPage(GameMode.DAY, game);
                 putPage.action().execute();
                 timer.play();
-              }));
+              })).execute();
               return;
             }
             putPage = new PutPage(GameMode.DAY, game);

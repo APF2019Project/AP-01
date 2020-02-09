@@ -109,6 +109,9 @@ public class GameEngine {
                     } catch (EndGameException e) {
                         timer.cancel();
                         consumer.accept(e);
+                    } catch (Throwable e) {
+                        e.printStackTrace();
+                        System.exit(0);
                     }
                 });
             }
