@@ -18,7 +18,7 @@ public class GameMonitor {
       return new Effect<>(h -> {
         ArrayList<Line> lines = new ArrayList<>();
         for (int i = 0; i < 5; i++)
-          lines.add(new Line(i, LineState.DRY, new LawnMower(i)));
+          lines.add(new Line(i, LineState.DRY, null));
         new GameEngine();
         GameEngine.commonGraphic(
           GameMode.DAY,

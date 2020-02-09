@@ -36,7 +36,8 @@ public class PutPage implements Page<Unit> {
       );
       pane.getChildren().add(background);
       update(game);
-      myTurn = game.zombie.equals(Account.getCurrentAccount().getUsername()) ^ gameMode == GameMode.DAY;
+      myTurn = game.zombie.equals(Account.getCurrentAccount().getUsername()) && gameMode == GameMode.ZOMBIE || 
+               game.plant .equals(Account.getCurrentAccount().getUsername()) && gameMode == GameMode.DAY;
       if (myTurn) {
         SimpleButton ready = new SimpleButton(
           Program.screenX*0.6, 0, Program.screenX*0.2,

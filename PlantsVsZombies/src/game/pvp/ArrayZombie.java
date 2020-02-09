@@ -21,7 +21,12 @@ public class ArrayZombie implements ZombiePlayer {
   public void nextTurn() throws EndGameException {
     if (gameEngine.getTurn() % GameEngine.getFRAME() == 0) {
       int cnt = gameEngine.getTurn() / GameEngine.getFRAME();
-      if (cnt == PvpGame.size2) throw new EndGameException(Winner.PLANTS);
+      if (cnt >= PvpGame.size2) {
+        if (gameEngine.getZombies().size() == 0) {
+          throw new EndGameException(Winner.PLANTS);
+        }
+        return;
+      }
       for (int i = 0; i < PvpGame.size1; i++) {
         try {
           ZombieDna dna = (ZombieDna)BeingDna.getByName(zombies[i][cnt]);

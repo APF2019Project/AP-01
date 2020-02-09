@@ -44,4 +44,9 @@ public class Location implements Comparable <Location> {
         if (position == location.position) return lineNumber - location.lineNumber;
         return position - location.position;
     }
+
+	public int position2() {
+		//return position * getFRAME() * 2 + getFRAME();
+        return (position/GameEngine.getFRAME() - 1) / 2;
+    }
 }

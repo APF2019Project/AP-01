@@ -17,7 +17,7 @@ import util.Unit;
 public class GameManager {
 
   static String id;
-  static PvpGame game;
+  static PvpGame game, lastGame;
   static GameState state = null;
   static Timeline timer;
 
@@ -40,6 +40,7 @@ public class GameManager {
     return Client.get("pvp/get", id+"\n")
       .map(x -> (PvpGame)Serial.fromBase64(x))
       .flatMap(newGame -> Effect.syncWork(()->{
+        lastGame = game;
         game = newGame;
       }))
       .then(Effect.syncWork(()->{
@@ -47,7 +48,7 @@ public class GameManager {
           if (game.gameState == GameState.RUNNING_PLANTS ) {
             if (state == GameState.RUNNING_ZOMBIE) {
               timer.pause();
-              GameMonitor.run(game).then(Effect.syncWork(()->{
+              GameMonitor.run(lastGame).then(Effect.syncWork(()->{
                 state = game.gameState;
                 putPage = new PutPage(GameMode.DAY, game);
                 putPage.action().execute();

@@ -3,8 +3,12 @@ package game.pvp;
 import account.Account;
 import account.AccountForm;
 import client.Client;
+import creature.being.plant.Plant;
 import creature.being.plant.PlantDna;
 import creature.being.zombie.ZombieDna;
+import exception.EndGameException;
+import game.GameDna;
+import game.GameEngine;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -12,6 +16,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import line.LawnMower;
+import line.Line;
+import line.LineState;
 import main.Program;
 import page.Collection;
 import util.*;
@@ -81,7 +88,7 @@ public class PvpGame implements Serializable {
             } else if (gameState.equals("RUNNING_ZOMBIE") || gameState.equals("RUNNING_PLANTS") ||
                     gameState.equals("PLANTS_WIN") || gameState.equals("ZOMBIES_WIN")) {
                 button.setText("watch");
-                // TODO:
+                button.setOnMouseClicked(e->GameManager.init(id).execute());
             } else if (gameState.equals("CANCELED")) {
                 button.setText("canceled");
             }
@@ -175,6 +182,30 @@ public class PvpGame implements Serializable {
                 return "OK";
             }
             if (game.zombie.equals(user.getUsername()) && game.gameState == GameState.RUNNING_ZOMBIE) {
+                ArrayList<Line> lines = new ArrayList<>();
+                for (int i = 0; i < 5; i++)
+                    lines.add(new Line(i, LineState.DRY, null));
+                new GameEngine();
+                GameEngine
+                .getCurrentGameEngine()
+                .config(new GameDna(new ArrayPlant(game.plants), new ArrayZombie(game.zombies), lines));      
+                while (true) {
+                    try {
+                        GameEngine.getCurrentGameEngine().nextTurn();
+                        if (GameEngine.getCurrentGameEngine().getTurn() > 20)
+                        for (int i = 0; i < size1; i++) {
+                            for (int j = 0; j < size2; j++) {
+                                if (GameEngine.getCurrentGameEngine().getPlant2(i, j) == null) {
+                                    game.plants[i][j] = null;
+                                }
+                            }
+                        }
+                    }
+                    catch (EndGameException e) {
+                        break;
+                    }
+                }
+                game.zombies = new String[size1][size2];
                 game.gameState = GameState.RUNNING_PLANTS;
                 return "OK";
             }
